@@ -1,0 +1,27 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="GWJ69-Void"
+config/version="1.0"
+run/main_scene="res://scenes/MainScene.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://_SYSTEM/HS_DesktopIcon.png"
+
+[autoload]
+
+GlobalSignals="*res://autoloads/GlobalSignals.gd"
+RandUtilities="*res://autoloads/RandUtilities.gd"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
