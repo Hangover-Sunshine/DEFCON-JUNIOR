@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp8880vb66kkj"]
+
+[ext_resource type="Script" path="res://prefabs/art/prop_balloon.gd" id="1_486ei"]
+[ext_resource type="Texture2D" uid="uid://iyydc8g36f44" path="res://assets/sprites/prop/Prop_Basket.png" id="1_dd5gd"]
+[ext_resource type="Texture2D" uid="uid://buraaha3m3yoo" path="res://assets/sprites/prop/Prop_Balloon.png" id="2_fi2gu"]
+
+[node name="Prop_Balloon" type="Node2D"]
+script = ExtResource("1_486ei")
+
+[node name="HAB" type="Node2D" parent="."]
+
+[node name="Basket" type="Sprite2D" parent="HAB"]
+position = Vector2(0, 12)
+texture = ExtResource("1_dd5gd")
+
+[node name="Balloon" type="Sprite2D" parent="HAB"]
+position = Vector2(-6, -89)
+texture = ExtResource("2_fi2gu")
+hframes = 3
+vframes = 3

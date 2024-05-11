@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cff0irid7qcej"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_je4ut"]
-[ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/sprites/pc_skeleton.tscn" id="1_sgups"]
+[ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="1_sgups"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_reof2"]
 radius = 53.0
