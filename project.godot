@@ -21,6 +21,15 @@ config/icon="res://_SYSTEM/HS_DesktopIcon.png"
 GlobalSignals="*res://autoloads/GlobalSignals.gd"
 RandUtilities="*res://autoloads/RandUtilities.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[dotnet]
+
+project/assembly_name="GWJ69-Void"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
