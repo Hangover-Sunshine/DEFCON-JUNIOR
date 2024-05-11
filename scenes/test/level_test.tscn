@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://cpailpewyhwmi"]
+[gd_scene load_steps=3 format=3 uid="uid://cpailpewyhwmi"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="1_gbqr6"]
+[ext_resource type="PackedScene" uid="uid://03mboijeqm8h" path="res://prefabs/entities/obstruction.tscn" id="2_d4dbm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_gbqr6")]
+position = Vector2(409, 169)
+
+[node name="Obstruction" parent="." instance=ExtResource("2_d4dbm")]
+process_mode = 4
+position = Vector2(858, 904)

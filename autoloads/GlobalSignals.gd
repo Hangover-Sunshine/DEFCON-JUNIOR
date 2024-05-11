@@ -7,3 +7,4 @@ signal scene_transition_started
 signal scene_transition_done
 # System Loading ###################################################
 
+signal player_died

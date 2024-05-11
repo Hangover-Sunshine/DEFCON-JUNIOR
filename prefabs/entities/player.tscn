@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cff0irid7qcej"]
+
+[ext_resource type="Script" path="res://scripts/game/player.gd" id="1_je4ut"]
+[ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/sprites/pc_skeleton.tscn" id="1_sgups"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_reof2"]
+radius = 53.0
+height = 134.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vbqq"]
+radius = 90.0222
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_je4ut")
+DashStacks = 2
+DashDuration = 1.4
+
+[node name="PC_Skeleton" parent="." instance=ExtResource("1_sgups")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_reof2")
+
+[node name="BulletSpawnPos" type="Marker2D" parent="."]
+position = Vector2(0, 58)
+gizmo_extents = 100.0
+
+[node name="ShieldArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea"]
+shape = SubResource("CircleShape2D_4vbqq")
+debug_color = Color(0.784314, 0.321569, 0.737255, 0.419608)
+
+[node name="ShieldTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashRestockTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DamagedTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="ShieldArea" to="." method="_on_shield_area_area_entered"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]
+[connection signal="timeout" from="DashRestockTimer" to="." method="_on_dash_restock_timer_timeout"]

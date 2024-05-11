@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://03mboijeqm8h"]
+
+[ext_resource type="Script" path="res://scripts/game/obstruction.gd" id="1_ko87o"]
+[ext_resource type="Texture2D" uid="uid://btl2am3s4j70m" path="res://assets/temporary/Character_Lean.png" id="1_wnurn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sleee"]
+size = Vector2(180, 84)
+
+[node name="Obstruction" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 24
+script = ExtResource("1_ko87o")
+HorizontalSpeed = 300.0
+VerticalSpeed = -125.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.658824, 0.00392157, 0.94902, 1)
+rotation = 1.5708
+texture = ExtResource("1_wnurn")
+region_enabled = true
+region_rect = Rect2(192, 0, 96, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sleee")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
