@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btyxqoueyl3oe"]
+
+[ext_resource type="Script" path="res://scripts/prefabs/Enemy_Missile.gd" id="1_osid0"]
+[ext_resource type="Texture2D" uid="uid://fd3q8eodc88n" path="res://assets/sprites/enemy/Enemy_Missile2.png" id="2_mmv03"]
+
+[node name="Enemy_Missile_B" type="Node2D"]
+script = ExtResource("1_osid0")
+
+[node name="Missile" type="Sprite2D" parent="."]
+texture = ExtResource("2_mmv03")
+hframes = 4
