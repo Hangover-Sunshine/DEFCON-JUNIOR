@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://nsgp1qhggor8"]
+[gd_scene load_steps=7 format=3 uid="uid://nsgp1qhggor8"]
 
 [ext_resource type="PackedScene" uid="uid://cp8880vb66kkj" path="res://prefabs/art/prop/prop_balloon.tscn" id="1_dlr3o"]
 [ext_resource type="PackedScene" uid="uid://bfgxj2i15qqvr" path="res://prefabs/art/prop/prop_plane.tscn" id="1_g0ygs"]
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="3_vooma"]
 [ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="4_dxkhi"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_fqmmg"]
+[ext_resource type="PackedScene" uid="uid://cwlgqt2mce0is" path="res://prefabs/art/prop/prop_bird.tscn" id="6_cu7em"]
 
 [node name="demo_art" type="Node2D"]
 
@@ -41,3 +42,6 @@ position = Vector2(151, -184)
 
 [node name="Enemy_Jet" parent="." instance=ExtResource("4_dxkhi")]
 position = Vector2(608, -273)
+
+[node name="Prop_Bird" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(-148, -268)
