@@ -17,6 +17,6 @@ process_mode = 4
 position = Vector2(-129, 986)
 
 [node name="FatMissile" parent="." instance=ExtResource("5_5a7cp")]
-TimeframeToSnapshot = Vector2(2, 4)
+LockDistance = 375.0
 
 [node name="RandPosition" parent="." instance=ExtResource("5_ak8me")]

@@ -6,6 +6,7 @@ class_name Missile
 @export var TimeframeToSnapshot:Vector2 = Vector2(6, 10)
 
 @export var TrackPlayer:bool = false
+@export var LockDistance:float = 250
 @export var SingleShot:bool = false
 
 @onready var snapshot_timer:Timer = $SnapshotTimer
@@ -14,6 +15,8 @@ class_name Missile
 var target:Player
 var direction:Vector2
 
+var target_acquired:bool = false
+
 func _ready():
 	living_timer.start(Lifetime)
 	living_timer.paused = true
@@ -21,12 +24,24 @@ func _ready():
 ##
 
 func _physics_process(delta):
+	if TrackPlayer and snapshot_timer.is_stopped():
+		var dist = global_position.distance_to(target.global_position)
+		print(dist)
+		if target_acquired == false and dist > LockDistance:
+			direction = global_position.direction_to(target.global_position)
+			rotation = atan2(direction.y, direction.x)
+		elif dist <= LockDistance:
+			target_acquired = true
+		##
+	##
+	
 	velocity = direction * Speed
 	move_and_slide()
 ##
 
 func _on_snapshot_timer_timeout():
 	direction = global_position.direction_to(target.global_position)
+	rotation = atan2(direction.y, direction.x)
 ##
 
 func _on_living_timer_timeout():
@@ -53,6 +68,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	if SingleShot or living_timer.time_left < 1:
 		queue_free()
 	else:
+		target_acquired = false
 		GlobalSignals.emit_signal("rand_point_request", self)
 		snapshot_timer.start(randf_range(TimeframeToSnapshot.x, TimeframeToSnapshot.y))
 	##

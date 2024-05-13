@@ -11,12 +11,15 @@ height = 118.0
 script = ExtResource("1_k7738")
 
 [node name="Enemy_Missile_A" parent="." instance=ExtResource("1_ptk2n")]
+rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_a51d4")
 debug_color = Color(0.764706, 0, 0.282353, 0.419608)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rotation = 1.5708
 rect = Rect2(-25, -60, 50, 120)
 
 [node name="SnapshotTimer" type="Timer" parent="."]
