@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvc2n8mpfspuy"]
+
+[ext_resource type="Texture2D" uid="uid://o63wbosju6bb" path="res://assets/particle/Feather.png" id="1_c8hlc"]
+[ext_resource type="Gradient" uid="uid://b7dsyuw7f1k6e" path="res://assets/graphs/Gradiant_Bird_Fade.tres" id="2_r21dw"]
+
+[sub_resource type="Curve" id="Curve_ycvtl"]
+_data = [Vector2(0, 1), 0.0, 0.809397, 0, 0, Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_6k13i"]
+colors = PackedColorArray(0.231373, 0.462745, 0.560784, 1, 0.768627, 0.768627, 0.768627, 1)
+
+[sub_resource type="Gradient" id="Gradient_m4cka"]
+colors = PackedColorArray(1, 0.647059, 0.380392, 1, 0.898039, 0.898039, 0.898039, 1)
+
+[sub_resource type="Gradient" id="Gradient_c5uif"]
+colors = PackedColorArray(0.160784, 0.196078, 0.403922, 1, 0.27451, 0.294118, 0.54902, 1)
+
+[node name="FX_Explode_Feather" type="Node2D"]
+
+[node name="Explode_BirdA" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_c8hlc")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_ycvtl")
+color_ramp = ExtResource("2_r21dw")
+color_initial_ramp = SubResource("Gradient_6k13i")
+
+[node name="Explode_BirdB" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_c8hlc")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_ycvtl")
+color_ramp = ExtResource("2_r21dw")
+color_initial_ramp = SubResource("Gradient_m4cka")
+
+[node name="Explode_BirdC" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_c8hlc")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_ycvtl")
+color_ramp = ExtResource("2_r21dw")
+color_initial_ramp = SubResource("Gradient_c5uif")
