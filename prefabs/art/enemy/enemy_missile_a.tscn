@@ -1,7 +1,155 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdbjl5sbfl0ec"]
+[gd_scene load_steps=10 format=3 uid="uid://bdbjl5sbfl0ec"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/Enemy_Missile.gd" id="1_5ruim"]
 [ext_resource type="Texture2D" uid="uid://dcv0h5p3efrpr" path="res://assets/sprites/enemy/Enemy_Missile1.png" id="2_x3nbi"]
+[ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="3_hgabr"]
+
+[sub_resource type="Curve" id="Curve_l2erp"]
+_data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8pnjg"]
+offsets = PackedFloat32Array(0, 0.326667, 0.42, 0.526667, 0.64, 0.733333, 1)
+colors = PackedColorArray(1, 0.878431, 0.568627, 1, 1, 0.666667, 0.431373, 1, 1, 0.407843, 0.352941, 1, 0.866667, 0.215686, 0.270588, 1, 0.756863, 0.184314, 0.231373, 1, 0.262745, 0.117647, 0.4, 1, 0.262745, 0.117647, 0.4, 0)
+
+[sub_resource type="Animation" id="Animation_1m8d0"]
+resource_name = "Fly"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Missile:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missile:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lh68j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Missile:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missile:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion_Fire:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_q6a8d"]
+resource_name = "Die"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Missile:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05), Vector2(1.00136e-05, 1.00136e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missile:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion_Fire:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1g1t"]
+_data = {
+"Die": SubResource("Animation_q6a8d"),
+"Fly": SubResource("Animation_1m8d0"),
+"RESET": SubResource("Animation_lh68j")
+}
 
 [node name="Enemy_Missile_A" type="Node2D"]
 script = ExtResource("1_5ruim")
@@ -9,3 +157,26 @@ script = ExtResource("1_5ruim")
 [node name="Missile" type="Sprite2D" parent="."]
 texture = ExtResource("2_x3nbi")
 hframes = 4
+
+[node name="Explosion_Fire" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.8
+texture = ExtResource("3_hgabr")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 150.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_l2erp")
+color_ramp = SubResource("Gradient_8pnjg")
+
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l1g1t")
+}
+autoplay = "Fly"

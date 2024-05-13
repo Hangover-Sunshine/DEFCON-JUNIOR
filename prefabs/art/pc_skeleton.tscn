@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dny78qniqp7xr"]
+[gd_scene load_steps=13 format=3 uid="uid://dny78qniqp7xr"]
 
 [ext_resource type="Texture2D" uid="uid://cmf8vvbammk3w" path="res://assets/sprites/player/PC_Body.png" id="1_wubup"]
 [ext_resource type="Texture2D" uid="uid://cgbags4oc612c" path="res://assets/sprites/player/PC_Mouth.png" id="2_rmai2"]
@@ -208,6 +208,44 @@ _data = {
 "RESET": SubResource("Animation_ouhm6")
 }
 
+[sub_resource type="Animation" id="Animation_uax2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rj6c1"]
+resource_name = "Fly"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvmd3"]
+_data = {
+"Fly": SubResource("Animation_rj6c1"),
+"RESET": SubResource("Animation_uax2g")
+}
+
 [node name="PC_Skeleton" type="Node2D"]
 
 [node name="Nuke" type="Node2D" parent="."]
@@ -239,3 +277,9 @@ texture = ExtResource("5_onoce")
 libraries = {
 "": SubResource("AnimationLibrary_pubdk")
 }
+
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xvmd3")
+}
+autoplay = "Fly"
