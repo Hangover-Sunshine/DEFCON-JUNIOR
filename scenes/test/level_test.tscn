@@ -24,5 +24,6 @@ LockDistance = 375.0
 [node name="RandPosition" parent="." instance=ExtResource("5_ak8me")]
 
 [node name="Fighter" parent="." instance=ExtResource("6_4i3j8")]
+RushSpeed = 900.0
 FollowAndBob = true
 NearnessToPlayer = 0.2

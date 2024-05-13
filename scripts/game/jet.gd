@@ -41,6 +41,8 @@ enum JetState {
 @onready var move_timer = $MoveTimer
 @onready var bob_timer = $BobTimer
 
+@onready var aoe = $AOE
+
 var player:Player
 var bob_limits:Vector2
 
@@ -56,7 +58,6 @@ func _ready():
 	#global_position.y = StartingYPosition
 	var vp_x_size = get_viewport_rect().size.x
 	bob_limits = Vector2(vp_x_size * BobLimits, vp_x_size - vp_x_size * BobLimits)
-	print(bob_limits)
 	starting_position = Vector2(randf_range(bob_limits.x, bob_limits.y), StartingYPosition)
 	global_position.x = starting_position.x
 	global_position.y = StartingYPosition + 200
@@ -66,8 +67,7 @@ func _physics_process(delta):
 	if jet_state == JetState.SPAWN:
 		global_position = global_position.move_toward(starting_position, 200 * delta)
 		
-		if global_position.distance_to(starting_position) < 2:
-			global_position = starting_position
+		if global_position.distance_to(starting_position) == 0:
 			jet_state = JetState.SHOOT
 			fire_timer.start(FireTime)
 			
@@ -76,6 +76,8 @@ func _physics_process(delta):
 			if BobOnTimer:
 				bob_timer.start(randf_range(BobTimer.x, BobTimer.y))
 			##
+			
+			move_timer.start(randf_range(StayTimerRange.x, StayTimerRange.y))
 		##
 	elif jet_state == JetState.SHOOT:
 		if FollowAndBob:
@@ -96,11 +98,29 @@ func _physics_process(delta):
 			##
 			velocity.x = -BobSpeed
 		##
+	elif jet_state == JetState.TELEGRAPH:
+		aoe.custom_minimum_size = aoe.custom_minimum_size.move_toward(Vector2(0, 500),
+																		(500 / (RushTelegraphTimer - 0.1)) * delta)
+	elif jet_state == JetState.RUSH:
+		velocity.y = -RushSpeed
+		move_and_slide()
 	##
 ##
 
 func _on_move_timer_timeout():
-	pass
+	if jet_state == JetState.SHOOT:
+		aoe.visible = true
+		aoe.set_custom_minimum_size(Vector2(0,0))
+		jet_state = JetState.TELEGRAPH
+		velocity.x = 0
+		move_timer.start(RushTelegraphTimer)
+	elif jet_state == JetState.TELEGRAPH:
+		aoe.visible = false
+		fire_timer.stop()
+		jet_state = JetState.RUSH
+	elif jet_state == JetState.RESPAWN:
+		jet_state = JetState.SPAWN
+	##
 ##
 
 func _on_fire_timer_timeout():
@@ -112,4 +132,13 @@ func _on_bob_timer_timeout():
 	var dir = [-1, 1][randi() % 2]
 	velocity.x = dir * BobSpeed
 	bob_timer.start(randf_range(BobTimer.x, BobTimer.y))
+##
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	jet_state = JetState.RESPAWN
+	velocity.y = 0
+	starting_position = Vector2(randf_range(bob_limits.x, bob_limits.y), StartingYPosition)
+	global_position.x = starting_position.x
+	global_position.y = StartingYPosition + 200
+	move_timer.start(randf_range(ReturnTimerRange.x, ReturnTimerRange.y))
 ##

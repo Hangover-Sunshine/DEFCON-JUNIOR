@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1tjek5op80ys"]
+[gd_scene load_steps=6 format=3 uid="uid://c1tjek5op80ys"]
 
 [ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="1_6sdai"]
 [ext_resource type="Script" path="res://scripts/game/jet.gd" id="1_lj8gk"]
+
+[sub_resource type="Gradient" id="Gradient_7tht3"]
+colors = PackedColorArray(0, 0, 0, 0.588235, 0.866667, 0.215686, 0.270588, 0.392157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qgu3m"]
+gradient = SubResource("Gradient_7tht3")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usbiq"]
 size = Vector2(160, 180)
@@ -12,6 +21,16 @@ collision_mask = 0
 script = ExtResource("1_lj8gk")
 BobLimits = 0.05
 NearnessToPlayer = 0.15
+
+[node name="AOE" type="TextureRect" parent="."]
+visible = false
+z_index = -10
+offset_left = 60.0
+offset_right = 180.0
+offset_bottom = 40.0
+rotation = 3.14159
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_qgu3m")
 
 [node name="Enemy_Jet" parent="." instance=ExtResource("1_6sdai")]
 
@@ -46,6 +65,10 @@ one_shot = true
 [node name="BobTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-50, -10, 100, 110)
+
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="BobTimer" to="." method="_on_bob_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
