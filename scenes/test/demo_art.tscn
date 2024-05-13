@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://nsgp1qhggor8"]
+[gd_scene load_steps=10 format=3 uid="uid://nsgp1qhggor8"]
 
 [ext_resource type="PackedScene" uid="uid://cp8880vb66kkj" path="res://prefabs/art/prop/prop_balloon.tscn" id="1_dlr3o"]
 [ext_resource type="PackedScene" uid="uid://bfgxj2i15qqvr" path="res://prefabs/art/prop/prop_plane.tscn" id="1_g0ygs"]
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="3_vooma"]
 [ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="4_dxkhi"]
-[ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://scripts/env_city.tscn" id="5_fqmmg"]
+[ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_fqmmg"]
+[ext_resource type="PackedScene" uid="uid://cwlgqt2mce0is" path="res://prefabs/art/prop/prop_bird.tscn" id="6_cu7em"]
+[ext_resource type="PackedScene" uid="uid://ch77gyo6ll8sr" path="res://prefabs/fx/fx_explode_fire.tscn" id="7_pqtsk"]
+[ext_resource type="PackedScene" uid="uid://cvc2n8mpfspuy" path="res://prefabs/fx/fx_explode_feather.tscn" id="8_utufl"]
+[ext_resource type="Texture2D" uid="uid://b4hvt33e4i1fp" path="res://assets/sprites/prop/bird/Prop_Bird_Head.png" id="9_hbqao"]
 
 [node name="demo_art" type="Node2D"]
 
@@ -26,17 +30,28 @@ offset_right = 540.0
 offset_bottom = 540.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
 
+[node name="Env_City" parent="." instance=ExtResource("5_fqmmg")]
+show_behind_parent = true
+position = Vector2(0, 540)
+
 [node name="Prop_Plane" parent="." instance=ExtResource("1_g0ygs")]
-position = Vector2(-5, -356)
 
 [node name="Prop_Balloon" parent="." instance=ExtResource("1_dlr3o")]
 position = Vector2(-344, -167)
 
 [node name="PC_Skeleton" parent="." instance=ExtResource("3_vooma")]
-position = Vector2(225, -187)
+position = Vector2(151, -184)
 
 [node name="Enemy_Jet" parent="." instance=ExtResource("4_dxkhi")]
+position = Vector2(608, -273)
 
-[node name="Env_City" parent="." instance=ExtResource("5_fqmmg")]
-show_behind_parent = true
-position = Vector2(1, 580)
+[node name="Prop_Bird" parent="." instance=ExtResource("6_cu7em")]
+visible = false
+
+[node name="FX_Explode_Fire" parent="." instance=ExtResource("7_pqtsk")]
+
+[node name="FX_Explode_Feather" parent="." instance=ExtResource("8_utufl")]
+
+[node name="PropBirdHead" type="Sprite2D" parent="."]
+position = Vector2(-108, -76)
+texture = ExtResource("9_hbqao")

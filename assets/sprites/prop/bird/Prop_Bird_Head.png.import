@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r8qwv7ehmru6"
-path="res://.godot/imported/Env_Mid_City.png-8ea722a877da9c0cb7507762bd1ed179.ctex"
+uid="uid://b4hvt33e4i1fp"
+path="res://.godot/imported/Prop_Bird_Head.png-0ee04e9a42f90f7960099e90756ed9e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/environment/Env_Mid_City.png"
-dest_files=["res://.godot/imported/Env_Mid_City.png-8ea722a877da9c0cb7507762bd1ed179.ctex"]
+source_file="res://assets/sprites/prop/bird/Prop_Bird_Head.png"
+dest_files=["res://.godot/imported/Prop_Bird_Head.png-0ee04e9a42f90f7960099e90756ed9e3.ctex"]
 
 [params]
 

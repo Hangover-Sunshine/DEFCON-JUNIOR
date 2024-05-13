@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4133mwhw0jq"
-path="res://.godot/imported/Env_Back_City.png-0fc3fa57d0e89e06a2ad6348b3904747.ctex"
+uid="uid://bl7aqg26t76lj"
+path="res://.godot/imported/Prop_Bird_Leg.png-06a68a08ff54f954f820095d71df4531.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/environment/Env_Back_City.png"
-dest_files=["res://.godot/imported/Env_Back_City.png-0fc3fa57d0e89e06a2ad6348b3904747.ctex"]
+source_file="res://assets/sprites/prop/bird/Prop_Bird_Leg.png"
+dest_files=["res://.godot/imported/Prop_Bird_Leg.png-06a68a08ff54f954f820095d71df4531.ctex"]
 
 [params]
 
