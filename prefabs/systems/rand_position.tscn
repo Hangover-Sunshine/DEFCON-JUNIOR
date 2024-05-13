@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://d25674hcnx2dd"]
+
+[ext_resource type="Script" path="res://scripts/game/RandPosition.gd" id="1_eo07y"]
+
+[node name="RandPosition" type="Node2D"]
+script = ExtResource("1_eo07y")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-220, 600)
+gizmo_extents = 150.0
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(1000, 1300)
+gizmo_extents = 150.0
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(2150, 600)
+gizmo_extents = 150.0
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(1000, -210)
+gizmo_extents = 150.0

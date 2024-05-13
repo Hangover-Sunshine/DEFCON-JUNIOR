@@ -8,3 +8,5 @@ signal scene_transition_done
 # System Loading ###################################################
 
 signal player_died
+
+signal rand_point_request(missile:Missile)
