@@ -67,9 +67,9 @@ func _process(_delta):
 		
 		# stop from coming back here
 		set_process(false)
-	else:
+	# else:
 		# do something else...
-		print(progress)
+		# print(progress)
 	##
 ##
 
