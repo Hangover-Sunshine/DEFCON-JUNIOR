@@ -1,8 +1,205 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp8880vb66kkj"]
+[gd_scene load_steps=11 format=3 uid="uid://cp8880vb66kkj"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/prop_balloon.gd" id="1_486ei"]
 [ext_resource type="Texture2D" uid="uid://iyydc8g36f44" path="res://assets/sprites/prop/Prop_Basket.png" id="1_dd5gd"]
 [ext_resource type="Texture2D" uid="uid://buraaha3m3yoo" path="res://assets/sprites/prop/Prop_Balloon.png" id="2_fi2gu"]
+[ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="4_spqpu"]
+
+[sub_resource type="Curve" id="Curve_1wdw8"]
+_data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_20xcw"]
+offsets = PackedFloat32Array(0, 0.326667, 0.42, 0.526667, 0.64, 0.733333, 1)
+colors = PackedColorArray(1, 0.878431, 0.568627, 1, 1, 0.666667, 0.431373, 1, 1, 0.407843, 0.352941, 1, 0.866667, 0.215686, 0.270588, 1, 0.756863, 0.184314, 0.231373, 1, 0.262745, 0.117647, 0.4, 1, 0.262745, 0.117647, 0.4, 0)
+
+[sub_resource type="Animation" id="Animation_x4lj1"]
+resource_name = "Fly"
+length = 3.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HAB:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0436332, 0.0, -0.0436332, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAB:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HAB/Balloon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0174533, 0.0, 0.0174533, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HAB/Basket:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0436332, 0.0, -0.0436332, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HAB:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q5l2d"]
+resource_name = "Death"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HAB:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAB:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion_Fire:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tbse6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HAB:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAB:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HAB:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion_Fire:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HAB/Balloon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HAB/Basket:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aulqa"]
+_data = {
+"Death": SubResource("Animation_q5l2d"),
+"Fly": SubResource("Animation_x4lj1"),
+"RESET": SubResource("Animation_tbse6")
+}
 
 [node name="Prop_Balloon" type="Node2D"]
 script = ExtResource("1_486ei")
@@ -10,11 +207,36 @@ script = ExtResource("1_486ei")
 [node name="HAB" type="Node2D" parent="."]
 
 [node name="Basket" type="Sprite2D" parent="HAB"]
-position = Vector2(0, 12)
+position = Vector2(0, -12)
 texture = ExtResource("1_dd5gd")
+offset = Vector2(0, 25)
 
 [node name="Balloon" type="Sprite2D" parent="HAB"]
 position = Vector2(-6, -89)
 texture = ExtResource("2_fi2gu")
 hframes = 3
 vframes = 3
+
+[node name="Explosion_Fire" type="CPUParticles2D" parent="."]
+position = Vector2(0, -23)
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.8
+texture = ExtResource("4_spqpu")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 150.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1wdw8")
+color_ramp = SubResource("Gradient_20xcw")
+
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aulqa")
+}
+autoplay = "Fly"

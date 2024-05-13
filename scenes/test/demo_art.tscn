@@ -46,7 +46,6 @@ position = Vector2(151, -184)
 position = Vector2(608, -273)
 
 [node name="Prop_Bird" parent="." instance=ExtResource("6_cu7em")]
-visible = false
 
 [node name="FX_Explode_Fire" parent="." instance=ExtResource("7_pqtsk")]
 
