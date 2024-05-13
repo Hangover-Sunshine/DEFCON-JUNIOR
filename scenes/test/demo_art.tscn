@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://nsgp1qhggor8"]
+[gd_scene load_steps=14 format=3 uid="uid://nsgp1qhggor8"]
 
 [ext_resource type="PackedScene" uid="uid://cp8880vb66kkj" path="res://prefabs/art/prop/prop_balloon.tscn" id="1_dlr3o"]
 [ext_resource type="PackedScene" uid="uid://bfgxj2i15qqvr" path="res://prefabs/art/prop/prop_plane.tscn" id="1_g0ygs"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://ch77gyo6ll8sr" path="res://prefabs/fx/fx_explode_fire.tscn" id="7_pqtsk"]
 [ext_resource type="PackedScene" uid="uid://cvc2n8mpfspuy" path="res://prefabs/fx/fx_explode_feather.tscn" id="8_utufl"]
 [ext_resource type="Texture2D" uid="uid://b4hvt33e4i1fp" path="res://assets/sprites/prop/bird/Prop_Bird_Head.png" id="9_hbqao"]
+[ext_resource type="PackedScene" uid="uid://bdbjl5sbfl0ec" path="res://prefabs/art/enemy/enemy_missile_a.tscn" id="10_0tx5e"]
+[ext_resource type="PackedScene" uid="uid://btyxqoueyl3oe" path="res://prefabs/art/enemy/enemy_missile_b.tscn" id="11_kgtsq"]
+[ext_resource type="PackedScene" uid="uid://cwq48i2q2252x" path="res://prefabs/art/enemy/enemy_missile_c.tscn" id="12_ahi6i"]
+[ext_resource type="PackedScene" uid="uid://hvyxr5s4n4vp" path="res://prefabs/art/enemy/enemy_missile_d.tscn" id="13_mfna7"]
 
 [node name="demo_art" type="Node2D"]
 
@@ -54,3 +58,39 @@ position = Vector2(608, -273)
 [node name="PropBirdHead" type="Sprite2D" parent="."]
 position = Vector2(-108, -76)
 texture = ExtResource("9_hbqao")
+
+[node name="Enemy_Jet2" parent="." instance=ExtResource("4_dxkhi")]
+position = Vector2(416, -69)
+
+[node name="Enemy_Missile_A" parent="." instance=ExtResource("10_0tx5e")]
+position = Vector2(-52, -342)
+
+[node name="Enemy_Missile_B" parent="." instance=ExtResource("11_kgtsq")]
+position = Vector2(148, -411)
+
+[node name="Enemy_Missile_C" parent="." instance=ExtResource("12_ahi6i")]
+position = Vector2(335, -323)
+
+[node name="Enemy_Missile_D" parent="." instance=ExtResource("13_mfna7")]
+position = Vector2(-186, -253)
+
+[node name="Prop_Bird2" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(274, 46)
+
+[node name="Prop_Bird3" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(276, -125)
+
+[node name="Prop_Bird4" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(-47, -179)
+
+[node name="Prop_Bird5" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(437, -218)
+
+[node name="Prop_Bird6" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(67, -295)
+
+[node name="Prop_Bird7" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(246, -295)
+
+[node name="Prop_Bird8" parent="." instance=ExtResource("6_cu7em")]
+position = Vector2(288, -48)

@@ -39,7 +39,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0349066, 0.0, -0.0349066, 0.0]
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -118,7 +118,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_v6x06"]
-resource_name = "Death"
+resource_name = "Die"
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -171,7 +171,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6anon"]
 _data = {
-"Death": SubResource("Animation_v6x06"),
+"Die": SubResource("Animation_v6x06"),
 "Fly": SubResource("Animation_omc5r"),
 "RESET": SubResource("Animation_a1l7q")
 }
