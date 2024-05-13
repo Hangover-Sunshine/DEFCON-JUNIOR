@@ -44,6 +44,7 @@ enum SprayPattern {
 @export_category("Projectile")
 @export var Munition:Resource
 @export var BulletSpeed:float = 350
+@export var BulletLifetime:float = 5
 @export var RandomizePattern:bool = false
 @export var UsePattern:SprayPattern = SprayPattern.BOTH
 
@@ -65,6 +66,9 @@ var starting_position:Vector2
 var pf_bob_bounds:Vector2
 var curr_limits:Vector2
 
+var pattern:int
+var spawn_pos
+
 func _ready():
 	assert(!(BobLeftAndRight and BobOnTimer), "Too many behaviors!")
 	
@@ -74,6 +78,14 @@ func _ready():
 	starting_position = Vector2(randf_range(bob_limits.x, bob_limits.y), StartingYPosition)
 	global_position.x = starting_position.x
 	global_position.y = StartingYPosition + 200
+	
+	if RandomizePattern:
+		pass
+	else:
+		pattern = UsePattern
+	##
+	
+	spawn_pos = $Patterns.get_child(pattern).get_children()
 ##
 
 func _physics_process(delta):
@@ -84,8 +96,12 @@ func _physics_process(delta):
 			jet_state = JetState.SHOOT
 			fire_timer.start(FireTime)
 			
-			velocity.x = [-1, 1][randi() % 2] * BobSpeed
+			if BobOnTimer or BobLeftAndRight or FollowAndBob:
+				velocity.x = [-1, 1][randi() % 2] * BobSpeed
+			##
+			
 			curr_limits = bob_limits
+			
 			if BobOnTimer:
 				bob_timer.start(randf_range(BobTimer.x, BobTimer.y))
 			##
@@ -116,6 +132,7 @@ func _physics_process(delta):
 												(500 / (RushTelegraphTimer - 0.1)) * delta)
 	elif jet_state == JetState.RUSH:
 		velocity.y = -RushSpeed
+		print(velocity)
 		move_and_slide()
 	##
 ##
@@ -128,8 +145,10 @@ func _on_move_timer_timeout():
 		velocity.x = 0
 		move_timer.start(RushTelegraphTimer)
 	elif jet_state == JetState.TELEGRAPH:
+		velocity.x = 0
 		aoe.visible = false
 		fire_timer.stop()
+		bob_timer.stop()
 		jet_state = JetState.RUSH
 	elif jet_state == JetState.RESPAWN:
 		jet_state = JetState.SPAWN
@@ -137,7 +156,13 @@ func _on_move_timer_timeout():
 ##
 
 func _on_fire_timer_timeout():
-	print("SPAWN")
+	for sp in spawn_pos:
+		var bullet = Munition.instantiate()
+		GlobalSignals.emit_signal("spawn_bullet", bullet)
+		bullet.setup(BulletSpeed, 2, 1, BulletLifetime)
+		bullet.global_position = sp.global_position
+	##
+	
 	fire_timer.start(FireTime)
 ##
 
@@ -154,4 +179,15 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	global_position.x = starting_position.x
 	global_position.y = StartingYPosition + 200
 	move_timer.start(randf_range(ReturnTimerRange.x, ReturnTimerRange.y))
+##
+
+func _on_player_detector_body_entered(body):
+	# TODO: play explosion and kill self
+	body.hit()
+	queue_free()
+##
+
+func hit():
+	# play explosion, sfx, whatever, just die
+	queue_free()
 ##

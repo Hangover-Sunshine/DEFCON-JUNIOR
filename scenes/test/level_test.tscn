@@ -1,29 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpailpewyhwmi"]
+[gd_scene load_steps=8 format=3 uid="uid://cpailpewyhwmi"]
 
 [ext_resource type="Script" path="res://scripts/dummy_scripts/test_level.gd" id="1_27lr5"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="1_gbqr6"]
-[ext_resource type="PackedScene" uid="uid://03mboijeqm8h" path="res://prefabs/entities/obstruction.tscn" id="2_d4dbm"]
+[ext_resource type="PackedScene" uid="uid://03mboijeqm8h" path="res://prefabs/entities/plane.tscn" id="2_d4dbm"]
 [ext_resource type="PackedScene" uid="uid://dorjaeeve6s2m" path="res://prefabs/entities/fat_missle.tscn" id="5_5a7cp"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="5_ak8me"]
 [ext_resource type="PackedScene" uid="uid://c1tjek5op80ys" path="res://prefabs/entities/fighter.tscn" id="6_4i3j8"]
+[ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="7_xoamy"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_27lr5")
 
+[node name="RandPosition" parent="." instance=ExtResource("5_ak8me")]
+
+[node name="BulletSpawn" type="Node2D" parent="."]
+script = ExtResource("7_xoamy")
+
 [node name="Player" parent="." instance=ExtResource("1_gbqr6")]
 position = Vector2(1000, 550)
 
-[node name="Obstruction" parent="." instance=ExtResource("2_d4dbm")]
-process_mode = 4
-position = Vector2(-129, 986)
+[node name="Plane" parent="." instance=ExtResource("2_d4dbm")]
+position = Vector2(-222, 993)
+MovesHorizontally = true
 
 [node name="FatMissile" parent="." instance=ExtResource("5_5a7cp")]
 process_mode = 4
 LockDistance = 375.0
 
-[node name="RandPosition" parent="." instance=ExtResource("5_ak8me")]
-
 [node name="Fighter" parent="." instance=ExtResource("6_4i3j8")]
 RushSpeed = 900.0
-FollowAndBob = true
+BobOnTimer = true
 NearnessToPlayer = 0.2

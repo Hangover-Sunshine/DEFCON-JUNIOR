@@ -127,8 +127,6 @@ func hit():
 		return
 	##
 	
-	# check if projectile or ship
-	# area.hit() # play explosion, sfx, whatever, just die
 	damaged_timer.start(TimeToNextDamage)
 ##
 
@@ -142,7 +140,7 @@ func _on_shield_timer_timeout():
 ##
 
 func _on_shield_area_area_entered(area):
-	pass # area.hit() # play explosion, sfx, whatever, just die
+	area.hit()
 ##
 
 func _on_gun_timer_timeout():

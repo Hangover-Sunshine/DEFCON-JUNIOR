@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="1_sgups"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_reof2"]
-radius = 53.0
+radius = 49.0
 height = 134.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vbqq"]

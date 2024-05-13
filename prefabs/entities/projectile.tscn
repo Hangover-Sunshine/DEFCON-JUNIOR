@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cet4qeo3i75a3"]
+
+[ext_resource type="Script" path="res://scripts/game/projectile.gd" id="1_ecmd5"]
+[ext_resource type="Texture2D" uid="uid://dubfevc8seijr" path="res://assets/particle/Bullet.png" id="1_wij8t"]
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ecmd5")
+
+[node name="Bullet" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wij8t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(34, 46, 34, -15, 19, -43, -11, -43, -34, -14, -37, 45)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(34, 46, 34, -15, 19, -43, -11, -43, -34, -14, -37, 45)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

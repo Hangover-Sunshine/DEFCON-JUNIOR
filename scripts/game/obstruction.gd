@@ -8,13 +8,10 @@ class_name Obstruction
 var facing_right:bool = false
 
 func _ready():
-	if VerticalSpeed > 0:
+	if HorizontalSpeed > 0:
 		facing_right = true
+		$Prop_Plane.scale.x = -1
 	##
-##
-
-func hit():
-	pass
 ##
 
 func _physics_process(delta):
@@ -27,3 +24,13 @@ func _physics_process(delta):
 	move_and_slide()
 ##
 
+func hit():
+	# play explosion, sfx, whatever, just die
+	queue_free()
+##
+
+func _on_player_detector_body_entered(body):
+	# TODO: fun death
+	body.hit()
+	queue_free()
+##

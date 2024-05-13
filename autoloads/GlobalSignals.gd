@@ -9,4 +9,5 @@ signal scene_transition_done
 
 signal player_died
 
+signal spawn_bullet(bullet:Projectile)
 signal rand_point_request(missile:Missile)
