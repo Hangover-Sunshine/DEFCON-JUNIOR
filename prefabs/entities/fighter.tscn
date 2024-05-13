@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1tjek5op80ys"]
+
+[ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="1_6sdai"]
+[ext_resource type="Script" path="res://scripts/game/jet.gd" id="1_lj8gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usbiq"]
+size = Vector2(160, 180)
+
+[node name="Fighter" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_lj8gk")
+BobLimits = 0.05
+NearnessToPlayer = 0.15
+
+[node name="Enemy_Jet" parent="." instance=ExtResource("1_6sdai")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_usbiq")
+debug_color = Color(0.984314, 0, 0.345098, 0.419608)
+
+[node name="Patterns" type="Node2D" parent="."]
+
+[node name="Dual" type="Node2D" parent="Patterns"]
+
+[node name="Marker2D" type="Marker2D" parent="Patterns/Dual"]
+position = Vector2(-55, -35)
+gizmo_extents = 50.0
+
+[node name="Marker2D2" type="Marker2D" parent="Patterns/Dual"]
+position = Vector2(55, -35)
+gizmo_extents = 50.0
+
+[node name="Left" type="Node2D" parent="Patterns"]
+
+[node name="Right" type="Node2D" parent="Patterns"]
+
+[node name="Forward" type="Node2D" parent="Patterns"]
+
+[node name="FireTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BobTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="BobTimer" to="." method="_on_bob_timer_timeout"]

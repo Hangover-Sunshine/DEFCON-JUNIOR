@@ -26,7 +26,6 @@ func _ready():
 func _physics_process(delta):
 	if TrackPlayer and snapshot_timer.is_stopped():
 		var dist = global_position.distance_to(target.global_position)
-		print(dist)
 		if target_acquired == false and dist > LockDistance:
 			direction = global_position.direction_to(target.global_position)
 			rotation = atan2(direction.y, direction.x)
