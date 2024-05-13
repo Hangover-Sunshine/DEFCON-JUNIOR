@@ -9,6 +9,13 @@ enum JetState {
 	RESPAWN
 }
 
+enum SprayPattern {
+	BOTH,
+	LEFT_ONLY,
+	RIGHT_ONLY,
+	MIDDLE
+}
+
 @export_category("General Info")
 @export var RushSpeed:float = 500
 @export var StartingYPosition:float = 930
@@ -33,6 +40,12 @@ enum JetState {
 @export var StayTimerRange:Vector2 = Vector2(6, 12)
 @export var ReturnTimerRange:Vector2 = Vector2(5, 8)
 @export var FireTime:float = 0.8
+
+@export_category("Projectile")
+@export var Munition:Resource
+@export var BulletSpeed:float = 350
+@export var RandomizePattern:bool = false
+@export var UsePattern:SprayPattern = SprayPattern.BOTH
 
 # TODO: pattern development
 @onready var bullet_patterns = $Patterns
@@ -100,7 +113,7 @@ func _physics_process(delta):
 		##
 	elif jet_state == JetState.TELEGRAPH:
 		aoe.custom_minimum_size = aoe.custom_minimum_size.move_toward(Vector2(0, 500),
-																		(500 / (RushTelegraphTimer - 0.1)) * delta)
+												(500 / (RushTelegraphTimer - 0.1)) * delta)
 	elif jet_state == JetState.RUSH:
 		velocity.y = -RushSpeed
 		move_and_slide()
