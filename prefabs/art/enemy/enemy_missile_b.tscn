@@ -180,3 +180,5 @@ libraries = {
 "": SubResource("AnimationLibrary_l1g1t")
 }
 autoplay = "Fly"
+
+[connection signal="animation_finished" from="AP" to="." method="_on_ap_animation_finished"]
