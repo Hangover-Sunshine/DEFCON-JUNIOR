@@ -1,0 +1,158 @@
+[gd_scene load_steps=6 format=3 uid="uid://c443ym0imfa1v"]
+
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_iudh1"]
+[ext_resource type="Texture2D" uid="uid://b6vpewiqnhqjo" path="res://assets/temporary/Image Template.png" id="2_wi7ul"]
+
+[sub_resource type="Animation" id="Animation_ps85c"]
+resource_name = "Flash"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quote_VBox/Press_Label:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oshcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quote_VBox/Press_Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2c7oi"]
+_data = {
+"Flash": SubResource("Animation_ps85c"),
+"RESET": SubResource("Animation_oshcs")
+}
+
+[node name="Menu_Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Win_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 420
+theme_override_constants/margin_right = 420
+
+[node name="Quote_VBox" type="VBoxContainer" parent="Win_MC"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Header_VBox" type="VBoxContainer" parent="Win_MC/Quote_VBox"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Header1_Label" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "THIS IS THE FIRST SENTENCE."
+horizontal_alignment = 1
+
+[node name="Header1_Label2" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "THIS IS THE SECOND SENTENCE."
+horizontal_alignment = 1
+
+[node name="Header1_Label3" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "THIS IS THE THIRD SENTENCE."
+horizontal_alignment = 1
+
+[node name="Header1_Label4" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "THIS IS THE FORTH SENTENCE."
+horizontal_alignment = 1
+
+[node name="Header1_Label5" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "THIS IS THE FIFTH SENTENCE."
+horizontal_alignment = 1
+
+[node name="Press_Label" type="Label" parent="Win_MC/Quote_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "Press ANY BUTTON to CONTINUE"
+horizontal_alignment = 1
+
+[node name="Message_VBox2" type="VBoxContainer" parent="Win_MC"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="Header_VBox" type="VBoxContainer" parent="Win_MC/Message_VBox2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Win_MC/Message_VBox2/Header_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Header1_Label" type="Label" parent="Win_MC/Message_VBox2/Header_VBox/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 150
+text = "#"
+horizontal_alignment = 1
+
+[node name="Header1_Label2" type="Label" parent="Win_MC/Message_VBox2/Header_VBox/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 150
+text = "/7"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Win_MC/Message_VBox2/Header_VBox"]
+layout_mode = 2
+texture = ExtResource("2_wi7ul")
+
+[node name="Press_Label" type="Label" parent="Win_MC/Message_VBox2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_font_sizes/font_size = 50
+text = "Press ANY BUTTON to CONTINUE"
+horizontal_alignment = 1
+
+[node name="Splash_AnimPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Win_MC")
+libraries = {
+"": SubResource("AnimationLibrary_2c7oi")
+}
+autoplay = "Flash"
+
+[node name="AP_Transition" type="AnimationPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
