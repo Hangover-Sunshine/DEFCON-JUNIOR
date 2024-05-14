@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=6 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_7g76e"]
 [ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_egtmf"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="2_fpltr"]
+[ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="4_jpp3c"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="11_mavoj"]
 
 [node name="GameScene" type="Node2D"]
@@ -30,14 +31,14 @@ one_shot = true
 
 [node name="Background2" type="ColorRect" parent="GameRoot"]
 show_behind_parent = true
-z_index = 1
+z_index = 10
 offset_right = 424.0
 offset_bottom = 1080.0
 color = Color(0.564706, 0.619608, 0.866667, 1)
 
 [node name="Background3" type="ColorRect" parent="GameRoot"]
 show_behind_parent = true
-z_index = 1
+z_index = 10
 offset_left = 1504.0
 offset_right = 1924.0
 offset_bottom = 1080.0
@@ -58,7 +59,11 @@ position = Vector2(221, 600)
 [node name="Marker2D3" parent="GameRoot/RandPosition" index="2"]
 position = Vector2(1692, 600)
 
+[node name="BulletHolder" type="Node2D" parent="GameRoot"]
+script = ExtResource("4_jpp3c")
+
 [node name="Player" parent="GameRoot" instance=ExtResource("11_mavoj")]
+z_index = 1
 position = Vector2(957, 157)
 
 [connection signal="timeout" from="GameRoot/Info/GameTimer" to="GameRoot" method="_on_game_timer_timeout"]

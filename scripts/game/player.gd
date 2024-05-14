@@ -95,7 +95,12 @@ func _physics_process(_delta):
 	
 	if direction.x != 0:
 		velocity.x = direction.x * BaseMovementSpeed
+		if direction.x > 0:
+			$PC_Skeleton.to_right()
+		elif direction.x < 0:
+			$PC_Skeleton.to_left()
 	else:
+		$PC_Skeleton.to_notmove()
 		velocity.x = move_toward(velocity.x, 0, BaseMovementSpeed)
 	##
 	
@@ -131,6 +136,7 @@ func hit():
 		return
 	##
 	
+	$PC_Skeleton.to_pain()
 	damaged_timer.start(TimeToNextDamage)
 ##
 
@@ -156,4 +162,8 @@ func _on_dash_restock_timer_timeout():
 		dash_restock_timer.start(DashCooldown)
 	##
 	curr_dash_amount += 1
+##
+
+func _on_damaged_timer_timeout():
+	$PC_Skeleton.to_happy()
 ##

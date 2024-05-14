@@ -7,16 +7,10 @@ class_name Obstruction
 @export var IsBird:bool = false
 
 var facing_right:bool = false
-
-func _ready():
-	if HorizontalSpeed > 0:
-		facing_right = true
-		$Prop_Plane.scale.x = -1
-	##
-##
+var dead:bool = false
 
 func _physics_process(delta):
-	if MovesHorizontally:
+	if dead == false and MovesHorizontally:
 		velocity.x = HorizontalSpeed
 	##
 	
@@ -33,15 +27,29 @@ func _physics_process(delta):
 
 func hit():
 	# play explosion, sfx, whatever, just die
-	queue_free()
+	$PropGraphic.anim_die()
+	$PlayerDetector.queue_free()
+	$Hitbox.queue_free()
+	dead = true
+	velocity.x = 0
+##
+
+func direction_check():
+	if HorizontalSpeed > 0:
+		facing_right = true
+		$PropGraphic.scale.x = -1
+	##
 ##
 
 func _on_player_detector_body_entered(body):
-	# TODO: fun death
 	body.hit()
-	queue_free()
+	hit()
 ##
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+##
+
+func _on_died_anim_complete():
 	queue_free()
 ##

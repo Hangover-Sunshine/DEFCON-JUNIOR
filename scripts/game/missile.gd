@@ -15,6 +15,7 @@ class_name Missile
 var target:Player
 var direction:Vector2
 
+var dead:bool = false
 var target_acquired:bool = false
 
 func _ready():
@@ -24,7 +25,7 @@ func _ready():
 ##
 
 func _physics_process(delta):
-	if TrackPlayer and snapshot_timer.is_stopped():
+	if dead == false and TrackPlayer and snapshot_timer.is_stopped():
 		var dist = global_position.distance_to(target.global_position)
 		if target_acquired == false and dist > LockDistance:
 			direction = global_position.direction_to(target.global_position)
@@ -44,8 +45,7 @@ func _on_snapshot_timer_timeout():
 ##
 
 func _on_living_timer_timeout():
-	# TODO: explode
-	queue_free()
+	hit()
 ##
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -75,4 +75,21 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	living_timer.paused = false
+##
+
+func _on_player_detector_body_entered(body):
+	body.hit()
+	hit()
+##
+
+func hit():
+	$PropGraphic.anim_die()
+	$PlayerDetector.queue_free()
+	$Hitbox.queue_free()
+	dead = true
+	velocity.x = 0
+##
+
+func _on_missile_died():
+	queue_free()
 ##

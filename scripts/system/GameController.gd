@@ -44,6 +44,8 @@ func load_next_level():
 	jets_spawn_at = lvl_len_secs - level.FightersAppearAt * 60
 	missiles_spawn_at = lvl_len_secs - level.MissilesAppearAt * 60
 	
+	horizontal_timer.start(randf_range(level.DynamicSpawnTimerRange.x,
+										level.DynamicSpawnTimerRange.y))
 	game_timer.start(lvl_len_secs)
 ##
 
@@ -66,6 +68,16 @@ func _process(_delta):
 		missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
+	
+	if game_timer.time_left < 20:
+		obstacle_timer.stop()
+	##
+	
+	if game_timer.time_left < 10:
+		missile_timer.stop()
+		jet_timer.stop()
+		horizontal_timer.stop()
+	##
 ##
 
 func _on_game_timer_timeout():
@@ -76,21 +88,24 @@ func _on_game_timer_timeout():
 func _jet_dead():
 	curr_jets -= 1
 	if jet_timer.is_stopped():
-		jet_timer.start()
+		jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
+									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 ##
 
 func _missile_dead():
 	curr_missiles -= 1
 	if missile_timer.is_stopped():
-		missile_timer.start()
+		missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
+									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 ##
 
 func _hobstacle_dead():
 	curr_move_obstacles -= 1
 	if horizontal_timer.is_stopped():
-		horizontal_timer.start()
+		horizontal_timer.start(randf_range(Levels[curr_level].DynamicSpawnTimerRange.x,
+										Levels[curr_level].DynamicSpawnTimerRange.y))
 	##
 ##
 
@@ -132,17 +147,32 @@ func _on_obstacle_timer_timeout():
 
 func _on_horizontal_timer_timeout():
 	var object = Levels[curr_level].generate_moving_obstacle()
+	
+	add_child(object)
 	rand_position.get_random_horobj_start(object)
 	
 	if object.global_position.x > player.global_position.x:
 		object.HorizontalSpeed *= -1
 	##
 	
-	add_child(object)
+	object.direction_check()
 	
 	curr_move_obstacles += 1
 	
 	if curr_move_obstacles < max_move_obstacles and horizontal_timer.is_stopped():
-		horizontal_timer.start()
+		horizontal_timer.start(randf_range(Levels[curr_level].DynamicSpawnTimerRange.x,
+										Levels[curr_level].DynamicSpawnTimerRange.y))
 	##
+##
+
+func get_play_area_limits():
+	return [Vector2($Sky.transform.position.x, 0), Vector2($Background3.transform.position.x, 1080)]
+##
+
+func get_play_area_x_limits():
+	return Vector2($Sky.transform.position.x, $Background3.transform.position.x)
+##
+
+func get_play_area_y_limits():
+	return Vector2(0, 1080)
 ##

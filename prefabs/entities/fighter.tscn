@@ -27,7 +27,7 @@ BulletLifetime = 8.0
 
 [node name="AOE" type="TextureRect" parent="."]
 visible = false
-z_index = -10
+z_index = 1
 offset_left = 60.0
 offset_right = 180.0
 offset_bottom = 40.0
@@ -38,6 +38,7 @@ texture = SubResource("GradientTexture2D_qgu3m")
 [node name="Enemy_Jet" parent="." instance=ExtResource("1_6sdai")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
 shape = SubResource("RectangleShape2D_usbiq")
 debug_color = Color(0.984314, 0, 0.345098, 0.419608)
 

@@ -73,8 +73,7 @@ func _ready():
 	assert(!(BobLeftAndRight and BobOnTimer), "Too many behaviors!")
 	
 	#global_position.y = StartingYPosition
-	var vp_x_size = get_viewport_rect().size.x
-	bob_limits = Vector2(vp_x_size * BobLimits, vp_x_size - vp_x_size * BobLimits)
+	bob_limits = Vector2(424 + 424 * BobLimits, 1504 - 1504 * BobLimits)
 	starting_position = Vector2(randf_range(bob_limits.x, bob_limits.y), StartingYPosition)
 	global_position.x = starting_position.x
 	global_position.y = StartingYPosition + 200

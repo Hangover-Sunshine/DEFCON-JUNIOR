@@ -10,9 +10,9 @@ script = ExtResource("1_ko87o")
 HorizontalSpeed = 300.0
 VerticalSpeed = -125.0
 
-[node name="Prop_Plane" parent="." instance=ExtResource("3_el435")]
+[node name="PropGraphic" parent="." instance=ExtResource("3_el435")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-209, -10, -129, -48, 205, -51, 209, -42, 13, 35, -192, 35, -211, 17)
 
 [node name="PlayerDetector" type="Area2D" parent="."]
@@ -23,5 +23,6 @@ polygon = PackedVector2Array(-210, -10, -132, -49, 207, -53, 211, -42, 25, 32, -
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-215, -82, 430, 168)
 
+[connection signal="died" from="PropGraphic" to="." method="_on_died_anim_complete"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

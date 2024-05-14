@@ -112,10 +112,6 @@ func generate_jet():
 ##
 
 func generate_moving_obstacle():
-	pass
-##
-
-func generate_static_obstacle():
 	var indx = randi() % len(MOVING_OBSTACLES)
 	var obst = MOVING_OBSTACLES[indx].instantiate()
 	obst.MovesHorizontally = true
@@ -131,4 +127,8 @@ func generate_static_obstacle():
 	##
 	
 	return obst
+##
+
+func generate_static_obstacle():
+	pass
 ##

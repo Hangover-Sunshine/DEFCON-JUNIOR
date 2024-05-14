@@ -10,9 +10,9 @@ script = ExtResource("1_u4cgc")
 HorizontalSpeed = 300.0
 VerticalSpeed = -125.0
 
-[node name="Prop_Balloon" parent="." instance=ExtResource("2_lk1v1")]
+[node name="PropGraphic" parent="." instance=ExtResource("2_lk1v1")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-20, 14, -27, 25, -19, 49, 8, 54, 22, 45, 25, 23, 18, 11, 23, -15, 61, -58, 67, -96, 57, -118, 40, -145, 7, -163, -28, -160, -46, -150, -68, -123, -79, -99, -75, -58, -59, -42, -41, -28, -25, -15)
 
 [node name="PlayerDetector" type="Area2D" parent="."]
@@ -23,5 +23,6 @@ polygon = PackedVector2Array(-20, 14, -27, 25, -19, 49, 8, 54, 22, 45, 25, 23, 1
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-78, -165, 145, 220)
 
+[connection signal="died" from="PropGraphic" to="." method="_on_died_anim_complete"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

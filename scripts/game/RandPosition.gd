@@ -21,15 +21,10 @@ func get_random_position(missile:Missile):
 ##
 
 func get_random_horobj_start(object):
-	var idx = [0, 1, 2][randi() % 2]
+	var idx = [0, 2][randi() % 2]
 	
 	var pos:Vector2 = initial_pos[idx].global_position
-	
-	if idx == 1:
-		pos.x += 150 * [-1, 1][randi() % 2]
-	else:
-		pos.y += randf_range(-250, 150)
-	##
+	pos.y += randf_range(-300, 50)
 	
 	object.global_position = pos
 ##

@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://hvyxr5s4n4vp" path="res://prefabs/art/enemy/enemy_missile_d.tscn" id="3_rkcei"]
 
 [node name="PointedMissile" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 24
 script = ExtResource("1_ise5d")
 
-[node name="Enemy_Missile_D" parent="." instance=ExtResource("3_rkcei")]
+[node name="PropGraphic" parent="." instance=ExtResource("3_rkcei")]
 rotation = 1.5708
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -20,10 +22,18 @@ one_shot = true
 
 [node name="LivingTimer" type="Timer" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(96, -2, 96, 3, 55, 20, 14, 25, -51, 24, -95, 19, -95, -18, -51, -24, 12, -26, 56, -17)
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
+polygon = PackedVector2Array(96, -2, 96, 3, 55, 20, 14, 25, -51, 24, -95, 19, -95, -18, -51, -24, 12, -26, 56, -17)
+
+[connection signal="died" from="PropGraphic" to="." method="_on_missile_died"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="SnapshotTimer" to="." method="_on_snapshot_timer_timeout"]
 [connection signal="timeout" from="LivingTimer" to="." method="_on_living_timer_timeout"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
