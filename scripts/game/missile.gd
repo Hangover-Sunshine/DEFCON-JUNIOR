@@ -83,11 +83,15 @@ func _on_player_detector_body_entered(body):
 ##
 
 func hit():
+	if $PlayerDetector == null:
+		return
+	##
 	$PropGraphic.anim_die()
 	$PlayerDetector.queue_free()
 	$Hitbox.queue_free()
 	dead = true
 	velocity.x = 0
+	GlobalSignals.emit_signal("missile_dead")
 ##
 
 func _on_missile_died():

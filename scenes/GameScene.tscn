@@ -63,7 +63,7 @@ position = Vector2(1692, 600)
 script = ExtResource("4_jpp3c")
 
 [node name="Player" parent="GameRoot" instance=ExtResource("11_mavoj")]
-z_index = 1
+z_index = 0
 position = Vector2(957, 157)
 
 [connection signal="timeout" from="GameRoot/Info/GameTimer" to="GameRoot" method="_on_game_timer_timeout"]

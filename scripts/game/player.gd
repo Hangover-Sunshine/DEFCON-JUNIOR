@@ -52,6 +52,7 @@ var curr_dash_amount:int
 var curr_dash_max:int = 2
 var curr_dash_cd:float
 var curr_dash_dur:float
+var play_area_size:Vector2
 
 func _ready():
 	curr_health = Health
@@ -65,6 +66,8 @@ func _ready():
 	curr_dash_amount = DashStacks
 	curr_dash_cd = DashCooldown
 	curr_dash_dur = DashDuration
+	
+	play_area_size = get_parent().get_play_area_x_limits()
 ##
 
 func _process(delta):
@@ -118,9 +121,16 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	
-	if global_position.x < 0:
-		pass
+	if global_position.x < play_area_size.x + 30:
+		global_position.x = play_area_size.x + 30
+	elif global_position.x > play_area_size.y - 30:
+		global_position.x = play_area_size.y - 30
 	##
+	
+	if global_position.y < 1080 * 0.05:
+		global_position.y = 1080 * 0.05
+	elif global_position.y > 1080 * 0.85:
+		global_position.y = 1080 * 0.85
 ##
 
 func hit():

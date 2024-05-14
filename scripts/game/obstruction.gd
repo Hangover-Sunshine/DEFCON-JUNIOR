@@ -32,6 +32,7 @@ func hit():
 	$Hitbox.queue_free()
 	dead = true
 	velocity.x = 0
+	GlobalSignals.emit_signal("hobstacle_dead")
 ##
 
 func direction_check():
@@ -47,6 +48,7 @@ func _on_player_detector_body_entered(body):
 ##
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	GlobalSignals.emit_signal("hobstacle_dead")
 	queue_free()
 ##
 

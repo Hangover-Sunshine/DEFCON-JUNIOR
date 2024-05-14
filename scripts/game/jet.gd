@@ -6,7 +6,8 @@ enum JetState {
 	SHOOT,
 	TELEGRAPH,
 	RUSH,
-	RESPAWN
+	RESPAWN,
+	DEAD
 }
 
 enum SprayPattern {
@@ -132,6 +133,10 @@ func _physics_process(delta):
 	elif jet_state == JetState.RUSH:
 		velocity.y = -RushSpeed
 		move_and_slide()
+	elif jet_state == JetState.DEAD:
+		velocity.x *= 0.15
+		velocity.y = -150
+		move_and_slide()
 	##
 ##
 
@@ -180,12 +185,19 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 ##
 
 func _on_player_detector_body_entered(body):
-	# TODO: play explosion and kill self
 	body.hit()
-	queue_free()
+	hit()
 ##
 
 func hit():
-	# play explosion, sfx, whatever, just die
+	$Enemy_Jet.anim_die()
+	$PlayerDetector.queue_free()
+	$Hitbox.queue_free()
+	jet_state = JetState.DEAD
+	velocity.x = 0
+	GlobalSignals.emit_signal("jet_dead")
+##
+
+func _on_enemy_jet_died():
 	queue_free()
 ##

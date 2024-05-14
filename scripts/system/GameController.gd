@@ -166,11 +166,11 @@ func _on_horizontal_timer_timeout():
 ##
 
 func get_play_area_limits():
-	return [Vector2($Sky.transform.position.x, 0), Vector2($Background3.transform.position.x, 1080)]
+	return [Vector2($Sky.position.x, 0), Vector2($Background3.position.x, 1080)]
 ##
 
 func get_play_area_x_limits():
-	return Vector2($Sky.transform.position.x, $Background3.transform.position.x)
+	return Vector2($Sky.position.x, $Background3.position.x)
 ##
 
 func get_play_area_y_limits():
