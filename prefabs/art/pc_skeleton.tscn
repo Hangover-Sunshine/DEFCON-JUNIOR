@@ -263,21 +263,6 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_j4w4j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_bjsvq"]
 resource_name = "Left"
 length = 0.001
@@ -292,6 +277,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_j4w4j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_q1dtk"]
@@ -327,7 +327,6 @@ script = ExtResource("1_nm0ph")
 texture = ExtResource("1_wubup")
 
 [node name="Face" type="Node2D" parent="Nuke/Body"]
-scale = Vector2(1, 1)
 
 [node name="Mouth" type="Sprite2D" parent="Nuke/Body/Face"]
 position = Vector2(0, 51)
