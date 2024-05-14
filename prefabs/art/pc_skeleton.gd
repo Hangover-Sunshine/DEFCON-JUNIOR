@@ -2,7 +2,6 @@ extends Node2D
 @onready var ap_face = $AP_Face
 @onready var ap_rotate = $AP_Rotate
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
