@@ -4,6 +4,7 @@ class_name Obstruction
 @export var MovesHorizontally:bool = false
 @export var HorizontalSpeed:float = 250
 @export var VerticalSpeed:float = -250
+@export var IsBird:bool = false
 
 var facing_right:bool = false
 
@@ -32,5 +33,9 @@ func hit():
 func _on_player_detector_body_entered(body):
 	# TODO: fun death
 	body.hit()
+	queue_free()
+##
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 ##

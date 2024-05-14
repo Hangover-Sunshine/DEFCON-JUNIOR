@@ -132,7 +132,6 @@ func _physics_process(delta):
 												(500 / (RushTelegraphTimer - 0.1)) * delta)
 	elif jet_state == JetState.RUSH:
 		velocity.y = -RushSpeed
-		print(velocity)
 		move_and_slide()
 	##
 ##

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cajatythi6r7c"]
+
+[ext_resource type="Script" path="res://scripts/game/missile.gd" id="1_npiev"]
+[ext_resource type="PackedScene" uid="uid://btyxqoueyl3oe" path="res://prefabs/art/enemy/enemy_missile_b.tscn" id="2_xaxyr"]
+
+[node name="GirthyMissile" type="CharacterBody2D"]
+script = ExtResource("1_npiev")
+
+[node name="Enemy_Missile_B" parent="." instance=ExtResource("2_xaxyr")]
+rotation = 1.5708
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.35969, -8.54205e-06)
+rotation = 1.5708
+scale = Vector2(1, 1.17698)
+rect = Rect2(-25, -60, 50, 120)
+
+[node name="SnapshotTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LivingTimer" type="Timer" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(64, -3, 64, 4, 20, 22, -69, 22, -71, 4, -68, -23, 14, -23)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="SnapshotTimer" to="." method="_on_snapshot_timer_timeout"]
+[connection signal="timeout" from="LivingTimer" to="." method="_on_living_timer_timeout"]

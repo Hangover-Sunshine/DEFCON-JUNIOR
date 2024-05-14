@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/dummy_scripts/test_level.gd" id="1_27lr5"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="1_gbqr6"]
-[ext_resource type="PackedScene" uid="uid://03mboijeqm8h" path="res://prefabs/entities/plane.tscn" id="2_d4dbm"]
-[ext_resource type="PackedScene" uid="uid://dorjaeeve6s2m" path="res://prefabs/entities/fat_missle.tscn" id="5_5a7cp"]
+[ext_resource type="PackedScene" uid="uid://03mboijeqm8h" path="res://prefabs/entities/obstacles/plane.tscn" id="2_d4dbm"]
+[ext_resource type="PackedScene" uid="uid://dorjaeeve6s2m" path="res://prefabs/entities/missiles/fat_missile.tscn" id="5_5a7cp"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="5_ak8me"]
 [ext_resource type="PackedScene" uid="uid://c1tjek5op80ys" path="res://prefabs/entities/fighter.tscn" id="6_4i3j8"]
 [ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="7_xoamy"]

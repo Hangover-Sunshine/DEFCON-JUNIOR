@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cix7grprr55jl"]
+
+[ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_7g76e"]
+[ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="2_fpltr"]
+
+[node name="GameRoot" type="Node2D"]
+script = ExtResource("1_7g76e")
+
+[node name="Background" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 1924.0
+offset_bottom = 1088.0
+color = Color(0.564706, 0.619608, 0.866667, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Sky" type="ColorRect" parent="CanvasLayer"]
+show_behind_parent = true
+offset_left = 424.0
+offset_top = 8.0
+offset_right = 1504.0
+offset_bottom = 1088.0
+color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="RandPosition" parent="." instance=ExtResource("2_fpltr")]
+
+[node name="Marker2D" parent="RandPosition" index="0"]
+position = Vector2(221, 600)
+
+[node name="Marker2D3" parent="RandPosition" index="2"]
+position = Vector2(1692, 600)
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+
+[editable path="RandPosition"]

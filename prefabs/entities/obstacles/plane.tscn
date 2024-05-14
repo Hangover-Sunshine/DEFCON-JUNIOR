@@ -20,4 +20,8 @@ polygon = PackedVector2Array(-209, -10, -129, -48, 205, -51, 209, -42, 13, 35, -
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
 polygon = PackedVector2Array(-210, -10, -132, -49, 207, -53, 211, -42, 25, 32, -186, 35, -210, 21)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-215, -82, 430, 168)
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
