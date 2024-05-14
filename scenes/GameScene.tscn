@@ -1,26 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=5 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_7g76e"]
+[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_egtmf"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="2_fpltr"]
-[ext_resource type="PackedScene" uid="uid://c1tjek5op80ys" path="res://prefabs/entities/fighter.tscn" id="2_n11xi"]
-[ext_resource type="PackedScene" uid="uid://dorjaeeve6s2m" path="res://prefabs/entities/missiles/fat_missile.tscn" id="3_2beip"]
-[ext_resource type="PackedScene" uid="uid://bdrfwt2nb4ksf" path="res://prefabs/entities/obstacles/balloon.tscn" id="3_4i5iw"]
-[ext_resource type="PackedScene" uid="uid://03mboijeqm8h" path="res://prefabs/entities/obstacles/plane.tscn" id="3_4ohup"]
-[ext_resource type="PackedScene" uid="uid://cajatythi6r7c" path="res://prefabs/entities/missiles/girthy_base_missile.tscn" id="4_k50f1"]
-[ext_resource type="PackedScene" uid="uid://33p7pl7m730s" path="res://prefabs/entities/obstacles/bird.tscn" id="4_yvijq"]
-[ext_resource type="PackedScene" uid="uid://51aixuhs1grq" path="res://prefabs/entities/missiles/pointed_missile.tscn" id="5_tr6po"]
-[ext_resource type="PackedScene" uid="uid://ca7ggtobkwmgm" path="res://prefabs/entities/missiles/skinny_dome_missile.tscn" id="6_4al8w"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="11_mavoj"]
 
 [node name="GameScene" type="Node2D"]
 
 [node name="GameRoot" type="Node2D" parent="."]
 script = ExtResource("1_7g76e")
-JetPrefab = ExtResource("2_n11xi")
-MissilePrefab = Array[PackedScene]([ExtResource("3_2beip"), ExtResource("4_k50f1"), ExtResource("5_tr6po"), ExtResource("6_4al8w")])
-BalloonPrefab = ExtResource("3_4i5iw")
-BirdPrefab = ExtResource("4_yvijq")
-PlanePrefab = ExtResource("3_4ohup")
+Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("2_egtmf")])
 
 [node name="Info" type="Node" parent="GameRoot"]
 
@@ -70,7 +59,7 @@ position = Vector2(221, 600)
 position = Vector2(1692, 600)
 
 [node name="Player" parent="GameRoot" instance=ExtResource("11_mavoj")]
-position = Vector2(980, -100)
+position = Vector2(957, 157)
 
 [connection signal="timeout" from="GameRoot/Info/GameTimer" to="GameRoot" method="_on_game_timer_timeout"]
 [connection signal="timeout" from="GameRoot/Info/MissileTimer" to="GameRoot" method="_on_missile_timer_timeout"]
