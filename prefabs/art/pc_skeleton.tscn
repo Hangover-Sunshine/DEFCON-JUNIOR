@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dny78qniqp7xr"]
+[gd_scene load_steps=19 format=3 uid="uid://dny78qniqp7xr"]
 
+[ext_resource type="Script" path="res://prefabs/art/pc_skeleton.gd" id="1_nm0ph"]
 [ext_resource type="Texture2D" uid="uid://cmf8vvbammk3w" path="res://assets/sprites/player/PC_Body.png" id="1_wubup"]
 [ext_resource type="Texture2D" uid="uid://cgbags4oc612c" path="res://assets/sprites/player/PC_Mouth.png" id="2_rmai2"]
 [ext_resource type="Texture2D" uid="uid://c82bx5qto0ol1" path="res://assets/sprites/player/PC_Eyes.png" id="3_l5tgn"]
@@ -318,6 +319,7 @@ _data = {
 }
 
 [node name="PC_Skeleton" type="Node2D"]
+script = ExtResource("1_nm0ph")
 
 [node name="Nuke" type="Node2D" parent="."]
 
@@ -357,6 +359,7 @@ root_node = NodePath("../Nuke")
 libraries = {
 "": SubResource("AnimationLibrary_pubdk")
 }
+autoplay = "Happy"
 
 [node name="AP_Rotate" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Nuke")
