@@ -19,3 +19,12 @@ func get_random_position(missile:Missile):
 	
 	missile.global_position = pos
 ##
+
+func get_random_horobj_start(object):
+	var idx = [0, 2][randi() % 2]
+	
+	var pos:Vector2 = initial_pos[idx].global_position
+	pos.y += randf_range(-250, 150)
+	
+	object.global_position = pos
+##

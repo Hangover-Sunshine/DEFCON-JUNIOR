@@ -22,7 +22,13 @@ func _physics_process(delta):
 	
 	velocity.y = VerticalSpeed
 	
+	# move
 	move_and_slide()
+	
+	# TODO: if bird, offset slightly on a sine wave
+	#if IsBird:
+		#pass
+	##
 ##
 
 func hit():

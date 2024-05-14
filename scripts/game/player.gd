@@ -112,6 +112,10 @@ func _physics_process(_delta):
 	##
 	
 	move_and_slide()
+	
+	if global_position.x < 0:
+		pass
+	##
 ##
 
 func hit():

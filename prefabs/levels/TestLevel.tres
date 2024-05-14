@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://bwkshpflyauc0"]
+
+[ext_resource type="Script" path="res://scripts/resources/LevelResource.gd" id="1_p3ejh"]
+
+[resource]
+script = ExtResource("1_p3ejh")
+Length = 2.5
+MaxFighters = 4
+FighterShoot = 0.8
+FightersAppearAt = 0.5
+FighterSpeedRange = Vector2(400, 600)
+FighterSpawnTimerRange = Vector2(3, 5)
+AllowTimedBob = true
+TimeBetweenBobs = Vector2(1.1, 1.6)
+AllowScreenLimitBob = true
+AllowTrackPlayerBob = true
+TimeBetweenPlayerBobs = Vector2(0.5, 1.3)
+MaxNumberOfMissiles = 5
+MissileSpeedRange = Vector2(325, 400)
+CanMissilesLock = true
+MissileLockDistance = Vector2(200, 300)
+MissilesAppearAt = 0.0
+MissileSpawnTimerRange = Vector2(2, 4)
+MaxNumberOfStaticObstaclesOnScreen = 0
+StaticSpawnTimerRange = Vector2(3, 8)
+MaxNumberOfDynamicObstaclesOnScreen = 8
+DynamicSpawnTimerRange = Vector2(4, 6)
+BirdSpeedRange = Vector2(200, 300)
+PlaneSpeedRange = Vector2(350, 500)
+BalloonSpeedRange = Vector2(100, 170)

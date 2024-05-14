@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdrfwt2nb4ksf"]
+
+[ext_resource type="Script" path="res://scripts/game/obstruction.gd" id="1_u4cgc"]
+[ext_resource type="PackedScene" uid="uid://cp8880vb66kkj" path="res://prefabs/art/prop/prop_balloon.tscn" id="2_lk1v1"]
+
+[node name="Balloon" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 24
+script = ExtResource("1_u4cgc")
+HorizontalSpeed = 300.0
+VerticalSpeed = -125.0
+
+[node name="Prop_Balloon" parent="." instance=ExtResource("2_lk1v1")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-20, 14, -27, 25, -19, 49, 8, 54, 22, 45, 25, 23, 18, 11, 23, -15, 61, -58, 67, -96, 57, -118, 40, -145, 7, -163, -28, -160, -46, -150, -68, -123, -79, -99, -75, -58, -59, -42, -41, -28, -25, -15)
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
+polygon = PackedVector2Array(-20, 14, -27, 25, -19, 49, 8, 54, 22, 45, 25, 23, 18, 11, 23, -15, 61, -58, 64, -74, 67, -96, 57, -118, 40, -145, 7, -163, -28, -160, -46, -151, -68, -122, -79, -99, -75, -58, -59, -41, -41, -28, -25, -15)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-78, -165, 145, 220)
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
