@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi14mcu1ni7nu"]
+[gd_scene load_steps=3 format=3 uid="uid://bi14mcu1ni7nu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pause.gd" id="1_euawq"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_gupvn"]
 
 [node name="MenuPause" type="Control"]
 layout_mode = 3
@@ -16,10 +17,10 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_left = 420
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 420
+theme_override_constants/margin_bottom = 0
 
 [node name="Pause_VBox" type="VBoxContainer" parent="Pause_MC"]
 layout_mode = 2
@@ -28,8 +29,9 @@ alignment = 1
 
 [node name="Header1_Label" type="Label" parent="Pause_MC/Pause_VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gupvn")
 theme_override_font_sizes/font_size = 150
-text = "PAUSED"
+text = "PAUSE"
 horizontal_alignment = 1
 
 [node name="Button_HBox" type="HBoxContainer" parent="Pause_MC/Pause_VBox"]
@@ -43,18 +45,21 @@ theme_override_constants/separation = 20
 [node name="Cont_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gupvn")
 theme_override_font_sizes/font_size = 50
 text = "RESUME"
 
 [node name="Settings_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gupvn")
 theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
 
 [node name="Leave_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gupvn")
 theme_override_font_sizes/font_size = 50
 text = "LEAVE"
 
