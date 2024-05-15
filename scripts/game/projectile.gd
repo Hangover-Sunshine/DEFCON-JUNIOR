@@ -6,11 +6,11 @@ class_name Projectile
 var timer:float
 var time_to_despawn:float
 
-func setup(speed, on_layer, collide_with, time_to_despawn):
+func setup(speed, on_layer, collide_with, tod):
 	collision_layer = on_layer
 	hit_area.collision_mask = collide_with
 	
-	self.time_to_despawn = time_to_despawn
+	self.time_to_despawn = tod
 	
 	if on_layer == 2:
 		$Bullet.modulate = Color.DARK_RED
@@ -39,6 +39,5 @@ func _on_area_2d_body_entered(body):
 ##
 
 func hit():
-	# play explosion, sfx, whatever, just die
 	queue_free()
 ##

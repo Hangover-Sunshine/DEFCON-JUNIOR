@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca7ggtobkwmgm"]
+[gd_scene load_steps=4 format=3 uid="uid://ca7ggtobkwmgm"]
 
 [ext_resource type="Script" path="res://scripts/game/missile.gd" id="1_rapyi"]
+[ext_resource type="PackedScene" uid="uid://dljpawysa62f3" path="res://prefabs/systems/indicator.tscn" id="3_en35i"]
 [ext_resource type="PackedScene" uid="uid://cwq48i2q2252x" path="res://prefabs/art/enemy/enemy_missile_c.tscn" id="3_lkrjm"]
 
 [node name="SkinnyDomeMissile" type="CharacterBody2D"]
@@ -30,6 +31,10 @@ collision_layer = 0
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PlayerDetector"]
 polygon = PackedVector2Array(55, 22, 69, 16, 76, 5, 76, -10, 53, -23, -51, -23, -74, -14, -74, 14, -52, 22)
+
+[node name="Indicator" parent="." instance=ExtResource("3_en35i")]
+position = Vector2(0, -2)
+scale = Vector2(0.4, 0.4)
 
 [connection signal="died" from="PropGraphic" to="." method="_on_missile_died"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

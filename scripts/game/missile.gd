@@ -12,19 +12,50 @@ class_name Missile
 @onready var snapshot_timer:Timer = $SnapshotTimer
 @onready var living_timer:Timer = $LivingTimer
 
+@onready var indicator = $Indicator
+
 var target:Player
 var direction:Vector2
 
+var waiting_for_move:bool = false
 var dead:bool = false
 var target_acquired:bool = false
+
+var indicator_pos:Vector2
+var play_area_size:Array
 
 func _ready():
 	living_timer.start(Lifetime)
 	living_timer.paused = true
+	
+	waiting_for_move = true
 	snapshot_timer.start(randf_range(TimeframeToSnapshot.x, TimeframeToSnapshot.y))
+	snapshot_timer.paused = false
+	
+	indicator.visible = false
+	
+	play_area_size = get_parent().get_play_area_limits()
+	play_area_size[0].x += 80
+	play_area_size[0].y += 80
+	play_area_size[1].x -= 100
+	play_area_size[1].y -= 100
 ##
 
-func _physics_process(delta):
+func _process(_delta):
+	if indicator.visible == false and waiting_for_move and snapshot_timer.time_left < 2.5:
+		indicator.show_indicator()
+		indicator.visible = true
+		indicator_pos.x = clampf(global_position.x, play_area_size[0].x, play_area_size[1].x)
+		indicator_pos.y = clampf(global_position.y, play_area_size[0].y, play_area_size[1].y)
+	##
+	
+	if indicator.visible:
+		indicator.global_position = indicator_pos
+		indicator.rotation = -rotation
+	##
+##
+
+func _physics_process(_delta):
 	if dead == false and TrackPlayer and snapshot_timer.is_stopped():
 		var dist = global_position.distance_to(target.global_position)
 		if target_acquired == false and dist > LockDistance:
@@ -42,6 +73,8 @@ func _physics_process(delta):
 func _on_snapshot_timer_timeout():
 	direction = global_position.direction_to(target.global_position)
 	rotation = atan2(direction.y, direction.x)
+	waiting_for_move = false
+	indicator.hide_indicator()
 ##
 
 func _on_living_timer_timeout():
@@ -49,6 +82,10 @@ func _on_living_timer_timeout():
 ##
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	if snapshot_timer.is_stopped() == false:
+		return
+	##
+	
 	living_timer.paused = true
 	direction = Vector2.ZERO
 	
@@ -65,11 +102,13 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	##
 	
 	if SingleShot or living_timer.time_left < 1:
+		GlobalSignals.emit_signal("missile_dead")
 		queue_free()
 	else:
 		target_acquired = false
 		GlobalSignals.emit_signal("rand_point_request", self)
 		snapshot_timer.start(randf_range(TimeframeToSnapshot.x, TimeframeToSnapshot.y))
+		waiting_for_move = true
 	##
 ##
 

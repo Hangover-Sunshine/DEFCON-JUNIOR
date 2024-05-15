@@ -9,7 +9,7 @@ class_name Obstruction
 var facing_right:bool = false
 var dead:bool = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if dead == false and MovesHorizontally:
 		velocity.x = HorizontalSpeed
 	##

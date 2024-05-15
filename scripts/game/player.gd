@@ -70,7 +70,7 @@ func _ready():
 	play_area_size = get_parent().get_play_area_x_limits()
 ##
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("shield") and shield_status == UpgradeAvailability.READY:
 		shield_status = UpgradeAvailability.ACTIVE
 		shield_timer.start(curr_shield_dur)
@@ -138,14 +138,13 @@ func hit():
 		return
 	##
 	
-	curr_health -= 1
-	
 	if curr_health <= 0:
 		GlobalSignals.emit_signal("player_died")
 		# play player's death anims + sounds + particles
 		return
 	##
 	
+	curr_health -= 1
 	$PC_Skeleton.to_pain()
 	damaged_timer.start(TimeToNextDamage)
 ##

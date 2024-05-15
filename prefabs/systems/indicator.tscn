@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://dljpawysa62f3"]
+
+[ext_resource type="Texture2D" uid="uid://hmk6rbpn5yit" path="res://assets/particle/Exclamation.png" id="1_kc2lx"]
+[ext_resource type="Script" path="res://scripts/game/indicator.gd" id="1_tlg06"]
+[ext_resource type="Texture2D" uid="uid://nwbsxsylnqhn" path="res://assets/particle/Triangle2.png" id="1_yk5cd"]
+
+[sub_resource type="Animation" id="Animation_gj7y0"]
+resource_name = "flash"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.4, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_a6wcq"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vcj1u"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jslf2"]
+_data = {
+"flash": SubResource("Animation_gj7y0"),
+"hide": SubResource("Animation_a6wcq"),
+"show": SubResource("Animation_vcj1u")
+}
+
+[node name="Indicator" type="Node2D"]
+z_index = 20
+script = ExtResource("1_tlg06")
+
+[node name="Graphics" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Triangle" type="Sprite2D" parent="Graphics"]
+modulate = Color(1, 0.878431, 0.568627, 1)
+position = Vector2(0, -11)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_yk5cd")
+
+[node name="Exclamation" type="Sprite2D" parent="Graphics"]
+modulate = Color(0.866667, 0.215686, 0.270588, 1)
+texture = ExtResource("1_kc2lx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jslf2")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

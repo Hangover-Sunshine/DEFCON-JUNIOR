@@ -69,7 +69,7 @@ const FIGHTER = preload("res://prefabs/entities/fighter.tscn")
 
 func generate_missile():
 	var indx = randi() % len(MISSILES)
-	var missile = MISSILES[indx].instantiate()
+	var missile = MISSILES[indx].instantiate().duplicate()
 	missile.Speed = randf_range(MissileSpeedRange.x, MissileSpeedRange.y)
 	missile.Lifetime = randf_range(MissileLifetimeRange.x, MissileLifetimeRange.y)
 	
