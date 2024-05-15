@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://88fivnqio2ad"]
+[gd_scene load_steps=6 format=3 uid="uid://88fivnqio2ad"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_hhomw"]
+[ext_resource type="Texture2D" uid="uid://b4u4llne6x240" path="res://assets/sprites/Art_Splash.png" id="1_r5glq"]
 
 [sub_resource type="Animation" id="Animation_ps85c"]
 resource_name = "Flash"
@@ -58,25 +59,12 @@ theme_override_constants/margin_right = 420
 
 [node name="Splash_VBox" type="VBoxContainer" parent="Splash_MC"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = 20
 
-[node name="Header_VBox" type="VBoxContainer" parent="Splash_MC/Splash_VBox"]
+[node name="TextureRect" type="TextureRect" parent="Splash_MC/Splash_VBox"]
 layout_mode = 2
-theme_override_constants/separation = -100
-
-[node name="Header1_Label" type="Label" parent="Splash_MC/Splash_VBox/Header_VBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_hhomw")
-theme_override_font_sizes/font_size = 250
-text = "DEFCON"
-horizontal_alignment = 1
-
-[node name="Header2_Label" type="Label" parent="Splash_MC/Splash_VBox/Header_VBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_hhomw")
-theme_override_font_sizes/font_size = 250
-text = "JUNIOR"
-horizontal_alignment = 1
+texture = ExtResource("1_r5glq")
+stretch_mode = 3
 
 [node name="Press_Label" type="Label" parent="Splash_MC/Splash_VBox"]
 layout_mode = 2

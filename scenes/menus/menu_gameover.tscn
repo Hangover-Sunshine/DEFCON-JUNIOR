@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3tskwkip0tet"]
+[gd_scene load_steps=5 format=3 uid="uid://c3tskwkip0tet"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_avs2s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mldo"]
+bg_color = Color(1, 0.878431, 0.568627, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wxqp"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Theme" id="Theme_mnlgq"]
+Button/colors/font_color = Color(0.027451, 0.0352941, 0.0941176, 1)
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("2_avs2s")
+Button/styles/hover = SubResource("StyleBoxFlat_6mldo")
+Button/styles/normal = SubResource("StyleBoxFlat_2wxqp")
 
 [node name="MenuGamOver" type="Control"]
 layout_mode = 3
@@ -61,6 +82,7 @@ horizontal_alignment = 1
 [node name="Cont_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = SubResource("Theme_mnlgq")
 theme_override_fonts/font = ExtResource("2_avs2s")
 theme_override_font_sizes/font_size = 50
 text = "PLAY AGAIN"
