@@ -58,6 +58,7 @@ theme_override_constants/margin_left = 420
 theme_override_constants/margin_right = 420
 
 [node name="Quote_VBox" type="VBoxContainer" parent="Win_MC"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -109,7 +110,6 @@ text = "Press ANY BUTTON to CONTINUE"
 horizontal_alignment = 1
 
 [node name="Message_VBox2" type="VBoxContainer" parent="Win_MC"]
-visible = false
 layout_mode = 2
 alignment = 1
 

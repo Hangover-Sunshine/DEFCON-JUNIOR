@@ -1,8 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdx15nqmqr1cu"]
+[gd_scene load_steps=9 format=3 uid="uid://cdx15nqmqr1cu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pregame.gd" id="1_3jfox"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_6c7rd"]
-[ext_resource type="Texture2D" uid="uid://b6vpewiqnhqjo" path="res://assets/temporary/Image Template.png" id="3_62h7y"]
+[ext_resource type="Theme" uid="uid://coxkpxhx8ao77" path="res://assets/graphs/LabelBackGreen3.tres" id="2_hl241"]
+[ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_78bn3"]
+[ext_resource type="Texture2D" uid="uid://b7ahxf62vwv3g" path="res://assets/ui/main/Art_Controls.png" id="5_5te88"]
+
+[sub_resource type="Animation" id="Animation_wd6a3"]
+resource_name = "Flash"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArtControls:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_km6rj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArtControls:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yyge"]
+_data = {
+"Flash": SubResource("Animation_wd6a3"),
+"RESET": SubResource("Animation_km6rj")
+}
 
 [node name="MenuPregame" type="Control"]
 layout_mode = 3
@@ -19,23 +59,20 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 420
+theme_override_constants/margin_top = 45
 theme_override_constants/margin_right = 420
 
 [node name="Pregame_VBox" type="VBoxContainer" parent="Pregame_MC"]
 layout_mode = 2
-theme_override_constants/separation = 15
-alignment = 1
+theme_override_constants/separation = 625
 
 [node name="Header1_Label" type="Label" parent="Pregame_MC/Pregame_VBox"]
 layout_mode = 2
+theme = ExtResource("2_hl241")
 theme_override_fonts/font = ExtResource("2_6c7rd")
 theme_override_font_sizes/font_size = 100
 text = "CONTROLS"
 horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Pregame_MC/Pregame_VBox"]
-layout_mode = 2
-texture = ExtResource("3_62h7y")
 
 [node name="Button_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
 layout_mode = 2
@@ -48,6 +85,7 @@ theme_override_constants/separation = 20
 [node name="Tutorial_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("4_78bn3")
 theme_override_fonts/font = ExtResource("2_6c7rd")
 theme_override_font_sizes/font_size = 50
 text = "LAUNCH"
@@ -55,9 +93,22 @@ text = "LAUNCH"
 [node name="Back_Button" type="Button" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("4_78bn3")
 theme_override_fonts/font = ExtResource("2_6c7rd")
 theme_override_font_sizes/font_size = 50
 text = "BACK"
+
+[node name="ArtControls" type="Sprite2D" parent="."]
+position = Vector2(949, 497)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_5te88")
+vframes = 2
+
+[node name="AP_Controls" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3yyge")
+}
+autoplay = "Flash"
 
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Tutorial_Button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Back_Button" to="." method="_on_back_button_pressed"]
