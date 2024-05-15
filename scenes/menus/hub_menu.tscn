@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://craw6cydplqpm" path="res://scenes/menus/menu_main.tscn" id="2_urtgt"]
 [ext_resource type="PackedScene" uid="uid://cdx15nqmqr1cu" path="res://scenes/menus/menu_pregame.tscn" id="3_36hlv"]
 [ext_resource type="PackedScene" uid="uid://bqxt4qvvqx5lj" path="res://scenes/menus/menu_settings.tscn" id="4_dii0o"]
-[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/sprites/Back_Frame.png" id="6_wy4d5"]
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="6_wy4d5"]
 
 [sub_resource type="Animation" id="Animation_xv0je"]
 length = 0.001

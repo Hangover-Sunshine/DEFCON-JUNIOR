@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_6c7rd"]
 [ext_resource type="Theme" uid="uid://coxkpxhx8ao77" path="res://assets/graphs/LabelBackGreen3.tres" id="2_hl241"]
 [ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_78bn3"]
-[ext_resource type="Texture2D" uid="uid://b7ahxf62vwv3g" path="res://assets/ui/Art_Controls.png" id="5_5te88"]
+[ext_resource type="Texture2D" uid="uid://b7ahxf62vwv3g" path="res://assets/ui/main/Art_Controls.png" id="5_5te88"]
 
 [sub_resource type="Animation" id="Animation_wd6a3"]
 resource_name = "Flash"

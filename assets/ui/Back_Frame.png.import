@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6rpui6bg7dbp"
-path="res://.godot/imported/Art_Pregame1.png-f9bd4c47b4917db665b2eff319cae323.ctex"
+uid="uid://bmhof4he24kry"
+path="res://.godot/imported/Back_Frame.png-e9e2ad938494d8bdf7452f74d0b01c7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/Art_Pregame1.png"
-dest_files=["res://.godot/imported/Art_Pregame1.png-f9bd4c47b4917db665b2eff319cae323.ctex"]
+source_file="res://assets/ui/Back_Frame.png"
+dest_files=["res://.godot/imported/Back_Frame.png-e9e2ad938494d8bdf7452f74d0b01c7e.ctex"]
 
 [params]
 

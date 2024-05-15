@@ -6,8 +6,8 @@
 [ext_resource type="Theme" uid="uid://dlerdv4n4k70w" path="res://assets/graphs/LabelBackGreen1.tres" id="4_kwlt5"]
 [ext_resource type="Theme" uid="uid://bbskcij4rpe4q" path="res://assets/graphs/HorizSlider.tres" id="5_cy22j"]
 [ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="5_unwol"]
-[ext_resource type="Texture2D" uid="uid://cs8ahksrn1oog" path="res://assets/particle/UI_Checked.png" id="5_wvikm"]
-[ext_resource type="Texture2D" uid="uid://bm6wjjvln617b" path="res://assets/particle/UI_Checkbox.png" id="6_3rque"]
+[ext_resource type="Texture2D" uid="uid://cs8ahksrn1oog" path="res://assets/ui/main/UI_Checked.png" id="5_wvikm"]
+[ext_resource type="Texture2D" uid="uid://bm6wjjvln617b" path="res://assets/ui/main/UI_Checkbox.png" id="6_3rque"]
 [ext_resource type="Theme" uid="uid://cqr601v6jbv6i" path="res://assets/graphs/LabelBackGreen2.tres" id="8_ox4bs"]
 
 [sub_resource type="Animation" id="Animation_y6vyu"]

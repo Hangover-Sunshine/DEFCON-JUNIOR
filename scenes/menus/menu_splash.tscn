@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://88fivnqio2ad"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_hhomw"]
-[ext_resource type="Texture2D" uid="uid://b4u4llne6x240" path="res://assets/sprites/Art_Splash.png" id="1_r5glq"]
+[ext_resource type="Texture2D" uid="uid://b4u4llne6x240" path="res://assets/ui/main/Art_Splash.png" id="1_r5glq"]
 
 [sub_resource type="Animation" id="Animation_oshcs"]
 length = 0.001
