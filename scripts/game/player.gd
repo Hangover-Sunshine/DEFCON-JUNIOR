@@ -29,6 +29,8 @@ enum UpgradeAvailability {
 @onready var dash_timer = $DashTimer
 @onready var damaged_timer = $DamagedTimer
 
+const PROJECTILE = preload("res://prefabs/entities/projectile.tscn")
+
 # Health Info =========
 var curr_health:int
 
@@ -42,12 +44,12 @@ var curr_shield_cd:float
 var curr_shield_dur:float
 
 # Weapon Info =========
-var gun_status:UpgradeAvailability = UpgradeAvailability.NOPE
+var gun_status:UpgradeAvailability = UpgradeAvailability.READY
 var curr_weapon_cd:float
 var curr_weapon_penetration:int
 
 # Dash Info =========
-var dash_status:UpgradeAvailability = UpgradeAvailability.READY
+var dash_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_dash_amount:int
 var curr_dash_max:int = 2
 var curr_dash_cd:float
