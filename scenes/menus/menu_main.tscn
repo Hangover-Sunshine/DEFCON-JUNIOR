@@ -24,7 +24,7 @@ theme_override_constants/margin_right = 420
 
 [node name="Main_VBox" type="VBoxContainer" parent="Main_MC"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 120
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Main_MC/Main_VBox"]
