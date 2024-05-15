@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://craw6cydplqpm"]
+[gd_scene load_steps=5 format=3 uid="uid://craw6cydplqpm"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_main.gd" id="1_yoc7x"]
+[ext_resource type="Texture2D" uid="uid://od1aklaplnw0" path="res://assets/sprites/Art_Title.png" id="2_diewf"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_ttw81"]
+[ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="3_0khvs"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -22,26 +24,13 @@ theme_override_constants/margin_right = 420
 
 [node name="Main_VBox" type="VBoxContainer" parent="Main_MC"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Header_VBox" type="VBoxContainer" parent="Main_MC/Main_VBox"]
+[node name="TextureRect" type="TextureRect" parent="Main_MC/Main_VBox"]
 layout_mode = 2
-theme_override_constants/separation = -60
-
-[node name="Header1_Label" type="Label" parent="Main_MC/Main_VBox/Header_VBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ttw81")
-theme_override_font_sizes/font_size = 150
-text = "DEFCON"
-horizontal_alignment = 1
-
-[node name="Header2_Label" type="Label" parent="Main_MC/Main_VBox/Header_VBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ttw81")
-theme_override_font_sizes/font_size = 150
-text = "JUNIOR"
-horizontal_alignment = 1
+texture = ExtResource("2_diewf")
+stretch_mode = 3
 
 [node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
 layout_mode = 2
@@ -54,6 +43,7 @@ theme_override_constants/separation = 20
 [node name="Start_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_0khvs")
 theme_override_fonts/font = ExtResource("2_ttw81")
 theme_override_font_sizes/font_size = 50
 text = "START"
@@ -61,6 +51,7 @@ text = "START"
 [node name="Settings_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_0khvs")
 theme_override_fonts/font = ExtResource("2_ttw81")
 theme_override_font_sizes/font_size = 50
 text = "SETTINGS"
@@ -68,6 +59,7 @@ text = "SETTINGS"
 [node name="Exit_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("3_0khvs")
 theme_override_fonts/font = ExtResource("2_ttw81")
 theme_override_font_sizes/font_size = 50
 text = "EXIT"
