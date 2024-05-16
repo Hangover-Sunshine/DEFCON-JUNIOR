@@ -24,6 +24,7 @@ buses/default_bus_layout="res://assets/AudioBusLayout.tres"
 
 GlobalSignals="*res://autoloads/GlobalSignals.gd"
 RandUtilities="*res://autoloads/RandUtilities.gd"
+GlobalSettings="*res://autoloads/GlobalSettings.gd"
 
 [display]
 
