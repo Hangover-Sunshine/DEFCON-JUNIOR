@@ -1,0 +1,194 @@
+[gd_scene load_steps=6 format=3 uid="uid://btqw03tb71iu3"]
+
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_4ac6w"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_6c2bl"]
+[ext_resource type="Texture2D" uid="uid://buefmwvuqfjga" path="res://assets/temporary/Temp_GIU_Tracker.png" id="3_njxg2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy4s7"]
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+
+[sub_resource type="Theme" id="Theme_g1afe"]
+VSlider/icons/grabber_disabled = ExtResource("3_njxg2")
+VSlider/styles/slider = SubResource("StyleBoxFlat_iy4s7")
+
+[node name="GIU" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="GIU_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="GIU_HBox" type="HBoxContainer" parent="GIU_MC"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Left_MC" type="MarginContainer" parent="GIU_MC/GIU_HBox"]
+custom_minimum_size = Vector2(420, 1080)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 60
+
+[node name="Left_VBox" type="VBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC"]
+layout_mode = 2
+
+[node name="Health_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.776471, 0.776471, 0.776471, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 72
+text = "##"
+
+[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_6c2bl")
+stretch_mode = 2
+
+[node name="Abilities_VBox" type="VBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Spitfire_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 50
+text = "SPACE"
+
+[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_6c2bl")
+stretch_mode = 2
+
+[node name="Shield_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 50
+text = "SHIFT"
+
+[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_6c2bl")
+stretch_mode = 2
+
+[node name="Boost_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 50
+text = "Q/Z"
+
+[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_6c2bl")
+stretch_mode = 2
+
+[node name="Game_MC" type="MarginContainer" parent="GIU_MC/GIU_HBox"]
+custom_minimum_size = Vector2(1080, 1080)
+layout_mode = 2
+
+[node name="Right_MC" type="MarginContainer" parent="GIU_MC/GIU_HBox"]
+custom_minimum_size = Vector2(420, 1080)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Right_MC"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VSlider" type="VSlider" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = SubResource("Theme_g1afe")
+value = 100.0
+editable = false
+scrollable = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 45
+text = "- START"
+vertical_alignment = 2
+
+[node name="Label3" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220.75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 45
+text = "- FARAWAY"
+vertical_alignment = 2
+
+[node name="Label4" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220.75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 45
+text = "- HALFWAY"
+vertical_alignment = 2
+
+[node name="Label5" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220.75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 45
+text = "- ALMOST"
+vertical_alignment = 2
+
+[node name="Label6" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 45
+text = "- FINISH"
+vertical_alignment = 2

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="3_vooma"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_fqmmg"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="5_veiw5"]
-[ext_resource type="Texture2D" uid="uid://dfow4dp04gofq" path="res://assets/particle/Slider_Dot.png" id="7_0sfqf"]
+[ext_resource type="Texture2D" uid="uid://buefmwvuqfjga" path="res://assets/temporary/Temp_GIU_Tracker.png" id="7_45dbd"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_tv0q6"]
 [ext_resource type="PackedScene" uid="uid://cvc2n8mpfspuy" path="res://prefabs/fx/fx_explode_feather.tscn" id="8_utufl"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="11_e7cnq"]
@@ -13,11 +13,11 @@ corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
-expand_margin_left = 10.0
-expand_margin_right = 10.0
+expand_margin_left = 15.0
+expand_margin_right = 15.0
 
 [sub_resource type="Theme" id="Theme_g1afe"]
-VSlider/icons/grabber_disabled = ExtResource("7_0sfqf")
+VSlider/icons/grabber_disabled = ExtResource("7_45dbd")
 VSlider/styles/slider = SubResource("StyleBoxFlat_iy4s7")
 
 [node name="demo_art" type="Node2D"]
@@ -71,9 +71,9 @@ alignment = 2
 
 [node name="Label" type="Label" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_colors/font_color = Color(0.776471, 0.776471, 0.776471, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 72
 text = "##"
 
 [node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
@@ -149,15 +149,17 @@ layout_mode = 2
 custom_minimum_size = Vector2(420, 1080)
 layout_mode = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Right_MC"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="VSlider" type="VSlider" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme = SubResource("Theme_g1afe")
 value = 100.0
@@ -168,47 +170,47 @@ scrollable = false
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 77)
+custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "- START"
 vertical_alignment = 2
 
 [node name="Label3" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 225.75)
+custom_minimum_size = Vector2(0, 220.75)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "- FARAWAY"
 vertical_alignment = 2
 
 [node name="Label4" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 225.75)
+custom_minimum_size = Vector2(0, 220.75)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "- HALFWAY"
 vertical_alignment = 2
 
 [node name="Label5" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 225.75)
+custom_minimum_size = Vector2(0, 220.75)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "- ALMOST"
 vertical_alignment = 2
 
 [node name="Label6" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 212.1)
+custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "- FINISH"
 vertical_alignment = 2
 
