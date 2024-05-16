@@ -1,96 +1,173 @@
-[gd_scene load_steps=14 format=3 uid="uid://nsgp1qhggor8"]
+[gd_scene load_steps=8 format=3 uid="uid://nsgp1qhggor8"]
 
-[ext_resource type="PackedScene" uid="uid://cp8880vb66kkj" path="res://prefabs/art/prop/prop_balloon.tscn" id="1_dlr3o"]
-[ext_resource type="PackedScene" uid="uid://bfgxj2i15qqvr" path="res://prefabs/art/prop/prop_plane.tscn" id="1_g0ygs"]
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="3_vooma"]
-[ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="4_dxkhi"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_fqmmg"]
-[ext_resource type="PackedScene" uid="uid://cwlgqt2mce0is" path="res://prefabs/art/prop/prop_bird.tscn" id="6_cu7em"]
-[ext_resource type="PackedScene" uid="uid://ch77gyo6ll8sr" path="res://prefabs/fx/fx_explode_fire.tscn" id="7_pqtsk"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="5_veiw5"]
+[ext_resource type="Texture2D" uid="uid://di1wun67yfrta" path="res://assets/particle/Dash.png" id="6_5q3hw"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_tv0q6"]
 [ext_resource type="PackedScene" uid="uid://cvc2n8mpfspuy" path="res://prefabs/fx/fx_explode_feather.tscn" id="8_utufl"]
-[ext_resource type="Texture2D" uid="uid://b4hvt33e4i1fp" path="res://assets/sprites/prop/bird/Prop_Bird_Head.png" id="9_hbqao"]
-[ext_resource type="PackedScene" uid="uid://bdbjl5sbfl0ec" path="res://prefabs/art/enemy/enemy_missile_a.tscn" id="10_0tx5e"]
-[ext_resource type="PackedScene" uid="uid://btyxqoueyl3oe" path="res://prefabs/art/enemy/enemy_missile_b.tscn" id="11_kgtsq"]
-[ext_resource type="PackedScene" uid="uid://cwq48i2q2252x" path="res://prefabs/art/enemy/enemy_missile_c.tscn" id="12_ahi6i"]
-[ext_resource type="PackedScene" uid="uid://hvyxr5s4n4vp" path="res://prefabs/art/enemy/enemy_missile_d.tscn" id="13_mfna7"]
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="11_e7cnq"]
 
 [node name="demo_art" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Env_City" parent="Node2D" instance=ExtResource("5_fqmmg")]
 show_behind_parent = true
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-color = Color(0.564706, 0.619608, 0.866667, 1)
+position = Vector2(960, 1080)
+
+[node name="PC_Skeleton" parent="Node2D" instance=ExtResource("3_vooma")]
+position = Vector2(960, 252)
+
+[node name="FX_Explode_Feather" parent="Node2D" instance=ExtResource("8_utufl")]
+
+[node name="BackFrame" type="Sprite2D" parent="Node2D"]
+position = Vector2(960, 540)
+texture = ExtResource("11_e7cnq")
+
+[node name="GIU" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="GIU_MC" type="MarginContainer" parent="GIU"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="GIU_HBox" type="HBoxContainer" parent="GIU/GIU_MC"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Left_MC" type="MarginContainer" parent="GIU/GIU_MC/GIU_HBox"]
+custom_minimum_size = Vector2(420, 1080)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Left_VBox" type="VBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC"]
+layout_mode = 2
+
+[node name="Health_HBox" type="HBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 75
+text = "##"
+
+[node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("5_veiw5")
+stretch_mode = 2
+
+[node name="Abilities_VBox" type="VBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Spitfire_HBox" type="HBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 75
+text = "SPACE"
+
+[node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("5_veiw5")
+stretch_mode = 2
+
+[node name="Shield_HBox" type="HBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 75
+text = "SHIFT"
+
+[node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("5_veiw5")
+stretch_mode = 2
+
+[node name="Boost_HBox" type="HBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 75
+text = "Q/Z"
+
+[node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("5_veiw5")
+stretch_mode = 2
+
+[node name="Game_MC" type="MarginContainer" parent="GIU/GIU_MC/GIU_HBox"]
+custom_minimum_size = Vector2(1080, 1080)
+layout_mode = 2
+
+[node name="Right_MC" type="MarginContainer" parent="GIU/GIU_MC/GIU_HBox"]
+custom_minimum_size = Vector2(420, 1080)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
 [node name="Sky" type="ColorRect" parent="."]
 show_behind_parent = true
-offset_left = -540.0
-offset_top = -540.0
-offset_right = 540.0
-offset_bottom = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
 
-[node name="Env_City" parent="." instance=ExtResource("5_fqmmg")]
-show_behind_parent = true
-position = Vector2(0, 540)
+[node name="Circle9" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1594, 87)
+texture = ExtResource("5_veiw5")
 
-[node name="Prop_Plane" parent="." instance=ExtResource("1_g0ygs")]
+[node name="Dash" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1588, 533)
+rotation = -1.55391
+scale = Vector2(10.3255, 1)
+texture = ExtResource("6_5q3hw")
 
-[node name="Prop_Balloon" parent="." instance=ExtResource("1_dlr3o")]
-position = Vector2(-344, -167)
-
-[node name="PC_Skeleton" parent="." instance=ExtResource("3_vooma")]
-position = Vector2(151, -184)
-
-[node name="Enemy_Jet" parent="." instance=ExtResource("4_dxkhi")]
-position = Vector2(608, -273)
-
-[node name="Prop_Bird" parent="." instance=ExtResource("6_cu7em")]
-
-[node name="FX_Explode_Fire" parent="." instance=ExtResource("7_pqtsk")]
-
-[node name="FX_Explode_Feather" parent="." instance=ExtResource("8_utufl")]
-
-[node name="PropBirdHead" type="Sprite2D" parent="."]
-position = Vector2(-108, -76)
-texture = ExtResource("9_hbqao")
-
-[node name="Enemy_Jet2" parent="." instance=ExtResource("4_dxkhi")]
-position = Vector2(416, -69)
-
-[node name="Enemy_Missile_A" parent="." instance=ExtResource("10_0tx5e")]
-position = Vector2(-52, -342)
-
-[node name="Enemy_Missile_B" parent="." instance=ExtResource("11_kgtsq")]
-position = Vector2(148, -411)
-
-[node name="Enemy_Missile_C" parent="." instance=ExtResource("12_ahi6i")]
-position = Vector2(335, -323)
-
-[node name="Enemy_Missile_D" parent="." instance=ExtResource("13_mfna7")]
-position = Vector2(-186, -253)
-
-[node name="Prop_Bird2" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(274, 46)
-
-[node name="Prop_Bird3" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(276, -125)
-
-[node name="Prop_Bird4" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(-47, -179)
-
-[node name="Prop_Bird5" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(437, -218)
-
-[node name="Prop_Bird6" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(67, -295)
-
-[node name="Prop_Bird7" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(246, -295)
-
-[node name="Prop_Bird8" parent="." instance=ExtResource("6_cu7em")]
-position = Vector2(288, -48)
+[node name="Label5" type="Label" parent="."]
+offset_left = 1649.0
+offset_top = 42.0
+offset_right = 1837.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 75
+text = "100%"
