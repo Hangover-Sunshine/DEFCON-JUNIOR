@@ -18,7 +18,7 @@ enum UpgradeAvailability {
 @export var ShieldCooldown:float = 20
 
 @export_group("Movement")
-@export var DashStacks:int = 0
+@export var DashMovementIncrease:float = 1.5
 @export var DashCooldown:float = 1.2
 @export var DashDuration:float = 1.2
 
@@ -36,10 +36,6 @@ const PROJECTILE = preload("res://prefabs/entities/projectile.tscn")
 
 # Health Info =========
 var curr_health:int
-
-# Movement Info =========
-var upgrade_movement:float = 1
-var dash_multiplier:float = 1.5
 
 # Shield Info =========
 var shield_status:UpgradeAvailability = UpgradeAvailability.NOPE
@@ -157,10 +153,8 @@ func _physics_process(_delta):
 		velocity.y = move_toward(velocity.y, 0, BaseMovementSpeed)
 	##
 	
-	velocity *= upgrade_movement
-	
 	if dash_timer.is_stopped() == false:
-		velocity *= dash_multiplier
+		velocity *= DashMovementIncrease
 	##
 	
 	move_and_slide()
