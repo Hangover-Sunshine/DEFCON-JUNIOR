@@ -61,7 +61,7 @@ alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "##"
 
 [node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
@@ -84,7 +84,7 @@ alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "SPACE"
 
 [node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
@@ -102,7 +102,7 @@ alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "SHIFT"
 
 [node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
@@ -120,7 +120,7 @@ alignment = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 50
 text = "Q/Z"
 
 [node name="TextureRect" type="TextureRect" parent="GIU/GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
