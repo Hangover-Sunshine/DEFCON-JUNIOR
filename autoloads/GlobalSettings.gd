@@ -9,7 +9,8 @@ var UiSFXVolume:float = 0.8
 var GameSFXVolume:float = 0.8
 var MusicVolume:float = 0.6
 
-var FullScreen:bool = true
+var FullScreen:bool = false
+var Hints:bool = false
 
 var os_type:String
 
