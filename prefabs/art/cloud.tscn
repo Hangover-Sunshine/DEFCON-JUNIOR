@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2prn87ykcylh"]
+
+[ext_resource type="Texture2D" uid="uid://b6007fg6iyedm" path="res://assets/sprites/environment/Env_Nuke2.png" id="1_qeiu5"]
+[ext_resource type="Script" path="res://scripts/game/cloud.gd" id="1_x3hkq"]
+
+[node name="Cloud" type="Node2D"]
+script = ExtResource("1_x3hkq")
+
+[node name="CloseCloud" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_qeiu5")
+
+[node name="FarCloud" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.913725, 0.913725, 0.913725, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_qeiu5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-180, -10, 360, 120)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

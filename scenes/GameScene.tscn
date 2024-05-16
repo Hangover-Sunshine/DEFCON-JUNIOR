@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=9 format=3 uid="uid://cix7grprr55jl"]
 
+[ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_7g76e"]
 [ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_egtmf"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="2_fpltr"]
 [ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="4_jpp3c"]
 [ext_resource type="Script" path="res://scripts/game/indicator_holder.gd" id="5_i6tk8"]
+[ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="11_mavoj"]
 
 [node name="GameScene" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_4pqr6")
 
 [node name="GameRoot" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("1_7g76e")
 Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("2_egtmf")])
 
@@ -71,6 +76,12 @@ script = ExtResource("5_i6tk8")
 [node name="Player" parent="GameRoot" instance=ExtResource("11_mavoj")]
 z_index = 0
 position = Vector2(957, 157)
+
+[node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="HubPause" parent="PauseCanvasLayer" instance=ExtResource("7_5w17u")]
 
 [connection signal="timeout" from="GameRoot/Info/GameTimer" to="GameRoot" method="_on_game_timer_timeout"]
 [connection signal="timeout" from="GameRoot/Info/MissileTimer" to="GameRoot" method="_on_missile_timer_timeout"]
