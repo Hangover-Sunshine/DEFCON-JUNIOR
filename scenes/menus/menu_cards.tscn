@@ -1,32 +1,32 @@
 [gd_scene load_steps=54 format=3 uid="uid://cjxnrxc6wrgrd"]
 
-[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_khua4"]
-[ext_resource type="Texture2D" uid="uid://dk4numgl1jkdp" path="res://assets/ui/cards/Card_Boost_Jetfuel.png" id="2_x3c5c"]
-[ext_resource type="Texture2D" uid="uid://d2x6o0q1lagp8" path="res://assets/ui/cards/Card_Boost.png" id="3_jkd0e"]
-[ext_resource type="Texture2D" uid="uid://d3cahpp0u236q" path="res://assets/ui/cards/Card_Bubble.png" id="4_as3yt"]
-[ext_resource type="Texture2D" uid="uid://cqckvgx1847pe" path="res://assets/ui/cards/Card_Bubble_Airtime.png" id="5_w3qj4"]
-[ext_resource type="Texture2D" uid="uid://dxaatmgcixmhu" path="res://assets/ui/cards/Card_Bubble_Gurgle.png" id="6_byffj"]
-[ext_resource type="Texture2D" uid="uid://c4i7g3yheo8r4" path="res://assets/ui/cards/Card_Radiation.png" id="7_ch5k1"]
-[ext_resource type="Texture2D" uid="uid://dnv2g4a6hke8b" path="res://assets/ui/cards/Card_Spitfire.png" id="8_tnu5s"]
-[ext_resource type="Texture2D" uid="uid://6hi17h4nu3yr" path="res://assets/ui/cards/Card_Spitfire_Piercing.png" id="9_e35o1"]
-[ext_resource type="Texture2D" uid="uid://clnd5tq3brvpq" path="res://assets/ui/cards/Card_Spitfire_Spew.png" id="10_775et"]
-[ext_resource type="Texture2D" uid="uid://kgpl7ida7gg5" path="res://assets/ui/cards/Card_Spitfire_Upchuck.png" id="11_5jau0"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_fik03"]
+[ext_resource type="Texture2D" uid="uid://d2x6o0q1lagp8" path="res://assets/ui/cards/Card_Boost.png" id="2_64m0k"]
+[ext_resource type="Texture2D" uid="uid://dk4numgl1jkdp" path="res://assets/ui/cards/Card_Boost_Jetfuel.png" id="3_gcqrq"]
+[ext_resource type="Texture2D" uid="uid://d3cahpp0u236q" path="res://assets/ui/cards/Card_Bubble.png" id="4_61jxa"]
+[ext_resource type="Texture2D" uid="uid://cqckvgx1847pe" path="res://assets/ui/cards/Card_Bubble_Airtime.png" id="5_mlog8"]
+[ext_resource type="Texture2D" uid="uid://dxaatmgcixmhu" path="res://assets/ui/cards/Card_Bubble_Gurgle.png" id="6_2b5gh"]
+[ext_resource type="Texture2D" uid="uid://c4i7g3yheo8r4" path="res://assets/ui/cards/Card_Radiation.png" id="7_jcvjp"]
+[ext_resource type="Texture2D" uid="uid://dnv2g4a6hke8b" path="res://assets/ui/cards/Card_Spitfire.png" id="8_6ecgm"]
+[ext_resource type="Texture2D" uid="uid://6hi17h4nu3yr" path="res://assets/ui/cards/Card_Spitfire_Piercing.png" id="9_eivkd"]
+[ext_resource type="Texture2D" uid="uid://clnd5tq3brvpq" path="res://assets/ui/cards/Card_Spitfire_Spew.png" id="10_7wgnr"]
+[ext_resource type="Texture2D" uid="uid://kgpl7ida7gg5" path="res://assets/ui/cards/Card_Spitfire_Upchuck.png" id="11_x6ije"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tidti"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktuqn"]
-texture = ExtResource("3_jkd0e")
+texture = ExtResource("2_64m0k")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_31i4w"]
-texture = ExtResource("3_jkd0e")
+texture = ExtResource("2_64m0k")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm2mf"]
-texture = ExtResource("3_jkd0e")
+texture = ExtResource("2_64m0k")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -38,18 +38,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_31i4w")
 Button/styles/pressed = SubResource("StyleBoxTexture_hm2mf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_do3c0"]
-texture = ExtResource("2_x3c5c")
+texture = ExtResource("3_gcqrq")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y5rvt"]
-texture = ExtResource("2_x3c5c")
+texture = ExtResource("3_gcqrq")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksohb"]
-texture = ExtResource("2_x3c5c")
+texture = ExtResource("3_gcqrq")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -61,18 +61,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_y5rvt")
 Button/styles/pressed = SubResource("StyleBoxTexture_ksohb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8op0l"]
-texture = ExtResource("4_as3yt")
+texture = ExtResource("4_61jxa")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_26hg4"]
-texture = ExtResource("4_as3yt")
+texture = ExtResource("4_61jxa")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmfpb"]
-texture = ExtResource("4_as3yt")
+texture = ExtResource("4_61jxa")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -84,18 +84,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_26hg4")
 Button/styles/pressed = SubResource("StyleBoxTexture_qmfpb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjfdc"]
-texture = ExtResource("5_w3qj4")
+texture = ExtResource("5_mlog8")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2sy38"]
-texture = ExtResource("5_w3qj4")
+texture = ExtResource("5_mlog8")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5tpu"]
-texture = ExtResource("5_w3qj4")
+texture = ExtResource("5_mlog8")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -107,18 +107,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_2sy38")
 Button/styles/pressed = SubResource("StyleBoxTexture_q5tpu")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yj2un"]
-texture = ExtResource("6_byffj")
+texture = ExtResource("6_2b5gh")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_grnih"]
-texture = ExtResource("6_byffj")
+texture = ExtResource("6_2b5gh")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abyqp"]
-texture = ExtResource("6_byffj")
+texture = ExtResource("6_2b5gh")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -132,18 +132,18 @@ Button/styles/pressed = SubResource("StyleBoxTexture_abyqp")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qgvf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6q8lx"]
-texture = ExtResource("7_ch5k1")
+texture = ExtResource("7_jcvjp")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nfwhe"]
-texture = ExtResource("7_ch5k1")
+texture = ExtResource("7_jcvjp")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_liif1"]
-texture = ExtResource("7_ch5k1")
+texture = ExtResource("7_jcvjp")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -155,18 +155,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_nfwhe")
 Button/styles/pressed = SubResource("StyleBoxTexture_liif1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6tn8x"]
-texture = ExtResource("8_tnu5s")
+texture = ExtResource("8_6ecgm")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08gdh"]
-texture = ExtResource("8_tnu5s")
+texture = ExtResource("8_6ecgm")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qenua"]
-texture = ExtResource("8_tnu5s")
+texture = ExtResource("8_6ecgm")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -178,18 +178,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_08gdh")
 Button/styles/pressed = SubResource("StyleBoxTexture_qenua")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hl07e"]
-texture = ExtResource("9_e35o1")
+texture = ExtResource("9_eivkd")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fdfx"]
-texture = ExtResource("9_e35o1")
+texture = ExtResource("9_eivkd")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_350vl"]
-texture = ExtResource("9_e35o1")
+texture = ExtResource("9_eivkd")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -201,18 +201,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_6fdfx")
 Button/styles/pressed = SubResource("StyleBoxTexture_350vl")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sf1hd"]
-texture = ExtResource("10_775et")
+texture = ExtResource("10_7wgnr")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0ebh"]
-texture = ExtResource("10_775et")
+texture = ExtResource("10_7wgnr")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11vi2"]
-texture = ExtResource("10_775et")
+texture = ExtResource("10_7wgnr")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -224,18 +224,18 @@ Button/styles/normal = SubResource("StyleBoxTexture_b0ebh")
 Button/styles/pressed = SubResource("StyleBoxTexture_11vi2")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gnqkc"]
-texture = ExtResource("11_5jau0")
+texture = ExtResource("11_x6ije")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_av56w"]
-texture = ExtResource("11_5jau0")
+texture = ExtResource("11_x6ije")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7dsxc"]
-texture = ExtResource("11_5jau0")
+texture = ExtResource("11_x6ije")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
@@ -283,14 +283,14 @@ theme_override_constants/separation = -25
 
 [node name="Header1_Label" type="Label" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_khua4")
+theme_override_fonts/font = ExtResource("1_fik03")
 theme_override_font_sizes/font_size = 150
 text = "LEVEL UP"
 horizontal_alignment = 1
 
 [node name="Header1_Label2" type="Label" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_khua4")
+theme_override_fonts/font = ExtResource("1_fik03")
 theme_override_font_sizes/font_size = 50
 text = "CHOOSE A SINGLE UPGRADE"
 horizontal_alignment = 1
