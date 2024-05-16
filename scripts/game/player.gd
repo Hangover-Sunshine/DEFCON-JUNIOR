@@ -13,21 +13,25 @@ enum UpgradeAvailability {
 
 @export var TimeToNextDamage:float = 0.8
 
-@export_category("Cooldowns")
+@export_group("Shield")
 @export var ShieldDuration:float = 2
 @export var ShieldCooldown:float = 20
-#@export var WeaponType:WeaponProjectileType = WeaponProjectileType.BULLET
-@export var WeaponCooldown:float = 3
-@export var WeaponPenetration:int = 1
+
+@export_group("Movement")
 @export var DashStacks:int = 0
 @export var DashCooldown:float = 1.2
 @export var DashDuration:float = 1.2
+
+@export_group("Weapons")
+@export var Weapon:WeaponResource
+@export var WeaponPenetration:int = 1
 
 @onready var shield_timer = $ShieldTimer
 @onready var gun_timer = $GunTimer
 @onready var dash_restock_timer = $DashRestockTimer
 @onready var dash_timer = $DashTimer
 @onready var damaged_timer = $DamagedTimer
+@onready var reload_timer = $ReloadTimer
 
 const PROJECTILE = preload("res://prefabs/entities/projectile.tscn")
 
@@ -45,8 +49,10 @@ var curr_shield_dur:float
 
 # Weapon Info =========
 var gun_status:UpgradeAvailability = UpgradeAvailability.READY
-var curr_weapon_cd:float
+var curr_weapon_fr:float = 0
+var curr_reload_rate:float = 0
 var curr_weapon_penetration:int
+var curr_number_of_bullets:int
 
 # Dash Info =========
 var dash_status:UpgradeAvailability = UpgradeAvailability.NOPE
@@ -54,6 +60,8 @@ var curr_dash_amount:int
 var curr_dash_max:int = 2
 var curr_dash_cd:float
 var curr_dash_dur:float
+
+
 var play_area_size:Vector2
 
 func _ready():
@@ -62,8 +70,9 @@ func _ready():
 	curr_shield_cd = ShieldCooldown
 	curr_shield_dur = ShieldDuration
 	
-	curr_weapon_cd = WeaponCooldown
+	curr_weapon_fr = Weapon.FireRate
 	curr_weapon_penetration = WeaponPenetration
+	curr_number_of_bullets = Weapon.MagSize
 	
 	curr_dash_amount = DashStacks
 	curr_dash_cd = DashCooldown
@@ -78,10 +87,19 @@ func _process(_delta):
 		shield_timer.start(curr_shield_dur)
 	##
 	
-	if Input.is_action_just_pressed("fire") and gun_status == UpgradeAvailability.READY:
-		print("fire!")
-		gun_status = UpgradeAvailability.RECHARGING
-		gun_timer.start(curr_weapon_cd)
+	if Input.is_action_pressed("fire") and gun_timer.is_stopped() and gun_status == UpgradeAvailability.READY:
+		_spawn_bullets()
+		curr_number_of_bullets -= 1
+		
+		if curr_number_of_bullets == 0:
+			gun_status = UpgradeAvailability.RECHARGING
+			reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
+			return
+		##
+		
+		gun_timer.start(curr_weapon_fr)
+	elif Input.is_action_just_released("fire") or gun_status == UpgradeAvailability.RECHARGING:
+		gun_timer.stop()
 	##
 	
 	if Input.is_action_just_pressed("dash") and dash_status == UpgradeAvailability.READY\
@@ -165,7 +183,29 @@ func _on_shield_area_area_entered(area):
 ##
 
 func _on_gun_timer_timeout():
-	gun_status = UpgradeAvailability.READY
+	_spawn_bullets()
+	curr_number_of_bullets -= 1
+	
+	if curr_number_of_bullets == 0:
+		gun_status = UpgradeAvailability.RECHARGING
+		reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
+		return
+	##
+	
+	gun_timer.start(curr_weapon_fr)
+##
+
+func _spawn_bullets():
+	var projectiles = []
+	
+	for i in range(Weapon.BulletsSpawnedPerFire):
+		var projectile = PROJECTILE.instantiate()
+		GlobalSignals.emit_signal("spawn_bullet", projectile)
+		projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
+		projectile.global_position = $BulletSpawnPos.global_position
+		
+		projectiles.push_back(projectile)
+	##
 ##
 
 func _on_dash_restock_timer_timeout():
@@ -177,4 +217,30 @@ func _on_dash_restock_timer_timeout():
 
 func _on_damaged_timer_timeout():
 	$PC_Skeleton.to_happy()
+##
+
+func _on_reload_timer_timeout():
+	if Weapon.ExpendAllToReload:
+		curr_number_of_bullets = Weapon.MagSize
+	else:
+		curr_number_of_bullets += 1
+		if curr_number_of_bullets < Weapon.MagSize:
+			reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
+		##
+	##
+	
+	gun_status = UpgradeAvailability.READY
+##
+
+func apply_upgrade(upgrade:String, amount):
+	pass
+##
+
+func apply_weapon(new_weapon:WeaponResource):
+	Weapon = new_weapon
+##
+
+func reset_character():
+	# TODO: reset all stats
+	pass
 ##
