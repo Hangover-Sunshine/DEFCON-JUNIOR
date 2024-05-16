@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3tskwkip0tet"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_avs2s"]
-[ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="2_u0ckn"]
+[ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="2_u0ckn"]
 
 [node name="MenuGamOver" type="Control"]
 layout_mode = 3
@@ -16,7 +16,7 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.027451, 0.0352941, 0.0941176, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Pause_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)

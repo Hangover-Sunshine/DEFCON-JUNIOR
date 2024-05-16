@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menus/menu_main.gd" id="1_yoc7x"]
 [ext_resource type="Texture2D" uid="uid://od1aklaplnw0" path="res://assets/ui/main/Art_Title.png" id="2_diewf"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_ttw81"]
-[ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="3_0khvs"]
+[ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="3_0khvs"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3

@@ -1,10 +1,106 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjxnrxc6wrgrd"]
+[gd_scene load_steps=23 format=3 uid="uid://cjxnrxc6wrgrd"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_khua4"]
-[ext_resource type="Texture2D" uid="uid://c56g6gbcdxuu1" path="res://assets/temporary/Powerup1.png" id="2_uanyc"]
-[ext_resource type="Texture2D" uid="uid://bjjkysgjojckd" path="res://assets/temporary/Powerup2.png" id="3_6on8q"]
+[ext_resource type="Texture2D" uid="uid://dk4numgl1jkdp" path="res://assets/ui/cards/Card_Boost_Jetfuel.png" id="2_x3c5c"]
+[ext_resource type="Texture2D" uid="uid://d2x6o0q1lagp8" path="res://assets/ui/cards/Card_Boost.png" id="3_jkd0e"]
+[ext_resource type="Texture2D" uid="uid://d3cahpp0u236q" path="res://assets/ui/cards/Card_Bubble.png" id="4_as3yt"]
+[ext_resource type="Texture2D" uid="uid://cqckvgx1847pe" path="res://assets/ui/cards/Card_Bubble_Airtime.png" id="5_w3qj4"]
 
-[node name="Menu_Powerup" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tidti"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktuqn"]
+texture = ExtResource("3_jkd0e")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_31i4w"]
+texture = ExtResource("3_jkd0e")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm2mf"]
+texture = ExtResource("3_jkd0e")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_ujgxb"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_ktuqn")
+Button/styles/normal = SubResource("StyleBoxTexture_31i4w")
+Button/styles/pressed = SubResource("StyleBoxTexture_hm2mf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_do3c0"]
+texture = ExtResource("2_x3c5c")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y5rvt"]
+texture = ExtResource("2_x3c5c")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ksohb"]
+texture = ExtResource("2_x3c5c")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_2oqir"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_do3c0")
+Button/styles/normal = SubResource("StyleBoxTexture_y5rvt")
+Button/styles/pressed = SubResource("StyleBoxTexture_ksohb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8op0l"]
+texture = ExtResource("4_as3yt")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_26hg4"]
+texture = ExtResource("4_as3yt")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qmfpb"]
+texture = ExtResource("4_as3yt")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_4xyx1"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_8op0l")
+Button/styles/normal = SubResource("StyleBoxTexture_26hg4")
+Button/styles/pressed = SubResource("StyleBoxTexture_qmfpb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56aln"]
+texture = ExtResource("5_w3qj4")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sakbw"]
+texture = ExtResource("5_w3qj4")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3teb"]
+texture = ExtResource("5_w3qj4")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_5p5to"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_56aln")
+Button/styles/normal = SubResource("StyleBoxTexture_sakbw")
+Button/styles/pressed = SubResource("StyleBoxTexture_p3teb")
+
+[node name="Menu_Cards" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,54 +108,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Powerup_MC" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Cards_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 420
+theme_override_constants/margin_top = 75
 theme_override_constants/margin_right = 420
 
-[node name="Message_VBox2" type="VBoxContainer" parent="Powerup_MC"]
+[node name="Levelup_VBox1" type="VBoxContainer" parent="Cards_MC"]
 layout_mode = 2
-alignment = 1
 
-[node name="Header_VBox" type="VBoxContainer" parent="Powerup_MC/Message_VBox2"]
+[node name="LevelUp_VBox2" type="VBoxContainer" parent="Cards_MC/Levelup_VBox1"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Powerup_MC/Message_VBox2/Header_VBox"]
+[node name="Header_VBox" type="VBoxContainer" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2"]
 layout_mode = 2
 theme_override_constants/separation = -25
 
-[node name="Header1_Label" type="Label" parent="Powerup_MC/Message_VBox2/Header_VBox/VBoxContainer"]
+[node name="Header1_Label" type="Label" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Header_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_khua4")
 theme_override_font_sizes/font_size = 150
 text = "LEVEL UP"
 horizontal_alignment = 1
 
-[node name="Header1_Label2" type="Label" parent="Powerup_MC/Message_VBox2/Header_VBox/VBoxContainer"]
+[node name="Header1_Label2" type="Label" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Header_VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_khua4")
 theme_override_font_sizes/font_size = 50
 text = "CHOOSE A SINGLE UPGRADE"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Powerup_MC/Message_VBox2/Header_VBox"]
+[node name="Card_Hbox" type="HBoxContainer" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2"]
 layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Powerup_MC/Message_VBox2/Header_VBox/HBoxContainer"]
+[node name="Card_Boost" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
-texture = ExtResource("2_uanyc")
+theme = SubResource("Theme_ujgxb")
 
-[node name="TextureRect2" type="TextureRect" parent="Powerup_MC/Message_VBox2/Header_VBox/HBoxContainer"]
+[node name="Card_Boost_Jetfuel" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
-texture = ExtResource("3_6on8q")
+theme = SubResource("Theme_2oqir")
 
-[node name="AP_Transition" type="AnimationPlayer" parent="."]
+[node name="Card_Bubble" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+layout_mode = 2
+theme = SubResource("Theme_4xyx1")
+
+[node name="Card_Bubble_Airtime" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+layout_mode = 2
+theme = SubResource("Theme_5p5to")
+
+[node name="AP" type="AnimationPlayer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

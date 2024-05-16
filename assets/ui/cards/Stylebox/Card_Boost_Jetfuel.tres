@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://du514ibtyarb8"]
+
+[ext_resource type="Texture2D" uid="uid://d2x6o0q1lagp8" path="res://assets/ui/cards/Card_Boost.png" id="1_cyr7o"]
+
+[resource]
+texture = ExtResource("1_cyr7o")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
