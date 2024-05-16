@@ -1,12 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://nsgp1qhggor8"]
+[gd_scene load_steps=10 format=3 uid="uid://nsgp1qhggor8"]
 
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="3_vooma"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_fqmmg"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="5_veiw5"]
-[ext_resource type="Texture2D" uid="uid://di1wun67yfrta" path="res://assets/particle/Dash.png" id="6_5q3hw"]
+[ext_resource type="Texture2D" uid="uid://dfow4dp04gofq" path="res://assets/particle/Slider_Dot.png" id="7_0sfqf"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_tv0q6"]
 [ext_resource type="PackedScene" uid="uid://cvc2n8mpfspuy" path="res://prefabs/fx/fx_explode_feather.tscn" id="8_utufl"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="11_e7cnq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy4s7"]
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+
+[sub_resource type="Theme" id="Theme_g1afe"]
+VSlider/icons/grabber_disabled = ExtResource("7_0sfqf")
+VSlider/styles/slider = SubResource("StyleBoxFlat_iy4s7")
 
 [node name="demo_art" type="Node2D"]
 
@@ -141,6 +153,66 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
+[node name="HBoxContainer" type="HBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Right_MC"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VSlider" type="VSlider" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = SubResource("Theme_g1afe")
+value = 100.0
+editable = false
+scrollable = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 77)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 50
+text = "- START"
+vertical_alignment = 2
+
+[node name="Label3" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 225.75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 50
+text = "- FARAWAY"
+vertical_alignment = 2
+
+[node name="Label4" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 225.75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 50
+text = "- HALFWAY"
+vertical_alignment = 2
+
+[node name="Label5" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 225.75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 50
+text = "- ALMOST"
+vertical_alignment = 2
+
+[node name="Label6" type="Label" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 212.1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
+theme_override_fonts/font = ExtResource("7_tv0q6")
+theme_override_font_sizes/font_size = 50
+text = "- FINISH"
+vertical_alignment = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
@@ -149,25 +221,3 @@ show_behind_parent = true
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
-
-[node name="Circle9" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(1594, 87)
-texture = ExtResource("5_veiw5")
-
-[node name="Dash" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(1588, 533)
-rotation = -1.55391
-scale = Vector2(10.3255, 1)
-texture = ExtResource("6_5q3hw")
-
-[node name="Label5" type="Label" parent="."]
-offset_left = 1649.0
-offset_top = 42.0
-offset_right = 1837.0
-offset_bottom = 132.0
-theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
-theme_override_fonts/font = ExtResource("7_tv0q6")
-theme_override_font_sizes/font_size = 75
-text = "100%"
