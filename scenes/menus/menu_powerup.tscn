@@ -1,10 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjxnrxc6wrgrd"]
+[gd_scene load_steps=54 format=3 uid="uid://cjxnrxc6wrgrd"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_khua4"]
 [ext_resource type="Texture2D" uid="uid://dk4numgl1jkdp" path="res://assets/ui/cards/Card_Boost_Jetfuel.png" id="2_x3c5c"]
 [ext_resource type="Texture2D" uid="uid://d2x6o0q1lagp8" path="res://assets/ui/cards/Card_Boost.png" id="3_jkd0e"]
 [ext_resource type="Texture2D" uid="uid://d3cahpp0u236q" path="res://assets/ui/cards/Card_Bubble.png" id="4_as3yt"]
 [ext_resource type="Texture2D" uid="uid://cqckvgx1847pe" path="res://assets/ui/cards/Card_Bubble_Airtime.png" id="5_w3qj4"]
+[ext_resource type="Texture2D" uid="uid://dxaatmgcixmhu" path="res://assets/ui/cards/Card_Bubble_Gurgle.png" id="6_byffj"]
+[ext_resource type="Texture2D" uid="uid://c4i7g3yheo8r4" path="res://assets/ui/cards/Card_Radiation.png" id="7_ch5k1"]
+[ext_resource type="Texture2D" uid="uid://dnv2g4a6hke8b" path="res://assets/ui/cards/Card_Spitfire.png" id="8_tnu5s"]
+[ext_resource type="Texture2D" uid="uid://6hi17h4nu3yr" path="res://assets/ui/cards/Card_Spitfire_Piercing.png" id="9_e35o1"]
+[ext_resource type="Texture2D" uid="uid://clnd5tq3brvpq" path="res://assets/ui/cards/Card_Spitfire_Spew.png" id="10_775et"]
+[ext_resource type="Texture2D" uid="uid://kgpl7ida7gg5" path="res://assets/ui/cards/Card_Spitfire_Upchuck.png" id="11_5jau0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tidti"]
 
@@ -77,18 +83,18 @@ Button/styles/hover = SubResource("StyleBoxTexture_8op0l")
 Button/styles/normal = SubResource("StyleBoxTexture_26hg4")
 Button/styles/pressed = SubResource("StyleBoxTexture_qmfpb")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56aln"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wjfdc"]
 texture = ExtResource("5_w3qj4")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sakbw"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2sy38"]
 texture = ExtResource("5_w3qj4")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3teb"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5tpu"]
 texture = ExtResource("5_w3qj4")
 texture_margin_left = 400.0
 texture_margin_top = 600.0
@@ -96,9 +102,149 @@ modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
 
 [sub_resource type="Theme" id="Theme_5p5to"]
 Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
-Button/styles/hover = SubResource("StyleBoxTexture_56aln")
-Button/styles/normal = SubResource("StyleBoxTexture_sakbw")
-Button/styles/pressed = SubResource("StyleBoxTexture_p3teb")
+Button/styles/hover = SubResource("StyleBoxTexture_wjfdc")
+Button/styles/normal = SubResource("StyleBoxTexture_2sy38")
+Button/styles/pressed = SubResource("StyleBoxTexture_q5tpu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yj2un"]
+texture = ExtResource("6_byffj")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_grnih"]
+texture = ExtResource("6_byffj")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abyqp"]
+texture = ExtResource("6_byffj")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_3jk2t"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_yj2un")
+Button/styles/normal = SubResource("StyleBoxTexture_grnih")
+Button/styles/pressed = SubResource("StyleBoxTexture_abyqp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qgvf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6q8lx"]
+texture = ExtResource("7_ch5k1")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nfwhe"]
+texture = ExtResource("7_ch5k1")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_liif1"]
+texture = ExtResource("7_ch5k1")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_411cu"]
+Button/styles/focus = SubResource("StyleBoxEmpty_0qgvf")
+Button/styles/hover = SubResource("StyleBoxTexture_6q8lx")
+Button/styles/normal = SubResource("StyleBoxTexture_nfwhe")
+Button/styles/pressed = SubResource("StyleBoxTexture_liif1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6tn8x"]
+texture = ExtResource("8_tnu5s")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08gdh"]
+texture = ExtResource("8_tnu5s")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qenua"]
+texture = ExtResource("8_tnu5s")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_ucrvl"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_6tn8x")
+Button/styles/normal = SubResource("StyleBoxTexture_08gdh")
+Button/styles/pressed = SubResource("StyleBoxTexture_qenua")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hl07e"]
+texture = ExtResource("9_e35o1")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fdfx"]
+texture = ExtResource("9_e35o1")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_350vl"]
+texture = ExtResource("9_e35o1")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_qqqdh"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_hl07e")
+Button/styles/normal = SubResource("StyleBoxTexture_6fdfx")
+Button/styles/pressed = SubResource("StyleBoxTexture_350vl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sf1hd"]
+texture = ExtResource("10_775et")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0ebh"]
+texture = ExtResource("10_775et")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11vi2"]
+texture = ExtResource("10_775et")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_qpi0i"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_sf1hd")
+Button/styles/normal = SubResource("StyleBoxTexture_b0ebh")
+Button/styles/pressed = SubResource("StyleBoxTexture_11vi2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gnqkc"]
+texture = ExtResource("11_5jau0")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.866667, 0.215686, 0.270588, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_av56w"]
+texture = ExtResource("11_5jau0")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7dsxc"]
+texture = ExtResource("11_5jau0")
+texture_margin_left = 400.0
+texture_margin_top = 600.0
+modulate_color = Color(0.447059, 0.109804, 0.184314, 1)
+
+[sub_resource type="Theme" id="Theme_2sh0c"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tidti")
+Button/styles/hover = SubResource("StyleBoxTexture_gnqkc")
+Button/styles/normal = SubResource("StyleBoxTexture_av56w")
+Button/styles/pressed = SubResource("StyleBoxTexture_7dsxc")
 
 [node name="Menu_Cards" type="Control"]
 layout_mode = 3
@@ -121,7 +267,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 420
-theme_override_constants/margin_top = 75
+theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 420
 
 [node name="Levelup_VBox1" type="VBoxContainer" parent="Cards_MC"]
@@ -155,22 +301,52 @@ theme_override_constants/separation = 45
 alignment = 1
 
 [node name="Card_Boost" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_ujgxb")
 
 [node name="Card_Boost_Jetfuel" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_2oqir")
 
 [node name="Card_Bubble" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_4xyx1")
 
 [node name="Card_Bubble_Airtime" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_5p5to")
+
+[node name="Card_Bubble_Gurgle" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_3jk2t")
+
+[node name="Card_Radiation" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_411cu")
+
+[node name="Card_Spitfire" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_ucrvl")
+
+[node name="Card_Spitfire_Piercing" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_qqqdh")
+
+[node name="Card_Spitfire_Spew" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_qpi0i")
+
+[node name="Card_Spitfire_Upchuck" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_2sh0c")
 
 [node name="AP" type="AnimationPlayer" parent="."]
 
