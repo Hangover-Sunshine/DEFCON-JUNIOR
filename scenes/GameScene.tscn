@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=10 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_7g76e"]
 [ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_egtmf"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="2_fpltr"]
 [ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="4_jpp3c"]
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="4_s5xv5"]
 [ext_resource type="Script" path="res://scripts/game/indicator_holder.gd" id="5_i6tk8"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="11_mavoj"]
@@ -35,7 +36,13 @@ one_shot = true
 [node name="HorizontalTimer" type="Timer" parent="GameRoot/Info"]
 one_shot = true
 
+[node name="BackFrame" type="Sprite2D" parent="GameRoot"]
+z_index = 20
+position = Vector2(960, 540)
+texture = ExtResource("4_s5xv5")
+
 [node name="Background2" type="ColorRect" parent="GameRoot"]
+visible = false
 show_behind_parent = true
 z_index = 10
 offset_right = 424.0
@@ -43,6 +50,7 @@ offset_bottom = 1080.0
 color = Color(0.564706, 0.619608, 0.866667, 1)
 
 [node name="Background3" type="ColorRect" parent="GameRoot"]
+visible = false
 show_behind_parent = true
 z_index = 10
 offset_left = 1504.0
@@ -51,9 +59,16 @@ offset_bottom = 1080.0
 color = Color(0.564706, 0.619608, 0.866667, 1)
 
 [node name="Sky" type="ColorRect" parent="GameRoot"]
+visible = false
 show_behind_parent = true
 offset_left = 424.0
 offset_right = 1504.0
+offset_bottom = 1080.0
+color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="DummySky" type="ColorRect" parent="GameRoot"]
+show_behind_parent = true
+offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
 

@@ -37,7 +37,7 @@ func to_exit():
 	get_tree().quit()
 
 func to_load():
-	GlobalSignals.emit_signal("load_scene", "DummySceneA")
+	GlobalSignals.emit_signal("load_scene", "GameScene")
 
 func to_free(scene_name):
 	self.queue_free()
