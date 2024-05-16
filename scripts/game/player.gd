@@ -24,7 +24,6 @@ enum UpgradeAvailability {
 
 @export_group("Weapons")
 @export var Weapon:WeaponResource
-@export var WeaponPenetration:int = 1
 
 @onready var shield_timer = $ShieldTimer
 @onready var gun_timer = $GunTimer
@@ -50,18 +49,15 @@ var curr_shield_dur:float
 
 # Weapon Info =========
 var gun_status:UpgradeAvailability = UpgradeAvailability.NOPE
-var curr_weapon_fr:float = 0
-var curr_reload_rate:float = 0
 var curr_weapon_penetration:int = 0
 var curr_number_of_bullets:int
-var curr_mag_size_add:int = 0
+var curr_mag_size:int = 0
+var max_mag_size:int = 0
 
 # Dash Info =========
 var dash_status:UpgradeAvailability = UpgradeAvailability.NOPE
-var curr_dash_amount:int
-var curr_dash_max:int = 2
-var curr_dash_cd:float
-var curr_dash_dur:float
+var curr_dash_amount:int = 0
+var curr_dash_max:int = 0
 
 var play_area_size:Vector2
 
@@ -85,24 +81,24 @@ func _ready():
 		
 		gun_status = UpgradeAvailability.READY if data["gun"]["has"] else UpgradeAvailability.NOPE
 		curr_weapon_penetration = data["gun"]["pen"]
-		curr_mag_size_add = data["gun"]["mag"]
+		max_mag_size = data["gun"]["mag"]
+		curr_mag_size = max_mag_size
 		curr_number_of_bullets = data["gun"]["bullets"]
 		
 		dash_status = UpgradeAvailability.READY if data["dash"]["has"] else UpgradeAvailability.NOPE
 		curr_dash_max = data["dash"]["stack"]
+		curr_dash_amount = curr_dash_max
 	else:
 		curr_health = Health
 		
-		curr_shield_cd = ShieldCooldown
-		curr_shield_dur = ShieldDuration
+		curr_shield_cd = 0
+		curr_shield_dur = 0
 		
-		curr_weapon_fr = Weapon.FireRate
-		curr_weapon_penetration = WeaponPenetration
-		curr_number_of_bullets = Weapon.MagSize
+		curr_weapon_penetration = 0
+		max_mag_size = 0
+		curr_number_of_bullets = 0
 		
-		curr_dash_amount = DashStacks
-		curr_dash_cd = DashCooldown
-		curr_dash_dur = DashDuration
+		curr_dash_amount = 0
 	##
 	
 	play_area_size = get_parent().get_play_area_x_limits()
@@ -117,15 +113,15 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("fire") and gun_timer.is_stopped() and gun_status == UpgradeAvailability.READY:
 		_spawn_bullets()
-		curr_number_of_bullets -= 1
+		curr_mag_size -= 1
 		
-		if curr_number_of_bullets == 0:
+		if curr_mag_size == 0:
 			gun_status = UpgradeAvailability.RECHARGING
-			reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
+			reload_timer.start(Weapon.ReloadRate)
 			return
 		##
 		
-		gun_timer.start(curr_weapon_fr)
+		gun_timer.start(Weapon.FireRate)
 	elif Input.is_action_just_released("fire") or gun_status == UpgradeAvailability.RECHARGING:
 		gun_timer.stop()
 	##
@@ -218,11 +214,11 @@ func _on_gun_timer_timeout():
 	
 	if curr_number_of_bullets == 0:
 		gun_status = UpgradeAvailability.RECHARGING
-		reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
+		reload_timer.start(Weapon.ReloadRate)
 		return
 	##
 	
-	gun_timer.start(curr_weapon_fr)
+	gun_timer.start(Weapon.FireRate)
 ##
 
 func _spawn_bullets():
@@ -230,9 +226,10 @@ func _spawn_bullets():
 	$PC_Skeleton.shoot()
 	
 	if Weapon.UseSpeedVariance == false:
-		for i in range(Weapon.BulletsSpawnedPerFire):
+		for i in range(curr_number_of_bullets):
 			var projectile = PROJECTILE.instantiate()
 			projectile.z_index = 4
+			projectile.penetration += curr_weapon_penetration
 			GlobalSignals.emit_signal("spawn_bullet", projectile)
 			projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
 			projectile.global_position = $BulletSpawnPos.global_position
@@ -244,11 +241,12 @@ func _spawn_bullets():
 			projectiles.push_back(projectile)
 		##
 	else:
-		for i in range(Weapon.BulletsSpawnedPerFire):
+		for i in range(curr_number_of_bullets):
 			var projectile = PROJECTILE.instantiate()
 			GlobalSignals.emit_signal("spawn_bullet", projectile)
 			projectile.setup(0, 8, 4, 5)
 			projectile.global_position = $BulletSpawnPos.global_position
+			projectile.penetration += curr_weapon_penetration
 			var speed = Weapon.BulletSpeed + Weapon.BulletSpeed *\
 								randf_range(-Weapon.BulletSpeedVariance, Weapon.BulletSpeedVariance)
 			var arc_rad = deg_to_rad(Weapon.DegreeAngleOfCone)
@@ -262,10 +260,10 @@ func _spawn_bullets():
 ##
 
 func _on_dash_restock_timer_timeout():
+	curr_dash_amount += 1
 	if curr_dash_amount < curr_dash_max:
 		dash_restock_timer.start(DashCooldown)
 	##
-	curr_dash_amount += 1
 ##
 
 func _on_damaged_timer_timeout():
@@ -274,11 +272,11 @@ func _on_damaged_timer_timeout():
 
 func _on_reload_timer_timeout():
 	if Weapon.ExpendAllToReload:
-		curr_number_of_bullets = Weapon.MagSize + curr_mag_size_add
+		curr_mag_size = max_mag_size
 	else:
-		curr_number_of_bullets += 1
-		if curr_number_of_bullets < Weapon.MagSize + curr_mag_size_add:
-			reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
+		curr_mag_size += 1
+		if curr_mag_size < max_mag_size:
+			reload_timer.start(Weapon.ReloadRate)
 		##
 	##
 	
@@ -297,7 +295,7 @@ func get_data():
 	data["gun"] = {}
 	data["gun"]["has"] = gun_status != UpgradeAvailability.NOPE
 	data["gun"]["pen"] = curr_weapon_penetration
-	data["gun"]["mag"] = curr_mag_size_add
+	data["gun"]["mag"] = max_mag_size
 	data["gun"]["bullets"] = curr_number_of_bullets
 	
 	data["dash"] = {}

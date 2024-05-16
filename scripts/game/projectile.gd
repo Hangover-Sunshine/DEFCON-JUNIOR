@@ -3,6 +3,7 @@ class_name Projectile
 
 @onready var hit_area = $Area2D
 
+var penetration:int = 1
 var timer:float
 var time_to_despawn:float
 
@@ -35,7 +36,12 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	body.hit()
-	queue_free()
+	
+	penetration -= 1
+	
+	if penetration == 0:
+		queue_free()
+	##
 ##
 
 func hit():
