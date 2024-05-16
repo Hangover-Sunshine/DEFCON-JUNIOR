@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_mn2bi")
-SprayPattern = 1
-BulletsSpawnedPerFire = 1
-DegreeAngleOfCone = 35.0
 BulletSpeed = 350.0
-BulletSpeedVariance = 0.2
-FireRate = 0.4
-ExpendAllToReload = false
-ReloadRate = 1.5
 MagSize = 3
+FireRate = 0.4
+ExpendAllToReload = true
+ReloadRate = 1.5
+BulletsSpawnedPerFire = 1
+SprayPattern = 1
+BulletSpeedVariance = 0.2
+DegreeAngleOfCone = 35.0

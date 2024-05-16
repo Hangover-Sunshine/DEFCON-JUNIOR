@@ -198,13 +198,34 @@ func _on_gun_timer_timeout():
 func _spawn_bullets():
 	var projectiles = []
 	
-	for i in range(Weapon.BulletsSpawnedPerFire):
-		var projectile = PROJECTILE.instantiate()
-		GlobalSignals.emit_signal("spawn_bullet", projectile)
-		projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
-		projectile.global_position = $BulletSpawnPos.global_position
-		
-		projectiles.push_back(projectile)
+	if Weapon.UseSpeedVariance == false:
+		for i in range(Weapon.BulletsSpawnedPerFire):
+			var projectile = PROJECTILE.instantiate()
+			GlobalSignals.emit_signal("spawn_bullet", projectile)
+			projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
+			projectile.global_position = $BulletSpawnPos.global_position
+			var arc_rad = deg_to_rad(Weapon.DegreeAngleOfCone)
+			var increment = arc_rad / (Weapon.BulletsSpawnedPerFire - 1)
+			projectile.rotation = increment * i - arc_rad / 2
+			projectile.velocity = Weapon.BulletSpeed * Vector2.DOWN.rotated(projectile.rotation)
+			
+			projectiles.push_back(projectile)
+		##
+	else:
+		for i in range(Weapon.BulletsSpawnedPerFire):
+			var projectile = PROJECTILE.instantiate()
+			GlobalSignals.emit_signal("spawn_bullet", projectile)
+			projectile.setup(0, 8, 4, 5)
+			projectile.global_position = $BulletSpawnPos.global_position
+			var speed = Weapon.BulletSpeed + Weapon.BulletSpeed *\
+								randf_range(-Weapon.BulletSpeedVariance, Weapon.BulletSpeedVariance)
+			var arc_rad = deg_to_rad(Weapon.DegreeAngleOfCone)
+			var increment = arc_rad / (Weapon.BulletsSpawnedPerFire - 1)
+			projectile.rotation = increment * i - arc_rad / 2
+			projectile.velocity = speed * Vector2.DOWN.rotated(projectile.rotation)
+			
+			projectiles.push_back(projectile)
+		##
 	##
 ##
 
