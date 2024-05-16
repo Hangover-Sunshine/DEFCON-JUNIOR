@@ -365,3 +365,8 @@ root_node = NodePath("../Nuke")
 libraries = {
 "": SubResource("AnimationLibrary_c2s4m")
 }
+
+[node name="FaceTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FaceTimer" to="." method="_on_face_timer_timeout"]

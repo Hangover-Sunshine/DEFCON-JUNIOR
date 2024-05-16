@@ -197,10 +197,12 @@ func _on_gun_timer_timeout():
 
 func _spawn_bullets():
 	var projectiles = []
+	$PC_Skeleton.shoot()
 	
 	if Weapon.UseSpeedVariance == false:
 		for i in range(Weapon.BulletsSpawnedPerFire):
 			var projectile = PROJECTILE.instantiate()
+			projectile.z_index = 4
 			GlobalSignals.emit_signal("spawn_bullet", projectile)
 			projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
 			projectile.global_position = $BulletSpawnPos.global_position
