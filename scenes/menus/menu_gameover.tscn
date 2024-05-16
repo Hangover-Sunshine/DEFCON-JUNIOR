@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3tskwkip0tet"]
+[gd_scene load_steps=4 format=3 uid="uid://c3tskwkip0tet"]
 
+[ext_resource type="Script" path="res://scripts/menus/menu_gameover.gd" id="1_qsd37"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_avs2s"]
 [ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="2_u0ckn"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qsd37")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)

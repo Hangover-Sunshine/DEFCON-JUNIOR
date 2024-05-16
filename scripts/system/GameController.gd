@@ -30,7 +30,7 @@ var spawning_jets:bool = false
 var missiles_spawn_at:float
 var spawning_missiles:bool = false
 
-func load_next_level():
+func load_level():
 	var level = Levels[curr_level]
 	
 	# == Max Numbers == #
@@ -54,7 +54,7 @@ func _ready():
 	GlobalSignals.connect("missile_dead", _missile_dead)
 	GlobalSignals.connect("hobstacle_dead", _hobstacle_dead)
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
-	load_next_level() # TODO: replace this
+	load_level() # TODO: replace this
 ##
 
 func _process(_delta):
@@ -175,4 +175,8 @@ func get_play_area_x_limits():
 
 func get_play_area_y_limits():
 	return Vector2(0, 1080)
+##
+
+func reset_level():
+	pass
 ##

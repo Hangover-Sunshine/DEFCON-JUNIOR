@@ -1,96 +1,70 @@
 [gd_scene load_steps=10 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
-[ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_7g76e"]
-[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_egtmf"]
-[ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="2_fpltr"]
-[ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="4_jpp3c"]
-[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="4_s5xv5"]
-[ext_resource type="Script" path="res://scripts/game/indicator_holder.gd" id="5_i6tk8"]
+[ext_resource type="PackedScene" uid="uid://deaonojyom4gf" path="res://scenes/GameRoot.tscn" id="2_tcv1b"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
-[ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="11_mavoj"]
+[ext_resource type="PackedScene" uid="uid://c3tskwkip0tet" path="res://scenes/menus/menu_gameover.tscn" id="10_agj1h"]
+[ext_resource type="Script" path="res://scripts/menus/menu_flash.gd" id="11_tyc6j"]
+
+[sub_resource type="Animation" id="Animation_81id1"]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.0824692),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2mgru"]
+resource_name = "fade_to_black"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 20),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ddj0g"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbn22"]
+_data = {
+"fade_out": SubResource("Animation_ddj0g"),
+"fade_to_black": SubResource("Animation_2mgru"),
+"flash": SubResource("Animation_81id1")
+}
 
 [node name="GameScene" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_4pqr6")
 
-[node name="GameRoot" type="Node2D" parent="."]
-process_mode = 1
-script = ExtResource("1_7g76e")
-Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("2_egtmf")])
-
-[node name="Info" type="Node" parent="GameRoot"]
-
-[node name="GameTimer" type="Timer" parent="GameRoot/Info"]
-one_shot = true
-
-[node name="MissileTimer" type="Timer" parent="GameRoot/Info"]
-one_shot = true
-
-[node name="JetTimer" type="Timer" parent="GameRoot/Info"]
-one_shot = true
-
-[node name="ObstacleTimer" type="Timer" parent="GameRoot/Info"]
-one_shot = true
-
-[node name="HorizontalTimer" type="Timer" parent="GameRoot/Info"]
-one_shot = true
-
-[node name="BackFrame" type="Sprite2D" parent="GameRoot"]
-z_index = 20
-position = Vector2(960, 540)
-texture = ExtResource("4_s5xv5")
-
-[node name="Background2" type="ColorRect" parent="GameRoot"]
-visible = false
-show_behind_parent = true
-z_index = 10
-offset_right = 424.0
-offset_bottom = 1080.0
-color = Color(0.564706, 0.619608, 0.866667, 1)
-
-[node name="Background3" type="ColorRect" parent="GameRoot"]
-visible = false
-show_behind_parent = true
-z_index = 10
-offset_left = 1504.0
-offset_right = 1924.0
-offset_bottom = 1080.0
-color = Color(0.564706, 0.619608, 0.866667, 1)
-
-[node name="Sky" type="ColorRect" parent="GameRoot"]
-visible = false
-show_behind_parent = true
-offset_left = 424.0
-offset_right = 1504.0
-offset_bottom = 1080.0
-color = Color(0.756863, 0.85098, 0.94902, 1)
-
-[node name="DummySky" type="ColorRect" parent="GameRoot"]
-show_behind_parent = true
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.756863, 0.85098, 0.94902, 1)
-
-[node name="CloudControl" type="Node2D" parent="GameRoot"]
-
-[node name="RandPosition" parent="GameRoot" instance=ExtResource("2_fpltr")]
-
-[node name="Marker2D" parent="GameRoot/RandPosition" index="0"]
-position = Vector2(221, 600)
-
-[node name="Marker2D3" parent="GameRoot/RandPosition" index="2"]
-position = Vector2(1692, 600)
-
-[node name="BulletHolder" type="Node2D" parent="GameRoot"]
-script = ExtResource("4_jpp3c")
-
-[node name="IndicatorHolder" type="Node2D" parent="GameRoot"]
-script = ExtResource("5_i6tk8")
-
-[node name="Player" parent="GameRoot" instance=ExtResource("11_mavoj")]
-z_index = 0
-position = Vector2(957, 157)
+[node name="GameRoot" parent="." instance=ExtResource("2_tcv1b")]
 
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -98,10 +72,26 @@ visible = false
 
 [node name="HubPause" parent="PauseCanvasLayer" instance=ExtResource("7_5w17u")]
 
-[connection signal="timeout" from="GameRoot/Info/GameTimer" to="GameRoot" method="_on_game_timer_timeout"]
-[connection signal="timeout" from="GameRoot/Info/MissileTimer" to="GameRoot" method="_on_missile_timer_timeout"]
-[connection signal="timeout" from="GameRoot/Info/JetTimer" to="GameRoot" method="_on_jet_timer_timeout"]
-[connection signal="timeout" from="GameRoot/Info/ObstacleTimer" to="GameRoot" method="_on_obstacle_timer_timeout"]
-[connection signal="timeout" from="GameRoot/Info/HorizontalTimer" to="GameRoot" method="_on_horizontal_timer_timeout"]
+[node name="GameOverCanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
 
-[editable path="GameRoot/RandPosition"]
+[node name="MenuGamOver" parent="GameOverCanvasLayer" instance=ExtResource("10_agj1h")]
+
+[node name="FlashCanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("11_tyc6j")
+
+[node name="ColorRect" type="ColorRect" parent="FlashCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlashCanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_lbn22")
+}
+
+[connection signal="animation_finished" from="FlashCanvasLayer/AnimationPlayer" to="FlashCanvasLayer" method="_on_animation_player_animation_finished"]

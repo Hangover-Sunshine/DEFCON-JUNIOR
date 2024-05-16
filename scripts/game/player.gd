@@ -162,13 +162,14 @@ func hit():
 		return
 	##
 	
+	curr_health -= 1
+	
 	if curr_health <= 0:
 		GlobalSignals.emit_signal("player_died")
 		# play player's death anims + sounds + particles
 		return
 	##
 	
-	curr_health -= 1
 	$PC_Skeleton.to_pain()
 	damaged_timer.start(TimeToNextDamage)
 ##

@@ -22,6 +22,7 @@ func _ready():
 func _on_back_button_pressed():
 	GlobalSettings.save_settings()
 	settings_to_main.emit()
+##
 
 func _on_full_check_toggled(toggled_on):
 	GlobalSettings.FullScreen = toggled_on
