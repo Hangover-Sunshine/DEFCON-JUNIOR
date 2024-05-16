@@ -46,9 +46,12 @@ var dash_multiplier:float = 1.5
 var shield_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_shield_cd:float
 var curr_shield_dur:float
+var shield_stack:int
+var max_shield_stack:int = 0
+@onready var shield = $ShieldArea/CollisionShape2D
 
 # Weapon Info =========
-var gun_status:UpgradeAvailability = UpgradeAvailability.READY
+var gun_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_weapon_fr:float = 0
 var curr_reload_rate:float = 0
 var curr_weapon_penetration:int
@@ -60,7 +63,6 @@ var curr_dash_amount:int
 var curr_dash_max:int = 2
 var curr_dash_cd:float
 var curr_dash_dur:float
-
 
 var play_area_size:Vector2
 
@@ -82,9 +84,11 @@ func _ready():
 ##
 
 func _process(_delta):
-	if Input.is_action_just_pressed("shield") and shield_status == UpgradeAvailability.READY:
+	if Input.is_action_just_pressed("shield") and shield_stack > 0:
 		shield_status = UpgradeAvailability.ACTIVE
+		shield_stack -= 1
 		shield_timer.start(curr_shield_dur)
+		shield.disabled = false
 	##
 	
 	if Input.is_action_pressed("fire") and gun_timer.is_stopped() and gun_status == UpgradeAvailability.READY:
@@ -171,11 +175,12 @@ func hit():
 
 func _on_shield_timer_timeout():
 	if shield_status == UpgradeAvailability.ACTIVE:
+		shield.disabled = true
 		shield_timer.start(curr_shield_cd)
 		shield_status = UpgradeAvailability.RECHARGING
 	else:
 		shield_status = UpgradeAvailability.READY
-	##
+	###
 ##
 
 func _on_shield_area_area_entered(area):
@@ -256,7 +261,29 @@ func _on_reload_timer_timeout():
 ##
 
 func apply_upgrade(upgrade:String, amount):
-	pass
+	match upgrade:
+		"dash":
+			pass
+		"dash_dur":
+			pass
+		"dash_cd":
+			pass
+		"shield":
+			pass
+		"shield_cd":
+			pass
+		"shield_dur":
+			pass
+		"gun":
+			pass
+		"gun_cd":
+			pass
+		"gun_spray":
+			pass
+		"gun_penetration":
+			pass
+		##
+	##
 ##
 
 func apply_weapon(new_weapon:WeaponResource):
