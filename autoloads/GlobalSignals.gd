@@ -10,6 +10,7 @@ signal scene_transition_done
 signal level_complete
 signal player_died
 signal reload_level
+signal bail_out
 
 signal jet_dead
 signal missile_dead

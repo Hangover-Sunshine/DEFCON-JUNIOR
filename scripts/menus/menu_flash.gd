@@ -27,10 +27,6 @@ func _on_animation_player_animation_finished(anim_name):
 	elif anim_name == "fade_to_black":
 		in_black = true
 	elif anim_name == "fade_out":
-		if done_fade_out == false:
-			done_fade_out = true
-		else:
-			done_fade_out = false
-		##
+		done_fade_out = true
 	##
 ##

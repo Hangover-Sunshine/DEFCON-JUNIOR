@@ -46,16 +46,15 @@ var dash_multiplier:float = 1.5
 var shield_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_shield_cd:float
 var curr_shield_dur:float
-var shield_stack:int
-var max_shield_stack:int = 0
 @onready var shield = $ShieldArea/CollisionShape2D
 
 # Weapon Info =========
 var gun_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_weapon_fr:float = 0
 var curr_reload_rate:float = 0
-var curr_weapon_penetration:int
+var curr_weapon_penetration:int = 0
 var curr_number_of_bullets:int
+var curr_mag_size_add:int = 0
 
 # Dash Info =========
 var dash_status:UpgradeAvailability = UpgradeAvailability.NOPE
@@ -67,26 +66,51 @@ var curr_dash_dur:float
 var play_area_size:Vector2
 
 func _ready():
-	curr_health = Health
-	
-	curr_shield_cd = ShieldCooldown
-	curr_shield_dur = ShieldDuration
-	
-	curr_weapon_fr = Weapon.FireRate
-	curr_weapon_penetration = WeaponPenetration
-	curr_number_of_bullets = Weapon.MagSize
-	
-	curr_dash_amount = DashStacks
-	curr_dash_cd = DashCooldown
-	curr_dash_dur = DashDuration
+	if FileAccess.file_exists("user://data.save"):
+		var file = FileAccess.open("user://data.save", FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var res = json.parse_string(json_string)
+		if res != OK:
+			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+			return
+		##
+		var data = json.get_data()
+		
+		curr_health = data["Health"]
+		
+		shield_status = UpgradeAvailability.READY if data["shield"]["has"] else UpgradeAvailability.NOPE
+		curr_shield_cd = data["shield"]["cd"]
+		curr_shield_dur = data["shield"]["dur"]
+		
+		gun_status = UpgradeAvailability.READY if data["gun"]["has"] else UpgradeAvailability.NOPE
+		curr_weapon_penetration = data["gun"]["pen"]
+		curr_mag_size_add = data["gun"]["mag"]
+		curr_number_of_bullets = data["gun"]["bullets"]
+		
+		dash_status = UpgradeAvailability.READY if data["dash"]["has"] else UpgradeAvailability.NOPE
+		curr_dash_max = data["dash"]["stack"]
+	else:
+		curr_health = Health
+		
+		curr_shield_cd = ShieldCooldown
+		curr_shield_dur = ShieldDuration
+		
+		curr_weapon_fr = Weapon.FireRate
+		curr_weapon_penetration = WeaponPenetration
+		curr_number_of_bullets = Weapon.MagSize
+		
+		curr_dash_amount = DashStacks
+		curr_dash_cd = DashCooldown
+		curr_dash_dur = DashDuration
+	##
 	
 	play_area_size = get_parent().get_play_area_x_limits()
 ##
 
 func _process(_delta):
-	if Input.is_action_just_pressed("shield") and shield_stack > 0:
+	if Input.is_action_just_pressed("shield") and shield_status == UpgradeAvailability.READY:
 		shield_status = UpgradeAvailability.ACTIVE
-		shield_stack -= 1
 		shield_timer.start(curr_shield_dur)
 		shield.disabled = false
 	##
@@ -250,10 +274,10 @@ func _on_damaged_timer_timeout():
 
 func _on_reload_timer_timeout():
 	if Weapon.ExpendAllToReload:
-		curr_number_of_bullets = Weapon.MagSize
+		curr_number_of_bullets = Weapon.MagSize + curr_mag_size_add
 	else:
 		curr_number_of_bullets += 1
-		if curr_number_of_bullets < Weapon.MagSize:
+		if curr_number_of_bullets < Weapon.MagSize + curr_mag_size_add:
 			reload_timer.start(Weapon.ReloadRate * (1 + curr_reload_rate))
 		##
 	##
@@ -261,37 +285,24 @@ func _on_reload_timer_timeout():
 	gun_status = UpgradeAvailability.READY
 ##
 
-func apply_upgrade(upgrade:String, amount):
-	match upgrade:
-		"dash":
-			pass
-		"dash_dur":
-			pass
-		"dash_cd":
-			pass
-		"shield":
-			pass
-		"shield_cd":
-			pass
-		"shield_dur":
-			pass
-		"gun":
-			pass
-		"gun_cd":
-			pass
-		"gun_spray":
-			pass
-		"gun_penetration":
-			pass
-		##
-	##
-##
-
-func apply_weapon(new_weapon:WeaponResource):
-	Weapon = new_weapon
-##
-
-func reset_character():
-	# TODO: reset all stats
-	pass
+func get_data():
+	var data = {}
+	data["health"] = Health
+	
+	data["shield"] = {}
+	data["shield"]["has"] = shield_status != UpgradeAvailability.NOPE
+	data["shield"]["dur"] = curr_shield_dur
+	data["shield"]["cd"] = curr_shield_cd
+	
+	data["gun"] = {}
+	data["gun"]["has"] = gun_status != UpgradeAvailability.NOPE
+	data["gun"]["pen"] = curr_weapon_penetration
+	data["gun"]["mag"] = curr_mag_size_add
+	data["gun"]["bullets"] = curr_number_of_bullets
+	
+	data["dash"] = {}
+	data["dash"]["has"] = dash_status != UpgradeAvailability.NOPE
+	data["dash"]["stack"] = curr_dash_max
+	
+	return JSON.stringify(data)
 ##

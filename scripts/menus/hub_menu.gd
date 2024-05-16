@@ -10,6 +10,12 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	handle_signals()
+	
+	# Delete our file
+	if FileAccess.file_exists("user://data.save"):
+		DirAccess.remove_absolute("user://data.save")
+	##
+##
 
 func _input(event):
 	if event.is_pressed() and menu_splash.visible == true:

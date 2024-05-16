@@ -54,7 +54,7 @@ func _ready():
 	GlobalSignals.connect("missile_dead", _missile_dead)
 	GlobalSignals.connect("hobstacle_dead", _hobstacle_dead)
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
-	load_level() # TODO: replace this
+	load_level()
 ##
 
 func _process(_delta):
@@ -69,14 +69,18 @@ func _process(_delta):
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 	
-	if game_timer.time_left < 20:
+	if game_timer.time_left < 40:
 		obstacle_timer.stop()
 	##
 	
-	if game_timer.time_left < 10:
+	if game_timer.time_left < 30:
 		missile_timer.stop()
 		jet_timer.stop()
 		horizontal_timer.stop()
+	##
+	
+	if game_timer.time_left < 25:
+		GlobalSettings.emit_signal("bail_out")
 	##
 ##
 
@@ -118,7 +122,7 @@ func _on_missile_timer_timeout():
 	
 	var missile = Levels[curr_level].generate_missile()
 	missile.target = player
-	add_child(missile)
+	$Enemies.add_child(missile)
 	rand_position.get_random_position(missile)
 	
 	if curr_missiles < max_missiles and missile_timer.is_stopped():
@@ -132,7 +136,7 @@ func _on_jet_timer_timeout():
 	
 	var jet = Levels[curr_level].generate_jet()
 	jet.player = player
-	add_child(jet)
+	$Enemies.add_child(jet)
 	
 	if curr_jets < max_jets and jet_timer.is_stopped():
 		jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
@@ -148,7 +152,7 @@ func _on_obstacle_timer_timeout():
 func _on_horizontal_timer_timeout():
 	var object = Levels[curr_level].generate_moving_obstacle()
 	
-	add_child(object)
+	$Enemies.add_child(object)
 	rand_position.get_random_horobj_start(object)
 	
 	if object.global_position.x > player.global_position.x:
@@ -177,6 +181,9 @@ func get_play_area_y_limits():
 	return Vector2(0, 1080)
 ##
 
-func reset_level():
-	pass
+func get_data():
+	var data = {}
+	data["level"] = curr_level
+	data["player"] = player.get_data()
+	return JSON.stringify(data)
 ##

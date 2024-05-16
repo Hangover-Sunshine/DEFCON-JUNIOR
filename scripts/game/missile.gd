@@ -34,7 +34,7 @@ func _ready():
 	
 	indicator.visible = false
 	
-	play_area_size = get_parent().get_play_area_limits()
+	play_area_size = get_parent().get_parent().get_play_area_limits()
 	play_area_size[0].x += 80
 	play_area_size[0].y += 80
 	play_area_size[1].x -= 100

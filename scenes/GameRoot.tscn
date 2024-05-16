@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://deaonojyom4gf"]
+[gd_scene load_steps=7 format=3 uid="uid://deaonojyom4gf"]
 
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_cw3ns"]
 [ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_fixhd"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="3_labr8"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="4_ub5l2"]
 [ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="5_e61t7"]
-[ext_resource type="Script" path="res://scripts/game/indicator_holder.gd" id="6_2rxd0"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="7_7no1s"]
 
 [node name="GameRoot" type="Node2D"]
@@ -78,9 +77,6 @@ position = Vector2(1692, 600)
 
 [node name="BulletHolder" type="Node2D" parent="."]
 script = ExtResource("5_e61t7")
-
-[node name="IndicatorHolder" type="Node2D" parent="."]
-script = ExtResource("6_2rxd0")
 
 [node name="Enemies" type="Node2D" parent="."]
 

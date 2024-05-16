@@ -4,10 +4,6 @@ const INDICATOR = preload("res://prefabs/systems/indicator.tscn")
 
 var missile_2_indicator:Dictionary = {}
 
-func _ready():
-	pass # Replace with function body.
-##
-
 func _show_indicator(missile:Missile):
 	if missile in missile_2_indicator.keys():
 		missile_2_indicator[missile].show_indicator()

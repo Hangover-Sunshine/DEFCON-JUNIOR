@@ -45,12 +45,16 @@ func reset():
 		$GameRoot.curr_level += 1
 	##
 	
-	game_over_canvas_layer.layer = 1
-	flash_canvas_layer.fade_in()
-	#game.load_level()
+	var json_dump = $GameRoot.get_data()
+	var save_file = FileAccess.open("user://data.save", FileAccess.WRITE)
+	if save_file == null:
+		printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")
+		return
+	##
+	save_file.store_string(json_dump)
 	
-	player_lost = false
-	player_won = false
+	get_tree().paused = false
+	GlobalSignals.emit_signal("load_scene", "GameScene")
 ##
 
 func _level_complete():
