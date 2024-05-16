@@ -319,14 +319,6 @@ _data = {
 "Right": SubResource("Animation_q1dtk")
 }
 
-[sub_resource type="Curve" id="Curve_1a7ie"]
-_data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_je38i"]
-offsets = PackedFloat32Array(0, 0.326667, 0.42, 0.526667, 0.64, 0.733333, 1)
-colors = PackedColorArray(1, 0.878431, 0.568627, 1, 1, 0.666667, 0.431373, 1, 1, 0.407843, 0.352941, 1, 0.866667, 0.215686, 0.270588, 1, 0.756863, 0.184314, 0.231373, 1, 0.262745, 0.117647, 0.4, 1, 0.262745, 0.117647, 0.4, 0)
-
 [sub_resource type="Animation" id="Animation_uhe2e"]
 resource_name = "Die"
 step = 0.05
@@ -412,6 +404,14 @@ _data = {
 "RESET": SubResource("Animation_6tv8f")
 }
 
+[sub_resource type="Curve" id="Curve_1a7ie"]
+_data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_je38i"]
+offsets = PackedFloat32Array(0, 0.326667, 0.42, 0.526667, 0.64, 0.733333, 1)
+colors = PackedColorArray(1, 0.878431, 0.568627, 1, 1, 0.666667, 0.431373, 1, 1, 0.407843, 0.352941, 1, 0.866667, 0.215686, 0.270588, 1, 0.756863, 0.184314, 0.231373, 1, 0.262745, 0.117647, 0.4, 1, 0.262745, 0.117647, 0.4, 0)
+
 [node name="PC_Skeleton" type="Node2D"]
 script = ExtResource("1_nm0ph")
 
@@ -463,6 +463,11 @@ libraries = {
 [node name="FaceTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_suqcb")
+}
+
 [node name="Explosion_Fire" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 50
@@ -479,10 +484,5 @@ scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_1a7ie")
 color_ramp = SubResource("Gradient_je38i")
-
-[node name="AP" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_suqcb")
-}
 
 [connection signal="timeout" from="FaceTimer" to="." method="_on_face_timer_timeout"]
