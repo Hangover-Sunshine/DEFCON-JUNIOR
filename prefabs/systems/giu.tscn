@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://btqw03tb71iu3"]
+[gd_scene load_steps=12 format=3 uid="uid://btqw03tb71iu3"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_4ac6w"]
-[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_6c2bl"]
 [ext_resource type="Texture2D" uid="uid://dt1fkl0xcww85" path="res://assets/ui/giu/GIU_Radiation.png" id="2_j440x"]
 [ext_resource type="Texture2D" uid="uid://buefmwvuqfjga" path="res://assets/temporary/Temp_GIU_Tracker.png" id="3_njxg2"]
+[ext_resource type="Texture2D" uid="uid://bhdar578l0kl1" path="res://assets/ui/giu/GIU_Spitfire.png" id="3_p8826"]
+[ext_resource type="Texture2D" uid="uid://pwnxli1qwvb8" path="res://assets/ui/giu/GIU_Spitfire_Cooldown.png" id="4_lthma"]
+[ext_resource type="Texture2D" uid="uid://b8ktnj21oow8s" path="res://assets/ui/giu/GIU_Bubble.png" id="5_1ud2e"]
+[ext_resource type="Texture2D" uid="uid://bqbmn341obg0r" path="res://assets/ui/giu/GIU_Boost.png" id="6_2viho"]
+[ext_resource type="Texture2D" uid="uid://dwxbhrd4oi521" path="res://assets/ui/giu/GIU_Bubble_Cooldown.png" id="6_a3115"]
+[ext_resource type="Texture2D" uid="uid://bcyslbfvf58e6" path="res://assets/ui/giu/GIU_Boost_Cooldown.png" id="8_pojcs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy4s7"]
 corner_radius_top_left = 25
@@ -78,29 +83,45 @@ theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
 text = "SPACE"
 
-[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
-modulate = Color(0, 0, 0, 1)
+[node name="Spitfire_Ability" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
 layout_mode = 2
-texture = ExtResource("2_6c2bl")
+texture = ExtResource("3_p8826")
 stretch_mode = 2
 
-[node name="Shield_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+[node name="Spitfire_Cooldown" type="TextureProgressBar" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox/Spitfire_Ability"]
+z_index = 1
+layout_mode = 2
+offset_right = 96.0
+offset_bottom = 96.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("4_lthma")
+
+[node name="Bubble_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 2
 
-[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
+[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.772549, 0.772549, 0.772549, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
 text = "SHIFT"
 
-[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Shield_HBox"]
-modulate = Color(0, 0, 0, 1)
+[node name="Bubble_Ability" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
 layout_mode = 2
-texture = ExtResource("2_6c2bl")
+texture = ExtResource("5_1ud2e")
 stretch_mode = 2
+
+[node name="Bubble_Cooldown" type="TextureProgressBar" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox/Bubble_Ability"]
+z_index = 1
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("6_a3115")
 
 [node name="Boost_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
 layout_mode = 2
@@ -114,11 +135,19 @@ theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
 text = "Q/Z"
 
-[node name="TextureRect" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
-modulate = Color(0, 0, 0, 1)
+[node name="Boost_Ability" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
 layout_mode = 2
-texture = ExtResource("2_6c2bl")
+texture = ExtResource("6_2viho")
 stretch_mode = 2
+
+[node name="Boost_Cooldown" type="TextureProgressBar" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox/Boost_Ability"]
+z_index = 1
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("8_pojcs")
 
 [node name="Game_MC" type="MarginContainer" parent="GIU_MC/GIU_HBox"]
 custom_minimum_size = Vector2(1080, 1080)
