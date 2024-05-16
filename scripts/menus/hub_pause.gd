@@ -15,7 +15,7 @@ func handle_signals():
 	GlobalSignals.connect("scene_loaded", to_free)
 
 func to_game():
-	print("The game is unpaused.")
+	get_parent().get_parent().unpause_pause()
 
 func to_pause():
 	animplayer.play("ToPause")

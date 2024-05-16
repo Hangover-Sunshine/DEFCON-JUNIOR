@@ -16,6 +16,10 @@ run/main_scene="res://scenes/MainScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://_SYSTEM/HS_DesktopIcon.png"
 
+[audio]
+
+buses/default_bus_layout="res://assets/AudioBusLayout.tres"
+
 [autoload]
 
 GlobalSignals="*res://autoloads/GlobalSignals.gd"
