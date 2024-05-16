@@ -13,8 +13,8 @@ corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
-expand_margin_left = 25.0
-expand_margin_right = 25.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
 
 [sub_resource type="Theme" id="Theme_g1afe"]
 VSlider/icons/grabber_disabled = ExtResource("7_0sfqf")
@@ -57,9 +57,9 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(420, 1080)
 layout_mode = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 60
 
 [node name="Left_VBox" type="VBoxContainer" parent="GIU/GIU_MC/GIU_HBox/Left_MC"]
 layout_mode = 2
@@ -158,7 +158,6 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="VSlider" type="VSlider" parent="GIU/GIU_MC/GIU_HBox/Right_MC/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = SubResource("Theme_g1afe")
 value = 100.0
