@@ -50,12 +50,15 @@ func _input(event):
 ##
 
 func _level_complete():
+	get_tree().paused = true
 	$GameRoot.curr_level += 1
+	flash_canvas_layer.visible = true
+	flash_canvas_layer.flash()
+	player_won = true
 	save_game()
 ##
 
 func _player_died():
-	print("here!")
 	get_tree().paused = true
 	flash_canvas_layer.visible = true
 	flash_canvas_layer.flash()
