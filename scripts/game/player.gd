@@ -58,8 +58,8 @@ var curr_dash_max:int = 1
 var play_area_size:Vector2
 
 func _ready():
-	if FileAccess.file_exists("user://data.save"):
-		var file = FileAccess.open("user://data.save", FileAccess.READ)
+	if FileAccess.file_exists("user://player.save"):
+		var file = FileAccess.open("user://player.save", FileAccess.READ)
 		var json_string = file.get_as_text()
 		var json = JSON.new()
 		var res = json.parse(json_string)
@@ -67,13 +67,7 @@ func _ready():
 			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
 			return
 		##
-		var data = json.get_data().player
-		res = json.parse(data)
-		if res != OK:
-			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
-			return
-		##
-		data = json.get_data()
+		var data = json.get_data()
 		
 		curr_health = data.health
 		
@@ -96,7 +90,7 @@ func _ready():
 		curr_shield_dur = 0
 		curr_shield_cd = 0
 		
-		curr_weapon_penetration = 0
+		curr_weapon_penetration = 1
 		max_mag_size = 0
 		curr_mag_size = max_mag_size
 		curr_number_of_bullets = 0
@@ -110,7 +104,6 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("shield") and shield_status == UpgradeAvailability.READY:
-		print("here")
 		shield_status = UpgradeAvailability.ACTIVE
 		shield_timer.start(curr_shield_dur)
 		shield.disabled = false
@@ -202,7 +195,6 @@ func hit():
 
 func _on_shield_timer_timeout():
 	if shield_status == UpgradeAvailability.ACTIVE:
-		print('shield down')
 		shield.disabled = true
 		shield_timer.start(curr_shield_cd)
 		shield_status = UpgradeAvailability.RECHARGING
@@ -293,5 +285,5 @@ func get_data():
 	data["dash"]["has"] = dash_status != UpgradeAvailability.NOPE
 	data["dash"]["stack"] = curr_dash_max
 	
-	return JSON.stringify(data)
+	return data
 ##

@@ -1,6 +1,7 @@
-[gd_scene load_steps=54 format=3 uid="uid://cjxnrxc6wrgrd"]
+[gd_scene load_steps=55 format=3 uid="uid://cmqvg1yjso6rn"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_fik03"]
+[ext_resource type="Script" path="res://scripts/menus/menu_cards.gd" id="1_m3354"]
 [ext_resource type="Texture2D" uid="uid://d2x6o0q1lagp8" path="res://assets/ui/cards/Card_Boost.png" id="2_64m0k"]
 [ext_resource type="Texture2D" uid="uid://dk4numgl1jkdp" path="res://assets/ui/cards/Card_Boost_Jetfuel.png" id="3_gcqrq"]
 [ext_resource type="Texture2D" uid="uid://d3cahpp0u236q" path="res://assets/ui/cards/Card_Bubble.png" id="4_61jxa"]
@@ -253,6 +254,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_m3354")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -301,10 +303,12 @@ theme_override_constants/separation = 45
 alignment = 1
 
 [node name="Card_Boost" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_ujgxb")
 
 [node name="Card_Boost_Jetfuel" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_2oqir")
 
@@ -352,3 +356,14 @@ theme = SubResource("Theme_2sh0c")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Boost" to="." method="_on_card_boost_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Boost_Jetfuel" to="." method="_on_card_boost_jetfuel_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble" to="." method="_on_card_bubble_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble_Airtime" to="." method="_on_card_bubble_airtime_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble_Gurgle" to="." method="_on_card_bubble_gurgle_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Radiation" to="." method="_on_card_radiation_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire" to="." method="_on_card_spitfire_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Piercing" to="." method="_on_card_spitfire_piercing_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Spew" to="." method="_on_card_spitfire_spew_pressed"]
+[connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Upchuck" to="." method="_on_card_spitfire_upchuck_pressed"]

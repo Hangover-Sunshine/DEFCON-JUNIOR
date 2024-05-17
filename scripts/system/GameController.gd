@@ -185,6 +185,9 @@ func get_play_area_y_limits():
 func get_data():
 	var data = {}
 	data["level"] = curr_level
-	data["player"] = player.get_data()
 	return JSON.stringify(data)
+##
+
+func get_player_data():
+	return JSON.stringify(player.get_data())
 ##

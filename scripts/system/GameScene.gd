@@ -14,8 +14,8 @@ func _ready():
 	GlobalSignals.connect("level_complete", _level_complete)
 	GlobalSignals.connect("player_died", _player_died)
 	
-	if FileAccess.file_exists("user://data.save"):
-		var file = FileAccess.open("user://data.save", FileAccess.READ)
+	if FileAccess.file_exists("user://level.save"):
+		var file = FileAccess.open("user://level.save", FileAccess.READ)
 		var json_string = file.get_as_text()
 		var json = JSON.new()
 		var res = json.parse(json_string)
@@ -36,7 +36,7 @@ func _process(_delta):
 			GlobalSignals.emit_signal("load_scene", "menus/menu_gameover")
 		##
 		if player_won:
-			pass
+			GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
 		##
 		next_scene = true
 	##
@@ -65,7 +65,15 @@ func _player_died():
 
 func save_game():
 	var json_dump = $GameRoot.get_data()
-	var save_file = FileAccess.open("user://data.save", FileAccess.WRITE)
+	var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
+	if save_file == null:
+		printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")
+		return
+	##
+	save_file.store_string(json_dump)
+	
+	json_dump = $GameRoot.get_player_data()
+	save_file = FileAccess.open("user://player.save", FileAccess.WRITE)
 	if save_file == null:
 		printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")
 		return
