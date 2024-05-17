@@ -55,6 +55,7 @@ func _ready():
 	GlobalSignals.connect("hobstacle_dead", _hobstacle_dead)
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
 	$CanvasLayer/GIU.player = player
+	$CanvasLayer/GIU.level_timer = game_timer
 ##
 
 func _process(_delta):

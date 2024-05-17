@@ -4,8 +4,10 @@ extends Control
 @onready var spitfire_cooldown = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox/Spitfire_Ability/Spitfire_Cooldown
 @onready var bubble_cooldown = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox/Bubble_Ability/Bubble_Cooldown
 @onready var boost_cooldown = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox/Boost_Ability/Boost_Cooldown
+@onready var v_slider = $GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VSlider
 
 var player:Player
+var level_timer:Timer
 
 func _process(delta):
 	if player.gun_status == player.UpgradeAvailability.RECHARGING:
@@ -27,4 +29,5 @@ func _process(delta):
 	##
 	
 	health_label.text = str(player.curr_health)
+	v_slider.value = 100 * (level_timer.time_left / level_timer.wait_time)
 ##

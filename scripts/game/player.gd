@@ -38,7 +38,7 @@ const PROJECTILE = preload("res://prefabs/entities/projectile.tscn")
 var curr_health:int
 
 # Shield Info =========
-var shield_status:UpgradeAvailability = UpgradeAvailability.READY
+var shield_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_shield_cd:float
 var curr_shield_dur:float
 @onready var shield = $ShieldArea/CollisionShape2D
@@ -93,8 +93,8 @@ func _ready():
 	else:
 		curr_health = Health
 		
-		curr_shield_dur = 2
-		curr_shield_cd = 20
+		curr_shield_dur = 0
+		curr_shield_cd = 0
 		
 		curr_weapon_penetration = 0
 		max_mag_size = 0
