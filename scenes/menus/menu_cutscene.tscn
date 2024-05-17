@@ -1,6 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=11 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
+[ext_resource type="Texture2D" uid="uid://t8l2gbk31ws5" path="res://assets/ui/void/Void_Bottom_Lip.png" id="2_kh1ue"]
+[ext_resource type="Texture2D" uid="uid://bo6ddi7i15s3b" path="res://assets/ui/void/Void_Right_Eye.png" id="3_t36hl"]
+[ext_resource type="Texture2D" uid="uid://c4rxgpdmcsj8o" path="res://assets/ui/void/Void_Left_Eye.png" id="3_xlmdt"]
+[ext_resource type="Texture2D" uid="uid://ib6tc5tlclmj" path="res://assets/ui/void/Void_Noise.png" id="4_50qe7"]
+[ext_resource type="Texture2D" uid="uid://cxvftbyu85qu" path="res://assets/ui/void/Void_Top_Lip.png" id="6_ftxgj"]
+
+[sub_resource type="Gradient" id="Gradient_8h1t4"]
+colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
+
+[sub_resource type="Animation" id="Animation_xj0r5"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Void:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(980, 528), Vector2(980, 510), Vector2(980, 528), Vector2(980, 510), Vector2(980, 528)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Void:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0174533, 0.0, 0.0174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_flu62"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Void:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(980, 528)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Void:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_er0h0"]
+_data = {
+"Idle": SubResource("Animation_xj0r5"),
+"RESET": SubResource("Animation_flu62")
+}
 
 [node name="MenuCutscene" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -10,17 +80,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
 position = Vector2(956, -74)
-amount = 100
+amount = 500
 lifetime = 12.5
 preprocess = 12.5
 texture = ExtResource("1_domes")
@@ -29,37 +103,42 @@ emission_rect_extents = Vector2(1080, 0)
 gravity = Vector2(0, 20)
 angular_velocity_min = 50.0
 angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
 angle_min = -90.0
 angle_max = 90.0
 scale_amount_min = 0.5
-scale_amount_max = 1.25
-color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_8h1t4")
+metadata/_edit_lock_ = true
 
-[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
-position = Vector2(956, -74)
-amount = 100
-lifetime = 12.5
-preprocess = 12.5
-texture = ExtResource("1_domes")
-emission_shape = 3
-emission_rect_extents = Vector2(1080, 0)
-gravity = Vector2(0, 20)
-angular_velocity_min = 50.0
-angular_velocity_max = 50.0
-angle_min = -90.0
-angle_max = 90.0
-scale_amount_min = 0.5
-scale_amount_max = 1.25
-color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+[node name="Void" type="Node2D" parent="."]
+position = Vector2(980, 528)
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2(956, -74)
-amount = 100
-lifetime = 12.5
-preprocess = 12.5
-texture = ExtResource("1_domes")
-emission_shape = 3
-emission_rect_extents = Vector2(1080, 0)
-gravity = Vector2(0, 20)
-scale_amount_min = 0.5
-color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+[node name="Left_Eye" type="Sprite2D" parent="Void"]
+position = Vector2(-207, -138)
+texture = ExtResource("3_xlmdt")
+hframes = 2
+
+[node name="RightEye" type="Sprite2D" parent="Void"]
+position = Vector2(185, -136)
+texture = ExtResource("3_t36hl")
+
+[node name="Nose" type="Sprite2D" parent="Void"]
+position = Vector2(10, -23)
+texture = ExtResource("4_50qe7")
+
+[node name="Bottom_Lip" type="Sprite2D" parent="Void"]
+position = Vector2(-6, 210)
+texture = ExtResource("2_kh1ue")
+
+[node name="Top_Lip" type="Sprite2D" parent="Void"]
+position = Vector2(-11.9999, 115)
+rotation = 0.0436332
+texture = ExtResource("6_ftxgj")
+
+[node name="AP_Void_Idle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_er0h0")
+}
+autoplay = "Idle"
