@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dny78qniqp7xr"]
+[gd_scene load_steps=28 format=3 uid="uid://dny78qniqp7xr"]
 
 [ext_resource type="Script" path="res://prefabs/art/pc_skeleton.gd" id="1_nm0ph"]
 [ext_resource type="Texture2D" uid="uid://cmf8vvbammk3w" path="res://assets/sprites/player/PC_Body.png" id="1_wubup"]
@@ -7,44 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bllod6ib3gxpu" path="res://assets/sprites/player/PC_Brows.png" id="4_p4fwh"]
 [ext_resource type="Texture2D" uid="uid://b7smlkhdccufi" path="res://assets/sprites/player/PC_Dimples.png" id="5_onoce"]
 [ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="7_4hcyb"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="8_8el7x"]
+[ext_resource type="Gradient" uid="uid://dyyq3wx5wedew" path="res://assets/graphs/fx_explode_fire.tres" id="8_m3j2v"]
 
-[sub_resource type="Animation" id="Animation_rj6c1"]
-resource_name = "Fly"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Nuke/Body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
-}
+[sub_resource type="Curve" id="Curve_i316f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Animation" id="Animation_uax2g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Nuke/Body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvmd3"]
-_data = {
-"Fly": SubResource("Animation_rj6c1"),
-"RESET": SubResource("Animation_uax2g")
-}
+[sub_resource type="Gradient" id="Gradient_n5w12"]
+colors = PackedColorArray(1, 1, 1, 1, 0.772549, 0.772549, 0.772549, 1)
 
 [sub_resource type="Animation" id="Animation_p8o8r"]
 resource_name = "Happy"
@@ -358,6 +329,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Nuke/Body/Trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_6tv8f"]
 length = 0.001
@@ -397,10 +380,178 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Nuke/Body/Trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Nuke/Body:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Nuke/Body/Trail:color_ramp")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_n5w12")]
+}
+
+[sub_resource type="Animation" id="Animation_61x5q"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nuke:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Nuke:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Nuke/Body/Trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Nuke/Body/Trail:color_ramp")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Gradient_n5w12")]
+}
+
+[sub_resource type="Animation" id="Animation_y8vqa"]
+resource_name = "Boost"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0, -0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nuke:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Nuke:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Nuke/Body/Trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Nuke/Body/Trail:color_ramp")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_m3j2v")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_suqcb"]
 _data = {
+"Boost": SubResource("Animation_y8vqa"),
 "Die": SubResource("Animation_uhe2e"),
+"Idle": SubResource("Animation_61x5q"),
 "RESET": SubResource("Animation_6tv8f")
 }
 
@@ -440,12 +591,22 @@ texture = ExtResource("4_p4fwh")
 position = Vector2(-1, 53)
 texture = ExtResource("5_onoce")
 
-[node name="AP_Idle" type="AnimationPlayer" parent="Nuke"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_xvmd3")
-}
-autoplay = "Fly"
+[node name="Trail" type="CPUParticles2D" parent="Nuke/Body"]
+show_behind_parent = true
+position = Vector2(0, -64)
+rotation = -1.5708
+amount = 150
+texture = ExtResource("8_8el7x")
+emission_shape = 3
+emission_rect_extents = Vector2(1, -20)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.15
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_i316f")
+color_ramp = SubResource("Gradient_n5w12")
 
 [node name="AP_Face" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Nuke")
@@ -467,6 +628,7 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_suqcb")
 }
+autoplay = "Boost"
 
 [node name="Explosion_Fire" type="CPUParticles2D" parent="."]
 emitting = false

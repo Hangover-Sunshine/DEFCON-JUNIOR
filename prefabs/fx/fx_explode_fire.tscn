@@ -1,14 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch77gyo6ll8sr"]
 
 [ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="1_nboo7"]
+[ext_resource type="Gradient" uid="uid://dyyq3wx5wedew" path="res://assets/graphs/fx_explode_fire.tres" id="2_t47km"]
 
 [sub_resource type="Curve" id="Curve_n1e1n"]
 _data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_7hvvp"]
-offsets = PackedFloat32Array(0, 0.326667, 0.42, 0.526667, 0.64, 0.733333, 1)
-colors = PackedColorArray(1, 0.878431, 0.568627, 1, 1, 0.666667, 0.431373, 1, 1, 0.407843, 0.352941, 1, 0.866667, 0.215686, 0.270588, 1, 0.756863, 0.184314, 0.231373, 1, 0.262745, 0.117647, 0.4, 1, 0.262745, 0.117647, 0.4, 0)
 
 [node name="FX_Explode_Fire" type="Node2D"]
 
@@ -27,4 +24,4 @@ angle_max = 90.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_n1e1n")
-color_ramp = SubResource("Gradient_7hvvp")
+color_ramp = ExtResource("2_t47km")
