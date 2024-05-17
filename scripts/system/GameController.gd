@@ -54,7 +54,6 @@ func _ready():
 	GlobalSignals.connect("missile_dead", _missile_dead)
 	GlobalSignals.connect("hobstacle_dead", _hobstacle_dead)
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
-	load_level()
 ##
 
 func _process(_delta):

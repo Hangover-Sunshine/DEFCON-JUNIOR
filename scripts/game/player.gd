@@ -62,14 +62,20 @@ func _ready():
 		var file = FileAccess.open("user://data.save", FileAccess.READ)
 		var json_string = file.get_as_text()
 		var json = JSON.new()
-		var res = json.parse_string(json_string)
+		var res = json.parse(json_string)
 		if res != OK:
 			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
 			return
 		##
-		var data = json.get_data()
+		var data = json.get_data().player
+		res = json.parse(data)
+		if res != OK:
+			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+			return
+		##
+		data = json.get_data()
 		
-		curr_health = data["Health"]
+		curr_health = data.health
 		
 		shield_status = UpgradeAvailability.READY if data["shield"]["has"] else UpgradeAvailability.NOPE
 		curr_shield_cd = data["shield"]["cd"]
