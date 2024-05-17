@@ -5,6 +5,7 @@ extends Node2D
 
 var player_lost:bool = false
 var player_won:bool = false
+var next_scene:bool = false
 
 var curr_level:int = 0
 
@@ -12,7 +13,6 @@ func _ready():
 	GlobalSignals.connect("scene_loaded", to_free)
 	GlobalSignals.connect("level_complete", _level_complete)
 	GlobalSignals.connect("player_died", _player_died)
-	GlobalSignals.connect("reload_level", reset)
 	
 	if FileAccess.file_exists("user://data.save"):
 		var file = FileAccess.open("user://data.save", FileAccess.READ)
@@ -30,20 +30,23 @@ func _ready():
 	$GameRoot.load_level()
 ##
 
+func _process(_delta):
+	if flash_canvas_layer.flashed and next_scene == false:
+		if player_lost:
+			GlobalSignals.emit_signal("load_scene", "menus/menu_gameover")
+		##
+		if player_won:
+			pass
+		##
+		next_scene = true
+	##
+##
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		unpause_pause()
 		$PauseCanvasLayer/HubPause.to_pause()
 	##
-##
-
-func reset():
-	if player_won:
-		$GameRoot.curr_level += 1
-	##
-	
-	get_tree().paused = false
-	GlobalSignals.emit_signal("load_scene", "GameScene")
 ##
 
 func _level_complete():
@@ -52,12 +55,12 @@ func _level_complete():
 ##
 
 func _player_died():
+	print("here!")
 	get_tree().paused = true
 	flash_canvas_layer.visible = true
 	flash_canvas_layer.flash()
 	player_lost = true
 	save_game()
-	GlobalSignals.emit_signal("load_scene", "menus/menu_gameover")
 ##
 
 func save_game():

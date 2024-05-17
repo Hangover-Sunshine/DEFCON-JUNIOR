@@ -1,40 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=7 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="PackedScene" uid="uid://deaonojyom4gf" path="res://scenes/GameRoot.tscn" id="2_tcv1b"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
 [ext_resource type="Script" path="res://scripts/menus/menu_flash.gd" id="11_tyc6j"]
-
-[sub_resource type="Animation" id="Animation_ddj0g"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2mgru"]
-resource_name = "fade_to_black"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 20),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_81id1"]
 resource_name = "flash"
@@ -46,16 +15,14 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 3),
-"transitions": PackedFloat32Array(1, 0.0824692, 0.0824692),
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 0.0824692, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lbn22"]
 _data = {
-"fade_out": SubResource("Animation_ddj0g"),
-"fade_to_black": SubResource("Animation_2mgru"),
 "flash": SubResource("Animation_81id1")
 }
 
@@ -67,12 +34,14 @@ script = ExtResource("1_4pqr6")
 
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
+layer = 3
 visible = false
 
 [node name="HubPause" parent="PauseCanvasLayer" instance=ExtResource("7_5w17u")]
 
 [node name="FlashCanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
+visible = false
 script = ExtResource("11_tyc6j")
 
 [node name="ColorRect" type="ColorRect" parent="FlashCanvasLayer"]
