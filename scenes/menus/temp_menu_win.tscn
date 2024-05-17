@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c443ym0imfa1v"]
 
-[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_iudh1"]
-[ext_resource type="Texture2D" uid="uid://b6vpewiqnhqjo" path="res://assets/temporary/Image Template.png" id="2_wi7ul"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_f0g13"]
+[ext_resource type="Texture2D" uid="uid://b6vpewiqnhqjo" path="res://assets/temporary/Image Template.png" id="2_1wl7a"]
 
 [sub_resource type="Animation" id="Animation_ps85c"]
 resource_name = "Flash"
@@ -69,42 +69,42 @@ theme_override_constants/separation = -10
 
 [node name="Header1_Label" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "THIS IS THE FIRST SENTENCE."
 horizontal_alignment = 1
 
 [node name="Header1_Label2" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "THIS IS THE SECOND SENTENCE."
 horizontal_alignment = 1
 
 [node name="Header1_Label3" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "THIS IS THE THIRD SENTENCE."
 horizontal_alignment = 1
 
 [node name="Header1_Label4" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "THIS IS THE FORTH SENTENCE."
 horizontal_alignment = 1
 
 [node name="Header1_Label5" type="Label" parent="Win_MC/Quote_VBox/Header_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "THIS IS THE FIFTH SENTENCE."
 horizontal_alignment = 1
 
 [node name="Press_Label" type="Label" parent="Win_MC/Quote_VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "Press ANY BUTTON to CONTINUE"
 horizontal_alignment = 1
@@ -122,25 +122,25 @@ alignment = 1
 
 [node name="Header1_Label" type="Label" parent="Win_MC/Message_VBox2/Header_VBox/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 150
 text = "#"
 horizontal_alignment = 1
 
 [node name="Header1_Label2" type="Label" parent="Win_MC/Message_VBox2/Header_VBox/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 150
 text = "/7"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Win_MC/Message_VBox2/Header_VBox"]
 layout_mode = 2
-texture = ExtResource("2_wi7ul")
+texture = ExtResource("2_1wl7a")
 
 [node name="Press_Label" type="Label" parent="Win_MC/Message_VBox2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_iudh1")
+theme_override_fonts/font = ExtResource("1_f0g13")
 theme_override_font_sizes/font_size = 50
 text = "Press ANY BUTTON to CONTINUE"
 horizontal_alignment = 1

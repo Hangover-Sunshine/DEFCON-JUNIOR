@@ -98,32 +98,6 @@ step = 0.01
 fill_mode = 5
 texture_progress = ExtResource("4_lthma")
 
-[node name="Bubble_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
-layout_mode = 2
-theme_override_constants/separation = 15
-alignment = 2
-
-[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.360784, 0.364706, 0.254902, 1)
-theme_override_fonts/font = ExtResource("1_4ac6w")
-theme_override_font_sizes/font_size = 50
-text = "SHIFT"
-
-[node name="Bubble_Ability" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
-layout_mode = 2
-texture = ExtResource("5_1ud2e")
-stretch_mode = 2
-
-[node name="Bubble_Cooldown" type="TextureProgressBar" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox/Bubble_Ability"]
-z_index = 1
-layout_mode = 0
-offset_right = 96.0
-offset_bottom = 96.0
-step = 0.01
-fill_mode = 5
-texture_progress = ExtResource("6_a3115")
-
 [node name="Boost_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
 layout_mode = 2
 theme_override_constants/separation = 15
@@ -134,7 +108,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.360784, 0.364706, 0.254902, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
-text = "Q/Z"
+text = "SHIFT"
 
 [node name="Boost_Ability" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
 layout_mode = 2
@@ -149,6 +123,32 @@ offset_bottom = 96.0
 step = 0.01
 fill_mode = 5
 texture_progress = ExtResource("8_pojcs")
+
+[node name="Bubble_HBox" type="HBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.360784, 0.364706, 0.254902, 1)
+theme_override_fonts/font = ExtResource("1_4ac6w")
+theme_override_font_sizes/font_size = 50
+text = "Q / Z"
+
+[node name="Bubble_Ability" type="TextureRect" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
+layout_mode = 2
+texture = ExtResource("5_1ud2e")
+stretch_mode = 2
+
+[node name="Bubble_Cooldown" type="TextureProgressBar" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox/Bubble_Ability"]
+z_index = 1
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+step = 0.01
+fill_mode = 5
+texture_progress = ExtResource("6_a3115")
 
 [node name="Game_MC" type="MarginContainer" parent="GIU_MC/GIU_HBox"]
 custom_minimum_size = Vector2(1080, 1080)
