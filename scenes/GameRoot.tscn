@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://deaonojyom4gf"]
+[gd_scene load_steps=8 format=3 uid="uid://deaonojyom4gf"]
 
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_cw3ns"]
 [ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_fixhd"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="3_labr8"]
+[ext_resource type="PackedScene" uid="uid://btqw03tb71iu3" path="res://prefabs/systems/giu.tscn" id="4_16ywq"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="4_ub5l2"]
 [ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="5_e61t7"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="7_7no1s"]
@@ -64,6 +65,10 @@ show_behind_parent = true
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GIU" parent="CanvasLayer" instance=ExtResource("4_16ywq")]
 
 [node name="CloudControl" type="Node2D" parent="."]
 

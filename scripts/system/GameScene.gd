@@ -9,7 +9,6 @@ var player_won:bool = false
 var curr_level:int = 0
 
 func _ready():
-	print('entered')
 	GlobalSignals.connect("scene_loaded", to_free)
 	GlobalSignals.connect("level_complete", _level_complete)
 	GlobalSignals.connect("player_died", _player_died)
@@ -29,19 +28,6 @@ func _ready():
 	
 	$GameRoot.curr_level = curr_level
 	$GameRoot.load_level()
-##
-
-func _process(_delta):
-	#if player_lost:
-		#if flash_canvas_layer.in_black and game_over_canvas_layer.visible == false:
-			#game_over_canvas_layer.visible = true
-			#flash_canvas_layer.fade_out()
-		###
-		#if flash_canvas_layer.done_fade_out:
-			#game_over_canvas_layer.layer = 2
-		##
-	##
-	pass
 ##
 
 func _input(event):
@@ -71,7 +57,6 @@ func _player_died():
 	flash_canvas_layer.flash()
 	player_lost = true
 	save_game()
-	print("here")
 	GlobalSignals.emit_signal("load_scene", "menus/menu_gameover")
 ##
 
