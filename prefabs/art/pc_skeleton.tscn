@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cmf8vvbammk3w" path="res://assets/sprites/player/PC_Body.png" id="1_wubup"]
 [ext_resource type="Texture2D" uid="uid://cgbags4oc612c" path="res://assets/sprites/player/PC_Mouth.png" id="2_rmai2"]
 [ext_resource type="Texture2D" uid="uid://c82bx5qto0ol1" path="res://assets/sprites/player/PC_Eyes.png" id="3_l5tgn"]
-[ext_resource type="Texture2D" uid="uid://c83ruwr1fy67x" path="res://assets/particle/PC_Trail.png" id="3_vb1ev"]
 [ext_resource type="Texture2D" uid="uid://bllod6ib3gxpu" path="res://assets/sprites/player/PC_Brows.png" id="4_p4fwh"]
 [ext_resource type="Texture2D" uid="uid://b7smlkhdccufi" path="res://assets/sprites/player/PC_Dimples.png" id="5_onoce"]
 [ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="7_4hcyb"]
@@ -12,12 +11,43 @@
 [ext_resource type="Gradient" uid="uid://dyyq3wx5wedew" path="res://assets/graphs/fx_explode_fire.tres" id="8_m3j2v"]
 [ext_resource type="PackedScene" uid="uid://b6sq7xlovcr1b" path="res://prefabs/entities/shield.tscn" id="11_uip6a"]
 
-[sub_resource type="Curve" id="Curve_i316f"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Animation" id="Animation_rj6c1"]
+resource_name = "Fly"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+}
 
-[sub_resource type="Gradient" id="Gradient_n5w12"]
-colors = PackedColorArray(1, 1, 1, 1, 0.772549, 0.772549, 0.772549, 1)
+[sub_resource type="Animation" id="Animation_uax2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvmd3"]
+_data = {
+"Fly": SubResource("Animation_rj6c1"),
+"RESET": SubResource("Animation_uax2g")
+}
 
 [sub_resource type="Animation" id="Animation_p8o8r"]
 resource_name = "Happy"
@@ -420,30 +450,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Nuke/Body/Trail:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Nuke/Body/Outline:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_61x5q"]
 resource_name = "Idle"
@@ -623,9 +629,7 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_suqcb"]
 _data = {
-"Boost": SubResource("Animation_y8vqa"),
 "Die": SubResource("Animation_uhe2e"),
-"Idle": SubResource("Animation_61x5q"),
 "RESET": SubResource("Animation_6tv8f")
 }
 
@@ -644,12 +648,6 @@ script = ExtResource("1_nm0ph")
 
 [node name="Body" type="Sprite2D" parent="Nuke"]
 texture = ExtResource("1_wubup")
-
-[node name="Outline" type="Sprite2D" parent="Nuke/Body"]
-visible = false
-modulate = Color(1, 0.878431, 0.568627, 1)
-show_behind_parent = true
-texture = ExtResource("3_vb1ev")
 
 [node name="Face" type="Node2D" parent="Nuke/Body"]
 
@@ -671,22 +669,12 @@ texture = ExtResource("4_p4fwh")
 position = Vector2(-1, 53)
 texture = ExtResource("5_onoce")
 
-[node name="Trail" type="CPUParticles2D" parent="Nuke/Body"]
-show_behind_parent = true
-position = Vector2(0, -64)
-rotation = -1.5708
-amount = 150
-texture = ExtResource("8_8el7x")
-emission_shape = 3
-emission_rect_extents = Vector2(1, -20)
-spread = 20.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 175.0
-initial_velocity_max = 200.0
-scale_amount_min = 0.15
-scale_amount_max = 0.25
-scale_amount_curve = SubResource("Curve_i316f")
-color_ramp = SubResource("Gradient_n5w12")
+[node name="AP_Idle" type="AnimationPlayer" parent="Nuke"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_xvmd3")
+}
+autoplay = "Fly"
 
 [node name="AP_Face" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Nuke")
@@ -708,7 +696,6 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_suqcb")
 }
-autoplay = "Idle"
 
 [node name="Explosion_Fire" type="CPUParticles2D" parent="."]
 emitting = false
