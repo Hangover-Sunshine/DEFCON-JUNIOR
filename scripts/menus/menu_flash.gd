@@ -22,11 +22,12 @@ func fade_in():
 ##
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "flash":
-		animation_player.play("fade_to_black")
-	elif anim_name == "fade_to_black":
-		in_black = true
-	elif anim_name == "fade_out":
-		done_fade_out = true
+	pass
+	#if anim_name == "flash":
+		#animation_player.play("fade_to_black")
+	#elif anim_name == "fade_to_black":
+		#in_black = true
+	#elif anim_name == "fade_out":
+		#done_fade_out = true
 	##
 ##

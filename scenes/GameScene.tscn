@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=9 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="PackedScene" uid="uid://deaonojyom4gf" path="res://scenes/GameRoot.tscn" id="2_tcv1b"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
-[ext_resource type="PackedScene" uid="uid://c3tskwkip0tet" path="res://scenes/menus/menu_gameover.tscn" id="10_agj1h"]
 [ext_resource type="Script" path="res://scripts/menus/menu_flash.gd" id="11_tyc6j"]
 
 [sub_resource type="Animation" id="Animation_ddj0g"]
@@ -71,12 +70,6 @@ process_mode = 2
 visible = false
 
 [node name="HubPause" parent="PauseCanvasLayer" instance=ExtResource("7_5w17u")]
-
-[node name="GameOverCanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
-
-[node name="MenuGamOver" parent="GameOverCanvasLayer" instance=ExtResource("10_agj1h")]
 
 [node name="FlashCanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("11_tyc6j")
