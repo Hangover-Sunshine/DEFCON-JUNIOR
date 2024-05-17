@@ -72,6 +72,7 @@ visible = false
 [node name="HubPause" parent="PauseCanvasLayer" instance=ExtResource("7_5w17u")]
 
 [node name="FlashCanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
 script = ExtResource("11_tyc6j")
 
 [node name="ColorRect" type="ColorRect" parent="FlashCanvasLayer"]

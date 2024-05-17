@@ -22,6 +22,7 @@ VSlider/icons/grabber_disabled = ExtResource("9_hjyyg")
 VSlider/styles/slider = SubResource("StyleBoxTexture_c36vx")
 
 [node name="GIU" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
