@@ -628,7 +628,7 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_suqcb")
 }
-autoplay = "Boost"
+autoplay = "Idle"
 
 [node name="Explosion_Fire" type="CPUParticles2D" parent="."]
 emitting = false
