@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=40 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ib6tc5tlclmj" path="res://assets/ui/void/Void_Noise.png" id="4_50qe7"]
 [ext_resource type="Texture2D" uid="uid://cxvftbyu85qu" path="res://assets/ui/void/Void_Top_Lip.png" id="6_ftxgj"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_7smap"]
+[ext_resource type="Texture2D" uid="uid://berj8ni4ex0ne" path="res://assets/ui/void/Art_Win1.PNG" id="8_dknq6"]
 
 [sub_resource type="Gradient" id="Gradient_8h1t4"]
 colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
@@ -698,8 +699,13 @@ tracks/2/keys = {
 "values": [Vector2(958, 435), Vector2(958, 618)]
 }
 
+[sub_resource type="Animation" id="Animation_laxap"]
+resource_name = "Chapter1"
+length = 5.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_23ybg"]
 _data = {
+"Chapter1": SubResource("Animation_laxap"),
 "Despawn": SubResource("Animation_1et6y"),
 "RESET": SubResource("Animation_s1ynd"),
 "Spawn": SubResource("Animation_l6q1o")
@@ -798,6 +804,25 @@ libraries = {
 "": SubResource("AnimationLibrary_rxfv3")
 }
 autoplay = "Neutral"
+
+[node name="PostNuke" type="Node2D" parent="."]
+
+[node name="Art_Chapter1" type="Sprite2D" parent="PostNuke"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("8_dknq6")
+
+[node name="Text_Label2" type="Label" parent="PostNuke"]
+visible = false
+offset_left = 420.0
+offset_top = 394.0
+offset_right = 1500.0
+offset_bottom = 680.0
+pivot_offset = Vector2(540, 0)
+theme_override_fonts/font = ExtResource("7_7smap")
+theme_override_font_sizes/font_size = 250
+text = "# / 7"
+horizontal_alignment = 1
 
 [node name="Speech_Labels" type="Node2D" parent="."]
 visible = false
