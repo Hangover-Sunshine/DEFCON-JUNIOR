@@ -38,7 +38,7 @@ func _process(_delta):
 		##
 		if player_won:
 			if curr_level == 6:
-				GlobalSignals.emit_signal("load_scene", "menus/hub_faux")
+				GlobalSignals.emit_signal("load_scene", "menus/faux_menu/hub_faux")
 			else:
 				GlobalSignals.emit_signal("load_scene", "menus/menu_cutscene")
 			##

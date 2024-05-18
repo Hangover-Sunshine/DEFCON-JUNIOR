@@ -33,6 +33,8 @@ var player_data
 var curr_level
 
 func _ready():
+	GlobalSignals.connect("scene_loaded", _scene_loaded)
+	
 	var file = FileAccess.open("user://player.save", FileAccess.READ)
 	var json_string = file.get_as_text()
 	var json = JSON.new()
@@ -189,4 +191,10 @@ func _on_card_spitfire_upchuck_pressed():
 	max_mag_size += 1
 	save()
 	GlobalSignals.emit_signal("load_scene", "GameScene")
+##
+
+func _scene_loaded(scene_name):
+	if scene_name != name:
+		queue_free()
+	##
 ##
