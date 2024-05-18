@@ -31,6 +31,8 @@ var spawning_jets:bool = false
 var missiles_spawn_at:float
 var spawning_missiles:bool = false
 
+var timer_level = 0
+
 func load_level():
 	var level = Levels[curr_level]
 	
@@ -81,23 +83,26 @@ func _process(delta):
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 	
-	if game_timer.time_left < 30:
+	if timer_level == 0 and game_timer.time_left < 30:
 		obstacle_timer.stop()
 		horizontal_timer.stop()
+		timer_level += 1
 	##
 	
-	if game_timer.time_left < 20:
+	if timer_level == 1 and game_timer.time_left < 20:
 		missile_timer.stop()
 		jet_timer.stop()
 		GlobalSignals.emit_signal("free_off_screen") # only have everything fire once
+		timer_level += 1
 	##
 	
-	if game_timer.time_left < 15:
+	if timer_level == 2 and game_timer.time_left < 15:
 		GlobalSignals.emit_signal("blow_on_screen") # anything on screen that can should die
 		GlobalSignals.emit_signal("bail_out") # tell planes to GTFO
+		timer_level += 1
 	##
 	
-	if game_timer.time_left < 2:
+	if game_timer.time_left < 2.5:
 		player.has_control = false
 		env_city.global_position =\
 			env_city.global_position.move_toward(Vector2(960, 1090), 400 * delta)
@@ -170,7 +175,7 @@ func _on_missile_timer_timeout():
 		num -= 1
 	##
 	
-	if curr_missiles < max_missiles and missile_timer.is_stopped():
+	if timer_level < 1 and curr_missiles < max_missiles and missile_timer.is_stopped():
 		missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
@@ -192,7 +197,7 @@ func _on_jet_timer_timeout():
 		num -= 1
 	##
 	
-	if curr_jets < max_jets and jet_timer.is_stopped():
+	if timer_level < 1 and curr_jets < max_jets and jet_timer.is_stopped():
 		jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
 								Levels[curr_level].FighterSpawnTimerRange.y))
 	##
@@ -213,7 +218,7 @@ func _on_obstacle_timer_timeout():
 		num -= 1
 	##
 	
-	if curr_obstacles < max_obstacles and obstacle_timer.is_stopped():
+	if timer_level == 0 and curr_obstacles < max_obstacles and obstacle_timer.is_stopped():
 		obstacle_timer.start(randf_range(Levels[curr_level].StaticSpawnTimerRange.x,
 										Levels[curr_level].StaticSpawnTimerRange.y))
 	##
@@ -242,7 +247,7 @@ func _on_horizontal_timer_timeout():
 		num -= 1
 	##
 	
-	if curr_move_obstacles < max_move_obstacles and horizontal_timer.is_stopped():
+	if timer_level == 0 and curr_move_obstacles < max_move_obstacles and horizontal_timer.is_stopped():
 		horizontal_timer.start(randf_range(Levels[curr_level].DynamicSpawnTimerRange.x,
 										Levels[curr_level].DynamicSpawnTimerRange.y))
 	##

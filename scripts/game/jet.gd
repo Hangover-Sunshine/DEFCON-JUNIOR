@@ -70,8 +70,13 @@ var curr_limits:Vector2
 var pattern:int
 var spawn_pos
 
+var free_off_screen:bool = false
+
 func _ready():
 	assert(!(BobLeftAndRight and BobOnTimer), "Too many behaviors!")
+	
+	GlobalSignals.connect("bail_out", _bail)
+	GlobalSignals.connect("free_off_screen", _free_off_screen)
 	
 	#global_position.y = StartingYPosition
 	bob_limits = Vector2(424 + 424 * BobLimits, 1504 - 1504 * BobLimits)
@@ -86,6 +91,18 @@ func _ready():
 	##
 	
 	spawn_pos = $Patterns.get_child(pattern).get_children()
+##
+
+func _bail():
+	aoe.visible = true
+	aoe.set_custom_minimum_size(Vector2(0,0))
+	jet_state = JetState.TELEGRAPH
+	velocity.x = 0
+	move_timer.start(RushTelegraphTimer)
+##
+
+func _free_off_screen():
+	free_off_screen = true
 ##
 
 func _physics_process(delta):
@@ -176,6 +193,11 @@ func _on_bob_timer_timeout():
 ##
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	if free_off_screen:
+		queue_free()
+		return
+	##
+	
 	jet_state = JetState.RESPAWN
 	velocity.y = 0
 	starting_position = Vector2(randf_range(bob_limits.x, bob_limits.y), StartingYPosition)

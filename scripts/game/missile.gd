@@ -22,7 +22,12 @@ var target_acquired:bool = false
 var indicator_pos:Vector2
 var play_area_size:Array
 
+var free_off_screen:bool = false
+
 func _ready():
+	GlobalSignals.connect("blow_on_screen", _blow_on_screen)
+	GlobalSignals.connect("free_off_screen", _free_off_screen)
+	
 	waiting_for_move = true
 	snapshot_timer.start(randf_range(TimeframeToSnapshot.x, TimeframeToSnapshot.y))
 	snapshot_timer.paused = false
@@ -34,6 +39,14 @@ func _ready():
 	play_area_size[0].y += 80
 	play_area_size[1].x -= 100
 	play_area_size[1].y -= 100
+##
+
+func _blow_on_screen():
+	hit()
+##
+
+func _free_off_screen():
+	free_off_screen = true
 ##
 
 func _process(_delta):
@@ -73,6 +86,11 @@ func _on_snapshot_timer_timeout():
 ##
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	if free_off_screen:
+		queue_free()
+		return
+	##
+	
 	if snapshot_timer.is_stopped() == false:
 		return
 	##
