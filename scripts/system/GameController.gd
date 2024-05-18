@@ -45,10 +45,16 @@ func load_level():
 	jets_spawn_at = lvl_len_secs - level.FightersAppearAt * 60
 	missiles_spawn_at = lvl_len_secs - level.MissilesAppearAt * 60
 	
-	obstacle_timer.start(randf_range(level.StaticSpawnTimerRange.x,
-										level.StaticSpawnTimerRange.y))
-	horizontal_timer.start(randf_range(level.DynamicSpawnTimerRange.x,
-										level.DynamicSpawnTimerRange.y))
+	if level.MaxNumberOfStaticObstaclesOnScreen > 0:
+		obstacle_timer.start(randf_range(level.StaticSpawnTimerRange.x,
+											level.StaticSpawnTimerRange.y))
+	##
+	
+	if level.MaxNumberOfDynamicObstaclesOnScreen > 0:
+		horizontal_timer.start(randf_range(level.DynamicSpawnTimerRange.x,
+											level.DynamicSpawnTimerRange.y))
+	##
+	
 	game_timer.start(lvl_len_secs)
 ##
 
@@ -74,18 +80,18 @@ func _process(delta):
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 	
-	if game_timer.time_left < 40:
+	if game_timer.time_left < 30:
 		obstacle_timer.stop()
 	##
 	
-	if game_timer.time_left < 30:
+	if game_timer.time_left < 20:
 		missile_timer.stop()
 		jet_timer.stop()
 		horizontal_timer.stop()
 		#GlobalSignals.emit_signal("free_off_screen")
 	##
 	
-	if game_timer.time_left < 25:
+	if game_timer.time_left < 15:
 		#GlobalSignals.emit_signal("blow_on_screen")
 		#GlobalSignals.emit_signal("bail_out")
 		pass
@@ -170,8 +176,15 @@ func _on_jet_timer_timeout():
 ##
 
 func _on_obstacle_timer_timeout():
-	# TODO: we have none.
-	pass # Replace with function body.
+	var object = Levels[curr_level].generate_static_obstacle()
+	$Enemies.add_child(object)
+	rand_position.get_random_static_start(object)
+	curr_obstacles += 1
+	
+	if curr_obstacles < max_obstacles and obstacle_timer.is_stopped():
+		obstacle_timer.start(randf_range(Levels[curr_level].StaticSpawnTimerRange.x,
+										Levels[curr_level].StaticSpawnTimerRange.y))
+	##
 ##
 
 func _on_horizontal_timer_timeout():
