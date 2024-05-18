@@ -1312,8 +1312,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.647059, 0.14902, 0.223529, 1)
 
-[connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_face_animation_finished"]
+[connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="pressed" from="Question_Labels/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Question_Labels/Quit_Button" to="." method="_on_quit_button_pressed"]
 [connection signal="animation_finished" from="AP_Cutscene" to="." method="_on_ap_cutscene_animation_finished"]
