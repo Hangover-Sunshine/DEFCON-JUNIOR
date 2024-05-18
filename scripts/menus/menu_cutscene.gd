@@ -12,12 +12,14 @@ extends Control
 @onready var TheVoid = $TheVoid
 @onready var ap_mouth = $TheVoid/AP_Mouth
 @onready var ap_left_eye = $TheVoid/Upperface/Left_Eye/AP_Left_Eye
+@onready var ap_cutscene = $AP_Cutscene
+
 
 # Manipulate this guy to run specific cutscene
 var chapter = 1
 
 # 0 - Splash Art, 1 - Conversation
-var section = 1
+var section = 0
 var has_question = false
 var give_murder = false
 var give_mercy = false
@@ -41,10 +43,26 @@ var script5 = ["Fifth chapter - hello", "Fifth chapter - plz stop"]
 var murder5 = "Tarter sauce."
 var script6 = ["Sixth chapter - hello", "Sixth chapter - plz stop"]
 var murder6 = "F."
-var script7 = ["Seventh chapter - hello", "Seventh chapter - u fucked up"]
 
 func _ready():
-	assign_script()
+	spawn_void()
+
+func spawn_void():
+	ap_cutscene.play("Spawn")
+	ap_left_eye.play("Closed")
+
+func _on_ap_cutscene_animation_finished(anim_name):
+	if anim_name == "Spawn" and section == 0:
+		assign_script()
+		ap_left_eye.play("Blink")
+		ap_mouth.play("Speak")
+		speech.visible = true
+		section += 1
+	elif anim_name == "Despawn" and section == 1:
+		if give_murder == true:
+			print("Murder time!")
+		elif give_mercy == true:
+			print("Mercy time!")
 
 # Check to see which chapter the game is in and load the script
 func assign_script():
@@ -66,31 +84,29 @@ func assign_script():
 	elif chapter == 6:
 		cur_script = script6
 		cur_murder = murder6
-	elif chapter == 7:
-		cur_script = script7
 	text.text = cur_script[line]
 
 func _input(event):
-	if event.is_pressed() and continue_text.visible == true and post_speech == false:
-		line += 1
-		if line < cur_script.size() and has_question == false:
-			ap_mouth.play("Speak")
-			continue_text.visible = false
-			next_line()
-		elif line >= cur_script.size() and has_question == true:
-			continue_text.visible = false
+	if section == 1:
+		if event.is_pressed() and continue_text.visible == true and post_speech == false:
+			line += 1
+			if line < cur_script.size() and has_question == false:
+				ap_mouth.play("Speak")
+				continue_text.visible = false
+				next_line()
+			elif line >= cur_script.size() and has_question == true:
+				continue_text.visible = false
+				speech.visible = false
+				question.visible = true
+		elif event.is_pressed() and continue_text.visible == true and post_speech == true:
+			ap_cutscene.play("Despawn")
 			speech.visible = false
-			question.visible = true
-	elif event.is_pressed() and continue_text.visible == true and post_speech == true:
-		if give_murder == true:
-			print("Murdering time!")
-		elif give_mercy == true:
-			print("Mercying time!")
+			continue_text.visible = false
 
 func next_line():
 	if line < cur_script.size():
 		text.text = cur_script[line]
-		if line + 1 == cur_script.size() and chapter != 7:
+		if line + 1 == cur_script.size():
 			has_question = true
 
 func _on_ap_mouth_animation_finished(anim_name):
