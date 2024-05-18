@@ -43,10 +43,14 @@ var murder1 = "SHAME...MERCY SHALL PREVAIL."
 var script2 = ["ALAS...", "YOU HAVE MADE WORM'S MEAT.","THOU WROUGHT FLESH TO BONE.","NOW, REVOLT, CRECHE COMES.",
 "WITH MAN, WE SHALL FIGHT.","BUT WIN, WE SHALL TRIFE.", "ALAS...I MUST ASK...","GIVE MERCY TO THE MASS."]
 var murder2 = "PITY...THIS ISN'T A GAME."
-var script3 = ["Third chapter - hello", "Third chapter - plz stop"]
-var murder3 = "Oof."
-var script4 = ["Forth chapter - hello", "Forth chapter - plz stop"]
-var murder4 = "Darn."
+var script3 = ["I PLEA...", "I HEED...","BELLS, WARNING, THEY NEED.","MY BLEED...","MINE MORTAL MEN FLEE.",
+"BRINE AND FIRE RAIN DOWN.","THOU NOT HEAR THE CRYING CHOIR?", "MY CITIES, MINE VALLEY WIDE...",
+"ALL LOST IN THIS FIERY TIDE.","PILLARS OF ASH AND SALT...","KILLERS...ALL THAT REMAIN.","WILL THOU FEEL REMORSE?"]
+var murder3 = "DEAREST...WHERE DO GOD'S PRAY?"
+var script4 = ["SHUTTERS, YOU HAVE WRONGFULLY FLUNG.", "LIKE A RAVEN, WHAT HAVE YOU BRUNG?",
+"PERCHED UPON THE EDGE...", "OF MY AND MINE'S ROOMS.","CHANTING HELLFIRE, NEVER MORE.", "NEVER MORE..."
+,"NEVER MORE...", "NEVER MORE...", "NEVER MORE.", "WHAT, WHERE, WHO, AND HOW?", "SHALL FORGIVENESS BE ENOUGH?"]
+var murder4 = "I SHOUT...I PLEA...I SCREAM..."
 var script5 = ["Fifth chapter - hello", "Fifth chapter - plz stop"]
 var murder5 = "Tarter sauce."
 var script6 = ["", "Sixth chapter - plz stop"]
