@@ -28,3 +28,9 @@ func get_random_horobj_start(object):
 	
 	object.global_position = pos
 ##
+
+func get_random_static_start(object):
+	object.global_position = initial_pos[1].global_position
+	object.global_position.x += randf_range(-150, 150)
+	object.global_position.y += 50
+##

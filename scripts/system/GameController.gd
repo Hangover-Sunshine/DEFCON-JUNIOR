@@ -45,6 +45,8 @@ func load_level():
 	jets_spawn_at = lvl_len_secs - level.FightersAppearAt * 60
 	missiles_spawn_at = lvl_len_secs - level.MissilesAppearAt * 60
 	
+	obstacle_timer.start(randf_range(level.StaticSpawnTimerRange.x,
+										level.StaticSpawnTimerRange.y))
 	horizontal_timer.start(randf_range(level.DynamicSpawnTimerRange.x,
 										level.DynamicSpawnTimerRange.y))
 	game_timer.start(lvl_len_secs)
@@ -80,10 +82,12 @@ func _process(delta):
 		missile_timer.stop()
 		jet_timer.stop()
 		horizontal_timer.stop()
+		#GlobalSignals.emit_signal("free_off_screen")
 	##
 	
 	if game_timer.time_left < 25:
-		#GlobalSettings.emit_signal("bail_out")
+		#GlobalSignals.emit_signal("blow_on_screen")
+		#GlobalSignals.emit_signal("bail_out")
 		pass
 	##
 	
