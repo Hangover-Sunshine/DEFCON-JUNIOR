@@ -57,6 +57,7 @@ var script6 = ["", "Sixth chapter - plz stop"]
 var murder6 = "F."
 
 func _ready():
+	no_flash = GlobalSettings.FlashesOff
 	GlobalSignals.connect("scene_loaded", _scene_loaded)
 	if FileAccess.file_exists("user://level.save"):
 		var file = FileAccess.open("user://level.save", FileAccess.READ)
