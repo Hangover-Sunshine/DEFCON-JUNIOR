@@ -40,15 +40,16 @@ var mercy_line = "I THANK YOU FOR YOUR GRACE."
 var script1 = ["BE NOT AFRAID...", "FOR I AM THE GOD OF THIS WORLD.", "A WHISPER FROM NOTHING.", "AN ECHO FROM SILENCE.",
 "I PLEAD, CEASE YOUR GAME.","FOR IT WILL BE WORLD'S END.","LIFE WILL BE GONE...","AND MY WORLD, A VOID."]
 var murder1 = "SHAME...MERCY SHALL PREVAIL."
-var script2 = ["Second chapter - hello", "Second chapter - plz stop"]
-var murder2 = "AGAIN...HUMANITY WILL PERSIST."
+var script2 = ["ALAS...", "YOU HAVE MADE WORM'S MEAT.","THOU WROUGHT FLESH TO BONE.","NOW, REVOLT, CRECHE COMES.",
+"WITH MAN, WE SHALL FIGHT.","BUT WIN, WE SHALL TRIFE.", "ALAS...I MUST ASK...","GIVE MERCY TO THE MASS."]
+var murder2 = "PITY...THIS ISN'T A GAME."
 var script3 = ["Third chapter - hello", "Third chapter - plz stop"]
 var murder3 = "Oof."
 var script4 = ["Forth chapter - hello", "Forth chapter - plz stop"]
 var murder4 = "Darn."
 var script5 = ["Fifth chapter - hello", "Fifth chapter - plz stop"]
 var murder5 = "Tarter sauce."
-var script6 = ["Sixth chapter - hello", "Sixth chapter - plz stop"]
+var script6 = ["", "Sixth chapter - plz stop"]
 var murder6 = "F."
 
 func _ready():
