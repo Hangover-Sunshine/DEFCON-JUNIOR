@@ -9,7 +9,9 @@ signal scene_transition_done
 
 signal level_complete
 signal player_died
-signal reload_level
+
+signal blow_on_screen
+signal free_off_screen
 signal bail_out
 
 signal jet_dead

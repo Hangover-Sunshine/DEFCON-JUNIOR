@@ -83,30 +83,29 @@ func _process(delta):
 	
 	if game_timer.time_left < 30:
 		obstacle_timer.stop()
+		horizontal_timer.stop()
 	##
 	
 	if game_timer.time_left < 20:
 		missile_timer.stop()
 		jet_timer.stop()
-		horizontal_timer.stop()
-		#GlobalSignals.emit_signal("free_off_screen")
+		GlobalSignals.emit_signal("free_off_screen") # only have everything fire once
 	##
 	
 	if game_timer.time_left < 15:
-		#GlobalSignals.emit_signal("blow_on_screen")
-		#GlobalSignals.emit_signal("bail_out")
-		pass
+		GlobalSignals.emit_signal("blow_on_screen") # anything on screen that can should die
+		GlobalSignals.emit_signal("bail_out") # tell planes to GTFO
 	##
 	
-	if game_timer.time_left < 3:
+	if game_timer.time_left < 2:
 		player.has_control = false
 		env_city.global_position =\
 			env_city.global_position.move_toward(Vector2(960, 1090), 400 * delta)
 		player.global_position =\
 			player.global_position.move_toward(Vector2(960, 1290), 700 * delta)
-		if player.global_position.x < 940:
+		if player.global_position.x < 930:
 			player.lean_right()
-		elif player.global_position.x > 980:
+		elif player.global_position.x > 990:
 			player.lean_left()
 		else:
 			player.do_nothing()
