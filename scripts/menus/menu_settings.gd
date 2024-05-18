@@ -36,7 +36,7 @@ func _on_full_check_toggled(toggled_on):
 ##
 
 func _on_hint_toggled(toggled_on):
-	GlobalSettings.Hints = toggled_on
+	GlobalSettings.FlashesOff = toggled_on
 ##
 
 func _on_overall_slider_value_changed(value):

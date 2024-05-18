@@ -6,8 +6,18 @@ extends Control
 @onready var boost_cooldown = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox/Boost_Ability/Boost_Cooldown
 @onready var v_slider = $GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VSlider
 
+@onready var spitfire_h_box = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox
+@onready var boost_h_box = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox
+@onready var bubble_h_box = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox
+
 var player:Player
 var level_timer:Timer
+
+func late_ready():
+	spitfire_h_box.visible = player.gun_status == player.UpgradeAvailability.READY
+	boost_h_box.visible = player.dash_status == player.UpgradeAvailability.READY
+	bubble_h_box.visible = player.shield_status == player.UpgradeAvailability.READY
+##
 
 func _process(delta):
 	if player.gun_status == player.UpgradeAvailability.RECHARGING:

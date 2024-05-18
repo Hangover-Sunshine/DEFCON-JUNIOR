@@ -57,7 +57,11 @@ func _input(event):
 func _level_complete():
 	get_tree().paused = true
 	flash_canvas_layer.visible = true
-	flash_canvas_layer.flash()
+	if GlobalSettings.FlashesOff:
+		flash_canvas_layer.no_flash_flash()
+	else:
+		flash_canvas_layer.flash()
+	##
 	player_won = true
 	save_game()
 ##
@@ -65,7 +69,11 @@ func _level_complete():
 func _player_died():
 	get_tree().paused = true
 	flash_canvas_layer.visible = true
-	flash_canvas_layer.player_dead_flash()
+	if GlobalSettings.FlashesOff:
+		flash_canvas_layer.no_flash_flash()
+	else:
+		flash_canvas_layer.player_dead_flash()
+	##
 	player_lost = true
 	save_game()
 ##

@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_LOCATION = "user://game_settings.json"
+const SAVE_LOCATION = "user://game_settings.config"
 
 var config:ConfigFile
 
@@ -10,7 +10,7 @@ var GameSFXVolume:float = 0.8
 var MusicVolume:float = 0.6
 
 var FullScreen:bool = false
-var Hints:bool = false
+var FlashesOff:bool = false
 
 var os_type:String
 
@@ -31,6 +31,7 @@ func _ready():
 		MusicVolume = config.get_value("volume", "music")
 		
 		FullScreen = config.get_value("screen", "fullscreen")
+		FlashesOff = config.get_value("screen", "flashes_off")
 		
 		return
 	##
@@ -46,6 +47,7 @@ func save_settings():
 	config.set_value("volume", "music", MusicVolume)
 	
 	config.set_value("screen", "fullscreen", FullScreen)
+	config.set_value("screen", "flashes_off", FlashesOff)
 	
 	config.save(SAVE_LOCATION)
 ##

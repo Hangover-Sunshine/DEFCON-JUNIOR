@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=9 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="PackedScene" uid="uid://deaonojyom4gf" path="res://scenes/GameRoot.tscn" id="2_tcv1b"]
@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id="Animation_81id1"]
 resource_name = "flash"
-length = 3.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,7 +15,7 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -23,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8mcxp"]
 resource_name = "player_dead"
-length = 2.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,9 +37,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_xdgbl"]
+resource_name = "no_flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lbn22"]
 _data = {
 "flash": SubResource("Animation_81id1"),
+"no_flash": SubResource("Animation_xdgbl"),
 "player_dead": SubResource("Animation_8mcxp")
 }
 
@@ -67,7 +84,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FlashCanvasLayer"]
 libraries = {
