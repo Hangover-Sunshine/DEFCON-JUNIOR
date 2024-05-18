@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=7 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="PackedScene" uid="uid://deaonojyom4gf" path="res://scenes/GameRoot.tscn" id="2_tcv1b"]
-[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="3_aixwv"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
 [ext_resource type="Script" path="res://scripts/menus/menu_flash.gd" id="11_tyc6j"]
 
@@ -32,7 +31,6 @@ process_mode = 3
 script = ExtResource("1_4pqr6")
 
 [node name="GameRoot" parent="." instance=ExtResource("2_tcv1b")]
-Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("3_aixwv"), ExtResource("3_aixwv")])
 
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2

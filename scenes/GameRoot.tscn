@@ -1,18 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://deaonojyom4gf"]
+[gd_scene load_steps=15 format=3 uid="uid://deaonojyom4gf"]
 
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_cw3ns"]
-[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/TestLevel.tres" id="2_fixhd"]
+[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/Level1.tres" id="2_fixhd"]
+[ext_resource type="Resource" uid="uid://bxorqwj5il7rg" path="res://prefabs/levels/Level2.tres" id="3_5qk25"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="3_labr8"]
 [ext_resource type="PackedScene" uid="uid://btqw03tb71iu3" path="res://prefabs/systems/giu.tscn" id="4_16ywq"]
+[ext_resource type="Resource" uid="uid://c25n3tdusit8x" path="res://prefabs/levels/Level3.tres" id="4_a2x28"]
 [ext_resource type="PackedScene" uid="uid://d25674hcnx2dd" path="res://prefabs/systems/rand_position.tscn" id="4_ub5l2"]
 [ext_resource type="Script" path="res://scripts/game/bullet_spawn.gd" id="5_e61t7"]
+[ext_resource type="Resource" uid="uid://du3wo04m2xkou" path="res://prefabs/levels/Level4.tres" id="5_hh3hw"]
+[ext_resource type="Resource" uid="uid://cy7wt2rqks7lu" path="res://prefabs/levels/Level5.tres" id="6_iy2s6"]
+[ext_resource type="Resource" uid="uid://cuwi2a85l6g7p" path="res://prefabs/levels/Level6.tres" id="7_2lvr2"]
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="7_7no1s"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="8_otdhf"]
+[ext_resource type="Resource" uid="uid://clij3ubmk53v" path="res://prefabs/levels/Level7.tres" id="8_pxkv0"]
 
 [node name="GameRoot" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_cw3ns")
-Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("2_fixhd")])
+Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("2_fixhd"), ExtResource("3_5qk25"), ExtResource("4_a2x28"), ExtResource("5_hh3hw"), ExtResource("6_iy2s6"), ExtResource("7_2lvr2"), ExtResource("8_pxkv0")])
 
 [node name="Info" type="Node" parent="."]
 

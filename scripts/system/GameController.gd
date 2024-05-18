@@ -58,7 +58,6 @@ func _ready():
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
 	$CanvasLayer/GIU.player = player
 	$CanvasLayer/GIU.level_timer = game_timer
-	env_city.get_child(0).connect("animation_finished", _nuke_done)
 ##
 
 func _process(delta):
@@ -109,11 +108,6 @@ func _on_game_timer_timeout():
 	$DummyTimerBecauseImLazy.start(0.35)
 	await $DummyTimerBecauseImLazy.timeout
 	GlobalSignals.emit_signal("level_complete")
-##
-
-func _nuke_done(_anim_name):
-	pass
-	#GlobalSignals.emit_signal("level_complete")
 ##
 
 func _jet_dead():
