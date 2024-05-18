@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cmqvg1yjso6rn"]
+[gd_scene load_steps=57 format=3 uid="uid://cmqvg1yjso6rn"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_fik03"]
 [ext_resource type="Script" path="res://scripts/menus/menu_cards.gd" id="1_m3354"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://6hi17h4nu3yr" path="res://assets/ui/cards/Card_Spitfire_Piercing.png" id="9_eivkd"]
 [ext_resource type="Texture2D" uid="uid://clnd5tq3brvpq" path="res://assets/ui/cards/Card_Spitfire_Spew.png" id="10_7wgnr"]
 [ext_resource type="Texture2D" uid="uid://kgpl7ida7gg5" path="res://assets/ui/cards/Card_Spitfire_Upchuck.png" id="11_x6ije"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="13_bw8ex"]
+
+[sub_resource type="Gradient" id="Gradient_gxl6y"]
+colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tidti"]
 
@@ -262,6 +266,25 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
+
+[node name="Rain" type="CPUParticles2D" parent="."]
+position = Vector2(960, -96)
+amount = 500
+lifetime = 15.0
+preprocess = 15.0
+texture = ExtResource("13_bw8ex")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(0, 20)
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_gxl6y")
 
 [node name="Cards_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
