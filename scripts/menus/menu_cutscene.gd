@@ -52,7 +52,19 @@ var script6 = ["Sixth chapter - hello", "Sixth chapter - plz stop"]
 var murder6 = "F."
 
 func _ready():
+	if FileAccess.file_exists("user://level.save"):
+		var file = FileAccess.open("user://level.save", FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var res = json.parse(json_string)
+		if res != OK:
+			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+			return
+		##
+		chapter = json.get_data()["level"] + 1
+	##
 	start_cutscene()
+##
 
 func start_cutscene():
 	var section = 0
@@ -83,9 +95,9 @@ func _on_ap_cutscene_animation_finished(anim_name):
 		section += 1
 	elif anim_name == "Despawn" and section == 1:
 		if give_murder == true:
-			print("Murder time!")
+			GlobalSignals.emit_signal("load_scene", "menu_cards")
 		elif give_mercy == true:
-			print("Mercy time!")
+			GlobalSignals.emit_signal("load_scene", "hub_menu")
 	elif anim_name == "Post-Nuke" or anim_name == "Post-Nuke-Flash":
 		spawn_void()
 
