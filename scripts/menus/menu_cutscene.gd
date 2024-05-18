@@ -22,7 +22,7 @@ extends Control
 
 
 # Manipulate this guy to run specific cutscene and to make scene not flash player
-var chapter = 2
+var chapter = 1
 var no_flash = false
 
 # 0 - Splash Art, 1 - Conversation
