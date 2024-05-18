@@ -38,8 +38,8 @@ var mercy_line = "I THANK YOU FOR YOUR GRACE."
 
 # Create an array and write your script here. Last item in array is for when player continues game.
 var script1 = ["BE NOT AFRAID...", "FOR I AM THE GOD OF THIS WORLD.", "A WHISPER FROM NOTHING.", "AN ECHO FROM SILENCE.",
-"I PLEAD, CEASE YOUR GAME.","FOR IT WILL BE OUR WORLD'S END.","LIFE WILL BE GONE...","AND MY WORLD, A VOID."]
-var murder1 = "SHAME...FOR MERCY SHALL PREVAIL."
+"I PLEAD, CEASE YOUR GAME.","FOR IT WILL BE WORLD'S END.","LIFE WILL BE GONE...","AND MY WORLD, A VOID."]
+var murder1 = "SHAME...MERCY SHALL PREVAIL."
 var script2 = ["Second chapter - hello", "Second chapter - plz stop"]
 var murder2 = "AGAIN...HUMANITY WILL PERSIST."
 var script3 = ["Third chapter - hello", "Third chapter - plz stop"]

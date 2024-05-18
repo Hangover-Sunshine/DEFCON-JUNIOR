@@ -26,22 +26,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1.05), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ot5at"]
@@ -59,40 +47,16 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_g3ouw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1065,10 +1029,23 @@ tracks/9/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Background/Rain:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_l6q1o"]
 resource_name = "Spawn"
 length = 2.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1112,6 +1089,18 @@ tracks/3/path = NodePath("TheVoid:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/Rain:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1138,20 +1127,18 @@ grow_vertical = 2
 script = ExtResource("1_0ub0r")
 
 [node name="Background" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
-position = Vector2(956, -74)
+[node name="Rain" type="CPUParticles2D" parent="Background"]
+position = Vector2(960, -96)
+emitting = false
 amount = 500
-lifetime = 12.5
-preprocess = 12.5
+lifetime = 15.0
 texture = ExtResource("1_domes")
 emission_shape = 3
 emission_rect_extents = Vector2(1080, 0)
@@ -1165,7 +1152,6 @@ angle_max = 90.0
 scale_amount_min = 0.5
 scale_amount_max = 2.0
 color_initial_ramp = SubResource("Gradient_8h1t4")
-metadata/_edit_lock_ = true
 
 [node name="TheVoid" type="Node2D" parent="."]
 visible = false
@@ -1248,11 +1234,11 @@ vframes = 2
 visible = false
 
 [node name="Text_Label" type="Label" parent="Speech_Labels"]
-offset_left = 420.0
-offset_top = 723.0
-offset_right = 1500.0
-offset_bottom = 810.0
-pivot_offset = Vector2(540, 0)
+custom_minimum_size = Vector2(1920, 0)
+offset_top = 722.0
+offset_right = 1920.0
+offset_bottom = 809.0
+pivot_offset = Vector2(960, 0)
 theme_override_fonts/font = ExtResource("7_7smap")
 theme_override_font_sizes/font_size = 75
 text = "\"INSERT TEXT HERE\""
@@ -1278,7 +1264,7 @@ libraries = {
 
 [node name="Question_Labels" type="Node2D" parent="."]
 visible = false
-position = Vector2(4, -30)
+position = Vector2(4, 17)
 
 [node name="Question_Label" type="Label" parent="Question_Labels"]
 modulate = Color(1, 1, 1, 0)
@@ -1289,7 +1275,7 @@ offset_bottom = 792.0
 pivot_offset = Vector2(540, 0)
 theme_override_fonts/font = ExtResource("7_7smap")
 theme_override_font_sizes/font_size = 75
-text = "Do you spare humanity?"
+text = "SPARE HUMANITY?"
 horizontal_alignment = 1
 
 [node name="Continue_Button" type="Button" parent="Question_Labels"]
