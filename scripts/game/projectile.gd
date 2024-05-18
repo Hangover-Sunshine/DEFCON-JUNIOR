@@ -14,11 +14,13 @@ func setup(speed, on_layer, collide_with, tod):
 	self.time_to_despawn = tod
 	
 	if on_layer == 2:
-		$Bullet.modulate = Color.DARK_RED
+		$AP_Color.play("Enemy")
+		#$Bullet.modulate = Color.DARK_RED
 		velocity = speed * Vector2(0, -1)
 	else:
-		$Bullet.modulate = Color.DARK_GREEN
-		$Bullet.rotation = 0
+		#$Bullet.modulate = Color.DARK_GREEN
+		#$Bullet.rotation = 0
+		$AP_Color.play("PC")
 		velocity = speed * Vector2(0, 1)
 	##
 ##
