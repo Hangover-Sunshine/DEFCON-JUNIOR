@@ -25,7 +25,7 @@ func _ready():
 func _input(event):
 	if event.is_pressed() and menu_warning.visible == true:
 		animplayer.play("ToSplash")
-	elif event.is_pressed() and to_main_ready == true:
+	elif event.is_pressed() and to_main_ready == true and menu_splash.visible == true:
 		animplayer.play("ToMain")
 
 func _on_hub_menu_anim_player_animation_finished(anim_name):
