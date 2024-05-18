@@ -146,6 +146,11 @@ func _hobstacle_dead():
 
 func _obstacle_dead():
 	curr_obstacles -= 1
+	
+	if curr_obstacles < max_obstacles and obstacle_timer.is_stopped():
+		obstacle_timer.start(randf_range(Levels[curr_level].StaticSpawnTimerRange.x,
+										Levels[curr_level].StaticSpawnTimerRange.y))
+	##
 ##
 
 func _on_missile_timer_timeout():
