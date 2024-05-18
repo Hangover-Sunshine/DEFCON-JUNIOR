@@ -45,7 +45,7 @@ var curr_shield_dur:float
 @onready var shield = $ShieldArea/CollisionShape2D
 
 # Weapon Info =========
-var gun_status:UpgradeAvailability = UpgradeAvailability.READY
+var gun_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_weapon_penetration:int = 0
 var curr_number_of_bullets:int = 0
 var curr_mag_size:int = 0
@@ -93,7 +93,7 @@ func _ready():
 		curr_shield_dur = 0
 		curr_shield_cd = 0
 		
-		curr_weapon_penetration = 1
+		curr_weapon_penetration = 0
 		max_mag_size = 0
 		curr_mag_size = max_mag_size
 		curr_number_of_bullets = 0

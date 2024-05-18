@@ -148,6 +148,9 @@ func _on_card_radiation_pressed():
 
 func _on_card_spitfire_pressed():
 	gun_status = true
+	curr_weapon_penetration = 1
+	max_mag_size = 2
+	curr_number_of_bullets = 1
 	save()
 	GlobalSignals.emit_signal("load_scene", "GameScene")
 ##
