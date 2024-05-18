@@ -24,13 +24,13 @@ func get_random_horobj_start(object):
 	var idx = [0, 2][randi() % 2]
 	
 	var pos:Vector2 = initial_pos[idx].global_position
-	pos.y += randf_range(-300, 50)
+	pos.y += randf_range(-50, 500)
 	
 	object.global_position = pos
 ##
 
 func get_random_static_start(object):
 	object.global_position = initial_pos[1].global_position
-	object.global_position.x += randf_range(-150, 150)
+	object.global_position.x += randf_range(-250, 250)
 	object.global_position.y += 50
 ##
