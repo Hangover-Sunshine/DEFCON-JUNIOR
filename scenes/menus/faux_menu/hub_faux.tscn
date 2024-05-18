@@ -19,6 +19,11 @@ color = Color(0, 0, 0, 1)
 position = Vector2(960, 540)
 texture = ExtResource("6_tac2k")
 
+[node name="BackFrame2" type="Sprite2D" parent="BackFrame"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.2, 1)
+texture = ExtResource("6_tac2k")
+
 [node name="MenuMain" parent="." instance=ExtResource("3_qopba")]
 visible = false
 

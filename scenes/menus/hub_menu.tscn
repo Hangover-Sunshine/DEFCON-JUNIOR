@@ -1,12 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://d136umhx2ffrh"]
+[gd_scene load_steps=18 format=3 uid="uid://d136umhx2ffrh"]
 
 [ext_resource type="PackedScene" uid="uid://88fivnqio2ad" path="res://scenes/menus/menu_splash.tscn" id="1_5dhbp"]
 [ext_resource type="Script" path="res://scripts/menus/hub_menu.gd" id="1_eqpse"]
+[ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="2_okwke"]
 [ext_resource type="PackedScene" uid="uid://craw6cydplqpm" path="res://scenes/menus/menu_main.tscn" id="2_urtgt"]
 [ext_resource type="PackedScene" uid="uid://cdx15nqmqr1cu" path="res://scenes/menus/menu_pregame.tscn" id="3_36hlv"]
 [ext_resource type="PackedScene" uid="uid://bqxt4qvvqx5lj" path="res://scenes/menus/menu_settings.tscn" id="4_dii0o"]
 [ext_resource type="PackedScene" uid="uid://c7l6if7b7q4xr" path="res://scenes/menus/menu_warning.tscn" id="6_j5f1o"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="6_wy4d5"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="9_bsohh"]
+
+[sub_resource type="Gradient" id="Gradient_pvvc5"]
+colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
 
 [sub_resource type="Animation" id="Animation_xv0je"]
 length = 0.001
@@ -441,7 +446,7 @@ tracks/9/path = NodePath("BackFrame:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(3, 4),
+"times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -553,6 +558,25 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
 
+[node name="Rain" type="CPUParticles2D" parent="."]
+position = Vector2(960, 1375)
+amount = 500
+lifetime = 15.0
+preprocess = 15.0
+texture = ExtResource("2_okwke")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(0, -25)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_pvvc5")
+
 [node name="Black" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -582,5 +606,56 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 540)
 texture = ExtResource("6_wy4d5")
+
+[node name="BackFrame2" type="Sprite2D" parent="BackFrame"]
+modulate = Color(0.564706, 0.619608, 0.866667, 1)
+scale = Vector2(1.2, 1)
+texture = ExtResource("6_wy4d5")
+
+[node name="Label" type="Label" parent="BackFrame"]
+modulate = Color(1, 1, 1, 0.392157)
+offset_left = -506.0
+offset_top = -510.0
+offset_right = -272.0
+offset_bottom = -475.0
+theme_override_colors/font_color = Color(0.419608, 0.454902, 0.698039, 1)
+theme_override_fonts/font = ExtResource("9_bsohh")
+theme_override_font_sizes/font_size = 30
+text = "GODOT WILDJAM"
+
+[node name="Label2" type="Label" parent="BackFrame"]
+modulate = Color(1, 1, 1, 0.392157)
+offset_left = -506.0
+offset_top = -475.0
+offset_right = -272.0
+offset_bottom = -440.0
+theme_override_colors/font_color = Color(0.419608, 0.454902, 0.698039, 1)
+theme_override_fonts/font = ExtResource("9_bsohh")
+theme_override_font_sizes/font_size = 30
+text = "69 - VOID"
+
+[node name="Label3" type="Label" parent="BackFrame"]
+modulate = Color(1, 1, 1, 0.392157)
+offset_left = 268.0
+offset_top = 435.0
+offset_right = 502.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0.419608, 0.454902, 0.698039, 1)
+theme_override_fonts/font = ExtResource("9_bsohh")
+theme_override_font_sizes/font_size = 30
+text = "VERSION 1.0"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="BackFrame"]
+modulate = Color(1, 1, 1, 0.392157)
+offset_left = 208.0
+offset_top = 467.0
+offset_right = 501.0
+offset_bottom = 502.0
+theme_override_colors/font_color = Color(0.419608, 0.454902, 0.698039, 1)
+theme_override_fonts/font = ExtResource("9_bsohh")
+theme_override_font_sizes/font_size = 30
+text = "HANGOVER SUNSHINE"
+horizontal_alignment = 2
 
 [connection signal="animation_finished" from="HubMenu_AnimPlayer" to="." method="_on_hub_menu_anim_player_animation_finished"]

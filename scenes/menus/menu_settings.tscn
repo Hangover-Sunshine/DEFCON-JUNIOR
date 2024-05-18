@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://dox27soin5qiv" path="res://assets/graphs/LabelBackGreen3.tres" id="2_vyd8g"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_xb0vu"]
 [ext_resource type="Theme" uid="uid://c3p6c5vpkkk83" path="res://assets/graphs/LabelBackGreen1.tres" id="4_kwlt5"]
-[ext_resource type="Theme" path="res://assets/graphs/HorizSlider.tres" id="5_cy22j"]
+[ext_resource type="Theme" uid="uid://bbskcij4rpe4q" path="res://assets/graphs/HorizSlider.tres" id="5_cy22j"]
 [ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="5_unwol"]
 [ext_resource type="Texture2D" uid="uid://cs8ahksrn1oog" path="res://assets/ui/main/UI_Checked.png" id="5_wvikm"]
 [ext_resource type="Texture2D" uid="uid://bm6wjjvln617b" path="res://assets/ui/main/UI_Checkbox.png" id="6_3rque"]
