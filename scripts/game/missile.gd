@@ -2,15 +2,13 @@ extends CharacterBody2D
 class_name Missile
 
 @export var Speed:float = 350
-@export var Lifetime:float = 15
+@export var Lifetime:int = 5
 @export var TimeframeToSnapshot:Vector2 = Vector2(6, 10)
 
 @export var TrackPlayer:bool = false
 @export var LockDistance:float = 250
-@export var SingleShot:bool = false
 
 @onready var snapshot_timer:Timer = $SnapshotTimer
-@onready var living_timer:Timer = $LivingTimer
 
 @onready var indicator = $Indicator
 
@@ -25,9 +23,6 @@ var indicator_pos:Vector2
 var play_area_size:Array
 
 func _ready():
-	living_timer.start(Lifetime)
-	living_timer.paused = true
-	
 	waiting_for_move = true
 	snapshot_timer.start(randf_range(TimeframeToSnapshot.x, TimeframeToSnapshot.y))
 	snapshot_timer.paused = false
@@ -77,16 +72,11 @@ func _on_snapshot_timer_timeout():
 	indicator.hide_indicator()
 ##
 
-func _on_living_timer_timeout():
-	hit()
-##
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if snapshot_timer.is_stopped() == false:
 		return
 	##
 	
-	living_timer.paused = true
 	direction = Vector2.ZERO
 	
 	if global_position.x < 0:
@@ -101,7 +91,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 		global_position.y += 100
 	##
 	
-	if SingleShot or living_timer.time_left < 1:
+	Lifetime -= 1
+	
+	if Lifetime == 0:
 		GlobalSignals.emit_signal("missile_dead")
 		queue_free()
 	else:
@@ -110,10 +102,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 		snapshot_timer.start(randf_range(TimeframeToSnapshot.x, TimeframeToSnapshot.y))
 		waiting_for_move = true
 	##
-##
-
-func _on_visible_on_screen_notifier_2d_screen_entered():
-	living_timer.paused = false
 ##
 
 func _on_player_detector_body_entered(body):

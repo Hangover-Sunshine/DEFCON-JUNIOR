@@ -53,6 +53,7 @@ var script6 = ["", "Sixth chapter - plz stop"]
 var murder6 = "F."
 
 func _ready():
+	GlobalSignals.connect("scene_loaded", _scene_loaded)
 	if FileAccess.file_exists("user://level.save"):
 		var file = FileAccess.open("user://level.save", FileAccess.READ)
 		var json_string = file.get_as_text()
@@ -186,4 +187,10 @@ func progress_level():
 		return
 	##
 	save_file.store_string(json_dump)
+##
+
+func _scene_loaded(scene_name):
+	if scene_name != name:
+		queue_free()
+	##
 ##

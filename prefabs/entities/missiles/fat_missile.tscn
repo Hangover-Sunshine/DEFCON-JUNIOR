@@ -32,8 +32,6 @@ rect = Rect2(-25, -60, 50, 120)
 [node name="SnapshotTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="LivingTimer" type="Timer" parent="."]
-
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
 
@@ -45,8 +43,6 @@ shape = SubResource("CapsuleShape2D_75c4p")
 scale = Vector2(0.4, 0.4)
 
 [connection signal="died" from="PropGraphic" to="." method="_on_missile_died"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="SnapshotTimer" to="." method="_on_snapshot_timer_timeout"]
-[connection signal="timeout" from="LivingTimer" to="." method="_on_living_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

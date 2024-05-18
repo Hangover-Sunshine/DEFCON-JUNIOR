@@ -13,6 +13,7 @@ func _ready():
 	GlobalSignals.connect("scene_loaded", to_free)
 	GlobalSignals.connect("level_complete", _level_complete)
 	GlobalSignals.connect("player_died", _player_died)
+	GlobalSignals.connect("scene_loaded", _scene_loaded)
 	
 	if FileAccess.file_exists("user://level.save"):
 		var file = FileAccess.open("user://level.save", FileAccess.READ)
@@ -67,6 +68,12 @@ func _player_died():
 	flash_canvas_layer.player_dead_flash()
 	player_lost = true
 	save_game()
+##
+
+func _scene_loaded(scene_name):
+	if scene_name != name:
+		queue_free()
+	##
 ##
 
 func save_game():

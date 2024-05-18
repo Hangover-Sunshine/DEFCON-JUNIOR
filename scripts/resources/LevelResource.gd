@@ -31,7 +31,7 @@ class_name LevelResource
 @export var MaxNumberOfMissiles:int = 0
 @export var MissilesRandNumToSpawn:Vector2i = Vector2i(1, 3)
 @export var MissilesAppearAt:float = 0
-@export var MissileSpawnTimerRange:Vector2 = Vector2(2, 4)
+@export var MissileSpawnTimerRange:Vector2i = Vector2(1, 5)
 
 @export_group("Locking")
 @export var CanMissilesLock:bool = false
@@ -71,7 +71,7 @@ func generate_missile():
 	var indx = randi() % len(MISSILES)
 	var missile = MISSILES[indx].instantiate().duplicate()
 	missile.Speed = randf_range(MissileSpeedRange.x, MissileSpeedRange.y)
-	missile.Lifetime = randf_range(MissileLifetimeRange.x, MissileLifetimeRange.y)
+	missile.Lifetime = randi_range(MissileLifetimeRange.x, MissileLifetimeRange.y)
 	
 	if CanMissilesLock:
 		missile.LockDistance = randf_range(MissileLockDistance.x, MissileLockDistance.y)
@@ -128,6 +128,5 @@ func generate_moving_obstacle():
 ##
 
 func generate_static_obstacle():
-	var obst = STATIC_OBSTACLES[0].instantiate()
-	return obst
+	return STATIC_OBSTACLES[0].instantiate()
 ##
