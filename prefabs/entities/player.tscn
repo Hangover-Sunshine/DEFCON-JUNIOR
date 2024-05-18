@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cff0irid7qcej"]
+[gd_scene load_steps=5 format=3 uid="uid://cff0irid7qcej"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_je4ut"]
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="1_sgups"]
-[ext_resource type="Resource" uid="uid://br8leh0nuvaad" path="res://prefabs/weapons/shotgun.tres" id="2_sdsos"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_reof2"]
 radius = 49.0
@@ -17,7 +16,6 @@ collision_mask = 0
 script = ExtResource("1_je4ut")
 TimeToNextDamage = 1.3
 DashDuration = 1.4
-Weapon = ExtResource("2_sdsos")
 
 [node name="PC_Skeleton" parent="." instance=ExtResource("1_sgups")]
 
@@ -30,7 +28,7 @@ gizmo_extents = 100.0
 
 [node name="ShieldArea" type="Area2D" parent="."]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea"]
 shape = SubResource("CircleShape2D_4vbqq")
@@ -55,9 +53,13 @@ one_shot = true
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="area_entered" from="ShieldArea" to="." method="_on_shield_area_area_entered"]
+[node name="ShieldRestockTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ShieldArea" to="." method="_on_shield_area_body_entered"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]
 [connection signal="timeout" from="DashRestockTimer" to="." method="_on_dash_restock_timer_timeout"]
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="ShieldRestockTimer" to="." method="_on_shield_restock_timer_timeout"]

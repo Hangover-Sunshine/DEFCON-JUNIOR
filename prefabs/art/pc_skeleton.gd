@@ -43,3 +43,11 @@ func normal():
 func boost():
 	$AP.play("Boost")
 ##
+
+func shield_on():
+	$Shield.visible = true
+##
+
+func shield_off():
+	$Shield.visible = false
+##

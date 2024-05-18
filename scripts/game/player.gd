@@ -13,17 +13,17 @@ enum UpgradeAvailability {
 
 @export var TimeToNextDamage:float = 0.8
 
-@export_group("Shield")
-@export var ShieldDuration:float = 2
-@export var ShieldCooldown:float = 20
-
 @export_group("Movement")
 @export var DashMovementIncrease:float = 1.5
-@export var DashCooldown:float = 1.2
+@export var DashCooldown:float = 1.6
 @export var DashDuration:float = 1.2
 
 @export_group("Weapons")
-@export var Weapon:WeaponResource
+@export var ReloadRate:float = 1.8
+@export var FireRate:float = 0.8
+@export var BulletSpeed:float = 350
+@export_range(0, 60) var DegreeAngleOfCone:float = 30
+#@export var Weapon:WeaponResource
 
 @onready var shield_timer = $ShieldTimer
 @onready var gun_timer = $GunTimer
@@ -31,6 +31,7 @@ enum UpgradeAvailability {
 @onready var dash_timer = $DashTimer
 @onready var damaged_timer = $DamagedTimer
 @onready var reload_timer = $ReloadTimer
+@onready var shield_restock_timer = $ShieldRestockTimer
 
 const PROJECTILE = preload("res://prefabs/entities/projectile.tscn")
 
@@ -44,14 +45,14 @@ var curr_shield_dur:float
 @onready var shield = $ShieldArea/CollisionShape2D
 
 # Weapon Info =========
-var gun_status:UpgradeAvailability = UpgradeAvailability.NOPE
+var gun_status:UpgradeAvailability = UpgradeAvailability.READY
 var curr_weapon_penetration:int = 0
 var curr_number_of_bullets:int = 0
 var curr_mag_size:int = 0
 var max_mag_size:int = 0
 
 # Dash Info =========
-var dash_status:UpgradeAvailability = UpgradeAvailability.READY
+var dash_status:UpgradeAvailability = UpgradeAvailability.NOPE
 var curr_dash_amount:int = 0
 var curr_dash_max:int = 0
 
@@ -97,7 +98,7 @@ func _ready():
 		curr_mag_size = max_mag_size
 		curr_number_of_bullets = 0
 		
-		curr_dash_max = 1
+		curr_dash_max = 0
 		curr_dash_amount = curr_dash_max
 	##
 	
@@ -112,7 +113,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("shield") and shield_status == UpgradeAvailability.READY:
 		shield_status = UpgradeAvailability.ACTIVE
 		shield_timer.start(curr_shield_dur)
+		shield_restock_timer.start(curr_shield_cd)
 		shield.disabled = false
+		$PC_Skeleton.shield_on()
 	##
 	
 	if Input.is_action_pressed("fire") and gun_timer.is_stopped() and gun_status == UpgradeAvailability.READY:
@@ -121,11 +124,11 @@ func _process(_delta):
 		
 		if curr_mag_size == 0:
 			gun_status = UpgradeAvailability.RECHARGING
-			reload_timer.start(Weapon.ReloadRate)
+			reload_timer.start(ReloadRate)
 			return
 		##
 		
-		gun_timer.start(Weapon.FireRate)
+		gun_timer.start(FireRate)
 	elif Input.is_action_just_released("fire") or gun_status == UpgradeAvailability.RECHARGING:
 		gun_timer.stop()
 	##
@@ -209,16 +212,11 @@ func hit():
 ##
 
 func _on_shield_timer_timeout():
-	if shield_status == UpgradeAvailability.ACTIVE:
-		shield.disabled = true
-		shield_timer.start(curr_shield_cd)
-		shield_status = UpgradeAvailability.RECHARGING
-	else:
-		shield_status = UpgradeAvailability.READY
-	###
+	$PC_Skeleton.shield_off()
+	shield.disabled = true
 ##
 
-func _on_shield_area_area_entered(area):
+func _on_shield_area_body_entered(area):
 	area.hit()
 ##
 
@@ -228,11 +226,11 @@ func _on_gun_timer_timeout():
 	
 	if curr_mag_size == 0:
 		gun_status = UpgradeAvailability.RECHARGING
-		reload_timer.start(Weapon.ReloadRate)
+		reload_timer.start(ReloadRate)
 		return
 	##
 	
-	gun_timer.start(Weapon.FireRate)
+	gun_timer.start(FireRate)
 ##
 
 func _spawn_bullets():
@@ -244,9 +242,9 @@ func _spawn_bullets():
 			projectile.z_index = 4
 			projectile.penetration = curr_weapon_penetration
 			GlobalSignals.emit_signal("spawn_bullet", projectile)
-			projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
+			projectile.setup(BulletSpeed, 8, 4, 5)
 			projectile.global_position = $BulletSpawnPos.global_position
-			projectile.velocity = Weapon.BulletSpeed * Vector2.DOWN.rotated(projectile.rotation)
+			projectile.velocity = BulletSpeed * Vector2.DOWN.rotated(projectile.rotation)
 		##
 	else:
 		for i in range(curr_number_of_bullets):
@@ -254,12 +252,12 @@ func _spawn_bullets():
 			projectile.z_index = 4
 			projectile.penetration = curr_weapon_penetration
 			GlobalSignals.emit_signal("spawn_bullet", projectile)
-			projectile.setup(Weapon.BulletSpeed, 8, 4, 5)
+			projectile.setup(BulletSpeed, 8, 4, 5)
 			projectile.global_position = $BulletSpawnPos.global_position
-			var arc_rad = deg_to_rad(Weapon.DegreeAngleOfCone)
+			var arc_rad = deg_to_rad(DegreeAngleOfCone)
 			var increment = arc_rad / (curr_number_of_bullets - 1)
 			projectile.rotation = increment * i - arc_rad / 2
-			projectile.velocity = Weapon.BulletSpeed * Vector2.DOWN.rotated(projectile.rotation)
+			projectile.velocity = BulletSpeed * Vector2.DOWN.rotated(projectile.rotation)
 		##
 	##
 ##
@@ -313,4 +311,8 @@ func get_data():
 	data["dash"]["stack"] = curr_dash_max
 	
 	return data
+##
+
+func _on_shield_restock_timer_timeout():
+	shield_status = UpgradeAvailability.READY
 ##

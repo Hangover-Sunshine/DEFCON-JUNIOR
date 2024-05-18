@@ -11,7 +11,7 @@ var level_timer:Timer
 
 func _process(delta):
 	if player.gun_status == player.UpgradeAvailability.RECHARGING:
-		spitfire_cooldown.value = 100 * (player.reload_timer.time_left / player.Weapon.ReloadRate)
+		spitfire_cooldown.value = 100 * (player.reload_timer.time_left / player.ReloadRate)
 	elif player.gun_status == player.UpgradeAvailability.READY:
 		spitfire_cooldown.value = 0
 	##
@@ -22,8 +22,8 @@ func _process(delta):
 		boost_cooldown.value = 0
 	##
 	
-	if player.shield_status == player.UpgradeAvailability.RECHARGING:
-		bubble_cooldown.value = 100 * (player.shield_timer.time_left / player.ShieldCooldown)
+	if player.shield_status == player.UpgradeAvailability.RECHARGING or player.shield_status == player.UpgradeAvailability.ACTIVE:
+		bubble_cooldown.value = 100 * (player.shield_restock_timer.time_left / player.curr_shield_cd)
 	elif player.shield_status == player.UpgradeAvailability.READY:
 		bubble_cooldown.value = 0
 	##

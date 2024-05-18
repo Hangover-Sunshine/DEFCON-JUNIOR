@@ -268,9 +268,9 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 420
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 420
+theme_override_constants/margin_right = 0
 
 [node name="Levelup_VBox1" type="VBoxContainer" parent="Cards_MC"]
 layout_mode = 2

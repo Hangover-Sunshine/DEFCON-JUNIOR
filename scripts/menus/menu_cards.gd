@@ -89,6 +89,10 @@ func _ready():
 	randex = randi() % cards.size()
 	cards[randex].visible = true
 	cards.remove_at(randex)
+	
+	randex = randi() % cards.size()
+	cards[randex].visible = true
+	cards.remove_at(randex)
 ##
 
 func save():
@@ -130,6 +134,8 @@ func _on_card_boost_pressed():
 
 func _on_card_bubble_pressed():
 	shield_status = true
+	curr_shield_dur = 2.5
+	curr_shield_cd = 12
 	save()
 	GlobalSignals.emit_signal("load_scene", "GameScene")
 ##
