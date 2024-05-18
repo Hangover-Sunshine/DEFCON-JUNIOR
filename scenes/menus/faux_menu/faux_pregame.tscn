@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwmh3m7f4icnc"]
+[gd_scene load_steps=22 format=3 uid="uid://dwmh3m7f4icnc"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_pregame.gd" id="1_8vylt"]
 [ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_hj27s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cbhads56f8vvs" path="res://assets/ui/main/OmnipotentOne.PNG" id="3_xns2c"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="4_3wv46"]
 [ext_resource type="Texture2D" uid="uid://dghvm86fgoany" path="res://assets/ui/main/PC_Outline.png" id="6_kvdm8"]
+[ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="7_5spsi"]
 
 [sub_resource type="Animation" id="Animation_0yxws"]
 resource_name = "0"
@@ -33,6 +34,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cloud:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_e74l8"]
@@ -133,7 +158,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fcy8v"]
 resource_name = "7"
-length = 3.2
+length = 4.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -166,7 +191,7 @@ tracks/2/path = NodePath("OmnipotentOne:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 3.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -178,7 +203,7 @@ tracks/3/path = NodePath("OmnipotentOne:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3, 3.05, 3.1, 3.15, 3.2, 3.25, 3.3, 3.35, 3.4, 3.45, 3.5),
+"times": PackedFloat32Array(3.75, 3.8, 3.85, 3.9, 3.95, 4, 4.05, 4.1, 4.15, 4.2, 4.25, 4.3, 4.35, 4.4, 4.45, 4.5, 4.55, 4.6, 4.65, 4.7, 4.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665]
@@ -190,7 +215,7 @@ tracks/4/path = NodePath("PcOutline:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 3.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -202,10 +227,34 @@ tracks/5/path = NodePath("PcOutline:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cloud:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cloud:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kjk7l"]
@@ -282,6 +331,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cloud:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cloud:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cloud:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8v8my"]
 _data = {
@@ -335,6 +420,10 @@ _data = {
 "RESET": SubResource("Animation_3s756")
 }
 
+[sub_resource type="Curve" id="Curve_1swo7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.870787, 0.824176), -0.510272, -0.510272, 0, 0, Vector2(1, 0), -16.6265, 0.0, 0, 0]
+point_count = 3
+
 [node name="MenuPregame" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -369,6 +458,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_lfysp")
 theme_override_font_sizes/font_size = 75
 text = "\"INSERT TEXT HERE\""
@@ -414,6 +504,26 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_cqw0l")
 }
+
+[node name="Cloud" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(960, 534)
+rotation = -1.5708
+amount = 100
+lifetime = 3.0
+preprocess = 15.0
+texture = ExtResource("7_5spsi")
+emission_shape = 3
+emission_rect_extents = Vector2(150, 400)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_curve = SubResource("Curve_1swo7")
 
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/HBoxContainer/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="animation_finished" from="AP_Scare" to="." method="_on_ap_scare_animation_finished"]

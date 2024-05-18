@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://sgo67yn8hyxq"]
+[gd_scene load_steps=7 format=3 uid="uid://sgo67yn8hyxq"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_main.gd" id="1_syrew"]
-[ext_resource type="Texture2D" uid="uid://4coyjf2fs0lb" path="res://assets/ui/main/Faux_Title.png" id="2_6pwbn"]
+[ext_resource type="Texture2D" uid="uid://yaqvd0dk7aaw" path="res://assets/ui/main/Faux_Title_Text.png" id="2_ploaq"]
+[ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="2_vnl8g"]
 [ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_l8tvq"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="4_5ca7u"]
+
+[sub_resource type="Curve" id="Curve_w4jdf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.870787, 0.824176), -0.510272, -0.510272, 0, 0, Vector2(1, 0), -16.6265, 0.0, 0, 0]
+point_count = 3
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -13,6 +18,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_syrew")
+
+[node name="Cloud" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(958, 393)
+rotation = -1.5708
+amount = 150
+lifetime = 3.0
+preprocess = 15.0
+texture = ExtResource("2_vnl8g")
+emission_shape = 3
+emission_rect_extents = Vector2(200, 380)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_curve = SubResource("Curve_w4jdf")
 
 [node name="Main_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -24,12 +49,12 @@ theme_override_constants/margin_right = 420
 
 [node name="Main_VBox" type="VBoxContainer" parent="Main_MC"]
 layout_mode = 2
-theme_override_constants/separation = 120
+theme_override_constants/separation = 60
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Main_MC/Main_VBox"]
 layout_mode = 2
-texture = ExtResource("2_6pwbn")
+texture = ExtResource("2_ploaq")
 stretch_mode = 3
 
 [node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
