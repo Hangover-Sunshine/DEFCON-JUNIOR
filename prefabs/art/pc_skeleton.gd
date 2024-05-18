@@ -3,10 +3,6 @@ extends Node2D
 @onready var ap_rotate = $AP_Rotate
 @onready var face_timer = $FaceTimer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 # Functions for when player moves.
 func to_notmove():
 	ap_rotate.play("Down")
@@ -31,4 +27,19 @@ func to_pain():
 
 func _on_face_timer_timeout():
 	$Nuke/Body/Face/Mouth.frame = 0
+##
+
+func die():
+	$AP.process_mode = Node.PROCESS_MODE_ALWAYS
+	$Explosion_Fire.process_mode = Node.PROCESS_MODE_ALWAYS
+	$Shield.visible = false
+	$AP.play("Die")
+##
+
+func normal():
+	$AP.play("Idle")
+##
+
+func boost():
+	$AP.play("Boost")
 ##

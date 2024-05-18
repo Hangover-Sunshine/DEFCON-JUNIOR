@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://bwkshpflyauc0"]
 
-[ext_resource type="Script" path="res://scripts/resources/LevelResource.gd" id="1_p3ejh"]
+[ext_resource type="Script" path="res://scripts/resources/LevelResource.gd" id="1_jgyow"]
 
 [resource]
-script = ExtResource("1_p3ejh")
-LevelLength = 0.1
+script = ExtResource("1_jgyow")
+LevelLength = 1.0
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)

@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b7smlkhdccufi" path="res://assets/sprites/player/PC_Dimples.png" id="5_onoce"]
 [ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="7_4hcyb"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="8_8el7x"]
-[ext_resource type="Gradient" uid="uid://dyyq3wx5wedew" path="res://assets/graphs/fx_explode_fire.tres" id="8_m3j2v"]
-[ext_resource type="PackedScene" uid="uid://b6sq7xlovcr1b" path="res://prefabs/entities/shield.tscn" id="11_uip6a"]
+[ext_resource type="Gradient" path="res://assets/graphs/fx_explode_fire.tres" id="8_m3j2v"]
+[ext_resource type="PackedScene" path="res://prefabs/entities/shield.tscn" id="11_uip6a"]
 
 [sub_resource type="Curve" id="Curve_i316f"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

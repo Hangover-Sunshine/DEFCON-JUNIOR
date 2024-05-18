@@ -51,9 +51,9 @@ var curr_mag_size:int = 0
 var max_mag_size:int = 0
 
 # Dash Info =========
-var dash_status:UpgradeAvailability = UpgradeAvailability.NOPE
-var curr_dash_amount:int = 1
-var curr_dash_max:int = 1
+var dash_status:UpgradeAvailability = UpgradeAvailability.READY
+var curr_dash_amount:int = 0
+var curr_dash_max:int = 0
 
 var play_area_size:Vector2
 
@@ -97,7 +97,7 @@ func _ready():
 		curr_mag_size = max_mag_size
 		curr_number_of_bullets = 0
 		
-		curr_dash_max = 0
+		curr_dash_max = 1
 		curr_dash_amount = curr_dash_max
 	##
 	
@@ -133,6 +133,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("dash") and dash_status == UpgradeAvailability.READY\
 		and curr_dash_amount > 0 and velocity.length_squared() > 0:
 		dash_timer.start(DashDuration)
+		$PC_Skeleton.boost()
 		curr_dash_amount -= 1
 		if curr_dash_amount == 0:
 			dash_status = UpgradeAvailability.RECHARGING
@@ -140,6 +141,10 @@ func _process(_delta):
 		if dash_restock_timer.is_stopped():
 			dash_restock_timer.start(DashCooldown)
 		##
+	##
+	
+	if dash_timer.is_stopped() and curr_health > 0:
+		$PC_Skeleton.normal()
 	##
 ##
 
@@ -195,7 +200,7 @@ func hit():
 	
 	if curr_health <= 0:
 		GlobalSignals.emit_signal("player_died")
-		# play player's death anims + sounds + particles
+		$PC_Skeleton.die()
 		return
 	##
 	

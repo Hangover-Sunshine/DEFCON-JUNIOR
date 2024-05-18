@@ -8,6 +8,10 @@ func flash():
 	animation_player.play("flash")
 ##
 
-func _on_animation_player_animation_finished(_anim_name):
+func player_dead_flash():
+	animation_player.play("player_dead")
+##
+
+func _on_animation_player_animation_finished(anim_name):
 	flashed = true
 ##
