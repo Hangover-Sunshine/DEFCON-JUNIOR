@@ -46,7 +46,6 @@ class_name LevelResource
 @export var MaxNumberOfDynamicObstaclesOnScreen:int = 0
 @export var DynamicRandNumToSpawn:Vector2i = Vector2i(1, 3)
 @export var DynamicSpawnTimerRange:Vector2 = Vector2(4, 6)
-@export var BalloonSpeedRange:Vector2 = Vector2(100, 170)
 @export var BirdSpeedRange:Vector2 = Vector2(200, 300)
 @export var PlaneSpeedRange:Vector2 = Vector2(350, 500)
 
@@ -58,12 +57,13 @@ const MISSILES:Array[PackedScene] = [
 ]
 
 const MOVING_OBSTACLES:Array[PackedScene] = [
-	preload("res://prefabs/entities/obstacles/balloon.tscn"),
 	preload("res://prefabs/entities/obstacles/bird.tscn"),
 	preload("res://prefabs/entities/obstacles/plane.tscn")
 ]
 
-const STATIC_OBSTACLES:Array[PackedScene] = []
+const STATIC_OBSTACLES:Array[PackedScene] = [
+	preload("res://prefabs/entities/obstacles/balloon.tscn")
+]
 
 const FIGHTER = preload("res://prefabs/entities/fighter.tscn")
 
@@ -118,10 +118,8 @@ func generate_moving_obstacle():
 	
 	match indx:
 		0:
-			obst.HorizontalSpeed = randf_range(BalloonSpeedRange.x, BalloonSpeedRange.y)
-		1:
 			obst.HorizontalSpeed = randf_range(BirdSpeedRange.x, BirdSpeedRange.y)
-		2:
+		1:
 			obst.HorizontalSpeed = randf_range(PlaneSpeedRange.x, PlaneSpeedRange.y)
 		##
 	##
@@ -130,5 +128,6 @@ func generate_moving_obstacle():
 ##
 
 func generate_static_obstacle():
-	pass
+	var obst = STATIC_OBSTACLES[0].instantiate()
+	return obst
 ##
