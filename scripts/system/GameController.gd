@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var rand_position = $RandPosition
 @onready var player = $Player
+@onready var env_city = $Env_City
 
 const PLAYER_SPAWN:Vector2 = Vector2(980, -100)
 
@@ -50,15 +51,17 @@ func load_level():
 ##
 
 func _ready():
+	get_tree().paused = false
 	GlobalSignals.connect("jet_dead", _jet_dead)
 	GlobalSignals.connect("missile_dead", _missile_dead)
 	GlobalSignals.connect("hobstacle_dead", _hobstacle_dead)
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
 	$CanvasLayer/GIU.player = player
 	$CanvasLayer/GIU.level_timer = game_timer
+	env_city.get_child(0).connect("animation_finished", _nuke_done)
 ##
 
-func _process(_delta):
+func _process(delta):
 	if spawning_jets == false and max_jets > 0 and game_timer.time_left <= jets_spawn_at:
 		spawning_jets = true
 		jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
@@ -81,13 +84,36 @@ func _process(_delta):
 	##
 	
 	if game_timer.time_left < 25:
-		GlobalSettings.emit_signal("bail_out")
+		#GlobalSettings.emit_signal("bail_out")
+		pass
+	##
+	
+	if game_timer.time_left < 3:
+		player.has_control = false
+		env_city.global_position =\
+			env_city.global_position.move_toward(Vector2(960, 1090), 400 * delta)
+		player.global_position =\
+			player.global_position.move_toward(Vector2(960, 1290), 700 * delta)
+		if player.global_position.x < 940:
+			player.lean_right()
+		elif player.global_position.x > 980:
+			player.lean_left()
+		else:
+			player.do_nothing()
+		##
 	##
 ##
 
 func _on_game_timer_timeout():
-	# TODO: BOOM! :)
+	env_city.get_child(0).play("Nuke")
+	$DummyTimerBecauseImLazy.start(0.35)
+	await $DummyTimerBecauseImLazy.timeout
 	GlobalSignals.emit_signal("level_complete")
+##
+
+func _nuke_done(_anim_name):
+	pass
+	#GlobalSignals.emit_signal("level_complete")
 ##
 
 func _jet_dead():

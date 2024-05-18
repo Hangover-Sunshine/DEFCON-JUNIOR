@@ -36,7 +36,7 @@ func _process(_delta):
 			GlobalSignals.emit_signal("load_scene", "menus/menu_gameover")
 		##
 		if player_won:
-			GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
+			GlobalSignals.emit_signal("load_scene", "menus/menu_cutscene")
 		##
 		next_scene = true
 	##
@@ -51,7 +51,7 @@ func _input(event):
 
 func _level_complete():
 	get_tree().paused = true
-	$GameRoot.curr_level += 1
+	#$GameRoot.curr_level += 1
 	flash_canvas_layer.visible = true
 	flash_canvas_layer.flash()
 	player_won = true

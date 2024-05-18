@@ -57,6 +57,8 @@ var curr_dash_max:int = 1
 
 var play_area_size:Vector2
 
+var has_control:bool = true
+
 func _ready():
 	if FileAccess.file_exists("user://player.save"):
 		var file = FileAccess.open("user://player.save", FileAccess.READ)
@@ -103,6 +105,10 @@ func _ready():
 ##
 
 func _process(_delta):
+	if has_control == false:
+		return
+	##
+	
 	if Input.is_action_just_pressed("shield") and shield_status == UpgradeAvailability.READY:
 		shield_status = UpgradeAvailability.ACTIVE
 		shield_timer.start(curr_shield_dur)
@@ -138,6 +144,10 @@ func _process(_delta):
 ##
 
 func _physics_process(_delta):
+	if has_control == false:
+		return
+	##
+	
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	direction = direction.normalized()
 	
@@ -264,6 +274,18 @@ func _on_damaged_timer_timeout():
 func _on_reload_timer_timeout():
 	curr_mag_size = max_mag_size
 	gun_status = UpgradeAvailability.READY
+##
+
+func lean_left():
+	$PC_Skeleton.to_left()
+##
+
+func lean_right():
+	$PC_Skeleton.to_right()
+##
+
+func do_nothing():
+	$PC_Skeleton.to_notmove()
 ##
 
 func get_data():

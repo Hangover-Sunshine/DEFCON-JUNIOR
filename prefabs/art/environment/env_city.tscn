@@ -310,6 +310,11 @@ _data = {
 
 [node name="Env_City" type="Node2D"]
 
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_36j1k")
+}
+
 [node name="City" type="Node2D" parent="."]
 
 [node name="EnvCityBack" type="Sprite2D" parent="City"]
@@ -339,8 +344,3 @@ offset = Vector2(0, -447.5)
 visible = false
 position = Vector2(0, -380)
 texture = ExtResource("5_00f1b")
-
-[node name="AP" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_36j1k")
-}

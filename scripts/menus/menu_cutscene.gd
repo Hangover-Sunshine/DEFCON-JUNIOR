@@ -95,9 +95,10 @@ func _on_ap_cutscene_animation_finished(anim_name):
 		section += 1
 	elif anim_name == "Despawn" and section == 1:
 		if give_murder == true:
-			GlobalSignals.emit_signal("load_scene", "menu_cards")
+			progress_level()
+			GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
 		elif give_mercy == true:
-			GlobalSignals.emit_signal("load_scene", "hub_menu")
+			GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
 	elif anim_name == "Post-Nuke" or anim_name == "Post-Nuke-Flash":
 		spawn_void()
 
@@ -173,3 +174,15 @@ func _on_quit_button_pressed():
 	ap_left_eye.play("Closed")
 	speech.visible = true
 	speech.visible = true
+##
+
+func progress_level():
+	var data = {"level":chapter}
+	var json_dump = JSON.stringify(data)
+	var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
+	if save_file == null:
+		printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")
+		return
+	##
+	save_file.store_string(json_dump)
+##

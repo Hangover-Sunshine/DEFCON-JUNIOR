@@ -123,6 +123,7 @@ func save():
 
 func _on_card_boost_pressed():
 	dash_status = true
+	curr_dash_max += 1
 	save()
 	GlobalSignals.emit_signal("load_scene", "GameScene")
 ##
