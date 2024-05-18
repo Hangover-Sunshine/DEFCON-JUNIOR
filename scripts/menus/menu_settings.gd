@@ -10,13 +10,17 @@ signal settings_to_main
 @onready var sfx_slider = $Settings_MC/Settings_VBox/Tab_Vbox/Gen_Tab_Hbox/Bot_Hbox/Audio_VBox/SFX_HBox/SFX_Slider
 @onready var overall_slider = $Settings_MC/Settings_VBox/Tab_Vbox/Gen_Tab_Hbox/Bot_Hbox/Audio_VBox/Overall_HBox/Overall_Slider
 
+@onready var checkbox_1_check = $Settings_MC/Settings_VBox/Tab_Vbox/Gen_Tab_Hbox/Top_HBox/Display_Hbox/Display_VBox/Checkbox1_HBox/Checkbox1_Check
+
 func _ready():
+	
 	sfx_slider.value = GlobalSettings.UiSFXVolume * 100
 	sfx_percent.text = str(sfx_slider.value) + "%"
 	music_slider.value = GlobalSettings.MusicVolume * 100
 	music_percent.text = str(music_slider.value) + "%"
 	overall_slider.value = GlobalSettings.MasterVolume * 100
 	overall_percent.text = str(overall_slider.value) + "%"
+	checkbox_1_check.button_pressed = GlobalSettings.FlashesOff
 ##
 
 func _on_back_button_pressed():
