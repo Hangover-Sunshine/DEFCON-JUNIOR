@@ -4,7 +4,8 @@ extends Control
 @onready var ap_scare = $AP_Scare
 
 var line = 0
-var cur_script = ["SHALL WE MEET THEM?", "1", "2", "3", "4", "5", "6", ""]
+var cur_script = ["SHALL WE MEET THEM?", "BE NOT AFRAID!", "FOR THEY ARE LOVING",
+ "FOR THEY ARE LONELY", "FOR THEY ARE LONGING", "FOR THEY ARE LIGHT", "FOR THEY...",""]
 
 func _ready():
 	label.text = cur_script[line]
