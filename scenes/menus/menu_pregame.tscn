@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdx15nqmqr1cu"]
+[gd_scene load_steps=8 format=3 uid="uid://cdx15nqmqr1cu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pregame.gd" id="1_3jfox"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_6c7rd"]
-[ext_resource type="Theme" uid="uid://coxkpxhx8ao77" path="res://assets/graphs/LabelBackGreen3.tres" id="2_hl241"]
-[ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_78bn3"]
+[ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_78bn3"]
 [ext_resource type="Texture2D" uid="uid://b7ahxf62vwv3g" path="res://assets/ui/main/Art_Controls.png" id="5_5te88"]
 
 [sub_resource type="Animation" id="Animation_wd6a3"]
@@ -61,18 +60,12 @@ offset_bottom = 40.0
 theme_override_constants/margin_left = 420
 theme_override_constants/margin_top = 45
 theme_override_constants/margin_right = 420
+theme_override_constants/margin_bottom = 120
 
 [node name="Pregame_VBox" type="VBoxContainer" parent="Pregame_MC"]
 layout_mode = 2
 theme_override_constants/separation = 625
-
-[node name="Header1_Label" type="Label" parent="Pregame_MC/Pregame_VBox"]
-layout_mode = 2
-theme = ExtResource("2_hl241")
-theme_override_fonts/font = ExtResource("2_6c7rd")
-theme_override_font_sizes/font_size = 100
-text = "CONTROLS"
-horizontal_alignment = 1
+alignment = 2
 
 [node name="Button_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
 layout_mode = 2
