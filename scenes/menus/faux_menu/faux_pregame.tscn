@@ -394,16 +394,16 @@ texture = ExtResource("3_xns2c")
 position = Vector2(960, 540)
 texture = ExtResource("4_3wv46")
 
-[node name="AP_Scare" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_8v8my")
-}
-
 [node name="PcOutline" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 540)
 texture = ExtResource("6_kvdm8")
+
+[node name="AP_Scare" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8v8my")
+}
 
 [node name="AP_Flash" type="AnimationPlayer" parent="."]
 libraries = {
