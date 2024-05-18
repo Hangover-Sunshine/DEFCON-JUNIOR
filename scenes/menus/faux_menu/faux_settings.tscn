@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://8xss65s0xve1"]
+
+[ext_resource type="Texture2D" uid="uid://bvt0a176uapni" path="res://assets/ui/main/Faux_Settings.png" id="1_0y4aq"]
+[ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_settings.gd" id="1_hf3wl"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_68lo3"]
+[ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_cp5vx"]
+
+[sub_resource type="Animation" id="Animation_y6vyu"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_il3cl"]
+resource_name = "ToControl"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_drqo4"]
+resource_name = "ToGeneral"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_worfj"]
+_data = {
+"RESET": SubResource("Animation_y6vyu"),
+"ToControl": SubResource("Animation_il3cl"),
+"ToGeneral": SubResource("Animation_drqo4")
+}
+
+[node name="MenuSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hf3wl")
+
+[node name="Settings_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="Settings_VBox" type="VBoxContainer" parent="Settings_MC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Settings_MC/Settings_VBox"]
+layout_mode = 2
+texture = ExtResource("1_0y4aq")
+stretch_mode = 3
+
+[node name="Back_Button" type="Button" parent="Settings_MC/Settings_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_cp5vx")
+theme_override_fonts/font = ExtResource("3_68lo3")
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
+[node name="Settings_Tabs_Player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_worfj")
+}
+
+[connection signal="pressed" from="Settings_MC/Settings_VBox/Back_Button" to="." method="_on_back_button_pressed"]

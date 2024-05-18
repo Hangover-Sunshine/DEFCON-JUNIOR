@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2u4gnxcv8g3v"]
+
+[ext_resource type="Script" path="res://scenes/menus/faux_menu/hub_faux.gd" id="1_25yfo"]
+[ext_resource type="PackedScene" uid="uid://sgo67yn8hyxq" path="res://scenes/menus/faux_menu/faux_main.tscn" id="3_qopba"]
+[ext_resource type="PackedScene" uid="uid://dwmh3m7f4icnc" path="res://scenes/menus/faux_menu/faux_pregame.tscn" id="4_sibau"]
+[ext_resource type="PackedScene" uid="uid://8xss65s0xve1" path="res://scenes/menus/faux_menu/faux_settings.tscn" id="5_yil4v"]
+[ext_resource type="PackedScene" uid="uid://bygw8cox6ajq2" path="res://scenes/menus/faux_menu/faux_splash.tscn" id="6_2g8xc"]
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="6_tac2k"]
+
+[node name="HubMenu" type="Node2D"]
+script = ExtResource("1_25yfo")
+
+[node name="Sky" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="BackFrame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("6_tac2k")
+
+[node name="MenuMain" parent="." instance=ExtResource("3_qopba")]
+visible = false
+
+[node name="MenuPregame" parent="." instance=ExtResource("4_sibau")]
+visible = false
+
+[node name="MenuSettings" parent="." instance=ExtResource("5_yil4v")]
+visible = false
+
+[node name="MenuSplash" parent="." instance=ExtResource("6_2g8xc")]

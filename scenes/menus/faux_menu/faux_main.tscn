@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://sgo67yn8hyxq"]
+
+[ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_main.gd" id="1_syrew"]
+[ext_resource type="Texture2D" uid="uid://4coyjf2fs0lb" path="res://assets/ui/main/Faux_Title.png" id="2_6pwbn"]
+[ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_l8tvq"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="4_5ca7u"]
+
+[node name="MenuMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_syrew")
+
+[node name="Main_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 420
+theme_override_constants/margin_right = 420
+
+[node name="Main_VBox" type="VBoxContainer" parent="Main_MC"]
+layout_mode = 2
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Main_MC/Main_VBox"]
+layout_mode = 2
+texture = ExtResource("2_6pwbn")
+stretch_mode = 3
+
+[node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="Main_MC/Main_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Start_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_l8tvq")
+theme_override_fonts/font = ExtResource("4_5ca7u")
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="Settings_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_l8tvq")
+theme_override_fonts/font = ExtResource("4_5ca7u")
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+
+[node name="Exit_Button" type="Button" parent="Main_MC/Main_VBox/Button_HBox/Button_VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_l8tvq")
+theme_override_fonts/font = ExtResource("4_5ca7u")
+theme_override_font_sizes/font_size = 50
+text = "EXIT"
+
+[connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button" to="." method="_on_exit_button_pressed"]

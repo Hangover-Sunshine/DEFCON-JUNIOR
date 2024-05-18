@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwmh3m7f4icnc"]
+
+[ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_pregame.gd" id="1_8vylt"]
+[ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_hj27s"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_lfysp"]
+[ext_resource type="Texture2D" uid="uid://cbhads56f8vvs" path="res://assets/ui/main/OmnipotentOne.png" id="3_xns2c"]
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="4_3wv46"]
+
+[node name="MenuPregame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vylt")
+
+[node name="Pregame_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 420
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 420
+
+[node name="Pregame_VBox" type="VBoxContainer" parent="Pregame_MC"]
+layout_mode = 2
+theme_override_constants/separation = 85
+alignment = 1
+
+[node name="Button_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lfysp")
+theme_override_font_sizes/font_size = 75
+text = "\"INSERT TEXT HERE\""
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Continue_Button" type="Button" parent="Pregame_MC/Pregame_VBox/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_hj27s")
+theme_override_fonts/font = ExtResource("3_lfysp")
+theme_override_font_sizes/font_size = 50
+text = "CONTINUE"
+
+[node name="OmnipotentOne" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_xns2c")
+
+[node name="BackFrame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("4_3wv46")
+
+[node name="AP_Scare" type="AnimationPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="pressed" from="Pregame_MC/Pregame_VBox/HBoxContainer/Continue_Button" to="." method="_on_continue_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

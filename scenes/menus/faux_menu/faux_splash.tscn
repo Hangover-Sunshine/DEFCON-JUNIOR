@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://bygw8cox6ajq2"]
+
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_okcd0"]
+[ext_resource type="Texture2D" uid="uid://bkj5ek8frltig" path="res://assets/ui/main/Faux_Splash.png" id="2_ehilo"]
+
+[sub_resource type="Animation" id="Animation_oshcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Press_Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_s0tf0"]
+resource_name = "Throb"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Press_Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2c7oi"]
+_data = {
+"RESET": SubResource("Animation_oshcs"),
+"Throb": SubResource("Animation_s0tf0")
+}
+
+[node name="MenuSplash" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Press_Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 872.0
+offset_right = 1500.0
+offset_bottom = 930.0
+pivot_offset = Vector2(540, 26)
+theme_override_fonts/font = ExtResource("1_okcd0")
+theme_override_font_sizes/font_size = 50
+text = "Press ANY BUTTON to CONTINUE"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = -178.0
+offset_right = 1500.0
+offset_bottom = 902.0
+pivot_offset = Vector2(540, 0)
+texture = ExtResource("2_ehilo")
+stretch_mode = 3
+
+[node name="Splash_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 420
+theme_override_constants/margin_right = 420
+
+[node name="Splash_VBox" type="VBoxContainer" parent="Splash_MC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Splash_AnimPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Splash_MC")
+libraries = {
+"": SubResource("AnimationLibrary_2c7oi")
+}
+autoplay = "Throb"

@@ -1,0 +1,315 @@
+[gd_scene load_steps=16 format=3 uid="uid://dwmh3m7f4icnc"]
+
+[ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_pregame.gd" id="1_8vylt"]
+[ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_hj27s"]
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_lfysp"]
+[ext_resource type="Texture2D" uid="uid://cbhads56f8vvs" path="res://assets/ui/main/OmnipotentOne.png" id="3_xns2c"]
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="4_3wv46"]
+
+[sub_resource type="Animation" id="Animation_e74l8"]
+resource_name = "1"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kjk7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pregame_MC/Pregame_VBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmnipotentOne:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmnipotentOne:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_44lpa"]
+resource_name = "2"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k5c55"]
+resource_name = "3"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cvky5"]
+resource_name = "4"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.6, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7xqw1"]
+resource_name = "5"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.7, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j1qtl"]
+resource_name = "6"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.8, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fcy8v"]
+resource_name = "7"
+length = 2.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pregame_MC/Pregame_VBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmnipotentOne:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmnipotentOne:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_0yxws"]
+resource_name = "0"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackFrame:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmnipotentOne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8v8my"]
+_data = {
+"0": SubResource("Animation_0yxws"),
+"1": SubResource("Animation_e74l8"),
+"2": SubResource("Animation_44lpa"),
+"3": SubResource("Animation_k5c55"),
+"4": SubResource("Animation_cvky5"),
+"5": SubResource("Animation_7xqw1"),
+"6": SubResource("Animation_j1qtl"),
+"7": SubResource("Animation_fcy8v"),
+"RESET": SubResource("Animation_kjk7l")
+}
+
+[node name="MenuPregame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vylt")
+
+[node name="Pregame_MC" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 420
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 420
+
+[node name="Pregame_VBox" type="VBoxContainer" parent="Pregame_MC"]
+layout_mode = 2
+theme_override_constants/separation = 85
+alignment = 1
+
+[node name="Button_HBox" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_VBox" type="VBoxContainer" parent="Pregame_MC/Pregame_VBox/Button_HBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lfysp")
+theme_override_font_sizes/font_size = 75
+text = "\"INSERT TEXT HERE\""
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pregame_MC/Pregame_VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Continue_Button" type="Button" parent="Pregame_MC/Pregame_VBox/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("3_hj27s")
+theme_override_fonts/font = ExtResource("3_lfysp")
+theme_override_font_sizes/font_size = 50
+text = "CONTINUE"
+
+[node name="OmnipotentOne" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("3_xns2c")
+
+[node name="BackFrame" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("4_3wv46")
+
+[node name="AP_Scare" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8v8my")
+}
+
+[connection signal="pressed" from="Pregame_MC/Pregame_VBox/HBoxContainer/Continue_Button" to="." method="_on_continue_button_pressed"]
+[connection signal="animation_finished" from="AP_Scare" to="." method="_on_ap_scare_animation_finished"]

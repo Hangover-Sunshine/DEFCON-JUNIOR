@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cpino4ryq26pb"]
+
+[ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_42vpc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1hlu6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40arj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cry7"]
+bg_color = Color(0.37414, 0.374139, 0.374139, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ae6pf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxhp1"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_42vpc")
+Button/styles/disabled = SubResource("StyleBoxEmpty_1hlu6")
+Button/styles/focus = SubResource("StyleBoxEmpty_40arj")
+Button/styles/hover = SubResource("StyleBoxFlat_1cry7")
+Button/styles/normal = SubResource("StyleBoxFlat_ae6pf")
+Button/styles/pressed = SubResource("StyleBoxFlat_dxhp1")
