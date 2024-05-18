@@ -8,6 +8,7 @@ extends Node2D
 @onready var menu_warning = $MenuWarning
 
 var to_main_ready = false
+var to_splash_ready = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,13 +24,15 @@ func _ready():
 ##
 
 func _input(event):
-	if event.is_pressed() and menu_warning.visible == true:
+	if event.is_pressed() and menu_warning.visible == true and to_splash_ready == true:
 		animplayer.play("ToSplash")
 	elif event.is_pressed() and to_main_ready == true and menu_splash.visible == true:
 		animplayer.play("ToMain")
 
 func _on_hub_menu_anim_player_animation_finished(anim_name):
-	if anim_name == "ToSplash":
+	if anim_name == "ToWarning":
+		to_splash_ready = true
+	elif anim_name == "ToSplash":
 		to_main_ready = true
 	
 func handle_signals():
