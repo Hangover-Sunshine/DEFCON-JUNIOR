@@ -33,6 +33,7 @@ func hit():
 	dead = true
 	velocity.x = 0
 	GlobalSignals.emit_signal("hobstacle_dead")
+	$Death.play()
 ##
 
 func direction_check():
