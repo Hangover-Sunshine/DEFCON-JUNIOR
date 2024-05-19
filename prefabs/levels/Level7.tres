@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_a277x")
-LevelLength = 0.75
+LevelLength = 0.6
 LightColor = Color(0, 0, 0, 1)
 DarkColor = Color(0.0352941, 0.0352941, 0.0352941, 1)
 CloudGradient = ExtResource("1_0bd05")
