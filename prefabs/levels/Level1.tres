@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_jgyow")
-LevelLength = 1.0
+LevelLength = 0.75
 LightColor = Color(0, 0, 0, 1)
 DarkColor = Color(0, 0, 0, 1)
 FighterFireRate = Vector2(0.8, 0.8)
