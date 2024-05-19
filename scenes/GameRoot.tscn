@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://deaonojyom4gf"]
+[gd_scene load_steps=17 format=3 uid="uid://deaonojyom4gf"]
 
 [ext_resource type="Script" path="res://scripts/system/GameController.gd" id="1_cw3ns"]
 [ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/Level1.tres" id="2_fixhd"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="7_7no1s"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="8_otdhf"]
 [ext_resource type="Resource" uid="uid://clij3ubmk53v" path="res://prefabs/levels/Level7.tres" id="8_pxkv0"]
+[ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="15_nfn4c"]
+
+[sub_resource type="Gradient" id="Gradient_yysut"]
+colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
 
 [node name="GameRoot" type="Node2D"]
 process_mode = 1
@@ -40,6 +44,11 @@ one_shot = true
 [node name="BackFrame" type="Sprite2D" parent="."]
 z_index = 20
 position = Vector2(960, 540)
+texture = ExtResource("3_labr8")
+
+[node name="BackFrame2" type="Sprite2D" parent="BackFrame"]
+modulate = Color(0.564706, 0.619608, 0.866667, 1)
+scale = Vector2(1.63, 1)
 texture = ExtResource("3_labr8")
 
 [node name="Background2" type="ColorRect" parent="."]
@@ -72,6 +81,25 @@ show_behind_parent = true
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="Rain" type="CPUParticles2D" parent="."]
+position = Vector2(960, 1375)
+amount = 500
+lifetime = 15.0
+preprocess = 15.0
+texture = ExtResource("15_nfn4c")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(0, -25)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_yysut")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

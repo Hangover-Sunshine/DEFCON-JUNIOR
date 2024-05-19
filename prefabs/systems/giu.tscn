@@ -44,7 +44,7 @@ custom_minimum_size = Vector2(420, 1080)
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 60
 
 [node name="Left_VBox" type="VBoxContainer" parent="GIU_MC/GIU_HBox/Left_MC"]
@@ -157,7 +157,7 @@ layout_mode = 2
 [node name="Right_MC" type="MarginContainer" parent="GIU_MC/GIU_HBox"]
 custom_minimum_size = Vector2(420, 1080)
 layout_mode = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 60
@@ -185,7 +185,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.737255, 0.498039, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- START"
+text = "- 100%"
 vertical_alignment = 2
 
 [node name="Faraway_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
@@ -194,7 +194,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.878431, 0.568627, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- FARAWAY"
+text = "- 75%"
 vertical_alignment = 2
 
 [node name="Halfway_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
@@ -203,7 +203,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.411765, 0.352941, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- HALFWAY"
+text = "- 50%"
 vertical_alignment = 2
 
 [node name="Almost_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
@@ -212,7 +212,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.866667, 0.215686, 0.270588, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- ALMOST"
+text = "- 20%"
 vertical_alignment = 2
 
 [node name="Finish_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
@@ -221,5 +221,5 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.647059, 0.14902, 0.223529, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- FINISH"
+text = "- 0%"
 vertical_alignment = 2

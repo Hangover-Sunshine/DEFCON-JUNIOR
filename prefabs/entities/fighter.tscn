@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cet4qeo3i75a3" path="res://prefabs/entities/projectile.tscn" id="2_ng4ax"]
 
 [sub_resource type="Gradient" id="Gradient_7tht3"]
-colors = PackedColorArray(0, 0, 0, 0.588235, 0.866667, 0.215686, 0.270588, 0.392157)
+colors = PackedColorArray(1, 0.4, 0.458824, 0, 1, 0.4, 0.458824, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qgu3m"]
 gradient = SubResource("Gradient_7tht3")
+width = 32
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
@@ -27,10 +28,10 @@ BulletLifetime = 8.0
 
 [node name="AOE" type="TextureRect" parent="."]
 visible = false
-z_index = 1
+show_behind_parent = true
 offset_left = 60.0
 offset_right = 180.0
-offset_bottom = 40.0
+offset_bottom = 64.0
 rotation = 3.14159
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_qgu3m")
