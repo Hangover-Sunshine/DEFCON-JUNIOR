@@ -95,7 +95,7 @@ func _load_scene(scene:String):
 	set_process(true)
 ##
 
-func _on_transition_player_animation_finished(anim_name):
+func _on_transition_player_animation_finished(_anim_name):
 	if fade_in:
 		GlobalSignals.emit_signal("scene_transition_done")
 	##

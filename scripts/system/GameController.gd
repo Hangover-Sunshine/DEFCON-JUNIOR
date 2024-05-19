@@ -73,6 +73,10 @@ func _ready():
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
 	$CanvasLayer/GIU.player = player
 	$CanvasLayer/GIU.level_timer = game_timer
+	
+	if GlobalPlaylist.current_song() != "MainTheme":
+		GlobalPlaylist.play("MainTheme")
+	##
 ##
 
 func late_ready():
@@ -91,8 +95,9 @@ func _process(delta):
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 	
-	if timer_level == 0 and game_timer.time_left < 20:
+	if timer_level == 0 and game_timer.time_left < 30:
 		timer_level += 1
+		GlobalPlaylist.play("EndOfLevel")
 	##
 	
 	if timer_level == 1 and game_timer.time_left < 15:
@@ -131,6 +136,7 @@ func _on_game_timer_timeout():
 	$DummyTimerBecauseImLazy.start(0.35)
 	await $DummyTimerBecauseImLazy.timeout
 	GlobalSignals.emit_signal("level_complete")
+	GlobalPlaylist.stop_playing()
 ##
 
 func _jet_dead():

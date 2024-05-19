@@ -26,6 +26,9 @@ func _ready():
 func _input(event):
 	if event.is_pressed() and menu_warning.visible == true and to_splash_ready == true:
 		animplayer.play("ToSplash")
+		if GlobalPlaylist.current_song() != "MainTheme":
+			GlobalPlaylist.play("MainTheme")
+		##
 	elif event.is_pressed() and to_main_ready == true and menu_splash.visible == true:
 		animplayer.play("ToMain")
 
@@ -59,5 +62,5 @@ func to_exit():
 func to_load():
 	GlobalSignals.emit_signal("load_scene", "GameScene")
 
-func to_free(scene_name):
+func to_free(_scene_name):
 	self.queue_free()

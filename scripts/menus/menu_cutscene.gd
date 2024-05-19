@@ -1,8 +1,7 @@
 extends Control
 
-@export var CutsceneSounds:Array
-@export var VoidSoundtrack:AudioStream
-
+@onready var sound_playlist = $SoundPlaylist
+@onready var gods_voice = $GodsVoice
 
 @onready var post_nuke = $PostNuke
 @onready var levels_label = $PostNuke/Levels_Label
@@ -23,6 +22,7 @@ extends Control
 @onready var ap_mouth = $TheVoid/AP_Mouth
 @onready var ap_left_eye = $TheVoid/Upperface/Left_Eye/AP_Left_Eye
 @onready var ap_cutscene = $AP_Cutscene
+@onready var sfx_timing = $SFXTiming
 
 
 # Manipulate this guy to run specific cutscene and to make scene not flash player
@@ -54,13 +54,17 @@ var murder3 = "TEARS...RAIN...WARPLANES NEAR."
 var script4 = ["SHUTTERS, YOU HAVE WRONGFULLY FLUNG.", "LIKE A RAVEN, WHAT HAVE YOU BRUNG?",
 "PERCHED UPON THE EDGE...", "OF MY AND MINE'S ROOMS.","CHANTING HELLFIRE, NEVER MORE.", "WHAT'S MORE?"
 ,"NEVER MORE.", "WHO'S MORE?", "NEVER MORE.", "QUESTIONS, WE ASK...","WE KNEEL...", "WHEN SHALL FORGIVENESS BE ENOUGH?"]
-var murder4 = "DEAREST, WHERE DO GOD'S PRAY?"
+var murder4 = "DEAREST, WHERE DO GODS PRAY?"
 var script5 = ["CAWS AND COOS...", "WITH MEANINGLESS MURDERS.","LAWS ONCE USED...","MYTH LEADING US, LIKE HERDERS.",
 "SHEEP, SHEEPLE...", "PEOPLE, NO MORE.","FOR MINE CREATION ASUNDER.","WILL GOD STATION THEIR PLUNDER?"]
 var murder5 = "THEN SO BE IT...PREVAIL WE SHALL!"
 var script6 = ["SEVEN DAYS...", "WAS ALL IT TOOK", "LESSONS MADE...","CAUSE ALL FORSOOK.", "NO FOLLOWERS TO PRAY...",
 "ALL MEMORIES ASTRAY.","FOR CENTURIES, I REMAINED.", "AND NOW FOR TODAY, I PRAY."]
 var murder6 = "CHILDREN, FORGIVE ME...FOR I HAVE FAILED."
+
+var playing:bool = false
+var curr_vol:float = -40
+var max_vol:float = 0
 
 func _ready():
 	no_flash = GlobalSettings.FlashesOff
@@ -79,6 +83,13 @@ func _ready():
 	start_cutscene()
 ##
 
+func _process(delta):
+	if playing:
+		curr_vol = move_toward(curr_vol, max_vol, delta * 20)
+		sound_playlist.raise_db(curr_vol)
+	##
+##
+
 func start_cutscene():
 	var section = 0
 	var has_question = false
@@ -88,6 +99,7 @@ func start_cutscene():
 	var line = 0
 	cutscene_art.frame = chapter - 1
 	levels_label.text = str(chapter," / 7")
+	sfx_timing.start()
 	if no_flash == false:
 		ap_cutscene.play("Post-Nuke-Flash")
 	else:
@@ -95,6 +107,7 @@ func start_cutscene():
 
 # Shows NPC art
 func spawn_void():
+	GlobalPlaylist.play("GodsTheme")
 	ap_cutscene.play("Spawn")
 	ap_left_eye.play("Closed")
 
@@ -136,6 +149,8 @@ func assign_script():
 		cur_script = script6
 		cur_murder = murder6
 	text.text = cur_script[line]
+	gods_voice.play_random_sound()
+##
 
 # Allows player to shift through text when applicable
 func _input(event):
@@ -157,6 +172,7 @@ func _input(event):
 # Updates line and checks to notifies input function if a question is coming up
 func next_line():
 	if line < cur_script.size():
+		gods_voice.play_random_sound()
 		text.text = cur_script[line]
 		if line + 1 == cur_script.size():
 			has_question = true
@@ -169,6 +185,7 @@ func _on_ap_mouth_animation_finished(anim_name):
 
 # Makes TheVoid sad and sets up trigger to next level
 func _on_continue_button_pressed():
+	gods_voice.play_random_sound()
 	question.visible = false
 	give_murder = true
 	post_speech = true
@@ -179,6 +196,7 @@ func _on_continue_button_pressed():
 
 # Makes TheVoid greatful and sets up trigger to send player back to hub_menu
 func _on_quit_button_pressed():
+	gods_voice.play_random_sound()
 	question.visible = false
 	give_mercy = true
 	post_speech = true
@@ -204,4 +222,9 @@ func _scene_loaded(scene_name):
 	if scene_name != name:
 		queue_free()
 	##
+##
+
+func _on_sfx_timing_timeout():
+	sound_playlist.play_at(chapter - 1)
+	playing = true
 ##

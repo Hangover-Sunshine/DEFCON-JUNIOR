@@ -1,8 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=56 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
 [ext_resource type="Texture2D" uid="uid://t8l2gbk31ws5" path="res://assets/ui/void/Void_Bottom_Lip.png" id="2_kh1ue"]
+[ext_resource type="AudioStream" uid="uid://3epuibj8dnvb" path="res://assets/audio/sfx/void_sounds/scene1.ogg" id="2_uulx7"]
 [ext_resource type="Gradient" uid="uid://balv1hmq7d8pq" path="res://assets/graphs/Skys/sludge.tres" id="3_m58fs"]
 [ext_resource type="Texture2D" uid="uid://bo6ddi7i15s3b" path="res://assets/ui/void/Void_Right_Eye.png" id="3_t36hl"]
 [ext_resource type="Texture2D" uid="uid://c4rxgpdmcsj8o" path="res://assets/ui/void/Void_Left_Eye.png" id="3_xlmdt"]
@@ -11,7 +12,17 @@
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_7smap"]
 [ext_resource type="Texture2D" uid="uid://dj2rujdajltmt" path="res://assets/ui/void/Art_Cutscene.png" id="9_yjlf5"]
 [ext_resource type="StyleBox" uid="uid://dj4tm3hhh5mi8" path="res://assets/graphs/murder_button.tres" id="10_mav7b"]
+[ext_resource type="AudioStream" uid="uid://bkdbxni6h2sqx" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe1.ogg" id="10_whqjq"]
 [ext_resource type="StyleBox" uid="uid://d1kjb4x0ihcjs" path="res://assets/graphs/mercy_button.tres" id="11_bgicp"]
+[ext_resource type="AudioStream" uid="uid://bia38xwvhfr8r" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe2.ogg" id="11_k4w8h"]
+[ext_resource type="AudioStream" uid="uid://dr4swtiml1uw0" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe3.ogg" id="12_nespv"]
+[ext_resource type="Script" path="res://nodes/SoundPlaylist/SoundPlaylist.gd" id="15_i0g67"]
+[ext_resource type="AudioStream" uid="uid://b1icu0h2e2r2r" path="res://assets/audio/sfx/void_sounds/scene2.ogg" id="17_o0xmk"]
+[ext_resource type="AudioStream" uid="uid://dcrj14tk1j5op" path="res://assets/audio/sfx/void_sounds/scene3.ogg" id="18_7l5i3"]
+[ext_resource type="AudioStream" uid="uid://dhsdhjjtaxi3y" path="res://assets/audio/sfx/void_sounds/scene4.ogg" id="19_pwg6g"]
+[ext_resource type="AudioStream" uid="uid://cjv6cjjmtp2no" path="res://assets/audio/sfx/void_sounds/scene5.ogg" id="20_jw654"]
+[ext_resource type="AudioStream" uid="uid://dlcqtos7kwjx6" path="res://assets/audio/sfx/void_sounds/scene6.ogg" id="21_tdyx3"]
+[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="22_el8gl"]
 
 [sub_resource type="Animation" id="Animation_ie1y8"]
 resource_name = "Blink"
@@ -1124,6 +1135,55 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ub0r")
 
+[node name="SoundPlaylist" type="Node" parent="."]
+script = ExtResource("15_i0g67")
+
+[node name="Scene1" type="AudioStreamPlayer" parent="SoundPlaylist"]
+stream = ExtResource("2_uulx7")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="Scene2" type="AudioStreamPlayer" parent="SoundPlaylist"]
+stream = ExtResource("17_o0xmk")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="Scene3" type="AudioStreamPlayer" parent="SoundPlaylist"]
+stream = ExtResource("18_7l5i3")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="Scene4" type="AudioStreamPlayer" parent="SoundPlaylist"]
+stream = ExtResource("19_pwg6g")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="Scene5" type="AudioStreamPlayer" parent="SoundPlaylist"]
+stream = ExtResource("20_jw654")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="Scene6" type="AudioStreamPlayer" parent="SoundPlaylist"]
+stream = ExtResource("21_tdyx3")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="GodsVoice" type="Node" parent="."]
+script = ExtResource("22_el8gl")
+stopRepeatingSounds = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GodsVoice"]
+stream = ExtResource("10_whqjq")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="GodsVoice"]
+stream = ExtResource("11_k4w8h")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="GodsVoice"]
+stream = ExtResource("12_nespv")
+bus = &"SFX"
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
@@ -1310,8 +1370,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.647059, 0.14902, 0.223529, 1)
 
+[node name="SFXTiming" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_face_animation_finished"]
 [connection signal="pressed" from="Question_Labels/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Question_Labels/Quit_Button" to="." method="_on_quit_button_pressed"]
 [connection signal="animation_finished" from="AP_Cutscene" to="." method="_on_ap_cutscene_animation_finished"]
+[connection signal="timeout" from="SFXTiming" to="." method="_on_sfx_timing_timeout"]
