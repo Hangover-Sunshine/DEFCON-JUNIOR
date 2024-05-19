@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdx15nqmqr1cu"]
+[gd_scene load_steps=11 format=3 uid="uid://cdx15nqmqr1cu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pregame.gd" id="1_3jfox"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_6c7rd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ahxf62vwv3g" path="res://assets/ui/main/Art_Controls.png" id="5_5te88"]
 [ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="5_vrvde"]
 [ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="6_ne4mt"]
+[ext_resource type="Theme" uid="uid://dox27soin5qiv" path="res://assets/graphs/LabelBackGreen3.tres" id="7_b5g2r"]
 
 [sub_resource type="Animation" id="Animation_wd6a3"]
 resource_name = "Flash"
@@ -120,6 +121,17 @@ stream = ExtResource("6_ne4mt")
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("6_ne4mt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 53.0
+offset_right = 1209.0
+offset_bottom = 188.0
+theme = ExtResource("7_b5g2r")
+theme_override_fonts/font = ExtResource("2_6c7rd")
+theme_override_font_sizes/font_size = 100
+text = "CONTROLS"
 
 [connection signal="mouse_entered" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Tutorial_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Tutorial_Button" to="." method="_on_tutorial_button_pressed"]
