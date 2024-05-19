@@ -1,12 +1,19 @@
-[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://c25n3tdusit8x"]
+[gd_resource type="Resource" script_class="LevelResource" load_steps=4 format=3 uid="uid://c25n3tdusit8x"]
 
 [ext_resource type="Script" path="res://scripts/resources/LevelResource.gd" id="1_smpaw"]
 
+[sub_resource type="Gradient" id="Gradient_k0vej"]
+colors = PackedColorArray(1, 1, 1, 0.0392157, 0.819608, 0.717647, 0.945098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_csxji"]
+gradient = SubResource("Gradient_k0vej")
+
 [resource]
 script = ExtResource("1_smpaw")
-LevelLength = 1.25
+LevelLength = 1.0
 LightColor = Color(0.819608, 0.717647, 0.945098, 1)
 DarkColor = Color(0.482353, 0.415686, 0.647059, 1)
+CloudGradient = SubResource("GradientTexture1D_csxji")
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)

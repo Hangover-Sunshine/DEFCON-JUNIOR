@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
 [ext_resource type="Texture2D" uid="uid://t8l2gbk31ws5" path="res://assets/ui/void/Void_Bottom_Lip.png" id="2_kh1ue"]
+[ext_resource type="Gradient" uid="uid://balv1hmq7d8pq" path="res://assets/graphs/Skys/sludge.tres" id="3_m58fs"]
 [ext_resource type="Texture2D" uid="uid://bo6ddi7i15s3b" path="res://assets/ui/void/Void_Right_Eye.png" id="3_t36hl"]
 [ext_resource type="Texture2D" uid="uid://c4rxgpdmcsj8o" path="res://assets/ui/void/Void_Left_Eye.png" id="3_xlmdt"]
 [ext_resource type="Texture2D" uid="uid://ib6tc5tlclmj" path="res://assets/ui/void/Void_Noise.png" id="4_50qe7"]
@@ -11,9 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dj2rujdajltmt" path="res://assets/ui/void/Art_Cutscene.png" id="9_yjlf5"]
 [ext_resource type="StyleBox" uid="uid://dj4tm3hhh5mi8" path="res://assets/graphs/murder_button.tres" id="10_mav7b"]
 [ext_resource type="StyleBox" uid="uid://d1kjb4x0ihcjs" path="res://assets/graphs/mercy_button.tres" id="11_bgicp"]
-
-[sub_resource type="Gradient" id="Gradient_8h1t4"]
-colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
 
 [sub_resource type="Animation" id="Animation_ie1y8"]
 resource_name = "Blink"
@@ -1151,7 +1149,7 @@ angle_min = -90.0
 angle_max = 90.0
 scale_amount_min = 0.5
 scale_amount_max = 2.0
-color_initial_ramp = SubResource("Gradient_8h1t4")
+color_initial_ramp = ExtResource("3_m58fs")
 
 [node name="TheVoid" type="Node2D" parent="."]
 visible = false
