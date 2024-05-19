@@ -1,5 +1,9 @@
 extends Control
 
+@export var CutsceneSounds:Array
+@export var VoidSoundtrack:AudioStream
+
+
 @onready var post_nuke = $PostNuke
 @onready var levels_label = $PostNuke/Levels_Label
 @onready var cutscene_art = $PostNuke/Cutscene_Art

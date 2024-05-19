@@ -91,20 +91,20 @@ func _process(delta):
 									Levels[curr_level].FighterSpawnTimerRange.y))
 	##
 	
-	if timer_level == 0 and game_timer.time_left < 30:
-		obstacle_timer.stop()
-		horizontal_timer.stop()
+	if timer_level == 0 and game_timer.time_left < 20:
 		timer_level += 1
 	##
 	
-	if timer_level == 1 and game_timer.time_left < 20:
+	if timer_level == 1 and game_timer.time_left < 15:
+		timer_level += 1
+	##
+	
+	if timer_level == 2 and game_timer.time_left < 10:
+		obstacle_timer.stop()
+		horizontal_timer.stop()
 		missile_timer.stop()
 		jet_timer.stop()
 		GlobalSignals.emit_signal("free_off_screen") # only have everything fire once
-		timer_level += 1
-	##
-	
-	if timer_level == 2 and game_timer.time_left < 15:
 		GlobalSignals.emit_signal("blow_on_screen") # anything on screen that can should die
 		GlobalSignals.emit_signal("bail_out") # tell planes to GTFO
 		timer_level += 1
