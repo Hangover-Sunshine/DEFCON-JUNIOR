@@ -61,5 +61,5 @@ func _on_music_slider_value_changed(value):
 	music_percent.text = str(value) + "%"
 	GlobalSettings.MusicVolume = value / 100
 	var sfx = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.MasterVolume))
+	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.MusicVolume))
 ##

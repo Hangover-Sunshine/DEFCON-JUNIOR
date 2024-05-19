@@ -294,7 +294,7 @@ func do_nothing():
 
 func get_data():
 	var data = {}
-	data["health"] = Health
+	data["health"] = curr_health
 	
 	data["shield"] = {}
 	data["shield"]["has"] = shield_status != UpgradeAvailability.NOPE

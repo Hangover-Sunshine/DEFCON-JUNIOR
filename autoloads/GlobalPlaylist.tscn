@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs0ra7dn1cupd"]
+
+[ext_resource type="Script" path="res://autoloads/GlobalMusicPlayer.gd" id="1_su6i0"]
+[ext_resource type="AudioStream" uid="uid://cco8myhmavp8r" path="res://assets/audio/music/BaseCartoonMusic.mp3" id="2_kxw05"]
+[ext_resource type="Script" path="res://scripts/system/AudioFade.gd" id="3_llpcn"]
+[ext_resource type="AudioStream" uid="uid://pqjlchdd8dma" path="res://assets/audio/sfx/level_end/end_of_level.ogg" id="3_nonka"]
+[ext_resource type="AudioStream" uid="uid://pkksvqtgy7u7" path="res://assets/audio/music/VoidsTheme.ogg" id="5_l3bu5"]
+
+[node name="GlobalPlaylist" type="Node"]
+script = ExtResource("1_su6i0")
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kxw05")
+volume_db = -80.0
+bus = &"Music"
+script = ExtResource("3_llpcn")
+
+[node name="EndOfLevel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nonka")
+volume_db = -80.0
+bus = &"Music"
+script = ExtResource("3_llpcn")
+
+[node name="WhomTheBellsToll" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+script = ExtResource("3_llpcn")
+
+[node name="GodsTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l3bu5")
+volume_db = -80.0
+bus = &"Music"
+script = ExtResource("3_llpcn")

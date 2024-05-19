@@ -77,6 +77,9 @@ func _player_died():
 	##
 	player_lost = true
 	save_game()
+	if GlobalPlaylist.current_song() != "MainTheme":
+		GlobalPlaylist.play("MainTheme")
+	##
 ##
 
 func _scene_loaded(scene_name):
