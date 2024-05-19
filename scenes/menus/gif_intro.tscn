@@ -1,3 +1,125 @@
-[gd_scene format=3 uid="uid://x53hl6ai84d"]
+[gd_scene load_steps=9 format=3 uid="uid://x53hl6ai84d"]
+
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="1_o1xp6"]
+[ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="2_w3i65"]
+[ext_resource type="PackedScene" uid="uid://d2npo3vy5fmsi" path="res://prefabs/art/pc_splash.tscn" id="3_ovak2"]
+[ext_resource type="Texture2D" uid="uid://bq6dqxkjbcgit" path="res://assets/ui/main/Art_Title_Text1.png" id="4_jhspu"]
+
+[sub_resource type="Gradient" id="Gradient_8wyoq"]
+colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
+
+[sub_resource type="Animation" id="Animation_pn3or"]
+resource_name = "Slide"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PC_Splash:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.5, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -666), Vector2(0, 226), Vector2(0, 214), Vector2(0, 226), Vector2(0, 214), Vector2(0, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArtTitleText1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.756863, 0.85098, 0.94902, 1), Color(0.564706, 0.619608, 0.866667, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5u4ne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PC_Splash:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -666)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArtTitleText1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.756863, 0.85098, 0.94902, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjf5t"]
+_data = {
+"RESET": SubResource("Animation_5u4ne"),
+"Slide": SubResource("Animation_pn3or")
+}
 
 [node name="GifIntro" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BackFrame" type="Sprite2D" parent="."]
+z_index = 20
+texture = ExtResource("1_o1xp6")
+
+[node name="BackFrame2" type="Sprite2D" parent="BackFrame"]
+modulate = Color(0.564706, 0.619608, 0.866667, 1)
+scale = Vector2(1.25, 1)
+texture = ExtResource("1_o1xp6")
+
+[node name="Cloud" type="CPUParticles2D" parent="."]
+position = Vector2(0, 724)
+amount = 500
+lifetime = 15.0
+preprocess = 15.0
+texture = ExtResource("2_w3i65")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(0, -25)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_8wyoq")
+
+[node name="Sky" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -1080.0
+offset_top = -540.0
+offset_right = 840.0
+offset_bottom = 540.0
+color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="PC_Splash" parent="." instance=ExtResource("3_ovak2")]
+position = Vector2(0, -666)
+
+[node name="ArtTitleText1" type="Sprite2D" parent="."]
+modulate = Color(0.756863, 0.85098, 0.94902, 1)
+position = Vector2(0, -144)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_jhspu")
+
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cjf5t")
+}
+autoplay = "Slide"

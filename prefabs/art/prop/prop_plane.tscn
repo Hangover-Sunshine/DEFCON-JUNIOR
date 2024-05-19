@@ -230,7 +230,6 @@ vframes = 3
 
 [node name="Trail" type="CPUParticles2D" parent="Plane"]
 show_behind_parent = true
-position = Vector2(50, 0)
 amount = 200
 texture = ExtResource("3_sxgul")
 emission_shape = 1
