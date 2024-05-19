@@ -7,7 +7,7 @@ colors = PackedColorArray(1, 1, 1, 0.0392157, 1, 0.827451, 0.678431, 1)
 
 [resource]
 script = ExtResource("1_lokeo")
-LevelLength = 0.75
+LevelLength = 1.0
 LightColor = Color(1, 0.827451, 0.678431, 1)
 DarkColor = Color(0.964706, 0.694118, 0.462745, 1)
 CloudGradient = SubResource("Gradient_dyxil")
@@ -36,7 +36,7 @@ MissileHasLockingChance = 0.5
 MaxNumberOfStaticObstaclesOnScreen = 8
 StaticSpawnTimerRange = Vector2(3, 8)
 StaticRandNumToSpawn = Vector2i(1, 3)
-MaxNumberOfDynamicObstaclesOnScreen = 15
+MaxNumberOfDynamicObstaclesOnScreen = 12
 DynamicRandNumToSpawn = Vector2i(3, 5)
 DynamicSpawnTimerRange = Vector2(2, 6)
 BirdSpeedRange = Vector2(200, 300)

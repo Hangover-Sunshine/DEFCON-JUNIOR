@@ -15,7 +15,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_bboyg"]
-colors = PackedColorArray(1, 1, 1, 1, 0.772549, 0.772549, 0.772549, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_njjkn"]
 resource_name = "Blink"

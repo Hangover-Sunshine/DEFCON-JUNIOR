@@ -10,7 +10,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_l4w11"]
-colors = PackedColorArray(1, 1, 1, 1, 0.772549, 0.772549, 0.772549, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="Curve" id="Curve_upa3b"]
 _data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
@@ -230,10 +230,10 @@ vframes = 3
 
 [node name="Trail" type="CPUParticles2D" parent="Plane"]
 show_behind_parent = true
-amount = 200
+amount = 400
 texture = ExtResource("3_sxgul")
 emission_shape = 1
-emission_sphere_radius = 4.08
+emission_sphere_radius = 20.0
 spread = 50.0
 gravity = Vector2(0, 0)
 scale_amount_min = 0.05
