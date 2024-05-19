@@ -7,6 +7,7 @@ signal main_to_pre
 
 func _on_start_button_pressed():
 	main_to_pre.emit()
+	GlobalPlaylist.play("LLAmbiance")
 
 func _on_settings_button_pressed():
 	main_to_set.emit()
