@@ -137,6 +137,7 @@ func hit():
 	dead = true
 	velocity.x = 0
 	GlobalSignals.emit_signal("missile_dead")
+	$Death.play()
 ##
 
 func _on_missile_died():

@@ -193,6 +193,7 @@ func _on_fire_timer_timeout():
 		bullet.global_position = sp.global_position
 	##
 	
+	$Shoot.play()
 	wait = true
 	$Enemy_Jet.fire()
 	movement_wait_timer.start(0.1)
@@ -224,6 +225,7 @@ func _on_player_detector_body_entered(body):
 ##
 
 func hit():
+	$Death.play()
 	$Enemy_Jet.anim_die()
 	$PlayerDetector.queue_free()
 	$Hitbox.queue_free()

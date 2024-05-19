@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1tjek5op80ys"]
+[gd_scene load_steps=8 format=3 uid="uid://c1tjek5op80ys"]
 
 [ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="1_6sdai"]
 [ext_resource type="Script" path="res://scripts/game/jet.gd" id="1_lj8gk"]
 [ext_resource type="PackedScene" uid="uid://cet4qeo3i75a3" path="res://prefabs/entities/projectile.tscn" id="2_ng4ax"]
 [ext_resource type="Texture2D" uid="uid://gdf7b4undcvg" path="res://assets/particle/Jet_Warning.png" id="3_b2id6"]
+[ext_resource type="AudioStream" uid="uid://k5n2aycmm5qm" path="res://assets/audio/sfx/gameplay/Player_Shoot.wav" id="5_o1h5i"]
+[ext_resource type="AudioStream" uid="uid://cgufg02e02wiw" path="res://assets/audio/sfx/gameplay/Death_Enemy_Obstacle.wav" id="6_vhapj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usbiq"]
 size = Vector2(160, 180)
@@ -73,6 +75,14 @@ rect = Rect2(-50, -10, 100, 110)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
 polygon = PackedVector2Array(0, -98, -19, -73, -21, -51, -35, -36, -36, -18, -76, 11, -76, 46, -31, 43, -28, 55, -53, 73, -53, 89, 53, 88, 53, 74, 26, 53, 30, 43, 79, 46, 79, 13, 36, -16, 37, -34, 23, -50, 15, -75)
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o1h5i")
+pitch_scale = 0.6
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vhapj")
+pitch_scale = 0.7
 
 [connection signal="died" from="Enemy_Jet" to="." method="_on_enemy_jet_died"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

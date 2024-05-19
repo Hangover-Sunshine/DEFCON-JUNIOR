@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://51aixuhs1grq"]
+[gd_scene load_steps=5 format=3 uid="uid://51aixuhs1grq"]
 
 [ext_resource type="Script" path="res://scripts/game/missile.gd" id="1_ise5d"]
 [ext_resource type="PackedScene" uid="uid://dljpawysa62f3" path="res://prefabs/systems/indicator.tscn" id="3_o2isq"]
 [ext_resource type="PackedScene" uid="uid://hvyxr5s4n4vp" path="res://prefabs/art/enemy/enemy_missile_d.tscn" id="3_rkcei"]
+[ext_resource type="AudioStream" uid="uid://cgufg02e02wiw" path="res://assets/audio/sfx/gameplay/Death_Enemy_Obstacle.wav" id="4_tlivt"]
 
 [node name="PointedMissile" type="CharacterBody2D"]
 collision_layer = 4
@@ -35,6 +36,10 @@ polygon = PackedVector2Array(96, -2, 96, 3, 55, 20, 14, 25, -51, 24, -95, 19, -9
 [node name="Indicator" parent="." instance=ExtResource("3_o2isq")]
 position = Vector2(0, -1)
 scale = Vector2(0.4, 0.4)
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tlivt")
+pitch_scale = 0.82
 
 [connection signal="died" from="PropGraphic" to="." method="_on_missile_died"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
