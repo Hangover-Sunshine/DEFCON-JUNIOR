@@ -135,38 +135,28 @@ func _on_game_timer_timeout():
 
 func _jet_dead():
 	curr_jets -= 1
-	if jet_timer.is_stopped():
-		jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
-									Levels[curr_level].FighterSpawnTimerRange.y))
-	##
 ##
 
 func _missile_dead():
 	curr_missiles -= 1
-	if missile_timer.is_stopped():
-		missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
-									Levels[curr_level].FighterSpawnTimerRange.y))
-	##
 ##
 
 func _hobstacle_dead():
 	curr_move_obstacles -= 1
-	if horizontal_timer.is_stopped():
-		horizontal_timer.start(randf_range(Levels[curr_level].DynamicSpawnTimerRange.x,
-										Levels[curr_level].DynamicSpawnTimerRange.y))
-	##
 ##
 
 func _obstacle_dead():
 	curr_obstacles -= 1
-	
-	if curr_obstacles < max_obstacles and obstacle_timer.is_stopped():
-		obstacle_timer.start(randf_range(Levels[curr_level].StaticSpawnTimerRange.x,
-										Levels[curr_level].StaticSpawnTimerRange.y))
-	##
 ##
 
 func _on_missile_timer_timeout():
+	missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
+									Levels[curr_level].FighterSpawnTimerRange.y))
+	
+	if timer_level >= 1 or curr_missiles >= max_missiles:
+		return
+	##
+	
 	var max = max_missiles - curr_missiles
 	if max > Levels[curr_level].MissilesRandNumToSpawn.y:
 		max = Levels[curr_level].MissilesRandNumToSpawn.y
@@ -182,14 +172,15 @@ func _on_missile_timer_timeout():
 		rand_position.get_random_position(missile)
 		num -= 1
 	##
-	
-	if timer_level < 1 and curr_missiles < max_missiles and missile_timer.is_stopped():
-		missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
-									Levels[curr_level].FighterSpawnTimerRange.y))
-	##
 ##
 
 func _on_jet_timer_timeout():
+	jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
+								Levels[curr_level].FighterSpawnTimerRange.y))
+	if timer_level >= 1 or curr_jets >= max_jets:
+		return
+	##
+	
 	var max = max_jets - curr_jets
 	if max > Levels[curr_level].FightersRandNumToSpawn.y:
 		max = Levels[curr_level].FightersRandNumToSpawn.y
@@ -204,14 +195,15 @@ func _on_jet_timer_timeout():
 		$Enemies.add_child(jet)
 		num -= 1
 	##
-	
-	if timer_level < 1 and curr_jets < max_jets and jet_timer.is_stopped():
-		jet_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
-								Levels[curr_level].FighterSpawnTimerRange.y))
-	##
 ##
 
 func _on_obstacle_timer_timeout():
+	obstacle_timer.start(randf_range(Levels[curr_level].StaticSpawnTimerRange.x,
+										Levels[curr_level].StaticSpawnTimerRange.y))
+	if timer_level != 0 or curr_obstacles > max_obstacles:
+		return
+	##
+	
 	var max = max_obstacles - curr_obstacles
 	if max > Levels[curr_level].StaticRandNumToSpawn.y:
 		max = Levels[curr_level].StaticRandNumToSpawn.y
@@ -225,14 +217,16 @@ func _on_obstacle_timer_timeout():
 		rand_position.get_random_static_start(object)
 		num -= 1
 	##
-	
-	if timer_level == 0 and curr_obstacles < max_obstacles and obstacle_timer.is_stopped():
-		obstacle_timer.start(randf_range(Levels[curr_level].StaticSpawnTimerRange.x,
-										Levels[curr_level].StaticSpawnTimerRange.y))
-	##
 ##
 
 func _on_horizontal_timer_timeout():
+	horizontal_timer.start(randf_range(Levels[curr_level].DynamicSpawnTimerRange.x,
+										Levels[curr_level].DynamicSpawnTimerRange.y))
+	
+	if timer_level != 0 or curr_move_obstacles >= max_move_obstacles:
+		return
+	##
+	
 	var max = max_move_obstacles - curr_move_obstacles
 	if max > Levels[curr_level].StaticRandNumToSpawn.y:
 		max = Levels[curr_level].StaticRandNumToSpawn.y
@@ -253,11 +247,6 @@ func _on_horizontal_timer_timeout():
 		object.direction_check()
 		
 		num -= 1
-	##
-	
-	if timer_level == 0 and curr_move_obstacles < max_move_obstacles and horizontal_timer.is_stopped():
-		horizontal_timer.start(randf_range(Levels[curr_level].DynamicSpawnTimerRange.x,
-										Levels[curr_level].DynamicSpawnTimerRange.y))
 	##
 ##
 
