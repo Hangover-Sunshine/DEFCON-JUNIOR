@@ -1,15 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cix7grprr55jl"]
+[gd_scene load_steps=9 format=3 uid="uid://cix7grprr55jl"]
 
 [ext_resource type="Script" path="res://scripts/system/GameScene.gd" id="1_4pqr6"]
 [ext_resource type="PackedScene" uid="uid://deaonojyom4gf" path="res://scenes/GameRoot.tscn" id="2_tcv1b"]
-[ext_resource type="Resource" uid="uid://du3wo04m2xkou" path="res://prefabs/levels/Level4.tres" id="3_p7byc"]
-[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/Level1.tres" id="4_n6ahj"]
-[ext_resource type="Resource" uid="uid://bxorqwj5il7rg" path="res://prefabs/levels/Level2.tres" id="5_bvpf6"]
-[ext_resource type="Resource" uid="uid://c25n3tdusit8x" path="res://prefabs/levels/Level3.tres" id="6_h8dyt"]
 [ext_resource type="PackedScene" uid="uid://cvws2phcvy2lr" path="res://scenes/menus/hub_pause.tscn" id="7_5w17u"]
-[ext_resource type="Resource" uid="uid://cy7wt2rqks7lu" path="res://prefabs/levels/Level5.tres" id="7_y3ptn"]
-[ext_resource type="Resource" uid="uid://cuwi2a85l6g7p" path="res://prefabs/levels/Level6.tres" id="8_n07i4"]
-[ext_resource type="Resource" uid="uid://clij3ubmk53v" path="res://prefabs/levels/Level7.tres" id="9_g0rwo"]
 [ext_resource type="Script" path="res://scripts/menus/menu_flash.gd" id="11_tyc6j"]
 
 [sub_resource type="Animation" id="Animation_81id1"]
@@ -72,7 +65,6 @@ process_mode = 3
 script = ExtResource("1_4pqr6")
 
 [node name="GameRoot" parent="." instance=ExtResource("2_tcv1b")]
-Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("3_p7byc"), ExtResource("4_n6ahj"), ExtResource("5_bvpf6"), ExtResource("6_h8dyt"), ExtResource("7_y3ptn"), ExtResource("8_n07i4"), ExtResource("9_g0rwo")])
 
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2
