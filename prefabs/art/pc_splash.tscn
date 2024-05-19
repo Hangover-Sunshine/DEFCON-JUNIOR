@@ -1,0 +1,275 @@
+[gd_scene load_steps=16 format=3 uid="uid://d2npo3vy5fmsi"]
+
+[ext_resource type="Texture2D" uid="uid://cmf8vvbammk3w" path="res://assets/sprites/player/PC_Body.png" id="2_8lv3h"]
+[ext_resource type="Texture2D" uid="uid://c83ruwr1fy67x" path="res://assets/particle/PC_Trail.png" id="3_ej66n"]
+[ext_resource type="Texture2D" uid="uid://cgbags4oc612c" path="res://assets/sprites/player/PC_Mouth.png" id="4_1r5fb"]
+[ext_resource type="Texture2D" uid="uid://c82bx5qto0ol1" path="res://assets/sprites/player/PC_Eyes.png" id="5_5wcoc"]
+[ext_resource type="Texture2D" uid="uid://bllod6ib3gxpu" path="res://assets/sprites/player/PC_Brows.png" id="6_qyho7"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="7_nagk2"]
+[ext_resource type="Texture2D" uid="uid://b7smlkhdccufi" path="res://assets/sprites/player/PC_Dimples.png" id="7_w2j00"]
+
+[sub_resource type="Animation" id="Animation_p8o8r"]
+resource_name = "Happy"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Face/Eyes:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.25), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Face/Mouth:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Face/Mouth:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 51), Vector2(0, 51)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Face/Eyes:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ouhm6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Face/Eyes:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Face/Mouth:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Face/Mouth:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 51)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Face/Eyes:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pubdk"]
+_data = {
+"Happy": SubResource("Animation_p8o8r"),
+"RESET": SubResource("Animation_ouhm6")
+}
+
+[sub_resource type="Animation" id="Animation_61x5q"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6tv8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nuke:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Nuke:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Nuke/Body:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_suqcb"]
+_data = {
+"Idle": SubResource("Animation_61x5q"),
+"RESET": SubResource("Animation_6tv8f")
+}
+
+[sub_resource type="Curve" id="Curve_no1jh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.870787, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_lape7"]
+offsets = PackedFloat32Array(0.82, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.772549, 0.772549, 0.772549, 1)
+
+[node name="PC_Splash" type="Node2D"]
+
+[node name="Nuke" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Nuke"]
+texture = ExtResource("2_8lv3h")
+
+[node name="Outline" type="Sprite2D" parent="Nuke/Body"]
+visible = false
+modulate = Color(1, 0.878431, 0.568627, 1)
+show_behind_parent = true
+texture = ExtResource("3_ej66n")
+
+[node name="Face" type="Node2D" parent="Nuke/Body"]
+
+[node name="Mouth" type="Sprite2D" parent="Nuke/Body/Face"]
+position = Vector2(0, 51)
+texture = ExtResource("4_1r5fb")
+hframes = 2
+
+[node name="Eyes" type="Sprite2D" parent="Nuke/Body/Face"]
+position = Vector2(-1, 35)
+texture = ExtResource("5_5wcoc")
+vframes = 2
+
+[node name="Brows" type="Sprite2D" parent="Nuke/Body/Face"]
+position = Vector2(0, 24)
+texture = ExtResource("6_qyho7")
+
+[node name="Dimples" type="Sprite2D" parent="Nuke/Body/Face"]
+position = Vector2(-1, 53)
+texture = ExtResource("7_w2j00")
+
+[node name="AP_Face" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Nuke")
+libraries = {
+"": SubResource("AnimationLibrary_pubdk")
+}
+autoplay = "Happy"
+
+[node name="AP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_suqcb")
+}
+autoplay = "Idle"
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(5, -100)
+rotation = -1.5708
+amount = 550
+lifetime = 1.5
+texture = ExtResource("7_nagk2")
+gravity = Vector2(0, 0)
+initial_velocity_min = 350.0
+initial_velocity_max = 400.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+scale_amount_curve = SubResource("Curve_no1jh")
+color_ramp = SubResource("Gradient_lape7")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://88fivnqio2ad"]
+[gd_scene load_steps=7 format=3 uid="uid://88fivnqio2ad"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_hhomw"]
-[ext_resource type="Texture2D" uid="uid://b4u4llne6x240" path="res://assets/ui/main/Art_Splash.png" id="1_r5glq"]
+[ext_resource type="PackedScene" uid="uid://d2npo3vy5fmsi" path="res://prefabs/art/pc_splash.tscn" id="3_ixcle"]
+[ext_resource type="Texture2D" uid="uid://bq6dqxkjbcgit" path="res://assets/ui/main/Art_Title_Text1.png" id="4_huuxg"]
 
 [sub_resource type="Animation" id="Animation_oshcs"]
 length = 0.001
@@ -17,22 +18,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TextureRect:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_s0tf0"]
 resource_name = "Throb"
-length = 4.0
+length = 6.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -41,22 +30,10 @@ tracks/0/path = NodePath("../Press_Label:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TextureRect:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0174533, 0.0, -0.0174533, 0.0]
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2c7oi"]
@@ -85,16 +62,6 @@ theme_override_font_sizes/font_size = 50
 text = "Press ANY BUTTON to CONTINUE"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = 420.0
-offset_top = -178.0
-offset_right = 1500.0
-offset_bottom = 902.0
-pivot_offset = Vector2(540, 0)
-texture = ExtResource("1_r5glq")
-stretch_mode = 3
-
 [node name="Splash_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
@@ -113,3 +80,11 @@ libraries = {
 "": SubResource("AnimationLibrary_2c7oi")
 }
 autoplay = "Throb"
+
+[node name="PC_Splash" parent="." instance=ExtResource("3_ixcle")]
+position = Vector2(960, 771)
+
+[node name="ArtTitleText" type="Sprite2D" parent="."]
+modulate = Color(0.756863, 0.85098, 0.94902, 1)
+position = Vector2(960, 414)
+texture = ExtResource("4_huuxg")

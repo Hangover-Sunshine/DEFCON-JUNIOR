@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbhads56f8vvs"
-path="res://.godot/imported/OmnipotentOne.PNG-87f983929e1ea897363c0b2f1843ab0d.ctex"
+uid="uid://i58f18qbx8d4"
+path="res://.godot/imported/Art_Title_Text.png-3e7ef168cb8dd6273a2f2d8c6abfaa45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/main/OmnipotentOne.PNG"
-dest_files=["res://.godot/imported/OmnipotentOne.PNG-87f983929e1ea897363c0b2f1843ab0d.ctex"]
+source_file="res://assets/ui/main/Art_Title_Text.png"
+dest_files=["res://.godot/imported/Art_Title_Text.png-3e7ef168cb8dd6273a2f2d8c6abfaa45.ctex"]
 
 [params]
 

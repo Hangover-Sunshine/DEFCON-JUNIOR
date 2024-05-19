@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cp8880vb66kkj"]
+[gd_scene load_steps=14 format=3 uid="uid://cp8880vb66kkj"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/prop_balloon.gd" id="1_486ei"]
 [ext_resource type="Texture2D" uid="uid://iyydc8g36f44" path="res://assets/sprites/prop/Prop_Basket.png" id="1_dd5gd"]
 [ext_resource type="Texture2D" uid="uid://buraaha3m3yoo" path="res://assets/sprites/prop/Prop_Balloon.png" id="2_fi2gu"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="3_kqssv"]
+[ext_resource type="Gradient" uid="uid://dyyq3wx5wedew" path="res://assets/graphs/fx_explode_fire.tres" id="4_23mks"]
 [ext_resource type="Texture2D" uid="uid://dskj1c8u7w667" path="res://assets/particle/Circle2.png" id="4_spqpu"]
+
+[sub_resource type="Curve" id="Curve_kkp76"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_1wdw8"]
 _data = [Vector2(0.61236, 1), -0.582651, -0.582651, 0, 0, Vector2(0.797753, 0), 0.0, 0.0, 0, 0]
@@ -51,6 +57,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HAB/Trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_x4lj1"]
@@ -117,6 +135,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HAB/Trail:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tbse6"]
@@ -193,6 +223,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HAB/Trail:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aulqa"]
 _data = {
@@ -210,6 +252,20 @@ script = ExtResource("1_486ei")
 position = Vector2(0, -12)
 texture = ExtResource("1_dd5gd")
 offset = Vector2(0, 25)
+
+[node name="Trail" type="CPUParticles2D" parent="HAB"]
+rotation = -1.5708
+amount = 50
+local_coords = true
+texture = ExtResource("3_kqssv")
+spread = 30.36
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_kkp76")
+color_ramp = ExtResource("4_23mks")
 
 [node name="Balloon" type="Sprite2D" parent="HAB"]
 position = Vector2(-6, -89)
