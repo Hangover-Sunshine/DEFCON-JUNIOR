@@ -4,6 +4,7 @@ extends Node2D
 @onready var left = $Jet/Gun/Left
 @onready var right = $Jet/Gun/Right
 @onready var ap = $AP
+@onready var ap_gun = $Jet/AP_Gun
 
 signal died
 var color = 0
@@ -23,6 +24,14 @@ func randomize_color():
 # Plays death animation and shoots signal to free self
 func anim_die():
 	ap.play("Die")
+
+func fire():
+	ap_gun.play("Shoot")
+##
+
+func reset_gun():
+	ap_gun.play("RESET")
+##
 
 func _on_ap_animation_finished(anim_name):
 	if anim_name == "Die":

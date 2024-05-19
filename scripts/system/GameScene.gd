@@ -29,6 +29,7 @@ func _ready():
 	
 	$GameRoot.curr_level = curr_level
 	$GameRoot.load_level()
+	$GameRoot.late_ready()
 ##
 
 func _process(_delta):

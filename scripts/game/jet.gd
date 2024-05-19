@@ -55,6 +55,7 @@ enum SprayPattern {
 @onready var fire_timer = $FireTimer
 @onready var move_timer = $MoveTimer
 @onready var bob_timer = $BobTimer
+@onready var movement_wait_timer = $MovementWaitTimer
 
 @onready var aoe = $AOE
 
@@ -71,6 +72,7 @@ var pattern:int
 var spawn_pos
 
 var free_off_screen:bool = false
+var wait:bool = false
 
 func _ready():
 	assert(!(BobLeftAndRight and BobOnTimer), "Too many behaviors!")
@@ -131,6 +133,12 @@ func _physics_process(delta):
 			curr_limits = Vector2(player.global_position.x - mod_by,
 										player.global_position.x + mod_by)
 		##
+		
+		# Don't move if you gotta wait
+		if wait:
+			velocity = Vector2.ZERO
+		##
+		
 		move_and_slide()
 		if global_position.x <= curr_limits.x:
 			if BobOnTimer:
@@ -183,7 +191,10 @@ func _on_fire_timer_timeout():
 		bullet.global_position = sp.global_position
 	##
 	
-	fire_timer.start(FireTime)
+	wait = true
+	$Enemy_Jet.fire()
+	movement_wait_timer.start(0.15)
+	bob_timer.paused = true
 ##
 
 func _on_bob_timer_timeout():
@@ -222,4 +233,10 @@ func hit():
 
 func _on_enemy_jet_died():
 	queue_free()
+##
+
+func _on_movement_wait_timer_timeout():
+	wait = false
+	fire_timer.start(FireTime)
+	bob_timer.paused = false
 ##
