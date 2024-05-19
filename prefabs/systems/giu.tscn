@@ -59,6 +59,7 @@ alignment = 2
 [node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Health_HBox"]
 layout_mode = 2
 theme = ExtResource("2_11kuq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 72
 text = "##"
@@ -81,6 +82,7 @@ alignment = 2
 [node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox"]
 layout_mode = 2
 theme = ExtResource("2_11kuq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
 text = "SPACE"
@@ -107,6 +109,7 @@ alignment = 2
 [node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox"]
 layout_mode = 2
 theme = ExtResource("2_11kuq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
 text = "SHIFT"
@@ -133,6 +136,7 @@ alignment = 2
 [node name="Label" type="Label" parent="GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox"]
 layout_mode = 2
 theme = ExtResource("2_11kuq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 50
 text = "Q / Z"

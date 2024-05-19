@@ -16,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://clij3ubmk53v" path="res://prefabs/levels/Level7.tres" id="8_pxkv0"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="15_nfn4c"]
 
-[sub_resource type="Gradient" id="Gradient_yysut"]
+[sub_resource type="Gradient" id="Gradient_uq21n"]
 colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
 
 [node name="GameRoot" type="Node2D"]
@@ -41,12 +41,12 @@ one_shot = true
 [node name="HorizontalTimer" type="Timer" parent="Info"]
 one_shot = true
 
-[node name="BackFrame" type="Sprite2D" parent="."]
+[node name="Frame_White" type="Sprite2D" parent="."]
 z_index = 20
 position = Vector2(960, 540)
 texture = ExtResource("3_labr8")
 
-[node name="BackFrame2" type="Sprite2D" parent="BackFrame"]
+[node name="Frame_Sky" type="Sprite2D" parent="Frame_White"]
 modulate = Color(0.564706, 0.619608, 0.866667, 1)
 scale = Vector2(1.25, 1)
 texture = ExtResource("3_labr8")
@@ -99,7 +99,7 @@ angle_min = -90.0
 angle_max = 90.0
 scale_amount_min = 0.5
 scale_amount_max = 2.0
-color_initial_ramp = SubResource("Gradient_yysut")
+color_initial_ramp = SubResource("Gradient_uq21n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
