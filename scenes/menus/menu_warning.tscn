@@ -271,7 +271,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0xyjj")
 theme_override_font_sizes/font_size = 50
-text = "warnings below before cotinuing:"
+text = "warnings below before continuing:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -292,7 +292,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0xyjj")
 theme_override_font_sizes/font_size = 50
-text = "2) Implied child death"
+text = "2) Implied child death,"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -300,7 +300,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0xyjj")
 theme_override_font_sizes/font_size = 50
-text = "3) Cartoon retching, Emetophobia"
+text = "3) Cartoon retching (Emetophobia),"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -308,7 +308,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0xyjj")
 theme_override_font_sizes/font_size = 50
-text = "4) Flashing lights, Selaphobia"
+text = "4) Flashing lights (Selaphobia),"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -316,7 +316,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0xyjj")
 theme_override_font_sizes/font_size = 50
-text = "5) Loud and abrupt noises, Misophonia"
+text = "5) Loud and abrupt noises (Misophonia)."
 horizontal_alignment = 1
 vertical_alignment = 1
 
