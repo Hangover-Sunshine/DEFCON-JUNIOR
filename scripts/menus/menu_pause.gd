@@ -12,3 +12,7 @@ func _on_settings_button_pressed():
 
 func _on_leave_button_pressed():
 	pause_to_main.emit()
+
+func _on_mouse_entered():
+	$HoverPool.play_random_sound()
+##

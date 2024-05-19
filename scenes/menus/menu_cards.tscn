@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cmqvg1yjso6rn"]
+[gd_scene load_steps=59 format=3 uid="uid://cmqvg1yjso6rn"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_fik03"]
 [ext_resource type="Script" path="res://scripts/menus/menu_cards.gd" id="1_m3354"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://clnd5tq3brvpq" path="res://assets/ui/cards/Card_Spitfire_Spew.png" id="10_7wgnr"]
 [ext_resource type="Texture2D" uid="uid://kgpl7ida7gg5" path="res://assets/ui/cards/Card_Spitfire_Upchuck.png" id="11_x6ije"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="13_bw8ex"]
+[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="14_a5wtb"]
+[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="15_r41cd"]
 
 [sub_resource type="Gradient" id="Gradient_gxl6y"]
 colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
@@ -380,13 +382,38 @@ theme = SubResource("Theme_2sh0c")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="HoverPool" type="Node" parent="."]
+script = ExtResource("14_a5wtb")
+randomizePitch = true
+allowPitchReroll = true
+pitchRandomization = Vector2(0.6, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Boost" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Boost" to="." method="_on_card_boost_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Boost_Jetfuel" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Boost_Jetfuel" to="." method="_on_card_boost_jetfuel_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble" to="." method="_on_card_bubble_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble_Airtime" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble_Airtime" to="." method="_on_card_bubble_airtime_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble_Gurgle" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Bubble_Gurgle" to="." method="_on_card_bubble_gurgle_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Radiation" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Radiation" to="." method="_on_card_radiation_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire" to="." method="_on_card_spitfire_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Piercing" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Piercing" to="." method="_on_card_spitfire_piercing_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Spew" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Spew" to="." method="_on_card_spitfire_spew_pressed"]
+[connection signal="mouse_entered" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Upchuck" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Spitfire_Upchuck" to="." method="_on_card_spitfire_upchuck_pressed"]

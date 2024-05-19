@@ -198,3 +198,7 @@ func _scene_loaded(scene_name):
 		queue_free()
 	##
 ##
+
+func _on_mouse_entered():
+	$HoverPool.play_random_sound()
+##
