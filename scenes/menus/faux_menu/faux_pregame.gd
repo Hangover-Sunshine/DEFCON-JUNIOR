@@ -12,6 +12,7 @@ var cur_script = ["SHALL WE MEET THEM?", "BE NOT AFRAID!", "FOR THEY ARE LOVING"
 func _ready():
 	label.text = cur_script[line]
 	ap_scare.play("0")
+	no_flash = GlobalSettings.FlashesOff
 
 func _on_continue_button_pressed():
 	line += 1
