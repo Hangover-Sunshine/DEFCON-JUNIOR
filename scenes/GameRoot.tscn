@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="8_otdhf"]
 [ext_resource type="Resource" uid="uid://clij3ubmk53v" path="res://prefabs/levels/Level7.tres" id="8_pxkv0"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="15_nfn4c"]
-[ext_resource type="AudioStream" uid="uid://co6aibsih8jed" path="res://assets/audio/sfx/gameplay/Wind_Loop.wav" id="16_2ovse"]
+[ext_resource type="AudioStream" uid="uid://bimldd4i1lw8" path="res://assets/audio/sfx/gameplay/Wind_Loop.ogg" id="16_r5qae"]
 
 [sub_resource type="Gradient" id="Gradient_uq21n"]
 colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
@@ -133,7 +133,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="Wind" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_2ovse")
+stream = ExtResource("16_r5qae")
 
 [connection signal="timeout" from="Info/GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="timeout" from="Info/MissileTimer" to="." method="_on_missile_timer_timeout"]

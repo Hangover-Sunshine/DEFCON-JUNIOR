@@ -37,12 +37,15 @@ script = ExtResource("3_llpcn")
 [node name="LLAmbiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_7huyl")
 volume_db = -80.0
+bus = &"Music"
 script = ExtResource("3_llpcn")
 
 [node name="RCartoon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_rmn30")
+bus = &"Music"
 script = ExtResource("3_llpcn")
 
 [node name="RSCartoon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_iaq7f")
+bus = &"Music"
 script = ExtResource("3_llpcn")

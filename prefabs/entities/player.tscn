@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cff0irid7qcej"]
+[gd_scene load_steps=8 format=3 uid="uid://cff0irid7qcej"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_je4ut"]
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="1_sgups"]
 [ext_resource type="AudioStream" uid="uid://c1f8hkln454ds" path="res://assets/audio/sfx/gameplay/Player_Gets_Hit.wav" id="3_f8x6l"]
 [ext_resource type="AudioStream" uid="uid://k5n2aycmm5qm" path="res://assets/audio/sfx/gameplay/Player_Shoot.wav" id="4_pa8pa"]
+[ext_resource type="AudioStream" uid="uid://b6e4ssr66ybe4" path="res://assets/audio/sfx/gameplay/dead.ogg" id="5_3caag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_reof2"]
 radius = 49.0
@@ -66,6 +67,9 @@ bus = &"SFX"
 [node name="PlayerShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_pa8pa")
 bus = &"SFX"
+
+[node name="PlayerDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3caag")
 
 [connection signal="body_entered" from="ShieldArea" to="." method="_on_shield_area_body_entered"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

@@ -72,7 +72,8 @@ func _ready():
 		##
 		var data = json.get_data()
 		
-		curr_health = data.health
+		Health = data.health
+		curr_health = Health
 		
 		shield_status = UpgradeAvailability.READY if data["shield"]["has"] else UpgradeAvailability.NOPE
 		curr_shield_cd = data["shield"]["cd"]
@@ -205,6 +206,7 @@ func hit():
 	if curr_health <= 0:
 		GlobalSignals.emit_signal("player_died")
 		$PC_Skeleton.die()
+		$PlayerDead.play()
 		return
 	##
 	
@@ -298,7 +300,7 @@ func do_nothing():
 
 func get_data():
 	var data = {}
-	data["health"] = curr_health
+	data["health"] = Health
 	
 	data["shield"] = {}
 	data["shield"]["has"] = shield_status != UpgradeAvailability.NOPE

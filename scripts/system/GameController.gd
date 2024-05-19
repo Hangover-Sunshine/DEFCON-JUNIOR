@@ -73,6 +73,7 @@ func load_level():
 	elif GlobalPlaylist.current_song() != "MainTheme":
 		GlobalPlaylist.play("MainTheme")
 	##
+	wind.playing = true
 ##
 
 func _ready():
@@ -99,13 +100,6 @@ func _process(delta):
 		spawning_missiles = true
 		missile_timer.start(randf_range(Levels[curr_level].FighterSpawnTimerRange.x,
 									Levels[curr_level].FighterSpawnTimerRange.y))
-	##
-	
-	if cd_delay <= 0 and wind.playing == false:
-		wind.play()
-		cd_delay = delay
-	elif cd_delay > 0 and wind.playing == false:
-		cd_delay -= delta
 	##
 	
 	if timer_level == 0 and game_timer.time_left < 30:
