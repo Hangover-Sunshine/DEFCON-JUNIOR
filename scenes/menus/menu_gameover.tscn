@@ -67,7 +67,7 @@ layout_mode = 2
 theme = ExtResource("2_u0ckn")
 theme_override_fonts/font = ExtResource("2_avs2s")
 theme_override_font_sizes/font_size = 50
-text = "PLAY AGAIN"
+text = "TRY AGAIN"
 
 [node name="Leave_Button" type="Button" parent="Pause_MC/Pause_VBox/Button_HBox/Button_VBox"]
 custom_minimum_size = Vector2(500, 0)
