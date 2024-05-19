@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_lokeo")
 LevelLength = 1.25
-LightColor = Color(0, 0, 0, 1)
-DarkColor = Color(0, 0, 0, 1)
+LightColor = Color(1, 0.827451, 0.678431, 1)
+DarkColor = Color(0.8, 0.505882, 0.478431, 1)
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)

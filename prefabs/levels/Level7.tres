@@ -6,7 +6,7 @@
 script = ExtResource("1_a277x")
 LevelLength = 1.0
 LightColor = Color(0, 0, 0, 1)
-DarkColor = Color(0, 0, 0, 1)
+DarkColor = Color(0.0980392, 0.0980392, 0.0980392, 1)
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)
