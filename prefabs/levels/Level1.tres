@@ -1,17 +1,14 @@
-[gd_resource type="Resource" script_class="LevelResource" load_steps=4 format=3 uid="uid://bwkshpflyauc0"]
+[gd_resource type="Resource" script_class="LevelResource" load_steps=3 format=3 uid="uid://bwkshpflyauc0"]
 
 [ext_resource type="Script" path="res://scripts/resources/LevelResource.gd" id="1_jgyow"]
 [ext_resource type="Gradient" uid="uid://ce68atl751v1d" path="res://assets/graphs/Skys/BlueClouds.tres" id="1_qbn3b"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_chqkp"]
-gradient = ExtResource("1_qbn3b")
 
 [resource]
 script = ExtResource("1_jgyow")
 LevelLength = 0.75
 LightColor = Color(0.756863, 0.85098, 0.94902, 1)
 DarkColor = Color(0.564706, 0.619608, 0.866667, 1)
-CloudGradient = SubResource("GradientTexture1D_chqkp")
+CloudGradient = ExtResource("1_qbn3b")
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)
