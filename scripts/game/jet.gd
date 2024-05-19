@@ -109,6 +109,8 @@ func _free_off_screen():
 
 func _physics_process(delta):
 	if jet_state == JetState.SPAWN:
+		wait = false
+		
 		global_position = global_position.move_toward(starting_position, 200 * delta)
 		
 		if global_position.distance_to(starting_position) == 0:
@@ -193,7 +195,7 @@ func _on_fire_timer_timeout():
 	
 	wait = true
 	$Enemy_Jet.fire()
-	movement_wait_timer.start(0.15)
+	movement_wait_timer.start(0.1)
 	bob_timer.paused = true
 ##
 
