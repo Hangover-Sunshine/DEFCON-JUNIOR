@@ -115,12 +115,15 @@ pitchRandomization = Vector2(0.6, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("6_ne4mt")
+bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("6_ne4mt")
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("6_ne4mt")
+bus = &"SFX"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

@@ -27,6 +27,7 @@ rect = Rect2(-30, -10, 55, 20)
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ghbn6")
+bus = &"SFX"
 
 [connection signal="died" from="PropGraphic" to="." method="_on_died_anim_complete"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

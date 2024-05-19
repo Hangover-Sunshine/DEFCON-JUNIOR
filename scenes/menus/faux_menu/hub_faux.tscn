@@ -292,6 +292,7 @@ autoplay = "ToSplash"
 [node name="LLAmbiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_efry5")
 volume_db = -80.0
+bus = &"Music"
 script = ExtResource("9_ui3sb")
 
 [connection signal="animation_finished" from="AP" to="." method="_on_ap_animation_finished"]

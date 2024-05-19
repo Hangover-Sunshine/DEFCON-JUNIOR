@@ -668,11 +668,14 @@ pitchRandomization = Vector2(0.6, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("11_vfbtk")
+bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("11_vfbtk")
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
 stream = ExtResource("11_vfbtk")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="HubMenu_AnimPlayer" to="." method="_on_hub_menu_anim_player_animation_finished"]
