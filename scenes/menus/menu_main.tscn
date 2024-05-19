@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://craw6cydplqpm"]
+[gd_scene load_steps=9 format=3 uid="uid://craw6cydplqpm"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_main.gd" id="1_yoc7x"]
 [ext_resource type="Texture2D" uid="uid://bq6dqxkjbcgit" path="res://assets/ui/main/Art_Title_Text1.png" id="2_kd1wg"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_ttw81"]
 [ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="3_0khvs"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="5_kgw5b"]
+[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="6_dclbn"]
+[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="7_k8iwo"]
 
 [sub_resource type="Curve" id="Curve_x2df8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.870787, 0.824176), -0.510272, -0.510272, 0, 0, Vector2(1, 0), -16.6265, 0.0, 0, 0]
@@ -91,6 +93,24 @@ damping_min = 50.0
 damping_max = 50.0
 scale_amount_curve = SubResource("Curve_x2df8")
 
+[node name="HoverPool" type="Node" parent="."]
+script = ExtResource("6_dclbn")
+randomizePitch = true
+allowPitchReroll = true
+pitchRandomization = Vector2(0.6, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("7_k8iwo")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("7_k8iwo")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("7_k8iwo")
+
+[connection signal="mouse_entered" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Start_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button" to="." method="_on_exit_button_pressed"]

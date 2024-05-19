@@ -8,3 +8,7 @@ func _on_tutorial_button_pressed():
 
 func _on_back_button_pressed():
 	pregame_to_main.emit()
+
+func _on_mouse_entered():
+	$HoverPool.play_random_sound()
+##

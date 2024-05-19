@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi14mcu1ni7nu"]
+[gd_scene load_steps=7 format=3 uid="uid://bi14mcu1ni7nu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pause.gd" id="1_euawq"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_gupvn"]
-[ext_resource type="Theme" uid="uid://coxkpxhx8ao77" path="res://assets/graphs/LabelBackGreen3.tres" id="2_n7df7"]
-[ext_resource type="Theme" uid="uid://k4u81rgi1yyk" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_ghfvf"]
+[ext_resource type="Theme" uid="uid://dox27soin5qiv" path="res://assets/graphs/LabelBackGreen3.tres" id="2_n7df7"]
+[ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_ghfvf"]
+[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="5_7xilh"]
+[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="6_v1q5d"]
 
 [node name="MenuPause" type="Control"]
 layout_mode = 3
@@ -15,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_euawq")
 
 [node name="Sky" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 0.392157)
@@ -78,6 +81,24 @@ theme_override_fonts/font = ExtResource("2_gupvn")
 theme_override_font_sizes/font_size = 50
 text = "LEAVE"
 
+[node name="HoverPool" type="Node" parent="."]
+script = ExtResource("5_7xilh")
+randomizePitch = true
+allowPitchReroll = true
+pitchRandomization = Vector2(0.6, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("6_v1q5d")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("6_v1q5d")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("6_v1q5d")
+
+[connection signal="mouse_entered" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Cont_Button" to="." method="_on_cont_button_pressed"]
+[connection signal="mouse_entered" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Pause_MC/Pause_VBox/Button_HBox/Button_VBox/Leave_Button" to="." method="_on_leave_button_pressed"]

@@ -1171,6 +1171,10 @@ bus = &"SFX"
 [node name="GodsVoice" type="Node" parent="."]
 script = ExtResource("22_el8gl")
 stopRepeatingSounds = true
+randomizePitch = null
+allowPitchReroll = null
+pitchRandomization = null
+threshold = null
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GodsVoice"]
 stream = ExtResource("10_whqjq")
@@ -1374,8 +1378,8 @@ color = Color(0.647059, 0.14902, 0.223529, 1)
 wait_time = 4.0
 one_shot = true
 
-[connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_face_animation_finished"]
+[connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="pressed" from="Question_Labels/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Question_Labels/Quit_Button" to="." method="_on_quit_button_pressed"]
 [connection signal="animation_finished" from="AP_Cutscene" to="." method="_on_ap_cutscene_animation_finished"]
