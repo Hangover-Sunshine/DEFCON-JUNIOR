@@ -14,6 +14,7 @@ config/name="DEFCON JUNIOR"
 config/version="1.0"
 run/main_scene="res://scenes/MainScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://_SYSTEM/HS_DesktopIcon.png"
 
 [audio]
@@ -30,6 +31,7 @@ GlobalSettings="*res://autoloads/GlobalSettings.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 
 [dotnet]
 
