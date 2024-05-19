@@ -10,10 +10,21 @@ extends Control
 @onready var boost_h_box = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox
 @onready var bubble_h_box = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox
 
+@onready var sf_label = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Spitfire_HBox/Label
+@onready var boo_label = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Boost_HBox/Label
+@onready var bub_label = $GIU_MC/GIU_HBox/Left_MC/Left_VBox/Abilities_VBox/Bubble_HBox/Label
+
 var player:Player
 var level_timer:Timer
 
+var dark_color
+
 func late_ready():
+	health_label.set("theme_override_colors/font_color", dark_color)
+	sf_label.set("theme_override_colors/font_color", dark_color)
+	boo_label.set("theme_override_colors/font_color", dark_color)
+	bub_label.set("theme_override_colors/font_color", dark_color)
+	
 	spitfire_h_box.visible = player.gun_status == player.UpgradeAvailability.READY
 	boost_h_box.visible = player.dash_status == player.UpgradeAvailability.READY
 	bubble_h_box.visible = player.shield_status == player.UpgradeAvailability.READY

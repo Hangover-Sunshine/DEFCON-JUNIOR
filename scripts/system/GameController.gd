@@ -36,6 +36,11 @@ var timer_level = 0
 func load_level():
 	var level = Levels[curr_level]
 	
+	$DummySky.color = level.LightColor
+	$Frame_White/Frame_Sky.modulate = level.DarkColor
+	$Cloud.color_initial_ramp = level.CloudGradient
+	$CanvasLayer/GIU.dark_color = level.DarkColor
+	
 	# == Max Numbers == #
 	max_jets = level.MaxFighters
 	max_move_obstacles = level.MaxNumberOfDynamicObstaclesOnScreen
