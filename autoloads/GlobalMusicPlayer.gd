@@ -22,25 +22,21 @@ func _ready():
 ##
 
 func play_by_id(i:int):
-	#if curr_play != -1:
-		#if i == 1:
-			#playlist[i].volume_db = -80
-			#playlist[curr_play].fade_out(15)
-		#else:
-			#playlist[curr_play].fade_out(1)
+	if curr_play != -1:
+		if i == 1:
+			playlist[i].volume_db = -80
+			playlist[curr_play].fade_out(15)
+		else:
+			playlist[curr_play].fade_out(1)
 		##
 	##
 	
-	if curr_play != -1:
-		playlist[curr_play].fade_out(1)
-	##
 	curr_play = i
-	playlist[curr_play].fade_in(1)
 	
-	#if curr_play == 1:
-		#playlist[curr_play].fade_in(15)
-	#else:
-		#playlist[curr_play].fade_in(1)
+	if curr_play == 1:
+		playlist[curr_play].fade_in(15)
+	else:
+		playlist[curr_play].fade_in(1)
 	##
 ##
 
