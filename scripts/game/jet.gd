@@ -196,7 +196,7 @@ func _on_fire_timer_timeout():
 	wait = true
 	$Enemy_Jet.fire()
 	movement_wait_timer.start(0.1)
-	bob_timer.paused = true
+	#bob_timer.paused = true
 ##
 
 func _on_bob_timer_timeout():
@@ -240,5 +240,5 @@ func _on_enemy_jet_died():
 func _on_movement_wait_timer_timeout():
 	wait = false
 	fire_timer.start(FireTime)
-	bob_timer.paused = false
+	#bob_timer.paused = false
 ##
