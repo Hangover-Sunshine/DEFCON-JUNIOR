@@ -208,6 +208,8 @@ func hit():
 		return
 	##
 	
+	$PlayerHit.play()
+	
 	$PC_Skeleton.to_pain()
 	damaged_timer.start(TimeToNextDamage)
 ##
@@ -236,6 +238,8 @@ func _on_gun_timer_timeout():
 
 func _spawn_bullets():
 	$PC_Skeleton.shoot()
+	
+	$PlayerShoot.play()
 	
 	if curr_number_of_bullets == 1:
 		for i in range(curr_number_of_bullets):
