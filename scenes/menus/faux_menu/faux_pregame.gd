@@ -3,6 +3,7 @@ extends Control
 @onready var label = $Pregame_MC/Pregame_VBox/Button_HBox/Button_VBox/Label
 @onready var ap_scare = $AP_Scare
 @onready var ap_flash = $AP_Flash
+@onready var ll_ambiance = $"../LLAmbiance"
 
 var line = 0
 var no_flash = false
@@ -15,6 +16,7 @@ func _ready():
 	no_flash = GlobalSettings.FlashesOff
 
 func _on_continue_button_pressed():
+	ll_ambiance.volume_db += 4
 	line += 1
 	label.text = cur_script[line]
 	ap_scare.play(str(line))

@@ -7,7 +7,9 @@ signal main_to_pre
 
 func _on_start_button_pressed():
 	main_to_pre.emit()
-	GlobalPlaylist.play("LLAmbiance")
+	GlobalPlaylist.stop_playing()
+	$"../LLAmbiance".volume_db = -28
+	$"../LLAmbiance".play()
 
 func _on_settings_button_pressed():
 	main_to_set.emit()

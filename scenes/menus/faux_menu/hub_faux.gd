@@ -5,6 +5,7 @@ extends Node2D
 @onready var menu_settings = $MenuSettings
 @onready var menu_pregame = $MenuPregame
 @onready var back_frame = $BackFrame
+@onready var ll_ambiance = $LLAmbiance
 
 var ready_to_splash = false
 

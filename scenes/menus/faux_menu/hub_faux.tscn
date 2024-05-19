@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2u4gnxcv8g3v"]
+[gd_scene load_steps=13 format=3 uid="uid://c2u4gnxcv8g3v"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/hub_faux.gd" id="1_25yfo"]
 [ext_resource type="PackedScene" uid="uid://sgo67yn8hyxq" path="res://scenes/menus/faux_menu/faux_main.tscn" id="3_qopba"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bygw8cox6ajq2" path="res://scenes/menus/faux_menu/faux_splash.tscn" id="6_2g8xc"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="6_tac2k"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_lblol"]
+[ext_resource type="AudioStream" uid="uid://cjytj7jw38u7g" path="res://assets/audio/music/Scary_Ambience.wav" id="8_efry5"]
+[ext_resource type="Script" path="res://scripts/system/AudioFade.gd" id="9_ui3sb"]
 
 [sub_resource type="Animation" id="Animation_40wnp"]
 length = 0.001
@@ -286,5 +288,10 @@ libraries = {
 "": SubResource("AnimationLibrary_kc3pt")
 }
 autoplay = "ToSplash"
+
+[node name="LLAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_efry5")
+volume_db = -80.0
+script = ExtResource("9_ui3sb")
 
 [connection signal="animation_finished" from="AP" to="." method="_on_ap_animation_finished"]

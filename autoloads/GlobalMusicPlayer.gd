@@ -49,7 +49,7 @@ func current_song() -> String:
 
 func play(song_name:String):
 	if song_name in names_to_ids.keys():
-		print(song_name, " is ID ", names_to_ids[song_name])
+		#print(song_name, " is ID ", names_to_ids[song_name])
 		play_by_id(names_to_ids[song_name])
 	##
 ##
