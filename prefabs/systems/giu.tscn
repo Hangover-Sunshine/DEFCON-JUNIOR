@@ -182,46 +182,56 @@ visible = false
 layout_mode = 2
 
 [node name="Start_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
+theme = ExtResource("2_11kuq")
 theme_override_colors/font_color = Color(0.258824, 0.737255, 0.498039, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- 100%"
+text = "100%"
 vertical_alignment = 2
 
 [node name="Faraway_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 220.75)
 layout_mode = 2
+theme = ExtResource("2_11kuq")
 theme_override_colors/font_color = Color(1, 0.878431, 0.568627, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- 75%"
+text = "75%"
 vertical_alignment = 2
 
 [node name="Halfway_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 220.75)
 layout_mode = 2
+theme = ExtResource("2_11kuq")
 theme_override_colors/font_color = Color(1, 0.411765, 0.352941, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- 50%"
+text = "50%"
 vertical_alignment = 2
 
 [node name="Almost_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 220.75)
 layout_mode = 2
+theme = ExtResource("2_11kuq")
 theme_override_colors/font_color = Color(0.866667, 0.215686, 0.270588, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- 20%"
+text = "20%"
 vertical_alignment = 2
 
 [node name="Finish_Label" type="Label" parent="GIU_MC/GIU_HBox/Right_MC/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 210)
 layout_mode = 2
+theme = ExtResource("2_11kuq")
 theme_override_colors/font_color = Color(0.647059, 0.14902, 0.223529, 1)
 theme_override_fonts/font = ExtResource("1_4ac6w")
 theme_override_font_sizes/font_size = 45
-text = "- 0%"
+text = "0%"
 vertical_alignment = 2
