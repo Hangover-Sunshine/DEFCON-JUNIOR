@@ -82,7 +82,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
 
-[node name="Rain" type="CPUParticles2D" parent="."]
+[node name="Cloud" type="CPUParticles2D" parent="."]
 position = Vector2(960, 1375)
 amount = 500
 lifetime = 15.0
