@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cet4qeo3i75a3" path="res://prefabs/entities/projectile.tscn" id="2_ng4ax"]
 
 [sub_resource type="Gradient" id="Gradient_7tht3"]
-colors = PackedColorArray(1, 0.4, 0.458824, 0, 1, 0.4, 0.458824, 1)
+colors = PackedColorArray(1, 0.4, 0.458824, 0, 0.647059, 0.14902, 0.223529, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qgu3m"]
 gradient = SubResource("Gradient_7tht3")
