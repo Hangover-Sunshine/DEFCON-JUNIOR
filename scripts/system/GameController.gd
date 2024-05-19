@@ -63,6 +63,12 @@ func load_level():
 	##
 	
 	game_timer.start(lvl_len_secs)
+	
+	if curr_level == 5:
+		GlobalPlaylist.play("RCartoon")
+	elif GlobalPlaylist.current_song() != "MainTheme":
+		GlobalPlaylist.play("MainTheme")
+	##
 ##
 
 func _ready():
@@ -73,10 +79,6 @@ func _ready():
 	GlobalSignals.connect("obstacle_dead", _obstacle_dead)
 	$CanvasLayer/GIU.player = player
 	$CanvasLayer/GIU.level_timer = game_timer
-	
-	if GlobalPlaylist.current_song() != "MainTheme":
-		GlobalPlaylist.play("MainTheme")
-	##
 ##
 
 func late_ready():
