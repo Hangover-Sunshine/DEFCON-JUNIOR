@@ -1,18 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1tjek5op80ys"]
+[gd_scene load_steps=6 format=3 uid="uid://c1tjek5op80ys"]
 
 [ext_resource type="PackedScene" uid="uid://gww7h28trftn" path="res://prefabs/art/enemy/enemy_jet.tscn" id="1_6sdai"]
 [ext_resource type="Script" path="res://scripts/game/jet.gd" id="1_lj8gk"]
 [ext_resource type="PackedScene" uid="uid://cet4qeo3i75a3" path="res://prefabs/entities/projectile.tscn" id="2_ng4ax"]
-
-[sub_resource type="Gradient" id="Gradient_7tht3"]
-colors = PackedColorArray(1, 0.4, 0.458824, 0, 0.647059, 0.14902, 0.223529, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qgu3m"]
-gradient = SubResource("Gradient_7tht3")
-width = 32
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
+[ext_resource type="Texture2D" uid="uid://gdf7b4undcvg" path="res://assets/particle/Jet_Warning.png" id="3_b2id6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usbiq"]
 size = Vector2(160, 180)
@@ -34,7 +25,9 @@ offset_right = 180.0
 offset_bottom = 64.0
 rotation = 3.14159
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_qgu3m")
+texture = ExtResource("3_b2id6")
+stretch_mode = 3
+flip_v = true
 
 [node name="Enemy_Jet" parent="." instance=ExtResource("1_6sdai")]
 
