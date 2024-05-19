@@ -23,7 +23,7 @@ func _ready():
 
 func play_by_id(i:int):
 	if curr_play != -1:
-		if i == 1:
+		if curr_play == 0 and i == 1:
 			playlist[i].volume_db = -80
 			playlist[curr_play].fade_out(15)
 		else:
