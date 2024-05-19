@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_bcltn")
-LevelLength = 0.1
+LevelLength = 1.5
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)

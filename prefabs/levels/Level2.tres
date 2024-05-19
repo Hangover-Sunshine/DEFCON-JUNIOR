@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_lokeo")
-LevelLength = 0.1
+LevelLength = 1.25
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
 FighterSpeedRange = Vector2(400, 600)
@@ -20,17 +20,17 @@ AllowTrackPlayerBob = false
 TimeBetweenPlayerBobs = Vector2(0.5, 1.3)
 MissileSpeedRange = Vector2(325, 400)
 MissileLifetimeRange = Vector2(10, 15)
-MaxNumberOfMissiles = 0
-MissilesRandNumToSpawn = Vector2i(1, 3)
-MissilesAppearAt = 0.0
+MaxNumberOfMissiles = 2
+MissilesRandNumToSpawn = Vector2i(1, 2)
+MissilesAppearAt = 0.2
 MissileSpawnTimerRange = Vector2i(1, 5)
 CanMissilesLock = false
 MissileLockDistance = Vector2(200, 300)
 MissileHasLockingChance = 0.5
-MaxNumberOfStaticObstaclesOnScreen = 0
+MaxNumberOfStaticObstaclesOnScreen = 5
 StaticSpawnTimerRange = Vector2(3, 8)
 StaticRandNumToSpawn = Vector2i(1, 3)
-MaxNumberOfDynamicObstaclesOnScreen = 0
+MaxNumberOfDynamicObstaclesOnScreen = 8
 DynamicRandNumToSpawn = Vector2i(1, 3)
 DynamicSpawnTimerRange = Vector2(4, 6)
 BirdSpeedRange = Vector2(200, 300)
