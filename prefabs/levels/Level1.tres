@@ -7,7 +7,7 @@
 script = ExtResource("1_jgyow")
 LevelLength = 0.75
 LightColor = Color(0.756863, 0.85098, 0.94902, 1)
-DarkColor = Color(0.419608, 0.454902, 0.698039, 1)
+DarkColor = Color(0.564706, 0.619608, 0.866667, 1)
 CloudGradient = ExtResource("1_qbn3b")
 FighterFireRate = Vector2(0.8, 0.8)
 FighterBulletSpeed = Vector2(350, 350)
