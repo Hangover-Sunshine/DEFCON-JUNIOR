@@ -107,6 +107,7 @@ func _ready():
 
 func _process(_delta):
 	if has_control == false:
+		collision_layer = 0
 		return
 	##
 	
