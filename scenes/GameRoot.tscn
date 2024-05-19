@@ -48,7 +48,7 @@ texture = ExtResource("3_labr8")
 
 [node name="BackFrame2" type="Sprite2D" parent="BackFrame"]
 modulate = Color(0.564706, 0.619608, 0.866667, 1)
-scale = Vector2(1.63, 1)
+scale = Vector2(1.25, 1)
 texture = ExtResource("3_labr8")
 
 [node name="Background2" type="ColorRect" parent="."]
