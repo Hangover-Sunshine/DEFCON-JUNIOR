@@ -3,6 +3,9 @@ class_name LevelResource
 
 @export_category("Level Information")
 @export var LevelLength:float = 5
+@export var LightColor:Color
+@export var DarkColor:Color
+@export var CloudGradient:GradientTexture1D
 
 @export_category("Fighters")
 @export var FighterFireRate:Vector2 = Vector2(0.8, 0.8)
