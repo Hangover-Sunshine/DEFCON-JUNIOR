@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_main.gd" id="1_syrew"]
 [ext_resource type="Texture2D" uid="uid://yaqvd0dk7aaw" path="res://assets/ui/main/Faux_Title_Text.png" id="2_ploaq"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="2_vnl8g"]
-[ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_l8tvq"]
+[ext_resource type="Theme" uid="uid://xe3tblncjty" path="res://assets/graphs/faux_button.tres" id="3_l8tvq"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="4_5ca7u"]
 
 [sub_resource type="Curve" id="Curve_w4jdf"]
