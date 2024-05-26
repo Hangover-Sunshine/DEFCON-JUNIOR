@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://esqe0wgp5k74" path="res://assets/audio/music/Reversed_Cartoon_Slowed.mp3" id="8_iaq7f"]
 
 [node name="GlobalPlaylist" type="Node"]
+process_mode = 3
 script = ExtResource("1_su6i0")
 
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]

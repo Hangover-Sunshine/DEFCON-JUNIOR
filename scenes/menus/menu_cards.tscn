@@ -288,6 +288,14 @@ scale_amount_min = 0.5
 scale_amount_max = 2.0
 color_initial_ramp = SubResource("Gradient_gxl6y")
 
+[node name="MouseStopRect" type="ColorRect" parent="."]
+z_index = 100
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+
 [node name="Cards_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0

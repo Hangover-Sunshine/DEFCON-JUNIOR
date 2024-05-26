@@ -16,8 +16,15 @@ var os_type:String
 
 func _ready():
 	# get all native data
-	os_type = OS.get_name()
+	os_type = "Web"#OS.get_name()
 	# get all native data
+	
+	if os_type == "Web":
+		var p = InputEventKey.new()
+		p.physical_keycode = KEY_P
+		InputMap.action_erase_events("pause")
+		InputMap.action_add_event("pause", p)
+	##
 	
 	config = ConfigFile.new()
 	
