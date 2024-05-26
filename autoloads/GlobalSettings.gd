@@ -16,7 +16,7 @@ var os_type:String
 
 func _ready():
 	# get all native data
-	os_type = "Web"#OS.get_name()
+	os_type = OS.get_name()
 	# get all native data
 	
 	if os_type == "Web":
