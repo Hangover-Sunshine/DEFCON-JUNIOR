@@ -28,6 +28,7 @@ extends Control
 # Manipulate this guy to run specific cutscene and to make scene not flash player
 var chapter = 1
 var no_flash = false
+var has_returned = false
 
 # 0 - Splash Art, 1 - Conversation
 var section = 0
@@ -46,29 +47,39 @@ var script1 = ["BE NOT AFRAID...", "FOR I AM THE GOD OF THIS WORLD.", "A WHISPER
 "MORTAL OF PRESIDENCE.","I PLEAD, CEASE YOUR GAME.","FOR IT WILL BE WORLD'S END.",
 "LIFE WILL BE GONE...","AND MY WORLD, A VOID."]
 var murder1 = "SHAME...FOR MERCY CAN CLAIM."
-var mercy1 = "YOUR GRACE IS HONORED."
+var mercy1 = ["YOUR GRACE IS HONORED."]
+
 var script2 = ["ALAS...", "YOU HAVE MADE WORM'S MEAT.","THOU WROUGHT FLESH TO BONE.","NOW, REVOLT, CRECHE COMES.",
 "WITH MAN, WE SHALL FIGHT.","BUT WIN, WE SHALL TRIFE.", "ALAS...I MUST ASK...","GIVE MERCY TO THE MASS."]
 var murder2 = "PITY...THIS ISN'T A GAME."
 var mercy2 = "EVEN WITH DAMAGE, SOCIETY SHALL MANAGE."
+var return2 = ["Player return script here."]
+
 var script3 = ["I PLEA...", "I HEED...","BELLS, WARNING, THEY NEED.","MY BLEED...","MINE MORTAL MEN FLEE.",
 "BRINE AND FIRE RAIN DOWN.","THOU NOT HEAR THE CRYING CHOIR?", "MY CITIES, MINE VALLEY WIDE...",
 "ALL LOST IN THIS FIERY TIDE.","PILLARS OF ASH AND SALT...","A KILLER...ALL THAT REMAINS.","WILL THOU FEEL REMORSE?"]
 var murder3 = "TEARS...RAIN...WARPLANES NEAR."
 var mercy3 = "PEACE UPON MY CHILDREN...AGAIN, WE SHALL HAVE WARREN."
+var return3 = ["Player return script here."]
+
 var script4 = ["SHUTTERS, YOU HAVE WRONGFULLY FLUNG.", "LIKE A RAVEN, WHAT HAVE YOU BRUNG?",
 "PERCHED UPON THE EDGE...", "OF MY AND MINE'S ROOMS.","CHANTING HELLFIRE, NEVER MORE.", "WHAT'S MORE?"
 ,"NEVER MORE.", "WHO'S MORE?", "NEVER MORE.", "QUESTIONS, WE ASK...","WE KNEEL...", "WHEN SHALL FORGIVENESS BE ENOUGH?"]
 var murder4 = "HEARTLESS...NO SEMBLANCE OF MERCY."
 var mercy4 = "MEMORIES LOST, BUT ALL NOT FORGOTTEN."
+var return4 = ["Player return script here."]
+
 var script5 = ["CAWS AND COOS...", "WITH MEANINGLESS MURDERS.","LAWS ONCE USED...","MYTH LEADING US, LIKE HERDERS.",
 "SHEEP, SHEEPLE...", "PEOPLE, NO MORE.","FOR MINE CREATION ASUNDER.","WILL GOD SURRENDER THEIR PLUNDER?"]
 var murder5 = "THEN SO BE IT...PREVAIL WE SHALL!"
 var mercy5 = "MEMORIES LOST, BUT ALL NOT FORGOTTEN."
+var return5 = ["Player return script here."]
+
 var script6 = ["SEVEN DAYS...", "WAS ALL IT TOOK", "LESSONS MADE...","CAUSE ALL FORSOOK.", "NO FOLLOWERS TO PRAY...",
 "ALL MEMORIES ASTRAY.","FOR CENTURIES, I REMAINED.", "AND NOW FOR TODAY, I PRAY."]
 var murder6 = "WHERE DO GODS PRAY?"
 var mercy6 = "OH HOW I LONGED FOR THY MERCY!"
+var return6 = ["Player return script here."]
 
 var playing:bool = false
 var curr_vol:float = -40
@@ -143,23 +154,43 @@ func assign_script():
 		cur_murder = murder1
 		mercy_line = mercy1
 	elif chapter == 2:
-		cur_script = script2
+		if has_returned == true:
+			cur_script = return2
+			cur_script += script2
+		elif has_returned == false:
+			cur_script = script2
 		cur_murder = murder2
 		mercy_line = mercy2
 	elif chapter == 3:
-		cur_script = script3
+		if has_returned == true:
+			cur_script = return3
+			cur_script += script3
+		elif has_returned == false:
+			cur_script = script3
 		cur_murder = murder3
 		mercy_line = mercy3
 	elif chapter == 4:
-		cur_script = script4
+		if has_returned == true:
+			cur_script = return4
+			cur_script += script4
+		elif has_returned == false:
+			cur_script = script4
 		cur_murder = murder4
 		mercy_line = mercy4
 	elif chapter == 5:
-		cur_script = script5
+		if has_returned == true:
+			cur_script = return5
+			cur_script += script5
+		elif has_returned == false:
+			cur_script = script5
 		cur_murder = murder5
 		mercy_line = mercy5
 	elif chapter == 6:
-		cur_script = script6
+		if has_returned == true:
+			cur_script = return6
+			cur_script += script6
+		elif has_returned == false:
+			cur_script = script6
 		cur_murder = murder6
 		mercy_line = mercy6
 	text.text = cur_script[line]
