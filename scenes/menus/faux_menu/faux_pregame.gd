@@ -8,7 +8,7 @@ extends Control
 var line = 0
 var no_flash = false
 var cur_script = ["SHALL WE MEET THEM?", "BE NOT AFRAID!", "FOR HE IS LOVING!",
- "FOR SHE IS LONELY!", "FOR THEY ARE LONGING,", "FOR IT IS LIGHT,", "BE NOT AFRAID!",""]
+ "FOR SHE IS LONELY!", "FOR THEY ARE LONGING!", "FOR IT IS LIGHT!", "BE NOT AFRAID!",""]
 
 func _ready():
 	label.text = cur_script[line]

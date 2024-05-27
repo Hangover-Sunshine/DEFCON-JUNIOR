@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_settings.gd" id="1_hf3wl"]
 [ext_resource type="Texture2D" uid="uid://cfxebsm82xlta" path="res://assets/ui/main/Faux_Setting_Text.png" id="2_rn4ry"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_68lo3"]
-[ext_resource type="Theme" uid="uid://cpino4ryq26pb" path="res://assets/graphs/faux_button.tres" id="3_cp5vx"]
+[ext_resource type="Theme" uid="uid://xe3tblncjty" path="res://assets/graphs/faux_button.tres" id="3_cp5vx"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="5_ukilp"]
 
 [sub_resource type="Animation" id="Animation_y6vyu"]
@@ -74,8 +74,8 @@ libraries = {
 show_behind_parent = true
 position = Vector2(964, 486)
 rotation = -1.5708
-amount = 175
-lifetime = 3.0
+amount = 225
+lifetime = 4.0
 preprocess = 15.0
 texture = ExtResource("5_ukilp")
 emission_shape = 3
