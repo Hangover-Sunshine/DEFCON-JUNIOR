@@ -1589,7 +1589,7 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.647059, 0.14902, 0.223529, 1)
+color = Color(0.866667, 0.215686, 0.270588, 1)
 
 [node name="SFXTiming" type="Timer" parent="."]
 wait_time = 4.0
