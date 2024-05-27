@@ -19,6 +19,13 @@ func _ready():
 	os_type = OS.get_name()
 	# get all native data
 	
+	if os_type == "Web":
+		var p = InputEventKey.new()
+		p.physical_keycode = KEY_P
+		InputMap.action_erase_events("pause")
+		InputMap.action_add_event("pause", p)
+	##
+	
 	config = ConfigFile.new()
 	
 	# if it exists, load whatever we haved saved

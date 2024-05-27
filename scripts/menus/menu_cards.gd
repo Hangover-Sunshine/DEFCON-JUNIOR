@@ -14,6 +14,8 @@ extends Control
 
 @onready var card_radiation = $Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox/Card_Radiation
 
+@onready var mouse_stop_rect = $MouseStopRect
+
 var curr_health
 
 var shield_status
@@ -125,6 +127,7 @@ func save():
 		return
 	##
 	save_file.store_string(content)
+	process_mode = Node.PROCESS_MODE_DISABLED
 ##
 
 func _on_card_boost_pressed():
