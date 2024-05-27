@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwmh3m7f4icnc"]
+[gd_scene load_steps=26 format=3 uid="uid://dwmh3m7f4icnc"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_pregame.gd" id="1_8vylt"]
 [ext_resource type="Theme" uid="uid://xe3tblncjty" path="res://assets/graphs/faux_button.tres" id="3_hj27s"]
@@ -8,6 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://dghvm86fgoany" path="res://assets/ui/main/PC_Outline.png" id="6_kvdm8"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="7_5spsi"]
 [ext_resource type="AudioStream" uid="uid://cnoy80uwpr7pi" path="res://assets/audio/sfx/gameplay/Jumpscare.mp3" id="8_uw4wu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_devpp"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_4dd6h"]
+offsets = PackedFloat32Array(0, 0.506494, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xn2w8"]
+gradient = SubResource("Gradient_4dd6h")
 
 [sub_resource type="Animation" id="Animation_0yxws"]
 resource_name = "0"
@@ -490,6 +500,7 @@ theme_override_font_sizes/font_size = 50
 text = "CONTINUE"
 
 [node name="OmnipotentOne" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_devpp")
 position = Vector2(960, 540)
 texture = ExtResource("3_xns2c")
 
@@ -501,6 +512,18 @@ texture = ExtResource("4_3wv46")
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(1.2, 1)
 texture = ExtResource("4_3wv46")
+
+[node name="PostNuke_Light2" type="PointLight2D" parent="BackFrame"]
+position = Vector2(-605, -7.99994)
+scale = Vector2(9.0625, 18.5)
+color = Color(0.866667, 0.215686, 0.270588, 1)
+texture = SubResource("GradientTexture2D_xn2w8")
+
+[node name="PostNuke_Light3" type="PointLight2D" parent="BackFrame"]
+position = Vector2(607, -7.99994)
+scale = Vector2(9.0625, 18.5)
+color = Color(0.866667, 0.215686, 0.270588, 1)
+texture = SubResource("GradientTexture2D_xn2w8")
 
 [node name="PcOutline" type="Sprite2D" parent="."]
 visible = false
