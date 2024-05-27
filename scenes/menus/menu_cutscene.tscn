@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=59 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
@@ -448,6 +448,9 @@ _data = {
 "RESET": SubResource("Animation_k1jmg")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ctxf2"]
+light_mode = 1
+
 [sub_resource type="Animation" id="Animation_s17x7"]
 resource_name = "Flash"
 loop_mode = 2
@@ -484,6 +487,12 @@ _data = {
 "Flash": SubResource("Animation_s17x7"),
 "RESET": SubResource("Animation_xemwa")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bjxni"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_skx3l"]
+light_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ercsp"]
 bg_color = Color(0.772549, 0.772549, 0.772549, 1)
@@ -1292,6 +1301,7 @@ vframes = 2
 visible = false
 
 [node name="Text_Label" type="Label" parent="Speech_Labels"]
+material = SubResource("CanvasItemMaterial_ctxf2")
 custom_minimum_size = Vector2(1920, 0)
 offset_top = 722.0
 offset_right = 1920.0
@@ -1303,7 +1313,7 @@ text = "\"INSERT TEXT HERE\""
 horizontal_alignment = 1
 
 [node name="Continue_Label" type="Label" parent="Speech_Labels"]
-visible = false
+material = SubResource("CanvasItemMaterial_ctxf2")
 offset_left = 420.0
 offset_top = 810.0
 offset_right = 1500.0
@@ -1325,7 +1335,9 @@ visible = false
 position = Vector2(4, 17)
 
 [node name="Question_Label" type="Label" parent="Question_Labels"]
+visible = false
 modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_bjxni")
 offset_left = 420.0
 offset_top = 705.0
 offset_right = 1500.0
@@ -1337,6 +1349,7 @@ text = "SPARE HUMANITY?"
 horizontal_alignment = 1
 
 [node name="Continue_Button" type="Button" parent="Question_Labels"]
+material = SubResource("CanvasItemMaterial_skx3l")
 offset_left = 642.0
 offset_top = 817.0
 offset_right = 1253.0
@@ -1345,6 +1358,7 @@ theme = SubResource("Theme_ni2c2")
 text = "   NO - I SHALL CONTINUE    "
 
 [node name="Quit_Button" type="Button" parent="Question_Labels"]
+material = SubResource("CanvasItemMaterial_skx3l")
 offset_left = 642.0
 offset_top = 892.0
 offset_right = 1253.0
@@ -1373,6 +1387,10 @@ color = Color(0.647059, 0.14902, 0.223529, 1)
 [node name="SFXTiming" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+blend_mode = 1
 
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_face_animation_finished"]
