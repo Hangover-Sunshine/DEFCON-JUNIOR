@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=66 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
@@ -28,6 +28,7 @@
 resource_name = "Blink"
 length = 3.0
 loop_mode = 1
+step = 0.005
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,6 +40,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left_Eye_Dark:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left_Eye_Light:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 0.0, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0]
 }
 
 [sub_resource type="Animation" id="Animation_ot5at"]
@@ -55,6 +80,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left_Eye_Dark:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left_Eye_Light:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_g3ouw"]
@@ -80,13 +129,22 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_2n0be"]
-offsets = PackedFloat32Array(0.025974, 0.0519481, 0.636364)
-colors = PackedColorArray(1, 1, 1, 1, 0.051971, 0.051971, 0.0519709, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.0519481, 0.824675)
+colors = PackedColorArray(1, 1, 1, 1, 0.0117647, 0.0117647, 0.0117647, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y8i3e"]
 gradient = SubResource("Gradient_2n0be")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_pf2et"]
+colors = PackedColorArray(0.0117647, 0.0117647, 0.0117647, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps0ii"]
+gradient = SubResource("Gradient_pf2et")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.834862, 0.266055)
 
 [sub_resource type="Animation" id="Animation_ag8hl"]
 resource_name = "Neutral"
@@ -828,7 +886,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_21mxa"]
 resource_name = "Post-Nuke"
 length = 16.0
-step = 0.05
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -848,10 +906,10 @@ tracks/1/path = NodePath("PostNuke/Cutscene_Art:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(4, 9, 10, 10.5, 11, 11.5, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(4, 9, 10, 10.5, 13.75, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.4, 0.458824, 1), Color(1, 0.4, 0.458824, 1), Color(1, 0.4, 0.458824, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -889,6 +947,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PostNuke/PostNuke_Light:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2, 9, 10, 10.5, 11, 11.5, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 5.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 5.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PostNuke/PostNuke_Light:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(10, 10.5, 11, 11.5, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8fuhr"]
 resource_name = "Post-Nuke-Flash"
@@ -909,74 +991,110 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PostNuke/Cutscene_Art:modulate")
+tracks/1/path = NodePath("PostNuke/Levels_Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(4, 9, 10, 10.5, 11, 11.5, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PostNuke/Levels_Label:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PostNuke/Levels_Label:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PostNuke/Levels_Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(2.5, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Red_Flash:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 14, 16),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Red_Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 13.75, 16),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Red_Flash:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(14, 16),
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Red_Flash:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(13.75, 16),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Background/Rain:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/Rain:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PostNuke/Cutscene_Art:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4, 9, 10, 10.5, 13.75, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.4, 0.458824, 1), Color(1, 0.4, 0.458824, 1), Color(1, 0.4, 0.458824, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background/Rain:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PostNuke/PostNuke_Light:energy")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2, 9, 10, 10.5, 11, 11.5, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 5.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 5.0, 1.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PostNuke/PostNuke_Light:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(10, 10.5, 11, 11.5, 12, 12.25, 12.5, 12.75, 13, 13.25, 13.5, 13.75, 14),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1), Color(0.866667, 0.215686, 0.270588, 1), Color(1, 0.4, 0.458824, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_s1ynd"]
@@ -1112,6 +1230,30 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PostNuke/PostNuke_Light:energy")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PostNuke/PostNuke_Light:color")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_l6q1o"]
@@ -1287,8 +1429,14 @@ autoplay = "Closed"
 position = Vector2(-8.88977, -5.91556)
 rotation = 0.00174533
 scale = Vector2(20, 20)
-color = Color(0.772549, 0.772549, 0.772549, 1)
+energy = 0.0
 texture = SubResource("GradientTexture2D_y8i3e")
+
+[node name="Left_Eye_Dark" type="PointLight2D" parent="TheVoid/Upperface/Left_Eye"]
+position = Vector2(-8.88977, -5.91556)
+rotation = 0.00174533
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_ps0ii")
 
 [node name="Right_Eye" type="Node2D" parent="TheVoid/Upperface"]
 position = Vector2(163, -123)
@@ -1329,7 +1477,7 @@ autoplay = "Neutral"
 
 [node name="PostNuke" type="Node2D" parent="."]
 
-[node name="PointLight2D2" type="PointLight2D" parent="PostNuke"]
+[node name="PostNuke_Light" type="PointLight2D" parent="PostNuke"]
 position = Vector2(963.78, 542.52)
 scale = Vector2(28.3076, 15.4328)
 energy = 5.0
