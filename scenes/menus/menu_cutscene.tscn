@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=64 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
@@ -78,6 +78,15 @@ _data = {
 "Closed": SubResource("Animation_ot5at"),
 "RESET": SubResource("Animation_g3ouw")
 }
+
+[sub_resource type="Gradient" id="Gradient_2n0be"]
+offsets = PackedFloat32Array(0.025974, 0.0519481, 0.636364)
+colors = PackedColorArray(1, 1, 1, 1, 0.051971, 0.051971, 0.0519709, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y8i3e"]
+gradient = SubResource("Gradient_2n0be")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_ag8hl"]
 resource_name = "Neutral"
@@ -448,6 +457,15 @@ _data = {
 "RESET": SubResource("Animation_k1jmg")
 }
 
+[sub_resource type="Gradient" id="Gradient_ht5km"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_513b5"]
+gradient = SubResource("Gradient_ht5km")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.811927, 0.151376)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ctxf2"]
 light_mode = 1
 
@@ -794,6 +812,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/Rain:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_21mxa"]
 resource_name = "Post-Nuke"
@@ -846,6 +876,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/Rain:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8fuhr"]
@@ -923,6 +965,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background/Rain:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_s1ynd"]
@@ -1112,18 +1166,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Background/Rain:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_23ybg"]
 _data = {
@@ -1133,6 +1175,9 @@ _data = {
 "RESET": SubResource("Animation_s1ynd"),
 "Spawn": SubResource("Animation_l6q1o")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43bs2"]
+light_mode = 1
 
 [node name="MenuCutscene" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -1238,6 +1283,13 @@ libraries = {
 }
 autoplay = "Closed"
 
+[node name="Left_Eye_Light" type="PointLight2D" parent="TheVoid/Upperface/Left_Eye"]
+position = Vector2(-8.88977, -5.91556)
+rotation = 0.00174533
+scale = Vector2(20, 20)
+color = Color(0.772549, 0.772549, 0.772549, 1)
+texture = SubResource("GradientTexture2D_y8i3e")
+
 [node name="Right_Eye" type="Node2D" parent="TheVoid/Upperface"]
 position = Vector2(163, -123)
 
@@ -1276,6 +1328,12 @@ libraries = {
 autoplay = "Neutral"
 
 [node name="PostNuke" type="Node2D" parent="."]
+
+[node name="PointLight2D2" type="PointLight2D" parent="PostNuke"]
+position = Vector2(963.78, 542.52)
+scale = Vector2(28.3076, 15.4328)
+energy = 5.0
+texture = SubResource("GradientTexture2D_513b5")
 
 [node name="Levels_Label" type="Label" parent="PostNuke"]
 visible = false
@@ -1378,6 +1436,7 @@ libraries = {
 
 [node name="Red_Flash" type="ColorRect" parent="."]
 visible = false
+material = SubResource("CanvasItemMaterial_43bs2")
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
@@ -1389,7 +1448,6 @@ wait_time = 4.0
 one_shot = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 blend_mode = 1
 
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
