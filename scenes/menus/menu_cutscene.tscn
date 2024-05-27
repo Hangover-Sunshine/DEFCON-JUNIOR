@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cxvftbyu85qu" path="res://assets/ui/void/Void_Top_Lip.png" id="6_ftxgj"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_7smap"]
 [ext_resource type="Texture2D" uid="uid://dj2rujdajltmt" path="res://assets/ui/void/Art_Cutscene.png" id="9_yjlf5"]
-[ext_resource type="StyleBox" uid="uid://dj4tm3hhh5mi8" path="res://assets/graphs/murder_button.tres" id="10_mav7b"]
 [ext_resource type="AudioStream" uid="uid://bkdbxni6h2sqx" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe1.ogg" id="10_whqjq"]
-[ext_resource type="StyleBox" uid="uid://d1kjb4x0ihcjs" path="res://assets/graphs/mercy_button.tres" id="11_bgicp"]
 [ext_resource type="AudioStream" uid="uid://bia38xwvhfr8r" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe2.ogg" id="11_k4w8h"]
 [ext_resource type="AudioStream" uid="uid://dr4swtiml1uw0" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe3.ogg" id="12_nespv"]
 [ext_resource type="Script" path="res://nodes/SoundPlaylist/SoundPlaylist.gd" id="15_i0g67"]
@@ -628,73 +626,49 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_skx3l"]
 light_mode = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ercsp"]
-bg_color = Color(0.772549, 0.772549, 0.772549, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7t1i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40arj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5alx"]
-bg_color = Color(0.419608, 0.454902, 0.698039, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egfun"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6pes"]
-bg_color = Color(0.27451, 0.294118, 0.54902, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4tsv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kxonl"]
 
 [sub_resource type="Theme" id="Theme_ni2c2"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.756863, 0.85098, 0.94902, 1)
-Button/colors/font_pressed_color = Color(0.756863, 0.85098, 0.94902, 1)
+Button/colors/font_color = Color(0.243137, 0.513726, 0.819608, 1)
+Button/colors/font_disabled_color = Color(0.243137, 0.513726, 0.819608, 1)
+Button/colors/font_hover_color = Color(0.54902, 0.854902, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("7_7smap")
-Button/styles/disabled = SubResource("StyleBoxFlat_ercsp")
+Button/styles/disabled = SubResource("StyleBoxEmpty_w7t1i")
 Button/styles/focus = SubResource("StyleBoxEmpty_40arj")
-Button/styles/hover = SubResource("StyleBoxFlat_m5alx")
-Button/styles/normal = ExtResource("10_mav7b")
-Button/styles/pressed = SubResource("StyleBoxFlat_b6pes")
+Button/styles/hover = SubResource("StyleBoxEmpty_egfun")
+Button/styles/normal = SubResource("StyleBoxEmpty_u4tsv")
+Button/styles/pressed = SubResource("StyleBoxEmpty_kxonl")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12las"]
-bg_color = Color(0.772549, 0.772549, 0.772549, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81tfr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu1g2"]
-bg_color = Color(0.647059, 0.14902, 0.223529, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqjh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncot7"]
-bg_color = Color(0.447059, 0.109804, 0.184314, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_305y3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nw124"]
 
 [sub_resource type="Theme" id="Theme_ke64m"]
-Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(0.866667, 0.215686, 0.270588, 1)
+Button/colors/font_disabled_color = Color(0.866667, 0.215686, 0.270588, 1)
 Button/colors/font_hover_color = Color(1, 0.4, 0.458824, 1)
-Button/colors/font_pressed_color = Color(1, 0.4, 0.458824, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("7_7smap")
-Button/styles/disabled = SubResource("StyleBoxFlat_12las")
+Button/styles/disabled = SubResource("StyleBoxEmpty_81tfr")
 Button/styles/focus = SubResource("StyleBoxEmpty_40arj")
-Button/styles/hover = SubResource("StyleBoxFlat_vu1g2")
-Button/styles/normal = ExtResource("11_bgicp")
-Button/styles/pressed = SubResource("StyleBoxFlat_ncot7")
+Button/styles/hover = SubResource("StyleBoxEmpty_bqqjh")
+Button/styles/normal = SubResource("StyleBoxEmpty_305y3")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nw124")
 
 [sub_resource type="Animation" id="Animation_6ee0x"]
 length = 0.001
@@ -817,7 +791,7 @@ tracks/2/path = NodePath("Question_Labels/Continue_Button:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -829,7 +803,7 @@ tracks/3/path = NodePath("Question_Labels/Quit_Button:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -865,7 +839,7 @@ tracks/6/path = NodePath("Question_Labels/Question_Label:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1644,7 +1618,6 @@ visible = false
 position = Vector2(4, 17)
 
 [node name="Question_Label" type="Label" parent="Question_Labels"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_bjxni")
 offset_left = 420.0
@@ -1660,7 +1633,7 @@ horizontal_alignment = 1
 [node name="Continue_Button" type="Button" parent="Question_Labels"]
 material = SubResource("CanvasItemMaterial_skx3l")
 offset_left = 642.0
-offset_top = 817.0
+offset_top = 797.0
 offset_right = 1253.0
 offset_bottom = 875.0
 theme = SubResource("Theme_ni2c2")
