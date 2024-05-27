@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://nsgp1qhggor8"]
+[gd_scene load_steps=8 format=3 uid="uid://nsgp1qhggor8"]
 
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="3_vooma"]
+[ext_resource type="Shader" path="res://scenes/test/AnalogMonochrome.gdshader" id="5_28fvk"]
 [ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_fqmmg"]
+[ext_resource type="Texture2D" uid="uid://b447n1cohkj5f" path="res://scenes/test/Analog_Pattern.png" id="6_u37iv"]
 [ext_resource type="PackedScene" uid="uid://cvc2n8mpfspuy" path="res://prefabs/fx/fx_explode_feather.tscn" id="8_utufl"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="11_e7cnq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbxjk"]
+shader = ExtResource("5_28fvk")
+shader_parameter/opacity = 1.0
+shader_parameter/pixel_size = 0.001
+shader_parameter/greyscale = true
+shader_parameter/contrast = 0.965
+shader_parameter/pixel_colors = Color(0, 0, 0, 1)
+shader_parameter/background_color = Color(0, 0.768627, 0, 1)
+shader_parameter/tiledtexture = ExtResource("6_u37iv")
 
 [node name="demo_art" type="Node2D"]
 
@@ -30,3 +42,8 @@ show_behind_parent = true
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gbxjk")
+offset_right = 1920.0
+offset_bottom = 1080.0
