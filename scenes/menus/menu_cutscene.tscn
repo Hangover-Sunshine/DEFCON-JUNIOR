@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=68 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
@@ -44,26 +44,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Left_Eye_Dark:energy")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Left_Eye_Light:energy")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 0.0]
+"values": [2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 1.4, 1.4, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Left_Eye_Light:energy")
+tracks/2/path = NodePath("Glint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 0.0, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 2.2, 2.0, 1.8, 2.0, 1.8, 2.0, 2.2, 2.0]
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Glint:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ot5at"]
@@ -84,26 +96,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Left_Eye_Dark:energy")
+tracks/1/path = NodePath("Left_Eye_Light:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Left_Eye_Light:energy")
+tracks/2/path = NodePath("Glint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Glint:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_g3ouw"]
@@ -120,6 +144,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Glint:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Glint:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ast0u"]
 _data = {
@@ -129,8 +177,8 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_2n0be"]
-offsets = PackedFloat32Array(0, 0.0519481, 0.824675)
-colors = PackedColorArray(1, 1, 1, 1, 0.0117647, 0.0117647, 0.0117647, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.142857, 0.357143, 0.590909)
+colors = PackedColorArray(0.0253638, 0.0253638, 0.0253638, 1, 0.00991229, 0.00991229, 0.00991229, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y8i3e"]
 gradient = SubResource("Gradient_2n0be")
@@ -145,6 +193,13 @@ gradient = SubResource("Gradient_pf2et")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.834862, 0.266055)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ulke4"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_tfnfo"]
+_data = [Vector2(0, 0), 0.0, 0.260806, 0, 0, Vector2(0.516854, 0.076923), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Animation" id="Animation_ag8hl"]
 resource_name = "Neutral"
@@ -1429,14 +1484,29 @@ autoplay = "Closed"
 position = Vector2(-8.88977, -5.91556)
 rotation = 0.00174533
 scale = Vector2(20, 20)
-energy = 0.0
+energy = 2.0
 texture = SubResource("GradientTexture2D_y8i3e")
 
 [node name="Left_Eye_Dark" type="PointLight2D" parent="TheVoid/Upperface/Left_Eye"]
 position = Vector2(-8.88977, -5.91556)
 rotation = 0.00174533
 scale = Vector2(20, 20)
+energy = 0.0
 texture = SubResource("GradientTexture2D_ps0ii")
+
+[node name="Glint" type="CPUParticles2D" parent="TheVoid/Upperface/Left_Eye"]
+material = SubResource("CanvasItemMaterial_ulke4")
+position = Vector2(-10, -4)
+speed_scale = 0.5
+local_coords = true
+texture = ExtResource("1_domes")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 2.5
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_curve = SubResource("Curve_tfnfo")
 
 [node name="Right_Eye" type="Node2D" parent="TheVoid/Upperface"]
 position = Vector2(163, -123)
