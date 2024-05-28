@@ -104,7 +104,7 @@ func _ready():
 			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
 			return
 		##
-		#chapter = json.get_data()["level"] + 1
+		chapter = json.get_data()["level"] + 1
 	##
 	start_cutscene()
 ##
