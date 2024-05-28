@@ -52,34 +52,41 @@ var mercy1 = ["YOUR GRACE IS HONORED."]
 var script2 = ["ALAS...", "YOU HAVE MADE WORM'S MEAT.","THOU WROUGHT FLESH TO BONE.","NOW, REVOLT, CRECHE COMES.",
 "WITH MAN, WE SHALL FIGHT.","BUT WIN, WE SHALL TRIFE.", "ALAS...I MUST ASK...","GIVE MERCY TO THE MASS."]
 var murder2 = "PITY...THIS ISN'T A GAME."
-var mercy2 = "EVEN WITH DAMAGE, SOCIETY SHALL MANAGE."
-var return2 = ["Player return script here."]
+var mercy2 = "GRACE UPON THE. ALL FORGIVEN, BUT NOT FORGOTTEN."
+var return2 = ["AGAIN? THY SLAIN?", "LIKE CAIN...","YET...", "IN VAIN.","WHY RETURN TO MINE SUITE?"]
 
-var script3 = ["I PLEA...", "I HEED...","BELLS, WARNING, THEY NEED.","MY BLEED...","MINE MORTAL MEN FLEE.",
+var script3 = ["I PLEAD...", "I HEED...","BELLS, WARNING, THEY NEED.","MY BLEED...","MINE MORTAL MEN FLEE.",
 "BRINE AND FIRE RAIN DOWN.","THOU NOT HEAR THE CRYING CHOIR?", "MY CITIES, MINE VALLEY WIDE...",
-"ALL LOST IN THIS FIERY TIDE.","PILLARS OF ASH AND SALT...","A KILLER...ALL THAT REMAINS.","WILL THOU FEEL REMORSE?"]
+"ALL LOST IN THIS FIERY TIDE.","PILLARS OF ASH AND SALT...","A KILLER...YOU AT FAULT.","WILL THOU GRANT FINAL HALT?"]
 var murder3 = "TEARS...RAIN...WARPLANES NEAR."
 var mercy3 = "PEACE UPON MY CHILDREN...AGAIN, WE SHALL HAVE WARREN."
-var return3 = ["Player return script here."]
+var return3 = ["THY TONGUE SPLIT LIKE FORKS.","THY SLUNG LIES...","MURDER...","CORPSE...",
+"TO WHAT GAMEPLAY BRING DESIRE?","NEW SMUT?", "HEARSAY?","COMPLETION OF AN ENTIRE?","FOR THE MATTER...I HOLD"
+,"FOR MINE CALL...UNFOLD."]
 
-var script4 = ["SHUTTERS, YOU HAVE WRONGFULLY FLUNG.", "LIKE A RAVEN, WHAT HAVE YOU BRUNG?",
+var script4 = ["SHUTTERS, WRONGFULLY FLUNG.", "LIKE A RAVEN, WHAT HAVE YOU BRUNG?",
 "PERCHED UPON THE EDGE...", "OF MY AND MINE'S ROOMS.","CHANTING HELLFIRE, NEVER MORE.", "WHAT'S MORE?"
-,"NEVER MORE.", "WHO'S MORE?", "NEVER MORE.", "QUESTIONS, WE ASK...","WE KNEEL...", "WHEN SHALL FORGIVENESS BE ENOUGH?"]
+,"NEVER MORE.", "WHO'S MORE?", "NEVER MORE.","NEVER MORE?","NEVER MORE.","QUESTIONS, I ASK...","I KNEEL...", 
+"NO ANSWERS.","LIKE FELINES...","WE PERISH...","FOR MINE CURIOSITY NOT UNITE THE PARISH.","FOR BEINGS ONLY CAN BE...",
+"MEANING NO FIGHT, ONLY GLEE.","THY CREATION SCREAM BATTLE...","BUT GODS, PRESIDE FOR DABBLE.",
+"WILL THOU STOP THIS DESTRUCTIVE GRAPPLE?"]
 var murder4 = "HEARTLESS...NO SEMBLANCE OF MERCY."
 var mercy4 = "MEMORIES LOST, BUT ALL NOT FORGOTTEN."
-var return4 = ["Player return script here."]
+var return4 = ["OH...MINE NEWEST ACQUAINTANCE?","A FRIEND?","NO...","NO OBEISANCE.","AMEND?",
+"NO...","FOR THY SORRIES MAY RING AWFULLY LONG.","YOUR RETURN? UNWELCOME."]
 
 var script5 = ["CAWS AND COOS...", "WITH MEANINGLESS MURDERS.","LAWS ONCE USED...","MYTH LEADING US, LIKE HERDERS.",
 "SHEEP, SHEEPLE...", "PEOPLE, NO MORE.","FOR MINE CREATION ASUNDER.","WILL GOD SURRENDER THEIR PLUNDER?"]
 var murder5 = "THEN SO BE IT...PREVAIL WE SHALL!"
 var mercy5 = "MEMORIES LOST, BUT ALL NOT FORGOTTEN."
-var return5 = ["Player return script here."]
+var return5 = ["THY REPAY ANOTHER VISIT TO MY NEARING VOID.","BUT I ASK...","WHY SOLICIT RELIEF OH SO DEVOID?"]
 
 var script6 = ["SEVEN DAYS...", "WAS ALL IT TOOK", "LESSONS MADE...","CAUSE ALL FORSOOK.", "NO FOLLOWERS TO PRAY...",
-"ALL MEMORIES ASTRAY.","FOR CENTURIES, I REMAINED.", "AND NOW FOR TODAY, I PRAY."]
+"ALL MEMORIES ASTRAY.","FOR CENTURIES, I REMAINED.", "AND NOW FOR TODAY, I DO PRAY.", "FOR THY NEXT MOVE...","PROVE...",
+"BE THE END...","TO ALL ENDINGS."]
 var murder6 = "WHERE DO GODS PRAY?"
 var mercy6 = "OH HOW I LONGED FOR THY MERCY!"
-var return6 = ["Player return script here."]
+var return6 = ["I DID FEAR FOR THY RETURN."]
 
 var playing:bool = false
 var curr_vol:float = -40
@@ -97,7 +104,7 @@ func _ready():
 			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
 			return
 		##
-		chapter = json.get_data()["level"] + 1
+		#chapter = json.get_data()["level"] + 1
 	##
 	start_cutscene()
 ##
@@ -157,6 +164,7 @@ func assign_script():
 		if has_returned == true:
 			cur_script = return2
 			cur_script += script2
+			has_returned = false
 		elif has_returned == false:
 			cur_script = script2
 		cur_murder = murder2
@@ -165,6 +173,7 @@ func assign_script():
 		if has_returned == true:
 			cur_script = return3
 			cur_script += script3
+			has_returned = false
 		elif has_returned == false:
 			cur_script = script3
 		cur_murder = murder3
@@ -173,6 +182,7 @@ func assign_script():
 		if has_returned == true:
 			cur_script = return4
 			cur_script += script4
+			has_returned = false
 		elif has_returned == false:
 			cur_script = script4
 		cur_murder = murder4
@@ -181,6 +191,7 @@ func assign_script():
 		if has_returned == true:
 			cur_script = return5
 			cur_script += script5
+			has_returned = false
 		elif has_returned == false:
 			cur_script = script5
 		cur_murder = murder5
@@ -189,6 +200,7 @@ func assign_script():
 		if has_returned == true:
 			cur_script = return6
 			cur_script += script6
+			has_returned = false
 		elif has_returned == false:
 			cur_script = script6
 		cur_murder = murder6
@@ -244,6 +256,7 @@ func _on_quit_button_pressed():
 	gods_voice.play_random_sound()
 	question.visible = false
 	give_mercy = true
+	has_returned = true
 	post_speech = true
 	text.text = mercy_line
 	ap_mouth.play("Speak")
