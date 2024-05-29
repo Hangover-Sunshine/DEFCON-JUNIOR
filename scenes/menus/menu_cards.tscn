@@ -352,14 +352,17 @@ theme_override_constants/separation = 45
 alignment = 1
 
 [node name="Card_Boost" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_ujgxb")
 
 [node name="Card_Boost_Jetfuel" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_2oqir")
 
 [node name="Card_Bubble" type="Button" parent="Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_4xyx1")
 
