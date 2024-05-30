@@ -3,6 +3,14 @@ extends Control
 signal pregame_to_game
 signal pregame_to_main
 
+@onready var ap_controls = $AP_Controls
+
+
+
+func _ready():
+	if GlobalSettings.os_type == "Web":
+		ap_controls.play("Flash_Web")
+
 func _on_tutorial_button_pressed():
 	pregame_to_game.emit()
 
