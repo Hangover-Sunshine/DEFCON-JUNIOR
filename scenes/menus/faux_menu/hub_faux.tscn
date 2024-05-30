@@ -1,6 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2u4gnxcv8g3v"]
+[gd_scene load_steps=19 format=3 uid="uid://c2u4gnxcv8g3v"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/hub_faux.gd" id="1_25yfo"]
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_en8ka"]
+[ext_resource type="Gradient" uid="uid://balv1hmq7d8pq" path="res://assets/graphs/Skys/sludge.tres" id="3_kwbqc"]
 [ext_resource type="PackedScene" uid="uid://sgo67yn8hyxq" path="res://scenes/menus/faux_menu/faux_main.tscn" id="3_qopba"]
 [ext_resource type="PackedScene" uid="uid://dwmh3m7f4icnc" path="res://scenes/menus/faux_menu/faux_pregame.tscn" id="4_sibau"]
 [ext_resource type="PackedScene" uid="uid://8xss65s0xve1" path="res://scenes/menus/faux_menu/faux_settings.tscn" id="5_yil4v"]
@@ -139,6 +141,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Rain:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_q6iwd"]
 resource_name = "ToSplash"
@@ -263,6 +277,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Rain:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kc3pt"]
 _data = {
@@ -287,6 +313,24 @@ script = ExtResource("1_25yfo")
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
+
+[node name="Rain" type="CPUParticles2D" parent="."]
+position = Vector2(960, -96)
+amount = 500
+lifetime = 15.0
+texture = ExtResource("2_en8ka")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(0, 20)
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = ExtResource("3_kwbqc")
 
 [node name="BackFrame" type="Sprite2D" parent="."]
 visible = false
