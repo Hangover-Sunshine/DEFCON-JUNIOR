@@ -19,26 +19,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_syrew")
 
-[node name="Cloud" type="CPUParticles2D" parent="."]
-show_behind_parent = true
-position = Vector2(958, 393)
-rotation = -1.5708
-amount = 175
-lifetime = 5.0
-preprocess = 15.0
-texture = ExtResource("2_vnl8g")
-emission_shape = 3
-emission_rect_extents = Vector2(240, 385)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-angular_velocity_min = -25.0
-angular_velocity_max = 25.0
-damping_min = 50.0
-damping_max = 50.0
-scale_amount_curve = SubResource("Curve_w4jdf")
-
 [node name="Main_MC" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
@@ -56,6 +36,26 @@ alignment = 1
 layout_mode = 2
 texture = ExtResource("2_ploaq")
 stretch_mode = 3
+
+[node name="Cloud" type="CPUParticles2D" parent="Main_MC/Main_VBox/TextureRect"]
+show_behind_parent = true
+position = Vector2(538, 281)
+rotation = -1.5708
+amount = 175
+lifetime = 5.0
+preprocess = 15.0
+texture = ExtResource("2_vnl8g")
+emission_shape = 3
+emission_rect_extents = Vector2(250, 385)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_curve = SubResource("Curve_w4jdf")
 
 [node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
 layout_mode = 2
