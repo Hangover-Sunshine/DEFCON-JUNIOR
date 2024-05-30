@@ -6,6 +6,8 @@ extends Node2D
 @onready var menu_pregame = $MenuPregame
 @onready var back_frame = $BackFrame
 @onready var ll_ambiance = $LLAmbiance
+@onready var directional_light_2d = $AP/DirectionalLight2D
+@onready var post_nuke_light_2 = $AP/PostNuke_Light2
 
 var ready_to_splash = false
 
@@ -43,5 +45,6 @@ func to_pre():
 	menu_main.visible = false
 	menu_pregame.visible = true
 	back_frame.visible = false
-
+	directional_light_2d.visible = false
+	post_nuke_light_2.visible = false
 

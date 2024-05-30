@@ -270,12 +270,12 @@ _data = {
 "ToSplash": SubResource("Animation_q6iwd")
 }
 
-[sub_resource type="Gradient" id="Gradient_4xyaw"]
+[sub_resource type="Gradient" id="Gradient_ebmxp"]
 offsets = PackedFloat32Array(0, 0.512987, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dr2o2"]
-gradient = SubResource("Gradient_4xyaw")
+gradient = SubResource("Gradient_ebmxp")
 fill_from = Vector2(0.2, 0)
 fill_to = Vector2(0.8, 0)
 metadata/_snap_enabled = true
