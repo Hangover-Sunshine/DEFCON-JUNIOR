@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dwmh3m7f4icnc"]
+[gd_scene load_steps=24 format=3 uid="uid://dwmh3m7f4icnc"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/faux_pregame.gd" id="1_8vylt"]
 [ext_resource type="Theme" uid="uid://xe3tblncjty" path="res://assets/graphs/faux_button.tres" id="3_hj27s"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="4_3wv46"]
 [ext_resource type="Texture2D" uid="uid://cbhads56f8vvs" path="res://assets/ui/main/OmnipotentOne.png" id="4_d3gnf"]
 [ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="7_5spsi"]
-[ext_resource type="AudioStream" uid="uid://cnoy80uwpr7pi" path="res://assets/audio/sfx/gameplay/Jumpscare.mp3" id="8_uw4wu"]
 
 [sub_resource type="Gradient" id="Gradient_utbhc"]
 colors = PackedColorArray(1, 1, 1, 0.0980392, 0, 0, 0, 0)
@@ -602,9 +601,6 @@ angular_velocity_max = 25.0
 damping_min = 50.0
 damping_max = 50.0
 scale_amount_curve = SubResource("Curve_1swo7")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_uw4wu")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
