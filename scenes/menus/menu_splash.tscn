@@ -84,7 +84,7 @@ autoplay = "Throb"
 [node name="PC_Splash" parent="." instance=ExtResource("3_ixcle")]
 position = Vector2(960, 771)
 
-[node name="ArtTitleText" type="Sprite2D" parent="."]
+[node name="Splash_Title" type="Sprite2D" parent="."]
 modulate = Color(0.756863, 0.85098, 0.94902, 1)
 position = Vector2(960, 414)
 texture = ExtResource("4_huuxg")
