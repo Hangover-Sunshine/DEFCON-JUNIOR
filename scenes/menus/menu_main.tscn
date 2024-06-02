@@ -38,7 +38,6 @@ alignment = 1
 modulate = Color(0.756863, 0.85098, 0.94902, 1)
 custom_minimum_size = Vector2(1080, 402)
 layout_mode = 2
-texture = ExtResource("2_kd1wg")
 stretch_mode = 3
 
 [node name="Button_HBox" type="HBoxContainer" parent="Main_MC/Main_VBox"]
@@ -73,6 +72,16 @@ theme_override_fonts/font = ExtResource("2_ttw81")
 theme_override_font_sizes/font_size = 50
 text = "EXIT"
 
+[node name="Menu_Art" type="TextureRect" parent="."]
+modulate = Color(0.756863, 0.85098, 0.94902, 1)
+custom_minimum_size = Vector2(1080, 402)
+offset_left = 420.0
+offset_top = 172.0
+offset_right = 1500.0
+offset_bottom = 574.0
+texture = ExtResource("2_kd1wg")
+stretch_mode = 3
+
 [node name="Cloud" type="CPUParticles2D" parent="."]
 show_behind_parent = true
 position = Vector2(954, 374)
@@ -82,7 +91,7 @@ lifetime = 3.0
 preprocess = 15.0
 texture = ExtResource("5_kgw5b")
 emission_shape = 3
-emission_rect_extents = Vector2(100, 250)
+emission_rect_extents = Vector2(125, 275)
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 100.0
@@ -92,6 +101,20 @@ angular_velocity_max = 25.0
 damping_min = 50.0
 damping_max = 50.0
 scale_amount_curve = SubResource("Curve_x2df8")
+
+[node name="Menu_Text" type="Label" parent="."]
+offset_left = 547.0
+offset_top = 238.0
+offset_right = 1361.0
+offset_bottom = 515.0
+theme_override_colors/font_color = Color(0.752941, 0.847059, 0.94902, 1)
+theme_override_constants/line_spacing = -45
+theme_override_fonts/font = ExtResource("2_ttw81")
+theme_override_font_sizes/font_size = 140
+text = "INSERT TEXT
+HERE PLEASE."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HoverPool" type="Node" parent="."]
 script = ExtResource("6_dclbn")

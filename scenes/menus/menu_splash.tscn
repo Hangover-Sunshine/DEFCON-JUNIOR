@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://88fivnqio2ad"]
+[gd_scene load_steps=8 format=3 uid="uid://88fivnqio2ad"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_hhomw"]
+[ext_resource type="Script" path="res://scenes/menus/menu_splash.gd" id="1_l7xrc"]
 [ext_resource type="PackedScene" uid="uid://d2npo3vy5fmsi" path="res://prefabs/art/pc_splash.tscn" id="3_ixcle"]
 [ext_resource type="Texture2D" uid="uid://bq6dqxkjbcgit" path="res://assets/ui/main/Art_Title_Text1.png" id="4_huuxg"]
 
@@ -49,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l7xrc")
 
 [node name="Press_Label" type="Label" parent="."]
 layout_mode = 2
@@ -84,7 +86,22 @@ autoplay = "Throb"
 [node name="PC_Splash" parent="." instance=ExtResource("3_ixcle")]
 position = Vector2(960, 771)
 
-[node name="Splash_Title" type="Sprite2D" parent="."]
+[node name="Menu_Art" type="Sprite2D" parent="."]
 modulate = Color(0.756863, 0.85098, 0.94902, 1)
 position = Vector2(960, 414)
 texture = ExtResource("4_huuxg")
+
+[node name="Menu_Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 290.0
+offset_right = 1363.0
+offset_bottom = 567.0
+theme_override_colors/font_color = Color(0.752941, 0.847059, 0.94902, 1)
+theme_override_constants/line_spacing = -45
+theme_override_fonts/font = ExtResource("1_hhomw")
+theme_override_font_sizes/font_size = 140
+text = "INSERT TEXT
+HERE PLEASE."
+horizontal_alignment = 1
+vertical_alignment = 1
