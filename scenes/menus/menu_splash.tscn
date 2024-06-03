@@ -93,10 +93,11 @@ texture = ExtResource("4_huuxg")
 
 [node name="Menu_Text" type="Label" parent="."]
 layout_mode = 0
-offset_left = 549.0
-offset_top = 290.0
-offset_right = 1363.0
-offset_bottom = 567.0
+offset_left = 444.0
+offset_top = 276.0
+offset_right = 1458.0
+offset_bottom = 553.0
+pivot_offset = Vector2(507, 0)
 theme_override_colors/font_color = Color(0.752941, 0.847059, 0.94902, 1)
 theme_override_constants/line_spacing = -45
 theme_override_fonts/font = ExtResource("1_hhomw")

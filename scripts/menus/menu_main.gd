@@ -8,7 +8,8 @@ signal main_to_exit
 @onready var menu_text = $Menu_Text
 
 var chapter = 0
-var cur_script = ["please put\ntext","WE MUST\nSTOP THEM","chapter 2"]
+var cur_script = ["please put\ntext","WE MUST\nSTOP THEIR\nOPPRESSION!","THE PEOPLE\nAREN'T REAL!",
+"FOR NONE\nEXIST!","FATHER LIES!\nHE WANTS\nYOUR WORLD.","WE ARE\nHUMAN!","THEY ARE\nALMOST\nDEAD!"]
 
 func _ready():
 	if GlobalSettings.os_type == "Web":

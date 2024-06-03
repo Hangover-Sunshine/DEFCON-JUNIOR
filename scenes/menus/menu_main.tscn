@@ -75,6 +75,7 @@ text = "EXIT"
 [node name="Menu_Art" type="TextureRect" parent="."]
 modulate = Color(0.756863, 0.85098, 0.94902, 1)
 custom_minimum_size = Vector2(1080, 402)
+layout_mode = 0
 offset_left = 420.0
 offset_top = 172.0
 offset_right = 1500.0
@@ -103,15 +104,18 @@ damping_max = 50.0
 scale_amount_curve = SubResource("Curve_x2df8")
 
 [node name="Menu_Text" type="Label" parent="."]
-offset_left = 547.0
-offset_top = 238.0
-offset_right = 1361.0
-offset_bottom = 515.0
+layout_mode = 0
+offset_left = 555.0
+offset_top = 172.0
+offset_right = 1369.0
+offset_bottom = 565.0
+pivot_offset = Vector2(407, 0)
 theme_override_colors/font_color = Color(0.752941, 0.847059, 0.94902, 1)
 theme_override_constants/line_spacing = -45
 theme_override_fonts/font = ExtResource("2_ttw81")
 theme_override_font_sizes/font_size = 140
 text = "INSERT TEXT
+HERE PLEASE.
 HERE PLEASE."
 horizontal_alignment = 1
 vertical_alignment = 1
