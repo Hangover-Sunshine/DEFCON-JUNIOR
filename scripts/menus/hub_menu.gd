@@ -15,11 +15,11 @@ func _ready():
 	handle_signals()
 	
 	# Delete our file
-	if FileAccess.file_exists("user://player.save"):
-		DirAccess.remove_absolute("user://player.save")
+	#if FileAccess.file_exists("user://player.save"):
+		#DirAccess.remove_absolute("user://player.save")
 	##
-	if FileAccess.file_exists("user://level.save"):
-		DirAccess.remove_absolute("user://level.save")
+	#if FileAccess.file_exists("user://level.save"):
+		#DirAccess.remove_absolute("user://level.save")
 	##
 ##
 
