@@ -14,6 +14,20 @@ var cur_script = ["please put\ntext","WE MUST\nSTOP THEIR\nOPPRESSION!","THE PEO
 func _ready():
 	if GlobalSettings.os_type == "Web":
 		$Main_MC/Main_VBox/Button_HBox/Button_VBox/Exit_Button.visible = false
+	##
+	
+	if FileAccess.file_exists("user://level.save"):
+		var file = FileAccess.open("user://level.save", FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var res = json.parse(json_string)
+		if res != OK:
+			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+			return
+		##
+		chapter = json.get_data()["level"]
+	##
+	
 	junior_speak()
 	##
 ##
