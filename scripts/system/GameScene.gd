@@ -3,6 +3,8 @@ extends Node2D
 @onready var pause_canvas_layer = $PauseCanvasLayer
 @onready var flash_canvas_layer = $FlashCanvasLayer
 
+var bus = null
+
 var player_lost:bool = false
 var player_won:bool = false
 var next_scene:bool = false
@@ -26,6 +28,8 @@ func _ready():
 		##
 		curr_level = json.get_data()["level"]
 	##
+	
+	bus = AudioServer.get_bus_index("Music")
 	
 	$GameRoot.curr_level = curr_level
 	$GameRoot.load_level()
@@ -112,10 +116,10 @@ func unpause_pause():
 	
 	if get_tree().paused:
 		# apply filter
-		pass
+		AudioServer.add_bus_effect(bus, AudioEffectLowPassFilter.new())
 	else:
 		# remove filter
-		pass
+		AudioServer.remove_bus_effect(bus, 0)
 	##
 ##
 
