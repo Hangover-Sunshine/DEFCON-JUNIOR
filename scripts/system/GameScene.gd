@@ -109,6 +109,14 @@ func save_game():
 func unpause_pause():
 	get_tree().paused = !get_tree().paused
 	pause_canvas_layer.visible = get_tree().paused
+	
+	if get_tree().paused:
+		# apply filter
+		pass
+	else:
+		# remove filter
+		pass
+	##
 ##
 
 func to_free(scene_name):

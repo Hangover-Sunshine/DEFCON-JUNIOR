@@ -40,6 +40,15 @@ func _ready():
 		FullScreen = config.get_value("screen", "fullscreen")
 		FlashesOff = config.get_value("screen", "flashes_off")
 		
+		var bus = AudioServer.get_bus_index("Music")
+		AudioServer.set_bus_volume_db(bus, linear_to_db(MusicVolume))
+		
+		bus = AudioServer.get_bus_index("SFX")
+		AudioServer.set_bus_volume_db(bus, linear_to_db(UiSFXVolume))
+		
+		bus = AudioServer.get_bus_index("Master")
+		AudioServer.set_bus_volume_db(bus, linear_to_db(GlobalSettings.MasterVolume))
+		
 		return
 	##
 	
