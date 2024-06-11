@@ -106,6 +106,7 @@ func _ready():
 			return
 		##
 		chapter = json.get_data()["level"] + 1
+		has_returned = json.get_data()["player_left"]
 	##
 	start_cutscene()
 ##
@@ -267,7 +268,7 @@ func _on_quit_button_pressed():
 ##
 
 func progress_level():
-	var data = {"level":chapter}
+	var data = {"level":chapter,"player_left":give_mercy}
 	var json_dump = JSON.stringify(data)
 	var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
 	if save_file == null:
