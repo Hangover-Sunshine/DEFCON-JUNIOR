@@ -95,7 +95,7 @@ func _player_died():
 
 func _scene_loaded(scene_name):
 	if scene_name != name:
-		if AudioServer.get_bus_effect_count(bus) > 0:
+		if AudioServer.get_bus_effect_count(bus) > 0 and player_lost == false:
 			AudioServer.remove_bus_effect(bus, 0)
 		##
 		queue_free()

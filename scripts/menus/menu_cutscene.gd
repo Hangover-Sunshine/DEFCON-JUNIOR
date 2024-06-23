@@ -151,6 +151,7 @@ func _on_ap_cutscene_animation_finished(anim_name):
 		if give_murder == true:
 			GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
 		elif give_mercy == true:
+			GlobalPlaylist.stop_playing()
 			GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
 		progress_level()
 	elif anim_name == "Post-Nuke" or anim_name == "Post-Nuke-Flash":
