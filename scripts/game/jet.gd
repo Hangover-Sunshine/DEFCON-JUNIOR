@@ -229,6 +229,7 @@ func hit():
 	$Enemy_Jet.anim_die()
 	$PlayerDetector.queue_free()
 	$Hitbox.queue_free()
+	fire_timer.stop()
 	jet_state = JetState.DEAD
 	velocity.x = 0
 	GlobalSignals.emit_signal("jet_dead")

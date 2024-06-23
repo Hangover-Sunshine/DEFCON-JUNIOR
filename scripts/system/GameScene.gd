@@ -10,6 +10,7 @@ var player_won:bool = false
 var next_scene:bool = false
 
 var curr_level:int = 0
+var player_left_save:bool = false
 
 func _ready():
 	GlobalSignals.connect("scene_loaded", to_free)
@@ -27,6 +28,7 @@ func _ready():
 			return
 		##
 		curr_level = json.get_data()["level"]
+		player_left_save = json.get_data()["player_left"]
 	##
 	
 	bus = AudioServer.get_bus_index("Music")
@@ -57,6 +59,10 @@ func _input(event):
 		unpause_pause()
 		$PauseCanvasLayer/HubPause.to_pause()
 	##
+	
+	if Input.is_action_just_pressed("escape") and GlobalSettings.os_type == "Web":
+		GlobalSettings.FullScreen = false
+	##
 ##
 
 func _level_complete():
@@ -81,6 +87,7 @@ func _player_died():
 	##
 	player_lost = true
 	save_game()
+	AudioServer.add_bus_effect(bus, AudioEffectLowPassFilter.new())
 	if GlobalPlaylist.current_song() != "MainTheme":
 		GlobalPlaylist.play("MainTheme")
 	##
@@ -88,12 +95,17 @@ func _player_died():
 
 func _scene_loaded(scene_name):
 	if scene_name != name:
+		if AudioServer.get_bus_effect_count(bus) > 0:
+			AudioServer.remove_bus_effect(bus, 0)
+		##
 		queue_free()
 	##
 ##
 
 func save_game():
 	var json_dump = $GameRoot.get_data()
+	json_dump["player_left"] = player_left_save
+	json_dump = JSON.stringify(json_dump)
 	var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
 	if save_file == null:
 		printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")

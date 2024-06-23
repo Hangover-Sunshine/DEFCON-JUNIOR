@@ -55,7 +55,7 @@ func play(song_name:String):
 ##
 
 func stop_playing():
-	playlist[curr_play].stop()
+	playlist[curr_play].fade_out(2.5)
 	curr_play = -1
 ##
 

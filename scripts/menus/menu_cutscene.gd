@@ -149,10 +149,10 @@ func _on_ap_cutscene_animation_finished(anim_name):
 		section += 1
 	elif anim_name == "Despawn" and section == 1:
 		if give_murder == true:
-			progress_level()
 			GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
 		elif give_mercy == true:
 			GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
+		progress_level()
 	elif anim_name == "Post-Nuke" or anim_name == "Post-Nuke-Flash":
 		spawn_void()
 

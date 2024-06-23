@@ -24,7 +24,9 @@ func to_settings():
 	animplayer.play("ToSettings")
 
 func to_load():
+	GlobalPlaylist.stop_playing()
 	GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
+##
 
 func to_free(scene_name):
 	self.queue_free()
