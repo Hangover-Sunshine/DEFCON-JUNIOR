@@ -424,6 +424,26 @@ bus = &"SFX"
 stream = ExtResource("15_r41cd")
 bus = &"SFX"
 
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="HoverPool"]
+stream = ExtResource("15_r41cd")
+bus = &"SFX"
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
 

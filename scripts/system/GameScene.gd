@@ -11,6 +11,7 @@ var next_scene:bool = false
 
 var curr_level:int = 0
 var player_left_save:bool = false
+var stop_pause:bool = false
 
 func _ready():
 	GlobalSignals.connect("scene_loaded", to_free)
@@ -55,7 +56,7 @@ func _process(_delta):
 ##
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and stop_pause == false:
 		unpause_pause()
 		$PauseCanvasLayer/HubPause.to_pause()
 	##

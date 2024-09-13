@@ -104,6 +104,7 @@ func _process(delta):
 	
 	if timer_level == 0 and game_timer.time_left < 30:
 		timer_level += 1
+		get_parent().stop_pause = true
 		GlobalPlaylist.play("EndOfLevel")
 	##
 	

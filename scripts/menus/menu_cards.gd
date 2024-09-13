@@ -127,7 +127,34 @@ func save():
 		return
 	##
 	save_file.store_string(content)
-	process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# Update the level.save file as well
+	var file = FileAccess.open("user://level.save", FileAccess.READ)
+	var json_string = file.get_as_text()
+	var json = JSON.new()
+	var res = json.parse(json_string)
+	if res != OK:
+		print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+		return
+	##
+	
+	data = {}
+	data["level"] = json.get_data()["level"]
+	data["player_left"] = json.get_data()["player_left"]
+	data["selected"] = true
+	
+	content = JSON.stringify(data)
+	
+	save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
+	if save_file == null:
+		printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")
+		return
+	##
+	save_file.store_string(content)
+	
+	for child in $Cards_MC/Levelup_VBox1/LevelUp_VBox2/Card_Hbox.get_children():
+		child.mouse_filter = MOUSE_FILTER_IGNORE
+	##
 ##
 
 func _on_card_boost_pressed():

@@ -10,16 +10,21 @@ extends Node2D
 var to_main_ready = false
 var to_splash_ready = false
 
-# Called when the node enters the scene tree for the first time.
+var to_power_selection = false
+
 func _ready():
 	handle_signals()
 	
-	# Delete our file
-	#if FileAccess.file_exists("user://player.save"):
-		#DirAccess.remove_absolute("user://player.save")
-	##
-	#if FileAccess.file_exists("user://level.save"):
-		#DirAccess.remove_absolute("user://level.save")
+	if FileAccess.file_exists("user://level.save"):
+		var file = FileAccess.open("user://level.save", FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var res = json.parse(json_string)
+		if res != OK:
+			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+			return
+		##
+		to_power_selection = !json.get_data()["selected"]
 	##
 ##
 
@@ -60,7 +65,13 @@ func to_exit():
 	get_tree().quit()
 
 func to_load():
-	GlobalSignals.emit_signal("load_scene", "GameScene")
+	if to_power_selection:
+		GlobalPlaylist.stop_playing()
+		GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
+	else:
+		GlobalSignals.emit_signal("load_scene", "GameScene")
+	##
+##
 
 func to_free(_scene_name):
 	self.queue_free()

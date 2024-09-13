@@ -25,6 +25,7 @@ var fade_completed:bool = false
 func _ready():
 	GlobalSignals.connect("load_scene", _load_scene)
 	set_process(false)
+	
 	transition_player.play("Fade")
 ##
 
