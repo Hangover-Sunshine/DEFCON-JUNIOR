@@ -25,8 +25,25 @@ var fade_completed:bool = false
 func _ready():
 	GlobalSignals.connect("load_scene", _load_scene)
 	set_process(false)
+	var level = 0
+	if FileAccess.file_exists("user://level.save"):
+		var file = FileAccess.open("user://level.save", FileAccess.READ)
+		var json_string = file.get_as_text()
+		var json = JSON.new()
+		var res = json.parse(json_string)
+		if res != OK:
+			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
+			return
+		##
+		level = json.get_data()["level"]
+	##
 	
-	transition_player.play("Fade")
+	if level == 6:
+		$Overlay/ColorRect.color = Color.BLACK
+		GlobalSignals.emit_signal("load_scene", "menus/faux_menu/hub_faux")
+	else:
+		transition_player.play("Fade")
+	##
 ##
 
 func _process(_delta):
