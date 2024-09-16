@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://lc0epbfmc5p8"]
+
+[ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="1_c6bik"]
+[ext_resource type="Script" path="res://scripts/system/redux/GameController.gd" id="1_fwq4s"]
+[ext_resource type="Texture2D" uid="uid://cu30c6r0rmfri" path="res://assets/particle/Puff1.png" id="2_buxct"]
+[ext_resource type="Resource" uid="uid://bwkshpflyauc0" path="res://prefabs/levels/Level1.tres" id="2_hndwc"]
+[ext_resource type="PackedScene" uid="uid://btqw03tb71iu3" path="res://prefabs/systems/giu.tscn" id="3_kjibt"]
+[ext_resource type="PackedScene" uid="uid://cff0irid7qcej" path="res://prefabs/entities/player.tscn" id="4_in5f0"]
+[ext_resource type="PackedScene" uid="uid://c0n71c7qli14s" path="res://prefabs/art/environment/env_city.tscn" id="5_he3ak"]
+
+[sub_resource type="Gradient" id="Gradient_7vs5r"]
+colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
+
+[node name="GameView" type="Node2D"]
+script = ExtResource("1_fwq4s")
+Levels = Array[Resource("res://scripts/resources/LevelResource.gd")]([ExtResource("2_hndwc")])
+
+[node name="DummySky" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.756863, 0.85098, 0.94902, 1)
+
+[node name="Frame_White" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(960, 540)
+texture = ExtResource("1_c6bik")
+
+[node name="Frame_Sky" type="Sprite2D" parent="Frame_White"]
+modulate = Color(0.564706, 0.619608, 0.866667, 1)
+scale = Vector2(1.25, 1)
+texture = ExtResource("1_c6bik")
+
+[node name="Cloud" type="CPUParticles2D" parent="."]
+position = Vector2(960, 1375)
+amount = 500
+lifetime = 15.0
+preprocess = 15.0
+texture = ExtResource("2_buxct")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(0, -25)
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_7vs5r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GIU" parent="CanvasLayer" instance=ExtResource("3_kjibt")]
+
+[node name="Player" parent="." instance=ExtResource("4_in5f0")]
+z_index = 1
+position = Vector2(957, 157)
+
+[node name="Env_City" parent="." instance=ExtResource("5_he3ak")]
+position = Vector2(960, 1930)

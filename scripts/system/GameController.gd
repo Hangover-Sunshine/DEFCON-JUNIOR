@@ -112,13 +112,13 @@ func _process(delta):
 		timer_level += 1
 	##
 	
-	if timer_level == 2 and game_timer.time_left < 10:
+	if timer_level == 2 and game_timer.time_left < 6:
 		obstacle_timer.stop()
 		horizontal_timer.stop()
 		missile_timer.stop()
 		jet_timer.stop()
 		GlobalSignals.emit_signal("free_off_screen") # only have everything fire once
-		GlobalSignals.emit_signal("blow_on_screen") # anything on screen that can should die
+		GlobalSignals.emit_signal("blow_on_screen") # misnomer/redux: this now forces everything to not hit the player, and rush off screen
 		GlobalSignals.emit_signal("bail_out") # tell planes to GTFO
 		timer_level += 1
 	##

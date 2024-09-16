@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy3d46uf65gpy"]
+[gd_scene load_steps=4 format=3 uid="uid://dy3d46uf65gpy"]
 
 [ext_resource type="Script" path="res://scripts/system/SceneController.gd" id="1_svjoe"]
-[ext_resource type="PackedScene" uid="uid://d136umhx2ffrh" path="res://scenes/menus/hub_menu.tscn" id="2_pxokc"]
 
 [sub_resource type="Animation" id="Animation_4mi1i"]
 resource_name = "Fade"
@@ -26,7 +25,7 @@ _data = {
 [node name="MainScene" type="Node" node_paths=PackedStringArray("curr_scene")]
 process_mode = 3
 script = ExtResource("1_svjoe")
-curr_scene = NodePath("HubMenu")
+curr_scene = NodePath("ColorRect")
 play_fade_fully = true
 stay_faded = true
 
@@ -50,6 +49,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="HubMenu" parent="." instance=ExtResource("2_pxokc")]
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="animation_finished" from="TransitionPlayer" to="." method="_on_transition_player_animation_finished"]
