@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dy3d46uf65gpy"]
+[gd_scene load_steps=29 format=3 uid="uid://dy3d46uf65gpy"]
 
 [ext_resource type="Script" path="res://scripts/system/SceneController.gd" id="1_svjoe"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="2_ifw76"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://ds1dv24ku3m7p" path="res://assets/audio/music/Reversed_Cartoon.mp3" id="10_vk3ca"]
 [ext_resource type="AudioStream" uid="uid://pqjlchdd8dma" path="res://assets/audio/sfx/level_end/end_of_level.ogg" id="11_1ac63"]
 [ext_resource type="AudioStream" uid="uid://cjytj7jw38u7g" path="res://assets/audio/music/Scary_Ambience.wav" id="12_mtf48"]
+[ext_resource type="AudioStream" uid="uid://dyabpdhrhjalw" path="res://assets/audio/sfx/horrors_beyond_comprehension/NewGodApproaches.ogg" id="13_43voa"]
 
 [sub_resource type="Animation" id="Animation_4mi1i"]
 resource_name = "Fade"
@@ -106,6 +107,19 @@ name = "LLAmbience"
 bus = ""
 stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_j1agm")])
 
+[sub_resource type="Resource" id="Resource_ni20r"]
+script = ExtResource("7_elfvb")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("13_43voa")
+
+[sub_resource type="Resource" id="Resource_i63uh"]
+script = ExtResource("6_5wof8")
+name = "approaching"
+bus = ""
+stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_ni20r")])
+
 [node name="MainScene" type="Node" node_paths=PackedStringArray("curr_scene")]
 process_mode = 3
 script = ExtResource("1_svjoe")
@@ -150,6 +164,6 @@ events = Array[ExtResource("3_8q4jh")]([SubResource("Resource_fbf5r")])
 script = ExtResource("5_uansl")
 label = "ost"
 bus = "Music"
-tracks = Array[ExtResource("6_5wof8")]([SubResource("Resource_xho80"), SubResource("Resource_wygjv"), SubResource("Resource_xpnt1"), SubResource("Resource_txtcq"), SubResource("Resource_h8k3l")])
+tracks = Array[ExtResource("6_5wof8")]([SubResource("Resource_xho80"), SubResource("Resource_wygjv"), SubResource("Resource_xpnt1"), SubResource("Resource_txtcq"), SubResource("Resource_h8k3l"), SubResource("Resource_i63uh")])
 
 [connection signal="animation_finished" from="TransitionPlayer" to="." method="_on_transition_player_animation_finished"]

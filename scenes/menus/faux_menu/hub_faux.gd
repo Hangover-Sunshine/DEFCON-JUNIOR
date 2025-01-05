@@ -5,7 +5,6 @@ extends Node2D
 @onready var menu_settings = $MenuSettings
 @onready var menu_pregame = $MenuPregame
 @onready var back_frame = $BackFrame
-@onready var ll_ambiance = $LLAmbiance
 @onready var directional_light_2d = $AP/DirectionalLight2D
 @onready var post_nuke_light_2 = $AP/PostNuke_Light2
 

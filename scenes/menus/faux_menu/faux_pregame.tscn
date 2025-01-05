@@ -646,5 +646,10 @@ position = Vector2(963.78, 542.52)
 scale = Vector2(30.133, 18.213)
 texture = SubResource("GradientTexture2D_1jcrv")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
 [connection signal="pressed" from="Pregame_MC/Pregame_VBox/HBoxContainer/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="animation_finished" from="AP_Scare" to="." method="_on_ap_scare_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

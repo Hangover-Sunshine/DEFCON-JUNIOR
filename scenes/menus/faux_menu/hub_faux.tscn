@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2u4gnxcv8g3v"]
+[gd_scene load_steps=21 format=3 uid="uid://c2u4gnxcv8g3v"]
 
 [ext_resource type="Script" path="res://scenes/menus/faux_menu/hub_faux.gd" id="1_25yfo"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="2_en8ka"]
@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bygw8cox6ajq2" path="res://scenes/menus/faux_menu/faux_splash.tscn" id="6_2g8xc"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="6_tac2k"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="7_lblol"]
-[ext_resource type="AudioStream" uid="uid://cjytj7jw38u7g" path="res://assets/audio/music/Scary_Ambience.wav" id="8_efry5"]
-[ext_resource type="Script" path="res://scripts/system/AudioFade.gd" id="9_ui3sb"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="10_p1mlq"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="11_0qvbb"]
+[ext_resource type="AudioStream" uid="uid://cpuvpefpyyci2" path="res://assets/audio/sfx/gameplay/VHSJumpscare.mp3" id="12_cfi3n"]
 
 [sub_resource type="Gradient" id="Gradient_lyp6r"]
 offsets = PackedFloat32Array(0, 0.506494, 1)
@@ -306,6 +307,14 @@ fill_from = Vector2(0.2, 0)
 fill_to = Vector2(0.8, 0)
 metadata/_snap_enabled = true
 
+[sub_resource type="Resource" id="Resource_cdsab"]
+script = ExtResource("11_0qvbb")
+name = "jumpscare"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("12_cfi3n")])
+
 [node name="HubMenu" type="Node2D"]
 script = ExtResource("1_25yfo")
 
@@ -394,10 +403,10 @@ texture = SubResource("GradientTexture2D_dr2o2")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="AP"]
 blend_mode = 1
 
-[node name="LLAmbiance" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_efry5")
-volume_db = -80.0
-bus = &"Music"
-script = ExtResource("9_ui3sb")
+[node name="JumpscareSFXBank" type="Node" parent="."]
+script = ExtResource("10_p1mlq")
+label = "horror"
+bus = "SFX"
+events = Array[ExtResource("11_0qvbb")]([SubResource("Resource_cdsab")])
 
 [connection signal="animation_finished" from="AP" to="." method="_on_ap_animation_finished"]
