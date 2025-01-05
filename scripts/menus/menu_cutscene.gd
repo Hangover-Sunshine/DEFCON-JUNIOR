@@ -1,8 +1,5 @@
 extends Control
 
-@onready var sound_playlist = $SoundPlaylist
-@onready var gods_voice = $GodsVoice
-
 @onready var post_nuke = $PostNuke
 @onready var levels_label = $PostNuke/Levels_Label
 @onready var cutscene_art = $PostNuke/Cutscene_Art
@@ -26,7 +23,7 @@ extends Control
 
 
 # Manipulate this guy to run specific cutscene and to make scene not flash player
-var chapter = 1
+var chapter = 3
 var no_flash = false
 var has_returned = false
 
@@ -89,10 +86,6 @@ var murder6 = "WHERE DO GODS PRAY?"
 var mercy6 = "OH HOW I LONGED FOR THY MERCY!"
 var return6 = ["I DID FEAR FOR THY RETURN."]
 
-var playing:bool = false
-var curr_vol:float = -40
-var max_vol:float = 0
-
 func _ready():
 	no_flash = GlobalSettings.FlashesOff
 	GlobalSignals.connect("scene_loaded", _scene_loaded)
@@ -109,13 +102,6 @@ func _ready():
 		has_returned = json.get_data()["player_left"]
 	##
 	start_cutscene()
-##
-
-func _process(delta):
-	if playing:
-		curr_vol = move_toward(curr_vol, max_vol, delta * 20)
-		sound_playlist.raise_db(curr_vol)
-	##
 ##
 
 func start_cutscene():
@@ -135,7 +121,7 @@ func start_cutscene():
 
 # Shows NPC art
 func spawn_void():
-	GlobalPlaylist.play("GodsTheme")
+	MusicManager.play("ost", "void_theme")
 	ap_cutscene.play("Spawn")
 	ap_left_eye.play("Closed")
 
@@ -151,7 +137,7 @@ func _on_ap_cutscene_animation_finished(anim_name):
 		if give_murder == true:
 			GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
 		elif give_mercy == true:
-			GlobalPlaylist.stop_playing()
+			MusicManager.stop()
 			GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
 		progress_level()
 	elif anim_name == "Post-Nuke" or anim_name == "Post-Nuke-Flash":
@@ -209,7 +195,7 @@ func assign_script():
 		cur_murder = murder6
 		mercy_line = mercy6
 	text.text = cur_script[line]
-	gods_voice.play_random_sound()
+	SoundManager.play_varied("cutscene", "speaking", randf_range(0.8, 1.0))
 ##
 
 # Allows player to shift through text when applicable
@@ -232,7 +218,7 @@ func _input(event):
 # Updates line and checks to notifies input function if a question is coming up
 func next_line():
 	if line < cur_script.size():
-		gods_voice.play_random_sound()
+		SoundManager.play_varied("cutscene", "speaking", randf_range(0.8, 1.0))
 		text.text = cur_script[line]
 		if line + 1 == cur_script.size():
 			has_question = true
@@ -245,7 +231,7 @@ func _on_ap_mouth_animation_finished(anim_name):
 
 # Makes TheVoid sad and sets up trigger to next level
 func _on_continue_button_pressed():
-	gods_voice.play_random_sound()
+	SoundManager.play_varied("cutscene", "speaking", randf_range(0.8, 1.0))
 	question.visible = false
 	give_murder = true
 	post_speech = true
@@ -256,7 +242,7 @@ func _on_continue_button_pressed():
 
 # Makes TheVoid greatful and sets up trigger to send player back to hub_menu
 func _on_quit_button_pressed():
-	gods_voice.play_random_sound()
+	SoundManager.play_varied("cutscene", "speaking", randf_range(0.8, 1.0))
 	question.visible = false
 	give_mercy = true
 	has_returned = true
@@ -286,6 +272,5 @@ func _scene_loaded(scene_name):
 ##
 
 func _on_sfx_timing_timeout():
-	sound_playlist.play_at(chapter - 1)
-	playing = true
+	SoundManager.play("cutscene", "scene" + str(chapter))
 ##

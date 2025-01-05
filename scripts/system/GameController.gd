@@ -69,9 +69,9 @@ func load_level():
 	game_timer.start(lvl_len_secs)
 	
 	if curr_level == 5:
-		GlobalPlaylist.play("RCartoon")
-	elif GlobalPlaylist.current_song() != "MainTheme":
-		GlobalPlaylist.play("MainTheme")
+		MusicManager.play("ost", "reversed_theme")
+	elif MusicManager.is_playing("", "main_theme") == false:
+		MusicManager.play("ost", "main_theme")
 	##
 	wind.playing = true
 ##
@@ -105,7 +105,7 @@ func _process(delta):
 	if timer_level == 0 and game_timer.time_left < 30:
 		timer_level += 1
 		get_parent().stop_pause = true
-		GlobalPlaylist.play("EndOfLevel")
+		MusicManager.play("ost", "end_of_level", 15)
 	##
 	
 	if timer_level == 1 and game_timer.time_left < 15:
@@ -144,7 +144,6 @@ func _on_game_timer_timeout():
 	$DummyTimerBecauseImLazy.start(0.35)
 	await $DummyTimerBecauseImLazy.timeout
 	GlobalSignals.emit_signal("level_complete")
-	GlobalPlaylist.stop_playing()
 ##
 
 func _jet_dead():

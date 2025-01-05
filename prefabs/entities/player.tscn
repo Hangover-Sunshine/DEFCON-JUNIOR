@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cff0irid7qcej"]
+[gd_scene load_steps=13 format=3 uid="uid://cff0irid7qcej"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_je4ut"]
 [ext_resource type="PackedScene" uid="uid://dny78qniqp7xr" path="res://prefabs/art/pc_skeleton.tscn" id="1_sgups"]
 [ext_resource type="AudioStream" uid="uid://c1f8hkln454ds" path="res://assets/audio/sfx/gameplay/Player_Gets_Hit.wav" id="3_f8x6l"]
 [ext_resource type="AudioStream" uid="uid://k5n2aycmm5qm" path="res://assets/audio/sfx/gameplay/Player_Shoot.wav" id="4_pa8pa"]
 [ext_resource type="AudioStream" uid="uid://b6e4ssr66ybe4" path="res://assets/audio/sfx/gameplay/dead.ogg" id="5_3caag"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="6_oqx0k"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="7_l6mex"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_reof2"]
 radius = 49.0
@@ -12,6 +14,30 @@ height = 134.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vbqq"]
 radius = 90.0222
+
+[sub_resource type="Resource" id="Resource_8rekc"]
+script = ExtResource("7_l6mex")
+name = "hit"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("3_f8x6l"), ExtResource("3_f8x6l"), ExtResource("3_f8x6l")])
+
+[sub_resource type="Resource" id="Resource_jjxrw"]
+script = ExtResource("7_l6mex")
+name = "shoot"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("4_pa8pa"), ExtResource("4_pa8pa"), ExtResource("4_pa8pa")])
+
+[sub_resource type="Resource" id="Resource_p127n"]
+script = ExtResource("7_l6mex")
+name = "dead"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("5_3caag")])
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 3
@@ -60,17 +86,11 @@ one_shot = true
 [node name="ShieldRestockTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="PlayerHit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_f8x6l")
-bus = &"SFX"
-
-[node name="PlayerShoot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_pa8pa")
-bus = &"SFX"
-
-[node name="PlayerDead" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_3caag")
-bus = &"SFX"
+[node name="PlayerSounds" type="Node" parent="."]
+script = ExtResource("6_oqx0k")
+label = "player"
+bus = "GameSFX"
+events = Array[ExtResource("7_l6mex")]([SubResource("Resource_8rekc"), SubResource("Resource_jjxrw"), SubResource("Resource_p127n")])
 
 [connection signal="body_entered" from="ShieldArea" to="." method="_on_shield_area_body_entered"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

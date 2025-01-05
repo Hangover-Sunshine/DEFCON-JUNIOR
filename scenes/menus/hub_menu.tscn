@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d136umhx2ffrh"]
+[gd_scene load_steps=18 format=3 uid="uid://d136umhx2ffrh"]
 
 [ext_resource type="PackedScene" uid="uid://88fivnqio2ad" path="res://scenes/menus/menu_splash.tscn" id="1_5dhbp"]
 [ext_resource type="Script" path="res://scripts/menus/hub_menu.gd" id="1_eqpse"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c7l6if7b7q4xr" path="res://scenes/menus/menu_warning.tscn" id="6_j5f1o"]
 [ext_resource type="Texture2D" uid="uid://bmhof4he24kry" path="res://assets/ui/Back_Frame.png" id="6_wy4d5"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="9_bsohh"]
-[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="10_h7qbr"]
-[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="11_vfbtk"]
 
 [sub_resource type="Gradient" id="Gradient_pvvc5"]
 colors = PackedColorArray(1, 1, 1, 0.0392157, 0.756863, 0.85098, 0.94902, 1)
@@ -659,23 +657,5 @@ theme_override_fonts/font = ExtResource("9_bsohh")
 theme_override_font_sizes/font_size = 30
 text = "HANGOVER SUNSHINE"
 horizontal_alignment = 2
-
-[node name="HoverPool" type="Node" parent="."]
-script = ExtResource("10_h7qbr")
-randomizePitch = true
-allowPitchReroll = true
-pitchRandomization = Vector2(0.6, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("11_vfbtk")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("11_vfbtk")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("11_vfbtk")
-bus = &"SFX"
 
 [connection signal="animation_finished" from="HubMenu_AnimPlayer" to="." method="_on_hub_menu_anim_player_animation_finished"]

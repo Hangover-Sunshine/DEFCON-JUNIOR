@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://33p7pl7m730s"]
+[gd_scene load_steps=3 format=3 uid="uid://33p7pl7m730s"]
 
 [ext_resource type="Script" path="res://scripts/game/obstruction.gd" id="1_g2gsg"]
 [ext_resource type="PackedScene" uid="uid://cwlgqt2mce0is" path="res://prefabs/art/prop/prop_bird.tscn" id="2_30btr"]
-[ext_resource type="AudioStream" uid="uid://b08vsu53drbry" path="res://assets/audio/sfx/gameplay/Death_Bird.mp3" id="3_ghbn6"]
 
 [node name="Bird" type="CharacterBody2D"]
 collision_layer = 4
@@ -11,6 +10,7 @@ script = ExtResource("1_g2gsg")
 MovesHorizontally = true
 HorizontalSpeed = 300.0
 VerticalSpeed = -125.0
+IsBird = true
 
 [node name="PropGraphic" parent="." instance=ExtResource("2_30btr")]
 
@@ -24,10 +24,6 @@ polygon = PackedVector2Array(-22, -19, -30, -10, -15, -5, -12, 9, 2, 12, 14, 12,
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-30, -10, 55, 20)
-
-[node name="Death" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ghbn6")
-bus = &"SFX"
 
 [connection signal="died" from="PropGraphic" to="." method="_on_died_anim_complete"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

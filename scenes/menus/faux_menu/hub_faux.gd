@@ -14,7 +14,7 @@ var ready_to_splash = false
 func _ready():
 	to_splash()
 	handle_signals()
-	GlobalPlaylist.play("GodsTheme")
+	MusicManager.play("ost", "void_theme")
 
 func to_splash():
 	menu_splash.visible = true

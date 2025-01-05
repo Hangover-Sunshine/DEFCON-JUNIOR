@@ -24,15 +24,16 @@ func _ready():
 			print("error on:", json.get_error_message(), " on line ", json.get_error_line())
 			return
 		##
-		to_power_selection = !json.get_data()["selected"]
+		to_power_selection = json.get_data()["selected"]
+		print(to_power_selection)
 	##
 ##
 
 func _input(event):
 	if event.is_pressed() and menu_warning.visible == true and to_splash_ready == true:
 		animplayer.play("ToSplash")
-		if GlobalPlaylist.current_song() != "MainTheme":
-			GlobalPlaylist.play("MainTheme")
+		if MusicManager.is_playing("", "main_theme") == false:
+			MusicManager.play("ost", "main_theme")
 		##
 	elif event.is_pressed() and to_main_ready == true and menu_splash.visible == true:
 		animplayer.play("ToMain")
@@ -66,7 +67,6 @@ func to_exit():
 
 func to_load():
 	if to_power_selection:
-		GlobalPlaylist.stop_playing()
 		GlobalSignals.emit_signal("load_scene", "menus/menu_cards")
 	else:
 		GlobalSignals.emit_signal("load_scene", "GameScene")

@@ -63,3 +63,7 @@ func _on_music_slider_value_changed(value):
 	var sfx = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(sfx, linear_to_db(GlobalSettings.MusicVolume))
 ##
+
+func _on_back_button_mouse_entered():
+	SoundManager.play_varied("common_sfx", "hover", randf_range(0.8, 1.1))
+##

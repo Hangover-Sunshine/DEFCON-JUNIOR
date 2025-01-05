@@ -14,7 +14,6 @@ func _ready():
 func _scene_loaded(scene_name):
 	if scene_name != name:
 		if AudioServer.get_bus_effect_count(bus) > 0:
-			print("here!")
 			AudioServer.remove_bus_effect(bus, 0)
 		##
 		
@@ -31,5 +30,9 @@ func _on_cont_button_pressed():
 func _on_leave_button_pressed():
 	loaded_in = false
 	GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
-	GlobalPlaylist.stop_playing()
+	MusicManager.stop(1.0)
+##
+
+func _on_mouse_entered():
+	SoundManager.play_varied("common_sfx", "hover", randf_range(0.8, 1.1))
 ##

@@ -90,4 +90,5 @@ damping_min = 50.0
 damping_max = 50.0
 scale_amount_curve = SubResource("Curve_4qm6p")
 
+[connection signal="mouse_entered" from="Settings_MC/Settings_VBox/Back_Button" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="Settings_MC/Settings_VBox/Back_Button" to="." method="_on_back_button_pressed"]

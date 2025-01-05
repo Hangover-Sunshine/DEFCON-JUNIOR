@@ -5,6 +5,7 @@ class_name Obstruction
 @export var HorizontalSpeed:float = 250
 @export var VerticalSpeed:float = -250
 @export var IsBird:bool = false
+@export var IsPlane:bool = false
 
 var facing_right:bool = false
 var dead:bool = false
@@ -33,7 +34,16 @@ func hit():
 	dead = true
 	velocity.x = 0
 	GlobalSignals.emit_signal("hobstacle_dead")
-	$Death.play()
+	
+	if IsBird == false:
+		if IsPlane == false:
+			SoundManager.play_varied("enemy", "death", randf_range(0.95, 1.2))
+		else:
+			SoundManager.play_varied("enemy", "death", randf_range(0.7, 0.95))
+		##
+	else:
+		SoundManager.play("enemy", "bird_death")
+	##
 ##
 
 func direction_check():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dmcbxot4aapuw"]
+[gd_scene load_steps=73 format=3 uid="uid://dmcbxot4aapuw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_cutscene.gd" id="1_0ub0r"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_domes"]
@@ -14,13 +14,13 @@
 [ext_resource type="AudioStream" uid="uid://bkdbxni6h2sqx" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe1.ogg" id="10_whqjq"]
 [ext_resource type="AudioStream" uid="uid://bia38xwvhfr8r" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe2.ogg" id="11_k4w8h"]
 [ext_resource type="AudioStream" uid="uid://dr4swtiml1uw0" path="res://assets/audio/sfx/void_sounds/GodTalkingToMe3.ogg" id="12_nespv"]
-[ext_resource type="Script" path="res://nodes/SoundPlaylist/SoundPlaylist.gd" id="15_i0g67"]
 [ext_resource type="AudioStream" uid="uid://b1icu0h2e2r2r" path="res://assets/audio/sfx/void_sounds/scene2.ogg" id="17_o0xmk"]
 [ext_resource type="AudioStream" uid="uid://dcrj14tk1j5op" path="res://assets/audio/sfx/void_sounds/scene3.ogg" id="18_7l5i3"]
 [ext_resource type="AudioStream" uid="uid://dhsdhjjtaxi3y" path="res://assets/audio/sfx/void_sounds/scene4.ogg" id="19_pwg6g"]
 [ext_resource type="AudioStream" uid="uid://cjv6cjjmtp2no" path="res://assets/audio/sfx/void_sounds/scene5.ogg" id="20_jw654"]
 [ext_resource type="AudioStream" uid="uid://dlcqtos7kwjx6" path="res://assets/audio/sfx/void_sounds/scene6.ogg" id="21_tdyx3"]
-[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="22_el8gl"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="22_6l162"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="23_eq6qi"]
 
 [sub_resource type="Animation" id="Animation_ie1y8"]
 resource_name = "Blink"
@@ -1389,6 +1389,62 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43bs2"]
 light_mode = 1
 
+[sub_resource type="Resource" id="Resource_3qb2r"]
+script = ExtResource("23_eq6qi")
+name = "speaking"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("10_whqjq"), ExtResource("11_k4w8h"), ExtResource("12_nespv")])
+
+[sub_resource type="Resource" id="Resource_u7n21"]
+script = ExtResource("23_eq6qi")
+name = "scene1"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("2_uulx7")])
+
+[sub_resource type="Resource" id="Resource_qo3as"]
+script = ExtResource("23_eq6qi")
+name = "scene2"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("17_o0xmk")])
+
+[sub_resource type="Resource" id="Resource_fgwvx"]
+script = ExtResource("23_eq6qi")
+name = "scene3"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("18_7l5i3")])
+
+[sub_resource type="Resource" id="Resource_bo8qp"]
+script = ExtResource("23_eq6qi")
+name = "scene4"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("19_pwg6g")])
+
+[sub_resource type="Resource" id="Resource_1cqp4"]
+script = ExtResource("23_eq6qi")
+name = "scene5"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("20_jw654")])
+
+[sub_resource type="Resource" id="Resource_psf7n"]
+script = ExtResource("23_eq6qi")
+name = "scene6"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("21_tdyx3")])
+
 [node name="MenuCutscene" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
@@ -1398,55 +1454,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ub0r")
-
-[node name="SoundPlaylist" type="Node" parent="."]
-script = ExtResource("15_i0g67")
-
-[node name="Scene1" type="AudioStreamPlayer" parent="SoundPlaylist"]
-stream = ExtResource("2_uulx7")
-volume_db = -80.0
-bus = &"SFX"
-
-[node name="Scene2" type="AudioStreamPlayer" parent="SoundPlaylist"]
-stream = ExtResource("17_o0xmk")
-volume_db = -80.0
-bus = &"SFX"
-
-[node name="Scene3" type="AudioStreamPlayer" parent="SoundPlaylist"]
-stream = ExtResource("18_7l5i3")
-volume_db = -80.0
-bus = &"SFX"
-
-[node name="Scene4" type="AudioStreamPlayer" parent="SoundPlaylist"]
-stream = ExtResource("19_pwg6g")
-volume_db = -80.0
-bus = &"SFX"
-
-[node name="Scene5" type="AudioStreamPlayer" parent="SoundPlaylist"]
-stream = ExtResource("20_jw654")
-volume_db = -80.0
-bus = &"SFX"
-
-[node name="Scene6" type="AudioStreamPlayer" parent="SoundPlaylist"]
-stream = ExtResource("21_tdyx3")
-volume_db = -80.0
-bus = &"SFX"
-
-[node name="GodsVoice" type="Node" parent="."]
-script = ExtResource("22_el8gl")
-stopRepeatingSounds = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GodsVoice"]
-stream = ExtResource("10_whqjq")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="GodsVoice"]
-stream = ExtResource("11_k4w8h")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="GodsVoice"]
-stream = ExtResource("12_nespv")
-bus = &"SFX"
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -1673,6 +1680,12 @@ one_shot = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
+
+[node name="CutsceneSFXBank" type="Node" parent="."]
+script = ExtResource("22_6l162")
+label = "cutscene"
+bus = "GameSFX"
+events = Array[ExtResource("23_eq6qi")]([SubResource("Resource_3qb2r"), SubResource("Resource_u7n21"), SubResource("Resource_qo3as"), SubResource("Resource_fgwvx"), SubResource("Resource_bo8qp"), SubResource("Resource_1cqp4"), SubResource("Resource_psf7n")])
 
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_face_animation_finished"]

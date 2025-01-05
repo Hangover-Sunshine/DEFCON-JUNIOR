@@ -21,9 +21,8 @@ config/icon="res://_SYSTEM/HS_DesktopIcon.png"
 
 buses/default_bus_layout="res://assets/AudioBusLayout.tres"
 manager/sound/bus="Sound"
-manager/sound/pool_1D_size=16
-manager/sound/pool_2D_size=16
-manager/sound/pool_3D_size=16
+manager/sound/pool_1D_size=32
+manager/sound/pool_2D_size=32
 manager/sound/max_polyphony=32
 manager/music/bus="Music"
 
@@ -32,7 +31,6 @@ manager/music/bus="Music"
 GlobalSignals="*res://autoloads/GlobalSignals.gd"
 RandUtilities="*res://autoloads/RandUtilities.gd"
 GlobalSettings="*res://autoloads/GlobalSettings.gd"
-GlobalPlaylist="*res://autoloads/GlobalPlaylist.tscn"
 SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
 MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 

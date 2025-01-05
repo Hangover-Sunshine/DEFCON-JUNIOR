@@ -230,5 +230,5 @@ func _scene_loaded(scene_name):
 ##
 
 func _on_mouse_entered():
-	$HoverPool.play_random_sound()
+	SoundManager.play_varied("common_sfx", "hover", randf_range(0.8, 1.1))
 ##

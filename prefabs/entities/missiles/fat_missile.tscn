@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dorjaeeve6s2m"]
+[gd_scene load_steps=6 format=3 uid="uid://dorjaeeve6s2m"]
 
 [ext_resource type="Script" path="res://scripts/game/missile.gd" id="1_k7738"]
 [ext_resource type="PackedScene" uid="uid://bdbjl5sbfl0ec" path="res://prefabs/art/enemy/enemy_missile_a.tscn" id="1_ptk2n"]
 [ext_resource type="PackedScene" uid="uid://dljpawysa62f3" path="res://prefabs/systems/indicator.tscn" id="3_tp72c"]
-[ext_resource type="AudioStream" uid="uid://cgufg02e02wiw" path="res://assets/audio/sfx/gameplay/Death_Enemy_Obstacle.wav" id="4_32lue"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a51d4"]
 radius = 26.0
@@ -42,11 +41,6 @@ shape = SubResource("CapsuleShape2D_75c4p")
 
 [node name="Indicator" parent="." instance=ExtResource("3_tp72c")]
 scale = Vector2(0.4, 0.4)
-
-[node name="Death" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_32lue")
-pitch_scale = 0.7
-bus = &"SFX"
 
 [connection signal="died" from="PropGraphic" to="." method="_on_missile_died"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

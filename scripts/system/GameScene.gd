@@ -89,8 +89,8 @@ func _player_died():
 	player_lost = true
 	save_game()
 	AudioServer.add_bus_effect(bus, AudioEffectLowPassFilter.new())
-	if GlobalPlaylist.current_song() != "MainTheme":
-		GlobalPlaylist.play("MainTheme")
+	if MusicManager.is_playing("", "main_theme") == false:
+		MusicManager.play("ost", "main_theme")
 	##
 ##
 
@@ -106,6 +106,7 @@ func _scene_loaded(scene_name):
 func save_game():
 	var json_dump = $GameRoot.get_data()
 	json_dump["player_left"] = player_left_save
+	json_dump["selected"] = false
 	json_dump = JSON.stringify(json_dump)
 	var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
 	if save_file == null:

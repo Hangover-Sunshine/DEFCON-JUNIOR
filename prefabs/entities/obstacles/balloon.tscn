@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdrfwt2nb4ksf"]
+[gd_scene load_steps=3 format=3 uid="uid://bdrfwt2nb4ksf"]
 
 [ext_resource type="Script" path="res://scripts/game/obstruction.gd" id="1_u4cgc"]
 [ext_resource type="PackedScene" uid="uid://cp8880vb66kkj" path="res://prefabs/art/prop/prop_balloon.tscn" id="2_lk1v1"]
-[ext_resource type="AudioStream" uid="uid://cgufg02e02wiw" path="res://assets/audio/sfx/gameplay/Death_Enemy_Obstacle.wav" id="3_bj4vh"]
 
 [node name="Balloon" type="CharacterBody2D"]
 collision_layer = 4
@@ -23,10 +22,6 @@ polygon = PackedVector2Array(-20, 14, -27, 25, -19, 49, 8, 54, 22, 45, 25, 23, 1
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-78, -165, 145, 220)
-
-[node name="Death" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_bj4vh")
-bus = &"SFX"
 
 [connection signal="died" from="PropGraphic" to="." method="_on_died_anim_complete"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

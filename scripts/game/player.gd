@@ -206,11 +206,13 @@ func hit():
 	if curr_health <= 0:
 		GlobalSignals.emit_signal("player_died")
 		$PC_Skeleton.die()
-		$PlayerDead.play()
+		SoundManager.play("player", "dead")
+		#$PlayerDead.play()
 		return
 	##
 	
-	$PlayerHit.play()
+	SoundManager.play_varied("player", "hit", randf_range(0.9, 1.1))
+	#$PlayerHit.play()
 	
 	$PC_Skeleton.to_pain()
 	damaged_timer.start(TimeToNextDamage)
@@ -241,7 +243,8 @@ func _on_gun_timer_timeout():
 func _spawn_bullets():
 	$PC_Skeleton.shoot()
 	
-	$PlayerShoot.play()
+	SoundManager.play_varied("player", "shoot", randf_range(0.9, 1.1))
+	#$PlayerShoot.play()
 	
 	if curr_number_of_bullets == 1:
 		for i in range(curr_number_of_bullets):

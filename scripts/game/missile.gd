@@ -137,7 +137,7 @@ func hit():
 	dead = true
 	velocity.x = 0
 	GlobalSignals.emit_signal("missile_dead")
-	$Death.play()
+	SoundManager.play_varied("enemy", "death", randf_range(0.8, 1.0))
 ##
 
 func _on_missile_died():

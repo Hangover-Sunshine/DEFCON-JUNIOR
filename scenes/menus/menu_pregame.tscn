@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdx15nqmqr1cu"]
+[gd_scene load_steps=11 format=3 uid="uid://cdx15nqmqr1cu"]
 
 [ext_resource type="Script" path="res://scripts/menus/menu_pregame.gd" id="1_3jfox"]
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_6c7rd"]
 [ext_resource type="Theme" uid="uid://cov5d4hbgvj32" path="res://assets/graphs/CloudToMissile_Button.tres" id="4_78bn3"]
 [ext_resource type="Texture2D" uid="uid://b7ahxf62vwv3g" path="res://assets/ui/main/Art_Controls.png" id="5_5te88"]
 [ext_resource type="Texture2D" uid="uid://bweiodvrvxthb" path="res://assets/ui/main/Art_Controls_Web.png" id="5_lnkgo"]
-[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="5_vrvde"]
-[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="6_ne4mt"]
 [ext_resource type="Theme" uid="uid://dox27soin5qiv" path="res://assets/graphs/LabelBackGreen3.tres" id="7_b5g2r"]
 
 [sub_resource type="Animation" id="Animation_wd6a3"]
@@ -219,24 +217,6 @@ libraries = {
 "": SubResource("AnimationLibrary_3yyge")
 }
 autoplay = "Flash"
-
-[node name="HoverPool" type="Node" parent="."]
-script = ExtResource("5_vrvde")
-randomizePitch = true
-allowPitchReroll = true
-pitchRandomization = Vector2(0.6, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("6_ne4mt")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("6_ne4mt")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("6_ne4mt")
-bus = &"SFX"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

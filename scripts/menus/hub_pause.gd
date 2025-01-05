@@ -24,7 +24,7 @@ func to_settings():
 	animplayer.play("ToSettings")
 
 func to_load():
-	GlobalPlaylist.stop_playing()
+	MusicManager.stop(1.0)
 	GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
 ##
 

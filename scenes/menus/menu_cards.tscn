@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cmqvg1yjso6rn"]
+[gd_scene load_steps=60 format=3 uid="uid://cmqvg1yjso6rn"]
 
 [ext_resource type="FontFile" uid="uid://csvoyclvx65d2" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_fik03"]
 [ext_resource type="Script" path="res://scripts/menus/menu_cards.gd" id="1_m3354"]
@@ -13,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://clnd5tq3brvpq" path="res://assets/ui/cards/Card_Spitfire_Spew.png" id="10_7wgnr"]
 [ext_resource type="Texture2D" uid="uid://kgpl7ida7gg5" path="res://assets/ui/cards/Card_Spitfire_Upchuck.png" id="11_x6ije"]
 [ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="13_bw8ex"]
-[ext_resource type="Script" path="res://nodes/SoundPool/SoundPool.gd" id="14_a5wtb"]
-[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="15_r41cd"]
 
 [sub_resource type="Gradient" id="Gradient_gxl6y"]
 colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
@@ -405,44 +403,6 @@ theme = SubResource("Theme_2sh0c")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
-
-[node name="HoverPool" type="Node" parent="."]
-script = ExtResource("14_a5wtb")
-randomizePitch = true
-allowPitchReroll = true
-pitchRandomization = Vector2(0.6, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
-
-[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="HoverPool"]
-stream = ExtResource("15_r41cd")
-bus = &"SFX"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1

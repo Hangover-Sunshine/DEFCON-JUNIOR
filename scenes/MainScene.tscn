@@ -1,6 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy3d46uf65gpy"]
+[gd_scene load_steps=26 format=3 uid="uid://dy3d46uf65gpy"]
 
 [ext_resource type="Script" path="res://scripts/system/SceneController.gd" id="1_svjoe"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="2_ifw76"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="3_8q4jh"]
+[ext_resource type="AudioStream" uid="uid://qae4tqhjokvp" path="res://assets/audio/sfx/gameplay/Button.wav" id="4_vrl8f"]
+[ext_resource type="Script" path="res://addons/resonate/music_manager/music_bank.gd" id="5_uansl"]
+[ext_resource type="Script" path="res://addons/resonate/music_manager/music_track_resource.gd" id="6_5wof8"]
+[ext_resource type="Script" path="res://addons/resonate/music_manager/music_stem_resource.gd" id="7_elfvb"]
+[ext_resource type="AudioStream" uid="uid://cco8myhmavp8r" path="res://assets/audio/music/BaseCartoonMusic.mp3" id="8_u3svc"]
+[ext_resource type="AudioStream" uid="uid://pkksvqtgy7u7" path="res://assets/audio/music/VoidsTheme.ogg" id="9_v1srx"]
+[ext_resource type="AudioStream" uid="uid://ds1dv24ku3m7p" path="res://assets/audio/music/Reversed_Cartoon.mp3" id="10_vk3ca"]
+[ext_resource type="AudioStream" uid="uid://pqjlchdd8dma" path="res://assets/audio/sfx/level_end/end_of_level.ogg" id="11_1ac63"]
+[ext_resource type="AudioStream" uid="uid://cjytj7jw38u7g" path="res://assets/audio/music/Scary_Ambience.wav" id="12_mtf48"]
 
 [sub_resource type="Animation" id="Animation_4mi1i"]
 resource_name = "Fade"
@@ -21,6 +32,79 @@ tracks/0/keys = {
 _data = {
 "Fade": SubResource("Animation_4mi1i")
 }
+
+[sub_resource type="Resource" id="Resource_fbf5r"]
+script = ExtResource("3_8q4jh")
+name = "hover"
+bus = "SFX"
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("4_vrl8f"), ExtResource("4_vrl8f"), ExtResource("4_vrl8f"), ExtResource("4_vrl8f"), ExtResource("4_vrl8f")])
+
+[sub_resource type="Resource" id="Resource_288pp"]
+script = ExtResource("7_elfvb")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("8_u3svc")
+
+[sub_resource type="Resource" id="Resource_xho80"]
+script = ExtResource("6_5wof8")
+name = "main_theme"
+bus = ""
+stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_288pp")])
+
+[sub_resource type="Resource" id="Resource_yxiln"]
+script = ExtResource("7_elfvb")
+name = ""
+enabled = true
+volume = 6.0
+stream = ExtResource("9_v1srx")
+
+[sub_resource type="Resource" id="Resource_wygjv"]
+script = ExtResource("6_5wof8")
+name = "void_theme"
+bus = ""
+stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_yxiln")])
+
+[sub_resource type="Resource" id="Resource_178hg"]
+script = ExtResource("7_elfvb")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("10_vk3ca")
+
+[sub_resource type="Resource" id="Resource_xpnt1"]
+script = ExtResource("6_5wof8")
+name = "reversed_theme"
+bus = ""
+stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_178hg")])
+
+[sub_resource type="Resource" id="Resource_0v3lf"]
+script = ExtResource("7_elfvb")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("11_1ac63")
+
+[sub_resource type="Resource" id="Resource_txtcq"]
+script = ExtResource("6_5wof8")
+name = "end_of_level"
+bus = ""
+stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_0v3lf")])
+
+[sub_resource type="Resource" id="Resource_j1agm"]
+script = ExtResource("7_elfvb")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("12_mtf48")
+
+[sub_resource type="Resource" id="Resource_h8k3l"]
+script = ExtResource("6_5wof8")
+name = "LLAmbience"
+bus = ""
+stems = Array[ExtResource("7_elfvb")]([SubResource("Resource_j1agm")])
 
 [node name="MainScene" type="Node" node_paths=PackedStringArray("curr_scene")]
 process_mode = 3
@@ -56,5 +140,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="UISoundBank" type="Node" parent="."]
+script = ExtResource("2_ifw76")
+label = "common_sfx"
+events = Array[ExtResource("3_8q4jh")]([SubResource("Resource_fbf5r")])
+
+[node name="OSTBank" type="Node" parent="."]
+script = ExtResource("5_uansl")
+label = "ost"
+bus = "Music"
+tracks = Array[ExtResource("6_5wof8")]([SubResource("Resource_xho80"), SubResource("Resource_wygjv"), SubResource("Resource_xpnt1"), SubResource("Resource_txtcq"), SubResource("Resource_h8k3l")])
 
 [connection signal="animation_finished" from="TransitionPlayer" to="." method="_on_transition_player_animation_finished"]
