@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://denshoox50wwl"]
+
+[ext_resource type="Texture2D" uid="uid://dvg5oc3axuiqe" path="res://assets/particle/Circle1.png" id="1_akvhc"]
+[ext_resource type="AudioStream" uid="uid://bimldd4i1lw8" path="res://assets/audio/sfx/gameplay/Wind_Loop.ogg" id="2_wshqo"]
+
+[sub_resource type="Gradient" id="Gradient_s4ije"]
+colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="Void" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="DarkDust" type="CPUParticles2D" parent="."]
+position = Vector2(2131, 50)
+rotation = -1.5708
+amount = 500
+lifetime = 15.0
+preprocess = 15.0
+texture = ExtResource("1_akvhc")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 0)
+gravity = Vector2(-20, 10)
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_s4ije")
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wshqo")
+autoplay = true

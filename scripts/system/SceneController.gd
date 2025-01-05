@@ -125,7 +125,9 @@ func _on_resonate_load():
 	if level == 6:
 		$Overlay/ColorRect.color = Color.BLACK
 		GlobalSignals.emit_signal("load_scene", "menus/faux_menu/hub_faux")
-	else:
+	elif level > 0:
 		GlobalSignals.emit_signal("load_scene", "menus/hub_menu")
+	else:
+		GlobalSignals.emit_signal("load_scene", "menus/void/void")
 	##
 ##

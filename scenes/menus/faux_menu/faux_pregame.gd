@@ -30,6 +30,14 @@ func _on_continue_button_pressed():
 
 func _on_ap_scare_animation_finished(anim_name):
 	if anim_name == "7":
+		var data = {"level":-10,"player_left":false,"selected":false}
+		var json_dump = JSON.stringify(data)
+		var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
+		if save_file == null:
+			printerr("SOMETHING WENT HORRIBLY WRONG SAVING!")
+			return
+		##
+		save_file.store_string(json_dump)
 		get_tree().quit()
 	##
 ##
