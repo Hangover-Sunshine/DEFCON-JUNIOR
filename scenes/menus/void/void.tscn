@@ -43,3 +43,4 @@ color_initial_ramp = SubResource("Gradient_s4ije")
 [node name="Wind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_wshqo")
 autoplay = true
+bus = &"SFX"

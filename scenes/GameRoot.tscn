@@ -163,6 +163,7 @@ one_shot = true
 
 [node name="Wind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_r5qae")
+bus = &"SFX"
 
 [node name="EnemySFXBank" type="Node" parent="."]
 script = ExtResource("17_0nq7a")
