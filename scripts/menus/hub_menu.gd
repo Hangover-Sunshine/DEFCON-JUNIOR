@@ -25,7 +25,6 @@ func _ready():
 			return
 		##
 		to_power_selection = json.get_data()["selected"]
-		print(to_power_selection)
 	##
 ##
 

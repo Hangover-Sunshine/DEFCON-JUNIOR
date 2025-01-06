@@ -141,7 +141,7 @@ func save():
 	data = {}
 	data["level"] = json.get_data()["level"]
 	data["player_left"] = json.get_data()["player_left"]
-	data["selected"] = true
+	data["selected"] = false
 	
 	content = JSON.stringify(data)
 	

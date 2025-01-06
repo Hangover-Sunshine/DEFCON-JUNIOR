@@ -255,7 +255,7 @@ func _on_quit_button_pressed():
 ##
 
 func progress_level():
-	var data = {"level":chapter,"player_left":give_mercy,"selected":false}
+	var data = {"level":chapter,"player_left":give_mercy,"selected":give_mercy}
 	var json_dump = JSON.stringify(data)
 	var save_file = FileAccess.open("user://level.save", FileAccess.WRITE)
 	if save_file == null:

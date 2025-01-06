@@ -1687,8 +1687,8 @@ label = "cutscene"
 bus = "GameSFX"
 events = Array[ExtResource("23_eq6qi")]([SubResource("Resource_3qb2r"), SubResource("Resource_u7n21"), SubResource("Resource_qo3as"), SubResource("Resource_fgwvx"), SubResource("Resource_bo8qp"), SubResource("Resource_1cqp4"), SubResource("Resource_psf7n")])
 
-[connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_face_animation_finished"]
+[connection signal="animation_finished" from="TheVoid/AP_Mouth" to="." method="_on_ap_mouth_animation_finished"]
 [connection signal="pressed" from="Question_Labels/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Question_Labels/Quit_Button" to="." method="_on_quit_button_pressed"]
 [connection signal="animation_finished" from="AP_Cutscene" to="." method="_on_ap_cutscene_animation_finished"]
